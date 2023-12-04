@@ -1,0 +1,75 @@
+/* Master plan styling */
+.masterPlanMain {
+  background-image: url("/assets/imges/master-background.png");
+  height: 100vh;
+  background-size: 100% 100%;
+  object-fit: cover;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.masterPlanMain > h1 {
+  color: #fff;
+  text-align: right;
+  font-family: Montserrat;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.masterpyrmaid {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+  align-items: center;
+  margin-top: 50px;
+  margin-left: 40px;
+}
+
+.singleLevel {
+  cursor: pointer;
+  transition: filter 0.3s ease-in-out;
+}
+.masterPlanInfoImg {
+  display: flex;
+  align-items: center;
+  column-gap: 25px;
+}
+.masterPlanInfo {
+  transition: all 0.3s ease-in-out;
+  fill: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  stroke-width: 1px;
+  stroke: #fff;
+  backdrop-filter: blur(12px);
+  width: 357px;
+  height: 70px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  border: 1px solid #585c61;
+  padding: 15px 54px;
+}
+.masterPlanInfo > p {
+  color: #fff;
+  text-align: right;
+  font-family: Montserrat;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-align: center;
+}
+.odd {
+  margin-left: 325px;
+}
+.even {
+  margin-right: 450px;
+}

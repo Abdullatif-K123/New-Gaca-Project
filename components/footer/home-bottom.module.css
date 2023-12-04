@@ -1,0 +1,88 @@
+/* Styling the bottom section of the home page */
+
+.homeBottomMain {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 150px;
+  padding: 80px;
+  height: calc(100vh - 140px);
+  background-image: url("/assets/svg/mapWorld.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #fff;
+}
+.bottomLogo > h2 {
+  color: #000;
+  font-family: Montserrat;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
+}
+.bottomLogo > h2 > span {
+  color: #0076c9;
+  text-align: center;
+  font-family: Montserrat;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.partners {
+  display: flex;
+  align-items: center;
+  column-gap: 55px;
+}
+.partnerItem {
+  cursor: pointer;
+}
+.partnerItem::selection {
+  user-select: none;
+}
+
+/* Styling footer */
+.footerMain {
+  background-image: url("/assets/imges/Wave.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-color: #fff;
+  height: 140px;
+}
+.footerContentMain {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 40px 80px 0px 80px;
+}
+.footerContent {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  column-gap: 40px;
+}
+.footerContent > li {
+  color: #fff;
+  font-family: Montserrat;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px; /* 137.5% */
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+.footerContent > li:hover {
+  font-weight: 700;
+}
+.footerCopyRight > p {
+  color: #fff;
+  text-align: right;
+  font-family: Montserrat;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px; /* 137.5% */
+}
