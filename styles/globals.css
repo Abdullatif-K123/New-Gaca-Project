@@ -81,6 +81,8 @@
 }
 *:focus {
   outline: none;
+  background-color: transparent;
+  border: none;
 }
 
 html,
