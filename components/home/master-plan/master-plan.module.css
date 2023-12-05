@@ -1,7 +1,7 @@
 /* Master plan styling */
 .masterPlanMain {
   background-image: url("/assets/imges/master-background.png");
-  height: 100vh;
+  height: 105vh;
   background-size: 100% 100%;
   object-fit: cover;
   z-index: 5;
@@ -72,4 +72,55 @@
 }
 .even {
   margin-right: 450px;
+}
+/* Responsive design for less than 1400px */
+@media (max-width: 1400px) {
+  .masterPlanInfo {
+    width: 327px;
+  }
+  .odd {
+    margin-left: 265px;
+  }
+}
+/* Responsive design for less than 1300px */
+@media (max-width: 1300px) {
+  .masterPlanInfo {
+    width: 250px;
+    padding: 15px 24px;
+  }
+  .masterPlanInfo > p {
+    font-size: 13px;
+  }
+  .even {
+    margin-right: 370px;
+  }
+  .odd {
+    margin-left: 180px;
+  }
+}
+/* Responsive design for less than 1300px */
+@media (max-width: 1150px) {
+  .masterPlanInfoImg {
+    column-gap: 5px;
+  }
+  .masterPlanInfo {
+    width: 210px;
+    padding: 20px 5px;
+  }
+  .masterPlanInfo > p {
+    font-size: 13px;
+  }
+  .even {
+    margin-right: 330px;
+  }
+  .odd {
+    margin-left: 100px;
+  }
+}
+/* Responsive design for less than 1000px */
+@media (max-width: 1000px) {
+  .pyrmaid1 {
+    width: 110px;
+    height: 120px;
+  }
 }

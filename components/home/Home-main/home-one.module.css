@@ -11,7 +11,8 @@
   display: flex;
   flex-direction: column;
   row-gap: 32px;
-  z-index: 5;
+  position: relative;
+  z-index: 10;
 }
 .secOneContect > h1 {
   color: #fff;
@@ -69,7 +70,6 @@
   z-index: 0;
   left: -900px;
   bottom: -700px;
-  z-index: 1;
 }
 .airStreetBeauty {
   position: absolute;
@@ -80,6 +80,7 @@
   position: absolute;
   top: calc(50% - 320px);
   right: 0;
+
   animation: moveAndDisappear 3s linear infinite;
 }
 .planeAnimatedtwo {
@@ -87,6 +88,7 @@
   top: 50%;
   right: 0;
   opacity: 0;
+
   animation: moveAndDisappear2 3s linear infinite 1s;
 }
 @keyframes moveAndDisappear {
@@ -154,7 +156,7 @@
   height: 100vh;
   width: 29%;
   transition: right 0.5s ease-in-out;
-  z-index: 999;
+  z-index: 110;
   background-color: #fff;
 }
 
@@ -256,4 +258,159 @@
 .submitBtn:hover > button {
   font-size: 19px;
   font-weight: 500;
+}
+/* Responsive style for less than 1200px */
+@media (max-width: 1250px) {
+  .sectionOne {
+    padding: 20px 0 20px 20px;
+  }
+  .streetPlane {
+    width: 725px;
+  }
+  .airStreetBeauty {
+    margin-top: 30px;
+  }
+  .planeAnimated {
+    margin-top: 50px;
+    width: 200px;
+    height: 200px;
+  }
+  .planeAnimatedtwo {
+    margin-top: 50px;
+    width: 200px;
+    height: 200px;
+  }
+  .feedbackSection {
+    width: 45%;
+  }
+}
+/* Responsive style for less than 1200px */
+@media (max-width: 1050px) {
+  .sectionOne {
+    padding: 10px 0 20px 10px;
+  }
+  .streetPlane {
+    width: 625px;
+    height: 500px;
+  }
+  .airStreetBeauty {
+    margin-top: 30px;
+  }
+  .planeAnimated {
+    margin-top: 50px;
+    width: 200px;
+    height: 200px;
+  }
+  .planeAnimatedtwo {
+    margin-top: 50px;
+    width: 200px;
+    height: 200px;
+  }
+
+  .secOneContect > h1 {
+    font-size: 43px;
+  }
+  .secOneContect > p {
+    font-size: 15px;
+  }
+  .feedbackSection {
+    width: 45%;
+  }
+}
+/* Responsive style for less than 900px */
+@media (max-width: 900px) {
+  .sectionOne {
+    padding: 110px 0 20px 10px;
+    height: 100vh;
+    overflow: hidden;
+  }
+  .streetPlane {
+    width: 100%;
+    height: 100%;
+  }
+  .airStreetBeauty {
+    margin-top: -100px;
+  }
+  .planeAnimated {
+    margin-top: -100px;
+    width: 200px;
+    height: 200px;
+  }
+  .planeAnimatedtwo {
+    margin-top: -150px;
+    width: 200px;
+    height: 200px;
+  }
+  .secOneContect {
+    row-gap: 12px;
+    margin-bottom: 30px;
+    justify-self: flex-start;
+  }
+  .secOneContect > h1 {
+    font-size: 28px;
+  }
+  .secOneContect > p {
+    font-size: 15px;
+    line-height: 20px; /* 187.5% */
+  }
+  .sectionOne {
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  .sectionTwo {
+    transform: rotate(30deg);
+    margin-top: -50px;
+  }
+  .semicircle {
+    display: none;
+  }
+  .secOneButton {
+    width: 233px;
+    height: 42px;
+    padding: 16px 12px;
+  }
+  .secOneButton > p {
+    font-size: 14px;
+  }
+  .feedbackSection {
+    width: 55%;
+  }
+}
+@media (max-width: 600px) {
+  .airStreetBeauty {
+    display: none;
+  }
+  .planeAnimated {
+    margin-top: 50px;
+    width: 150px;
+    height: 150px;
+  }
+  .planeAnimatedtwo {
+    margin-top: -100px;
+    width: 150px;
+    height: 150px;
+  }
+  .feedbackSection {
+    width: 70%;
+  }
+}
+
+@media (max-width: 450px) {
+  .airStreetBeauty {
+    display: none;
+  }
+  .planeAnimated {
+    margin-top: 100px;
+    width: 120px;
+    height: 120px;
+  }
+  .planeAnimatedtwo {
+    margin-top: -20px;
+    width: 120px;
+    height: 120px;
+  }
+  .feedbackSection {
+    width: 90%;
+  }
 }

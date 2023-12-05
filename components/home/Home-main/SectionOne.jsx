@@ -21,7 +21,12 @@ const SectionOne = ({ isFeedbackVisible }) => {
         </div>
       </div>
       <div className={classes.sectionTwo}>
-        <Image src="/assets/svg/airportstreet.svg" width={925} height={550} />
+        <Image
+          src="/assets/svg/airportstreet.svg"
+          width={925}
+          height={550}
+          className={classes.streetPlane}
+        />
         {isFeedbackVisible ? null : (
           <>
             <Image

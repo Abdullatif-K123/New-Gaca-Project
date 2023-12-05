@@ -40,7 +40,7 @@ const Element = ({
         onMouseOut={handleMouseOut}
         width={width}
         height={height}
-        className={classes.singleLevel}
+        className={`${classes.singleLevel} ${classes.pyramid + id}`}
         style={{
           filter: nowHovering
             ? isHovered

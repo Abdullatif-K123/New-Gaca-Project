@@ -6,6 +6,8 @@
   background: #1f8de4;
   height: 111px;
   padding: 30px 81px;
+  position: relative;
+  z-index: 100;
 }
 .logo {
   justify-self: flex-start;
@@ -15,6 +17,8 @@
   align-self: center;
   margin-top: 10px;
   justify-self: flex-start;
+  z-index: 10;
+  position: relative;
 }
 .section {
   display: flex;
@@ -96,4 +100,96 @@
 }
 .btnFeedback:hover > p {
   font-size: 13px;
+}
+/* Responsive design for less than 1100px */
+@media (max-width: 1099px) {
+  .navMain {
+    padding: 25px 30px;
+  }
+  .section {
+    gap: 20px;
+  }
+}
+
+/* Responsive design for less than 870px */
+@media (max-width: 900px) {
+  .navMain {
+    grid-template-columns: 3fr 1fr;
+    padding: 25px 30px;
+  }
+
+  .navSections {
+    position: fixed;
+    padding-top: 0px;
+    left: -100%;
+    top: 6rem;
+    height: 350px;
+    background-color: #fff;
+    width: 100%;
+    border-radius: 10px;
+    text-align: center;
+    transition: 0.3s;
+    box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+    z-index: 100;
+    padding: 20px 0;
+  }
+  .imgMini {
+    display: none;
+  }
+  .feedBackSection {
+    position: fixed;
+    z-index: 999;
+    left: -100%;
+    top: 23rem;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    border-radius: 10px;
+    text-align: center;
+    transition: 0.3s;
+  }
+  .section {
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    z-index: 99 !important;
+  }
+  .section > li {
+    color: #0076c7;
+  }
+  .navSection {
+    display: block;
+  }
+  .navAuth {
+    position: fixed;
+    z-index: 1000;
+    left: -100%;
+    top: 23rem;
+    height: 100px;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    width: 100%;
+    border-radius: 10px;
+    text-align: center;
+    transition: 0.3s;
+  }
+  .navContentHam {
+    left: 0% !important;
+  }
+  .navAuthHam {
+    left: 40%;
+  }
+  .hamburger {
+    display: block;
+    cursor: pointer;
+  }
+  .footerLayout {
+    height: 75px;
+  }
+  .footerContent {
+    display: none;
+  }
 }
