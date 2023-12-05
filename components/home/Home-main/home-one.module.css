@@ -378,6 +378,9 @@
   }
 }
 @media (max-width: 600px) {
+  .sectionOne {
+    margin-top: -80px;
+  }
   .airStreetBeauty {
     display: none;
   }

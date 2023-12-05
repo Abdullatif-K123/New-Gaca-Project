@@ -79,6 +79,9 @@
   margin: 0;
   scrollbar-width: none;
 }
+*:focus {
+  outline: none;
+}
 
 html,
 body {
