@@ -4,7 +4,22 @@ import Image from "next/image";
 import Footer from "./footer";
 import Slider from "react-infinite-logo-slider";
 const HomeBottom = () => {
-  const [right, setRight] = useState(false);
+  const [sliderWidth, setSliderWidth] = useState("180px");
+  useEffect(() => {
+    const handleResize = () => {
+      // Adjust the width based on the screen size
+      setSliderWidth(window.innerWidth <= 600 ? "110px" : "180px");
+    };
+
+    // Set the initial width and add event listener for window resize
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    // Clean up the event listener on component unmount
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
   return (
     <>
       <div className={classes.homeBottomMain}>
@@ -13,35 +28,13 @@ const HomeBottom = () => {
             <span>Our</span> Stackholders
           </h2>
         </div>
-        {/* <div className={classes.arrowsImg}>
-          <Image
-            src="/assets/svg/arrowLeftGray.svg"
-            width={25}
-            height={25}
-            alt="arrowLeft"
-            className={classes.arrowLeft}
-            onClick={() => {
-              setRight(false);
-            }}
-          />
-          <Image
-            src="/assets/svg/arrowLeftGray.svg"
-            width={25}
-            height={25}
-            alt="arrowLeft"
-            className={classes.arrowRightRotate}
-            onClick={() => {
-              setRight(true);
-            }}
-          />
-        </div> */}
         <div className={classes.partners}>
           <Slider
-            width="250px"
-            duration={30}
+            width={sliderWidth}
+            duration={15}
             pauseOnHover={true}
             blurBorders={true}
-            toRight={right}
+            toRight={false}
           >
             <Slider.Slide>
               <div className={classes.partnerItem}>

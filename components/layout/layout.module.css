@@ -123,7 +123,7 @@
     padding-top: 0px;
     left: -100%;
     top: 6rem;
-    height: 350px;
+    height: 320px;
     background-color: #fff;
     width: 100%;
     border-radius: 10px;
@@ -140,20 +140,26 @@
     position: fixed;
     z-index: 999;
     left: -100%;
-    top: 23rem;
+    top: 21rem;
     align-items: center;
     justify-content: center;
-    width: 100%;
+
     border-radius: 10px;
     text-align: center;
     transition: 0.3s;
+  }
+  .section > li:hover {
+    color: #0076c7;
+  }
+  .section > li::after {
+    background-color: #0076c7;
   }
   .section {
     position: relative;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 2rem;
+    gap: 1.5rem;
     z-index: 99 !important;
   }
   .section > li {
@@ -180,7 +186,8 @@
     left: 0% !important;
   }
   .navAuthHam {
-    left: 40%;
+    left: 50%;
+    transform: translateX(-50%);
   }
   .hamburger {
     display: block;
@@ -192,4 +199,6 @@
   .footerContent {
     display: none;
   }
+}
+@media (max-width: 600px) {
 }

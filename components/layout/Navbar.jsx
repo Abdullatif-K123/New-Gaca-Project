@@ -31,11 +31,11 @@ const Navbar = ({ isFeedbackVisible, handleToggleFeedback }) => {
           }`}
         >
           <ul className={classes.section}>
-            <li>Home</li>
-            <li>About GACA</li>
-            <li>Download</li>
-            <li>News</li>
-            <li>
+            <li onClick={mobileMenu}>Home</li>
+            <li onClick={mobileMenu}>About GACA</li>
+            <li onClick={mobileMenu}>Download</li>
+            <li onClick={mobileMenu}>News</li>
+            <li onClick={mobileMenu}>
               Constructor{" "}
               <Image
                 src="/assets/svg/share1.svg"
@@ -52,7 +52,7 @@ const Navbar = ({ isFeedbackVisible, handleToggleFeedback }) => {
           }`}
           onClick={handleToggleFeedback}
         >
-          <div className={classes.btnFeedback}>
+          <div className={classes.btnFeedback} onClick={mobileMenu}>
             <Image src="/assets/svg/review1.svg" width={23} height={23} />
             <p>Feedback</p>
           </div>
