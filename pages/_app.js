@@ -1,7 +1,12 @@
 import "@/styles/globals.css";
 import Layout from "@/components/layout/Layout";
 import Head from "next/head";
+import { useState } from "react";
 export default function App({ Component, pageProps }) {
+  const [isFeedbackVisible, setIsFeedbackVisible] = useState(false);
+  const handleToggleFeedback = () => {
+    setIsFeedbackVisible(!isFeedbackVisible);
+  };
   return (
     <>
       <Head>
@@ -12,8 +17,16 @@ export default function App({ Component, pageProps }) {
           rel="stylesheet"
         />
       </Head>
-      <Layout>
-        <Component {...pageProps} />
+
+      <Layout
+        isFeedbackVisible={isFeedbackVisible}
+        handleToggleFeedback={handleToggleFeedback}
+      >
+        <Component
+          {...pageProps}
+          isFeedbackVisible={isFeedbackVisible}
+          handleToggleFeedback={handleToggleFeedback}
+        />
       </Layout>
     </>
   );

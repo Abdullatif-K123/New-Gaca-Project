@@ -12,6 +12,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-color: #fff;
+  position: relative;
 }
 .bottomLogo > h2 {
   color: #000;
@@ -34,6 +35,21 @@
   display: flex;
   align-items: center;
   column-gap: 55px;
+}
+.arrowsImg {
+  position: absolute;
+  top: 180px;
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+}
+.arrowRightRotate {
+  transform: rotate(180deg);
+
+  cursor: pointer;
+}
+.arrowLeft {
+  cursor: pointer;
 }
 .partnerItem {
   cursor: pointer;
