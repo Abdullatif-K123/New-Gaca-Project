@@ -174,7 +174,7 @@
   width: 100%;
 }
 .feedbackContent > h2 {
-  color: #10214e;
+  color: #0076c7;
   font-family: Montserrat;
   font-size: 35px;
   font-style: normal;
@@ -216,22 +216,35 @@
   background-color: transparent;
   font-family: Montserrat;
   border: none;
-  color: darkgray;
+  color: #000;
   outline: none;
 }
-.inputLabel:focus {
+.inputLabel > input::placeholder,
+.inputLabel > select,
+.inputLabel > textarea::placeholder {
+  color: darkgray;
+}
+.inputLabelFocused {
   border-color: #0076c7;
+}
+.inputLabelError {
+  border-color: rgb(224, 7, 7);
 }
 .submitBtn {
   width: 100%;
   padding: 15px 50px;
-  background-color: #10214e;
+  background-color: #0076c7;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 7px;
+  cursor: pointer;
+}
+.submitBtn:hover {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Add box shadow */
 }
 .submitBtn > button {
+  cursor: pointer;
   color: #fff;
   font-family: Montserrat;
   font-size: 18px;
@@ -239,4 +252,8 @@
   font-weight: 400;
   background-color: transparent;
   border: none;
+}
+.submitBtn:hover > button {
+  font-size: 19px;
+  font-weight: 500;
 }

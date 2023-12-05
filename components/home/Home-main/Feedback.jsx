@@ -1,17 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import classes from "./home-one.module.css";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 const Feedback = ({ isFeedbackVisible, handleToggleFeedback }) => {
+  const [focusedInput, setFocusedInput] = useState(null);
+  const [initialForms, setInitialForms] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    feedbackType: "",
+    feedbackTitle: "",
+    feedbackMessage: "",
+  });
+  const handleInputFocus = (inputName) => {
+    setFocusedInput(inputName);
+  };
   const formik = useFormik({
-    initialValues: {
-      name: "",
-      email: "",
-      phone: "",
-      feedbackType: "",
-      feedbackTitle: "",
-      feedbackMessage: "",
-    },
+    initialValues: initialForms,
     validationSchema: Yup.object({
       name: Yup.string().required("Name is required"),
       email: Yup.string()
@@ -27,6 +32,9 @@ const Feedback = ({ isFeedbackVisible, handleToggleFeedback }) => {
       console.log(values);
     },
   });
+  useEffect(() => {
+    formik.resetForm();
+  }, [isFeedbackVisible]);
   return (
     <div
       className={`${classes.feedbackSection} ${
@@ -36,8 +44,16 @@ const Feedback = ({ isFeedbackVisible, handleToggleFeedback }) => {
       <div className={classes.feedbackContent}>
         <h2>Feedback</h2>
         <form onSubmit={formik.handleSubmit} className={classes.formsInput}>
-          <div className={classes.inputLabel}>
-            <label htmlFor="name">Name </label>
+          <div
+            className={`${classes.inputLabel} ${
+              focusedInput === "name" ? classes.inputLabelFocused : null
+            } ${
+              formik.errors.name && formik.touched.name
+                ? classes.inputLabelError
+                : null
+            }`}
+          >
+            <label htmlFor="name">Name{formik.errors.name ? "*" : null}</label>
             <input
               type="text"
               id="name"
@@ -46,11 +62,22 @@ const Feedback = ({ isFeedbackVisible, handleToggleFeedback }) => {
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               value={formik.values.name}
+              onFocus={() => handleInputFocus("name")}
             />
           </div>
 
-          <div className={classes.inputLabel}>
-            <label htmlFor="email">Email</label>
+          <div
+            className={`${classes.inputLabel} ${
+              focusedInput === "email" ? classes.inputLabelFocused : null
+            } ${
+              formik.errors.email && formik.touched.email
+                ? classes.inputLabelError
+                : null
+            }`}
+          >
+            <label htmlFor="email">
+              Email{formik.errors.email ? "*" : null}
+            </label>
             <input
               type="text"
               id="email"
@@ -59,11 +86,22 @@ const Feedback = ({ isFeedbackVisible, handleToggleFeedback }) => {
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               value={formik.values.email}
+              onFocus={() => handleInputFocus("email")}
             />
           </div>
 
-          <div className={classes.inputLabel}>
-            <label htmlFor="phone">Phone</label>
+          <div
+            className={`${classes.inputLabel} ${
+              focusedInput === "phone" ? classes.inputLabelFocused : null
+            } ${
+              formik.errors.phone && formik.touched.phone
+                ? classes.inputLabelError
+                : null
+            }`}
+          >
+            <label htmlFor="phone">
+              Phone{formik.errors.email ? "*" : null}
+            </label>
             <input
               type="text"
               id="phone"
@@ -72,10 +110,15 @@ const Feedback = ({ isFeedbackVisible, handleToggleFeedback }) => {
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               value={formik.values.phone}
+              onFocus={() => handleInputFocus("phone")}
             />
           </div>
 
-          <div className={classes.inputLabel}>
+          <div
+            className={`${classes.inputLabel} ${
+              focusedInput === "feedbackType" ? classes.inputLabelFocused : null
+            }`}
+          >
             <label htmlFor="feedbackType">Feedback Type:</label>
             <select
               id="feedbackType"
@@ -83,6 +126,7 @@ const Feedback = ({ isFeedbackVisible, handleToggleFeedback }) => {
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               value={formik.values.feedbackType}
+              onFocus={() => handleInputFocus("feedbackType")}
             >
               <option value="" label="Select a feedback type" />
               <option value="Recommendation" label="Recommendation" />
@@ -92,7 +136,13 @@ const Feedback = ({ isFeedbackVisible, handleToggleFeedback }) => {
             </select>
           </div>
 
-          <div className={classes.inputLabel}>
+          <div
+            className={`${classes.inputLabel} ${
+              focusedInput === "feedbackTitle"
+                ? classes.inputLabelFocused
+                : null
+            }`}
+          >
             <label htmlFor="feedbackTitle">Feedback Title</label>
             <input
               type="text"
@@ -102,10 +152,21 @@ const Feedback = ({ isFeedbackVisible, handleToggleFeedback }) => {
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               value={formik.values.feedbackTitle}
+              onFocus={() => handleInputFocus("feedbackTitle")}
             />
           </div>
 
-          <div className={classes.inputLabel}>
+          <div
+            className={`${classes.inputLabel} ${
+              focusedInput === "feedbackMessage"
+                ? classes.inputLabelFocused
+                : null
+            } ${
+              formik.errors.feedbackMessage && formik.touched.feedbackMessage
+                ? classes.inputLabelError
+                : null
+            }`}
+          >
             <label htmlFor="feedbackMessage">Feedback Message</label>
             <textarea
               id="feedbackMessage"
@@ -115,6 +176,7 @@ const Feedback = ({ isFeedbackVisible, handleToggleFeedback }) => {
               onBlur={formik.handleBlur}
               rows={7}
               value={formik.values.feedbackMessage}
+              onFocus={() => handleInputFocus("feedbackMessage")}
             />
           </div>
 
