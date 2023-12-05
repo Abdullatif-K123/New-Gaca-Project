@@ -13,6 +13,16 @@ const Element = ({
   nowHovering,
   text,
 }) => {
+  const classPyramid =
+    id === 1
+      ? classes.pyramid1
+      : id === 2
+      ? classes.pyramid2
+      : id === 3
+      ? classes.pyramid3
+      : id === 4
+      ? classes.pyramid4
+      : classes.pyramid5;
   return (
     <div
       className={`${classes.masterPlanInfoImg} ${
@@ -40,7 +50,7 @@ const Element = ({
         onMouseOut={handleMouseOut}
         width={width}
         height={height}
-        className={`${classes.singleLevel} ${classes.pyramid + id}`}
+        className={`${classes.singleLevel} ${classPyramid}`}
         style={{
           filter: nowHovering
             ? isHovered

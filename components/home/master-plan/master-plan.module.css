@@ -119,8 +119,62 @@
 }
 /* Responsive design for less than 1000px */
 @media (max-width: 1000px) {
-  .pyrmaid1 {
-    width: 110px;
-    height: 120px;
+  .masterPlanInfo {
+    display: none;
+  }
+  .even {
+    margin-right: 0px;
+  }
+  .odd {
+    margin-left: 0px;
+  }
+  .masterpyrmaid {
+    margin-left: 0;
+  }
+  .pyramid1 {
+    width: 100px;
+    height: 90px;
+  }
+  .pyramid2 {
+    width: 200px;
+    height: 90px;
+  }
+
+  .pyramid3 {
+    width: 310px;
+    height: 90px;
+  }
+  .pyramid4 {
+    width: 430px;
+    height: 90px;
+  }
+  .pyramid5 {
+    width: 540px;
+    height: 90px;
+  }
+}
+
+/* Responsive design for less than 550px */
+@media (max-width: 550px) {
+  .pyramid1 {
+    width: 90px;
+    height: 65px;
+  }
+  .pyramid2 {
+    width: 150px;
+    height: 65px;
+  }
+
+  .pyramid3 {
+    width: 225px;
+    height: 65px;
+  }
+  .pyramid4 {
+    width: 305px;
+    height: 65px;
+  }
+  .pyramid5 {
+    width: 390px;
+    height: 80px;
   }
 }
