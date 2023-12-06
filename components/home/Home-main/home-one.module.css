@@ -158,6 +158,7 @@
   transition: right 0.5s ease-in-out;
   z-index: 110;
   background-color: #fff;
+  overflow-y: scroll;
 }
 
 .feedbackBar {
