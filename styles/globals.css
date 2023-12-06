@@ -125,6 +125,9 @@ a {
   transition: all 0.3s ease-in-out;
   background-color: #ffffff;
 }
+.aboutBar {
+  background-color: #0076c7;
+}
 
 @media screen and (max-width: 900px) {
   .hamburger {

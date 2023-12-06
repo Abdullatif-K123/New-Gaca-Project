@@ -9,6 +9,10 @@
   position: relative;
   z-index: 100;
 }
+.aboutNav {
+  background-color: #fff;
+  border-bottom: 2px dotted rgba(0, 119, 199, 0.2);
+}
 .logo {
   justify-self: flex-start;
   cursor: pointer;
@@ -38,6 +42,15 @@
   border-bottom: 2px solid transparent;
   border: none;
   position: relative;
+}
+.secAbout > li {
+  color: #b1b1b1;
+}
+.secAbout > li:hover {
+  color: #0076c7 !important;
+}
+.secAbout > li::after {
+  background-color: #0076c7 !important;
 }
 .section > li:hover {
   color: #fff;

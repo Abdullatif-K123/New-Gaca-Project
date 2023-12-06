@@ -12,10 +12,12 @@ const Navbar = ({ isFeedbackVisible, handleToggleFeedback }) => {
     setAddClass(!addClass);
   };
   const router = useRouter();
+  const path = router.pathname.split("/").pop();
+  const aboutPath = path === "about";
   return (
     <>
       <nav
-        className={classes.navMain}
+        className={`${classes.navMain} ${aboutPath ? classes.aboutNav : null}`}
         onClick={() => {
           isFeedbackVisible ? handleToggleFeedback() : null;
         }}
@@ -25,14 +27,24 @@ const Navbar = ({ isFeedbackVisible, handleToggleFeedback }) => {
         }}
       >
         <div className={classes.logo}>
-          <Image src="/assets/svg/Logo.svg" width={140} height={47} />
+          <Image
+            src={
+              aboutPath ? "/assets/svg/LogoAbout.svg" : "/assets/svg/Logo.svg"
+            }
+            width={140}
+            height={aboutPath ? 64 : 47}
+          />
         </div>
         <div
           className={`${classes.navSections} ${
             addClass ? classes.navContentHam : null
           }`}
         >
-          <ul className={classes.section}>
+          <ul
+            className={`${classes.section} ${
+              aboutPath ? classes.secAbout : null
+            }`}
+          >
             <li
               onClick={() => {
                 mobileMenu();
@@ -54,7 +66,11 @@ const Navbar = ({ isFeedbackVisible, handleToggleFeedback }) => {
             <li onClick={mobileMenu}>
               Constructor{" "}
               <Image
-                src="/assets/svg/share1.svg"
+                src={
+                  aboutPath
+                    ? "/assets/svg/share1Gray.svg"
+                    : "/assets/svg/share1.svg"
+                }
                 width={17}
                 height={17}
                 className={classes.imgMini}
@@ -74,9 +90,9 @@ const Navbar = ({ isFeedbackVisible, handleToggleFeedback }) => {
           </div>
         </div>
         <div className="hamburger" onClick={mobileMenu}>
-          <span className="bar"></span>
-          <span className="bar"></span>
-          <span className="bar"></span>
+          <span className={`bar ${aboutPath ? "aboutBar" : null}`}></span>
+          <span className={`bar ${aboutPath ? "aboutBar" : null}`}></span>
+          <span className={`bar ${aboutPath ? "aboutBar" : null}`}></span>
         </div>
       </nav>
       <Feedback
