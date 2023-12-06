@@ -1,0 +1,191 @@
+/* Styling for About page */
+.aboutPageMain {
+  display: flex;
+  flex-direction: column;
+  row-gap: 35px;
+  padding: 32px 60px;
+  height: 100%;
+  background-image: url("/assets/svg/mapWorld.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #fff;
+  position: relative;
+  color: #000;
+}
+
+.choosen > p {
+  color: #000;
+  font-family: Montserrat;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px; /* 114.286% */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: all 0.5s ease-in-out;
+}
+
+.choosen > p > span:first-child {
+  color: #2980c3;
+}
+.choosen > p > span:hover {
+  font-weight: 600;
+}
+.aboutSection {
+  display: flex;
+
+  justify-content: space-between;
+  column-gap: 300px;
+}
+.aboutContent {
+  display: flex;
+  flex-direction: column;
+  row-gap: 40px;
+}
+.aboutContent > h1 {
+  color: #000;
+  font-family: Montserrat;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.moreInfo {
+  display: flex;
+  flex-direction: column;
+  row-gap: 32px;
+  margin-top: -32px;
+  text-align: justify;
+}
+.moreInfo > p {
+  color: #000;
+  font-family: Montserrat;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 25px;
+}
+.moreInfo > p > span {
+  color: #0076c9;
+  font-family: Montserrat;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 25px; /* 178.571% */
+}
+.worldImages {
+  position: relative;
+}
+.earth {
+  margin-top: 10px;
+  position: relative;
+  z-index: 2;
+}
+.clouds {
+  position: absolute;
+  top: 0;
+  right: -10px;
+  z-index: 1;
+  animation: cloudMoving 2s linear infinite;
+}
+.cloudsmore {
+  position: absolute;
+  top: 0;
+  right: -10px;
+  z-index: 2;
+  animation: cloudMoving 2s linear infinite;
+}
+.plane {
+  position: absolute;
+  top: 200px;
+  right: 0;
+  z-index: 3;
+  animation: movePlane 4s linear infinite;
+}
+@keyframes movePlane {
+  0% {
+    top: 200px;
+    right: -50px;
+    width: 50px;
+    height: 50px;
+    opacity: 0;
+  }
+
+  25% {
+    right: 50px;
+    top: 150px;
+    width: 150px;
+    height: 150px;
+    opacity: 1;
+  }
+  50% {
+    right: 150px;
+    top: 100px;
+    width: 200px;
+    height: 200px;
+    opacity: 1;
+  }
+  75% {
+    right: 225px;
+    top: 70px;
+    width: 200px;
+    height: 200px;
+    opacity: 1;
+  }
+  100% {
+    right: 300px;
+    top: 50px;
+
+    width: 200px;
+    height: 200px;
+    opacity: 0;
+  }
+}
+@keyframes cloudMoving {
+  0% {
+    transform: translateX(30px);
+  }
+
+  50% {
+    transform: translateX(0px);
+  }
+  100% {
+    transform: translateX(30px);
+  }
+}
+/* Styling Section for About section info */
+.aboutSec1 {
+  display: flex;
+  flex-direction: column;
+  row-gap: 25px;
+}
+.sec1Header {
+  display: flex;
+  align-items: flex-end;
+  column-gap: 5px;
+}
+.planeImg {
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: -5px;
+}
+.sec1Header > p {
+  color: #000;
+  text-align: center;
+  font-family: Montserrat;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.aboutSec1 > p {
+  color: #000;
+  font-family: Montserrat;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 25px; /* 178.571% */
+}

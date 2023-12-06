@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import classes from "./layout.module.css";
 import Image from "next/image";
 import Feedback from "../home/Home-main/Feedback";
+import { useRouter } from "next/router";
 const Navbar = ({ isFeedbackVisible, handleToggleFeedback }) => {
   // creating function menu hamburger
   const [addClass, setAddClass] = useState(false);
@@ -10,6 +11,7 @@ const Navbar = ({ isFeedbackVisible, handleToggleFeedback }) => {
     hamburger.classList.toggle("active");
     setAddClass(!addClass);
   };
+  const router = useRouter();
   return (
     <>
       <nav
@@ -31,8 +33,22 @@ const Navbar = ({ isFeedbackVisible, handleToggleFeedback }) => {
           }`}
         >
           <ul className={classes.section}>
-            <li onClick={mobileMenu}>Home</li>
-            <li onClick={mobileMenu}>About GACA</li>
+            <li
+              onClick={() => {
+                mobileMenu();
+                router.push("/");
+              }}
+            >
+              Home
+            </li>
+            <li
+              onClick={() => {
+                mobileMenu();
+                router.push("/about");
+              }}
+            >
+              About GACA
+            </li>
             <li onClick={mobileMenu}>Download</li>
             <li onClick={mobileMenu}>News</li>
             <li onClick={mobileMenu}>
