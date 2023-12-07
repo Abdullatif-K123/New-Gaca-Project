@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import classes from "./home-one.module.css";
+import Image from "next/image";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 const Feedback = ({ isFeedbackVisible, handleToggleFeedback }) => {
@@ -42,7 +43,17 @@ const Feedback = ({ isFeedbackVisible, handleToggleFeedback }) => {
       }`}
     >
       <div className={classes.feedbackContent}>
-        <h2>Feedback</h2>
+        <h2>
+          Feedback{" "}
+          <Image
+            src="/assets/svg/exit.svg"
+            width={27}
+            height={27}
+            className={classes.exitImage}
+            onClick={handleToggleFeedback}
+            alt="exit"
+          />
+        </h2>
         <form onSubmit={formik.handleSubmit} className={classes.formsInput}>
           <div
             className={`${classes.inputLabel} ${
