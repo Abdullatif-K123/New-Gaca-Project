@@ -13,7 +13,7 @@ const Navbar = ({ isFeedbackVisible, handleToggleFeedback }) => {
   };
   const router = useRouter();
   const path = router.pathname.split("/").pop();
-  const aboutPath = path === "about";
+  const aboutPath = path === "about" || path === "download";
   return (
     <>
       <nav
