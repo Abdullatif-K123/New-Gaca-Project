@@ -105,7 +105,7 @@
     font-size: 24px;
   }
   .downloadPage {
-    padding: 32px 15px;
+    padding: 32px 10px;
   }
 
   .downloadContent {
@@ -113,8 +113,11 @@
   }
 
   .tableHead {
-    grid-template-columns: 4fr 1fr 1fr 1fr;
+    grid-template-columns: 3fr 1fr 1fr 1fr;
     font-size: 11px;
     gap: 7px;
+  }
+  .tableHead > p {
+    justify-self: flex-start;
   }
 }

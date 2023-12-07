@@ -33,6 +33,10 @@ const Navbar = ({ isFeedbackVisible, handleToggleFeedback }) => {
             }
             width={140}
             height={aboutPath ? 64 : 47}
+            alt="logo"
+            onClick={() => {
+              router.push("/");
+            }}
           />
         </div>
         <div
