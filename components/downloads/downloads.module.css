@@ -1,0 +1,119 @@
+/* Styling for download page */
+.downloadPage {
+  display: flex;
+  flex-direction: column;
+  row-gap: 35px;
+  padding: 32px 81px;
+  height: 100%;
+  background-image: url("/assets/svg/mapWorld.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #fff;
+  position: relative;
+  color: #000;
+}
+
+.choosen > p {
+  color: #000;
+  font-family: Montserrat;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px; /* 114.286% */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: all 0.5s ease-in-out;
+}
+
+.choosen > p > span:first-child {
+  color: #2980c3;
+}
+.choosen > p > span:hover {
+  font-weight: 600;
+}
+.downloadContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 20px;
+  padding: 0 250px;
+}
+.downloadContent > h1 {
+  color: #000;
+  font-family: Montserrat;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.downloadContent > p {
+  text-align: center;
+  color: #000;
+  font-family: Montserrat;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 25px;
+}
+.tableHead {
+  display: grid;
+  grid-template-columns: 8fr 1fr 1fr 1fr;
+  border-bottom: 1px solid #000;
+  gap: 5px;
+  padding: 25px 0px;
+  font-family: Montserrat;
+  font-size: 14px;
+  color: #000;
+}
+.tableHead > p:first-child {
+  display: flex;
+  align-items: center;
+}
+.tableHead > p:last-child {
+  color: #2980c3;
+  cursor: pointer;
+}
+/* Media for less than 1150 */
+@media (max-width: 1150px) {
+  .downloadContent {
+    padding: 0 80px;
+  }
+  .tableHead {
+    grid-template-columns: 5fr 1fr 1fr 1fr;
+  }
+}
+/* Media for less than 900 */
+@media (max-width: 900px) {
+  .downloadPage {
+    padding: 32px 40px;
+  }
+  .downloadContent {
+    padding: 0 20px;
+  }
+  .tableHead {
+    grid-template-columns: 5fr 1fr 1fr 1fr;
+    font-size: 12px;
+  }
+}
+/* Media for less than 500 */
+@media (max-width: 500px) {
+  .downloadContent > h1 {
+    font-size: 24px;
+  }
+  .downloadPage {
+    padding: 32px 15px;
+  }
+
+  .downloadContent {
+    padding: 0 0px;
+  }
+
+  .tableHead {
+    grid-template-columns: 4fr 1fr 1fr 1fr;
+    font-size: 11px;
+    gap: 7px;
+  }
+}

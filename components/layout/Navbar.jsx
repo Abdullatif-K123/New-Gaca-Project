@@ -61,7 +61,15 @@ const Navbar = ({ isFeedbackVisible, handleToggleFeedback }) => {
             >
               About GACA
             </li>
-            <li onClick={mobileMenu}>Download</li>
+            <li
+              o
+              onClick={() => {
+                mobileMenu();
+                router.push("/download");
+              }}
+            >
+              Downloads
+            </li>
             <li onClick={mobileMenu}>News</li>
             <li onClick={mobileMenu}>
               Constructor{" "}

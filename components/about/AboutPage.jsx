@@ -2,12 +2,20 @@ import React from "react";
 import classes from "./about.module.css";
 import Image from "next/image";
 import AboutSection from "./AboutSection";
+import { useRouter } from "next/router";
 const AboutPage = () => {
+  const router = useRouter();
   return (
     <div className={classes.aboutPageMain}>
       <div className={classes.choosen}>
         <p>
-          <span>Home</span>
+          <span
+            onClick={() => {
+              router.push("/");
+            }}
+          >
+            Home
+          </span>
           <Image src="/assets/svg/Chevron.svg" width={16} height={16} />
           <span>About</span>
         </p>
