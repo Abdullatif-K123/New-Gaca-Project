@@ -1,7 +1,7 @@
 const newsData = [
   {
     id: 1,
-    img: "/assets/imges/img1.png",
+    img: "/assets/imges/img1.jpg",
     title:
       "His Excellency the President of the General Authority of Civil Aviation meets with His Excellency the Minister of Industry.",
     date: "1-10-2023",
@@ -11,7 +11,7 @@ const newsData = [
   },
   {
     id: 2,
-    img: "/assets/imges/img2.png",
+    img: "/assets/imges/img2.jpg",
     title:
       "His Excellency the President of the General Authority of Civil Aviation meets with His Excellency the Minister of Industry.",
     date: "2-10-2023",

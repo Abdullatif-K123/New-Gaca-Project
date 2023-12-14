@@ -1,8 +1,9 @@
 import React from "react";
-
+import { useRouter } from "next/router";
 import classes from "./SingleNews.module.css";
 import Image from "next/image";
 const SingleNews = ({ newsDetails }) => {
+  const router = useRouter();
   return (
     <div className={classes.newsMain}>
       <div className={classes.choosen}>
@@ -15,7 +16,13 @@ const SingleNews = ({ newsDetails }) => {
             Home
           </span>
           <Image src="/assets/svg/Chevron.svg" width={16} height={16} />
-          <span>News</span>
+          <span
+            onClick={() => {
+              router.push("/news");
+            }}
+          >
+            News
+          </span>
           <Image src="/assets/svg/Chevron.svg" width={16} height={16} />
           <span>{newsDetails?.title.slice(0, 30)}...</span>
         </p>
