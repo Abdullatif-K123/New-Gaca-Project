@@ -144,3 +144,16 @@
   font-weight: 400;
   line-height: 205%; /* 28.7px */
 }
+
+/* Responsive for less than 1350px */
+@media (max-width: 1350px) {
+  .newsCardHead {
+    width: 320px;
+  }
+  .newsCardHead > img {
+    width: 300px;
+  }
+  .newsCardBody {
+    width: 320px;
+  }
+}
