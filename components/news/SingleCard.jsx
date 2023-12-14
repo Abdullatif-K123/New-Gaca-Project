@@ -1,8 +1,10 @@
 import React from "react";
 import classes from "./news.module.css";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import { useSpring, animated } from "react-spring";
-const SingleCard = ({ title, img, date, summary, leftRight }) => {
+const SingleCard = ({ title, img, date, summary, leftRight, id }) => {
+  const router = useRouter();
   const cardProps = useSpring({
     from: {
       opacity: 0,
@@ -14,7 +16,13 @@ const SingleCard = ({ title, img, date, summary, leftRight }) => {
     config: { tension: 0, friction: 1 },
   });
   return (
-    <animated.div className={classes.newsCard} style={{ ...cardProps }}>
+    <animated.div
+      className={classes.newsCard}
+      style={{ ...cardProps }}
+      onClick={() => {
+        router.push(`/news/${id}`);
+      }}
+    >
       <div className={classes.newsCardHead}>
         <Image src={img} width={385} height={180} alt="news-photo" />
         <p>{title}</p>

@@ -37,7 +37,12 @@ const NewsMain = () => {
             >
               Home
             </span>
-            <Image src="/assets/svg/Chevron.svg" width={16} height={16} />
+            <Image
+              src="/assets/svg/Chevron.svg"
+              width={16}
+              height={16}
+              alt="chevron"
+            />
             <span>News</span>
           </p>
         </div>

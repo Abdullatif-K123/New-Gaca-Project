@@ -21,7 +21,7 @@ const newsData = [
   },
   {
     id: 3,
-    img: "/assets/imges/img3.png",
+    img: "/assets/imges/img3.jpg",
     title:
       "His Excellency the President of the General Authority of Civil Aviation meets with His Excellency the Minister of Industry.",
     date: "3-10-2023",
@@ -31,7 +31,7 @@ const newsData = [
   },
   {
     id: 4,
-    img: "/assets/imges/img1.png",
+    img: "/assets/imges/img1.jpg",
     title:
       "His Excellency the President of the General Authority of Civil Aviation meets with His Excellency the Minister of Industry.",
     date: "4-10-2023",
@@ -41,7 +41,7 @@ const newsData = [
   },
   {
     id: 5,
-    img: "/assets/imges/img2.png",
+    img: "/assets/imges/img2.jpg",
     title:
       "His Excellency the President of the General Authority of Civil Aviation meets with His Excellency the Minister of Industry.",
     date: "5-10-2023",
