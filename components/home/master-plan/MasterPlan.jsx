@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import classes from "./master-plan.module.css";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 const Element = ({
   id,
@@ -23,6 +24,7 @@ const Element = ({
       : id === 4
       ? classes.pyramid4
       : classes.pyramid5;
+  const router = useRouter();
   return (
     <div
       className={`${classes.masterPlanInfoImg} ${
@@ -46,6 +48,9 @@ const Element = ({
       <Image
         id={id}
         src={imgsrc}
+        onClick={() => {
+          router.push(`/master-plan?plan=${id}`);
+        }}
         onMouseOver={() => handleHover(id)}
         onMouseOut={handleMouseOut}
         width={width}
@@ -58,6 +63,7 @@ const Element = ({
               : "brightness(0.5)"
             : null,
         }}
+        alt="master plan"
       />
       {id % 2 ? (
         <div
@@ -89,7 +95,7 @@ const MasterPlan = () => {
     setIsNowHovering(false);
   };
   return (
-    <div className={classes.masterPlanMain}>
+    <div id={"masterplan"} className={classes.masterPlanMain}>
       <h1>Master Plan Level</h1>
       <div className={classes.masterpyrmaid}>
         {[

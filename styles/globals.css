@@ -146,3 +146,18 @@ a {
     transform: translateY(-8px) rotate(-45deg);
   }
 }
+.MuiCollapse-vertical {
+  margin-top: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px !important;
+}
+.Mui-selected {
+  background-color: transparent !important;
+}
+.css-1bcfi89-MuiTreeItem-content:hover {
+  background: transparent !important;
+}
+.Mui-focused {
+  background-color: transparent !important;
+}

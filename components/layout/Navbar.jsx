@@ -13,7 +13,7 @@ const Navbar = ({ isFeedbackVisible, handleToggleFeedback }) => {
   };
   const router = useRouter();
   const path = router.pathname.split("/").pop();
-  const aboutPath = path === "about" || path === "download";
+  const aboutPath = path.length > 2;
   return (
     <>
       <nav
@@ -74,7 +74,14 @@ const Navbar = ({ isFeedbackVisible, handleToggleFeedback }) => {
             >
               Downloads
             </li>
-            <li onClick={mobileMenu}>News</li>
+            <li
+              onClick={() => {
+                mobileMenu();
+                router.push("/news");
+              }}
+            >
+              News
+            </li>
             <li onClick={mobileMenu}>
               Constructor{" "}
               <Image
@@ -86,6 +93,7 @@ const Navbar = ({ isFeedbackVisible, handleToggleFeedback }) => {
                 width={17}
                 height={17}
                 className={classes.imgMini}
+                alt="share1"
               />
             </li>
           </ul>
@@ -97,7 +105,12 @@ const Navbar = ({ isFeedbackVisible, handleToggleFeedback }) => {
           onClick={handleToggleFeedback}
         >
           <div className={classes.btnFeedback} onClick={mobileMenu}>
-            <Image src="/assets/svg/review1.svg" width={23} height={23} />
+            <Image
+              src="/assets/svg/review1.svg"
+              width={23}
+              height={23}
+              alt="review"
+            />
             <p>Feedback</p>
           </div>
         </div>

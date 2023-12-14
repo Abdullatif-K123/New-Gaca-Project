@@ -1,0 +1,42 @@
+/* Styling the tree view section */
+.treeviewMain {
+  gap: 25px !important;
+  display: flex;
+  flex-direction: column;
+}
+.parentIcon {
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+}
+.children {
+  color: var(--black-100, #1c1c1c);
+  font-family: Montserrat;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px; /* 125% */
+}
+.childrens {
+  color: #8b8f92;
+  font-family: Montserrat;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 142.857% */
+  cursor: pointer;
+  padding: 10px 13px;
+}
+.childSelected {
+  background-color: #fdfdfd;
+  color: var(--black-100, #1c1c1c);
+  font-family: Montserrat;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px; /* 142.857% */
+  border: 1px solid #e5e5e5;
+  border-left: 5px solid #1993e7;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}

@@ -1,7 +1,9 @@
 import React from "react";
 import classes from "./home-one.module.css";
 import Image from "next/image";
+import { useRouter } from "next/router";
 const SectionOne = ({ isFeedbackVisible }) => {
+  const router = useRouter();
   return (
     <div className={classes.sectionOne}>
       <div className={classes.secOneContect}>
@@ -16,7 +18,12 @@ const SectionOne = ({ isFeedbackVisible }) => {
           (Deployment Let Level) Implementation Objectives, including Common
           Project One (CP1) SESAR Deployment Programme information.
         </p>
-        <div className={classes.secOneButton}>
+        <div
+          className={classes.secOneButton}
+          onClick={() => {
+            router.push("/download");
+          }}
+        >
           <p>Download Our Master Plan</p>
         </div>
       </div>
