@@ -33,6 +33,7 @@ const SingleNews = ({ newsDetails }) => {
           width={620}
           height={600}
           alt="news-photo"
+          objectFit="cover"
         />
         <div className={classes.newsContent}>
           <div className={classes.contentHead}>

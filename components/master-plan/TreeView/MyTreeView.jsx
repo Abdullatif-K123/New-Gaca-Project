@@ -57,8 +57,6 @@ const MyTreeView = ({
     <TreeView
       expanded={expanded}
       onNodeToggle={handleToggle}
-      onNodeSelect={handleSelect}
-      selected={selectedTree}
       defaultCollapseIcon={
         <Image
           src="/assets/svg/ArrowDown.svg"

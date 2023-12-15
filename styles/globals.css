@@ -161,3 +161,12 @@ a {
 .Mui-focused {
   background-color: transparent !important;
 }
+/* Media screen for less than 430px */
+@media (max-width: 430px) {
+  .MuiTreeItem-content {
+    padding: 0px !important;
+  }
+  .MuiTreeItem-label {
+    padding: 0 !important;
+  }
+}

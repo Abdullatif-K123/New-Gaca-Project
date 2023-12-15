@@ -22,7 +22,13 @@ const Footer = () => {
           >
             Downloads
           </li>
-          <li>News</li>
+          <li
+            onClick={() => {
+              router.push("/news");
+            }}
+          >
+            News
+          </li>
           <li>
             Constructor{" "}
             <Image

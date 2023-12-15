@@ -23,6 +23,7 @@ const SideMenu = ({
     const filter = value.trim();
     if (!filter) {
       setSubjectData(() => sampleData);
+      handleToggle("b", []);
       return;
     }
     let filtred = sampleData.map((data) => {
@@ -31,6 +32,7 @@ const SideMenu = ({
     });
     let filtredUpdate = filtred.filter((data) => (data.name ? data : null));
     setSubjectData(filtredUpdate);
+    handleToggle("b", ["root1", "root2", "root3"]);
   };
 
   return (

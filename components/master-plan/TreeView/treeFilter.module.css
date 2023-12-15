@@ -40,3 +40,20 @@
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
 }
+@media (max-width: 700px) {
+  .treeviewMain {
+    gap: 0px;
+  }
+  .children {
+    font-size: 12px;
+  }
+  .childSelected {
+    font-size: 12px;
+  }
+}
+@media (max-width: 390px) {
+  .childrens {
+    font-size: 10px;
+    margin-left: -10px;
+  }
+}

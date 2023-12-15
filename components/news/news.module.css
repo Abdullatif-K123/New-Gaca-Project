@@ -157,3 +157,9 @@
     width: 320px;
   }
 }
+/* Resonsive for less than 1100px */
+@media (max-width: 1100px) {
+  .newsMain {
+    padding: 32px 0px;
+  }
+}
