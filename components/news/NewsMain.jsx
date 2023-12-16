@@ -6,25 +6,15 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 const NewsMain = () => {
   const [startIndex, setStartIndex] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
   const [leftRight, setLeftRight] = useState("left");
   const router = useRouter();
-  const handleNext = () => {
-    setLeftRight("right");
-    setStartIndex((prevIndex) => (prevIndex + 1) % newsData.length);
-  };
 
-  const handlePrev = () => {
-    setLeftRight("left");
-    setStartIndex(
-      (prevIndex) => (prevIndex - 1 + newsData.length) % newsData.length
-    );
-  };
-  const visibleNews = [
-    newsData[(startIndex - 1 + newsData.length) % newsData.length],
-    newsData[startIndex],
-    newsData[(startIndex + 1) % newsData.length],
-  ];
-
+  const itemsPerPage = 6;
+  const visibleNews = newsData.slice(
+    currentPage === 1 ? 0 : 6,
+    currentPage === 1 ? 6 : newsData.length
+  );
   return (
     <div className={classes.newsMain}>
       <div className={classes.newsSection}>
@@ -48,29 +38,25 @@ const NewsMain = () => {
         </div>
         <h1>News</h1>
         <div className={classes.newsCardMain}>
-          <button className={classes.newsArrow} onClick={handlePrev}>
-            <Image
-              src="/assets/svg/arrowLeftGray.svg"
-              width={24}
-              height={24}
-              alt="arrowLeft"
-            />
-          </button>
           {visibleNews.map((news, index) => (
             <SingleCard key={news.id} {...news} leftRight={leftRight} />
           ))}
-          <button
-            className={`${classes.newsArrow} ${classes.newsArrowRigt}`}
-            onClick={handleNext}
-          >
-            <Image
-              src="/assets/svg/arrowLeftGray.svg"
-              width={24}
-              height={24}
-              alt="arrowLeft"
-              className={classes.arrowRight}
-            />
-          </button>
+        </div>
+        <div className={classes.paginationContainer}>
+          {/* Render pagination links with updated styles */}
+          {[...Array(Math.ceil(newsData.length / itemsPerPage)).keys()].map(
+            (page) => (
+              <span
+                key={page + 1}
+                onClick={() => setCurrentPage(page + 1)}
+                className={`${classes.paginationLink} ${
+                  currentPage === page + 1 ? classes.active : ""
+                }`}
+              >
+                {page + 1}
+              </span>
+            )
+          )}
         </div>
       </div>
     </div>
