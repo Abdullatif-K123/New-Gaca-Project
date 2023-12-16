@@ -44,6 +44,7 @@ const NewsMain = () => {
         </div>
         <div className={classes.paginationContainer}>
           {/* Render pagination links with updated styles */}
+          <p>&laquo;</p>
           {[...Array(Math.ceil(newsData.length / itemsPerPage)).keys()].map(
             (page) => (
               <span
@@ -57,6 +58,7 @@ const NewsMain = () => {
               </span>
             )
           )}
+          <p>&raquo;</p>
         </div>
       </div>
     </div>
