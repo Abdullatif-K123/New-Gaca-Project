@@ -22,6 +22,9 @@
   overflow-y: scroll;
   border-right: 1px solid var(--black-10, rgba(0, 0, 0, 0.1));
 }
+.sideMenuMP::-webkit-scrollbar {
+  width: 0em;
+}
 .searchSideMenu {
   border-radius: 5px;
   border: 1px solid #d1d1d1;
@@ -63,6 +66,9 @@
   overflow-y: scroll;
   user-select: none;
 }
+.treeViewSideMenu::-webkit-scrollbar {
+  width: 0;
+}
 /* Sytling for selecting elemtns */
 
 .choosen > p {
@@ -90,6 +96,9 @@
   flex-direction: column;
   row-gap: 29px;
   overflow: scroll;
+}
+.sideContent::-webkit-scrollbar {
+  width: 0;
 }
 .sideContent > p {
   color: #000;

@@ -4,6 +4,9 @@
   display: flex;
   flex-direction: column;
 }
+.treeviewMain::-webkit-scrollbar {
+  width: 0;
+}
 .parentIcon {
   display: flex;
   align-items: center;

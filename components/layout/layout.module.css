@@ -43,6 +43,18 @@
   border: none;
   position: relative;
 }
+.active {
+  color: #0076c7 !important;
+  border-bottom: 2px solid #0076c7 !important;
+}
+.active:hover {
+  color: #0076c7;
+  border-bottom: 2px solid #0076c7 !important;
+  font-weight: 700 !important;
+
+  font-size: 16px !important;
+}
+
 .secAbout > li {
   color: #b1b1b1;
 }
@@ -60,6 +72,10 @@
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+}
+.activeHome {
+  color: #fff;
+  border-bottom: 2px solid #fff !important;
 }
 .section > li::after {
   content: "";

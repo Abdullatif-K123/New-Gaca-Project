@@ -15,6 +15,9 @@
   position: relative;
   color: #000;
 }
+.newsMain::-webkit-scrollbar {
+  width: 0;
+}
 .choosen {
   align-self: flex-start;
 }

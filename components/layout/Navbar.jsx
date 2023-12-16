@@ -13,6 +13,7 @@ const Navbar = ({ isFeedbackVisible, handleToggleFeedback }) => {
   };
   const router = useRouter();
   const path = router.pathname.split("/").pop();
+
   const aboutPath = path.length > 2;
   return (
     <>
@@ -54,6 +55,7 @@ const Navbar = ({ isFeedbackVisible, handleToggleFeedback }) => {
                 mobileMenu();
                 router.push("/");
               }}
+              className={`${path.length ? null : classes.activeHome}`}
             >
               Home
             </li>
@@ -62,15 +64,16 @@ const Navbar = ({ isFeedbackVisible, handleToggleFeedback }) => {
                 mobileMenu();
                 router.push("/about");
               }}
+              className={`${path === "about" ? classes.active : null}`}
             >
               About GACA
             </li>
             <li
-              o
               onClick={() => {
                 mobileMenu();
                 router.push("/download");
               }}
+              className={`${path === "download" ? classes.active : null}`}
             >
               Downloads
             </li>
@@ -79,6 +82,7 @@ const Navbar = ({ isFeedbackVisible, handleToggleFeedback }) => {
                 mobileMenu();
                 router.push("/news");
               }}
+              className={`${path === "news" ? classes.active : null}`}
             >
               News
             </li>
