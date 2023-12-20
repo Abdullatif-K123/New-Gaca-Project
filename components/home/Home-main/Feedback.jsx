@@ -4,7 +4,9 @@ import Image from "next/image";
 import { useFormik } from "formik";
 import axios from "axios";
 import * as Yup from "yup";
+import toast, { Toaster } from "react-hot-toast";
 const Feedback = ({ isFeedbackVisible, handleToggleFeedback }) => {
+  const notify = () => toast("Your feedback has been sent.", { icon: "👏" });
   const [focusedInput, setFocusedInput] = useState(null);
   const [initialForms, setInitialForms] = useState({
     name: "",
@@ -45,6 +47,7 @@ const Feedback = ({ isFeedbackVisible, handleToggleFeedback }) => {
           }
         );
         handleToggleFeedback();
+        notify();
       } catch (error) {
         console.log(error);
       }
@@ -213,6 +216,7 @@ const Feedback = ({ isFeedbackVisible, handleToggleFeedback }) => {
           </button>
         </form>
       </div>
+      <Toaster />
     </div>
   );
 };
