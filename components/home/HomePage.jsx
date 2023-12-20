@@ -5,7 +5,7 @@ import HomeBottom from "../footer/HomeBottom";
 import LoadingSpinner from "../ui/LoadingSpinner";
 import axios from "axios";
 const HomePage = ({ isFeedbackVisible, handleToggleFeedback }) => {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState({});
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     const fetchData = async () => {
@@ -15,14 +15,16 @@ const HomePage = ({ isFeedbackVisible, handleToggleFeedback }) => {
         );
         console.log(response.data);
         setData(response.data);
+        setLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
-      setLoading(false);
     };
 
     fetchData();
   }, []);
+  const heroTitle = data?.hero?.title || "Default Title";
+  const heroDescription = data?.hero?.description || "Default Description";
   if (loading) {
     return <LoadingSpinner />;
   }
@@ -41,11 +43,11 @@ const HomePage = ({ isFeedbackVisible, handleToggleFeedback }) => {
       <SectionOne
         isFeedbackVisible={isFeedbackVisible}
         handleToggleFeedback={handleToggleFeedback}
-        title={data.hero.title}
-        desc={data.hero.description}
+        title={heroTitle}
+        desc={heroDescription}
       />
-      <MasterPlan layers={data.masterPlan} />
-      <HomeBottom imgs={data.stakeHolder} />
+      <MasterPlan layers={data?.masterPlan} />
+      <HomeBottom imgs={data?.stakeHolder} />
     </div>
   );
 };
