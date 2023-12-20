@@ -2,22 +2,13 @@ import React from "react";
 import classes from "./home-one.module.css";
 import Image from "next/image";
 import { useRouter } from "next/router";
-const SectionOne = ({ isFeedbackVisible }) => {
+const SectionOne = ({ isFeedbackVisible, title, desc }) => {
   const router = useRouter();
   return (
     <div className={classes.sectionOne}>
       <div className={classes.secOneContect}>
-        <h1>eATM Portal</h1>
-        <p>
-          The eATM Portal provides an inegrated view of the European ATM System
-          outlining the essential operational and technology changes foreseen to
-          deliver the SESAR contribution to the Single European Sky performance
-          objectives. As This Portal reflects the 2020 Edition of the European
-          ATM Master Plan, please consult the Working Portal to have up to date
-          information on the implementation progress of the Maser Plan Level 3
-          (Deployment Let Level) Implementation Objectives, including Common
-          Project One (CP1) SESAR Deployment Programme information.
-        </p>
+        <h1>{title}</h1>
+        <p>{desc}</p>
         <div
           className={classes.secOneButton}
           onClick={() => {

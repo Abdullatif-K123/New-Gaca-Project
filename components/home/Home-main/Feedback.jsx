@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import classes from "./home-one.module.css";
 import Image from "next/image";
 import { useFormik } from "formik";
+import axios from "axios";
 import * as Yup from "yup";
 const Feedback = ({ isFeedbackVisible, handleToggleFeedback }) => {
   const [focusedInput, setFocusedInput] = useState(null);
@@ -28,9 +29,25 @@ const Feedback = ({ isFeedbackVisible, handleToggleFeedback }) => {
       feedbackTitle: Yup.string().required("Feedback title is required"),
       feedbackMessage: Yup.string().required("Feedback message is required"),
     }),
-    onSubmit: (values) => {
+    onSubmit: async (values) => {
       // Handle form submission here
       console.log(values);
+      try {
+        const response = await axios.post(
+          "https://gaca.somee.com/api/landingpage/feedback",
+          {
+            name: values.name,
+            email: values.email,
+            phone: values.phone,
+            feedbackType: Number(values.feedbackType),
+            feedbackTitle: values.feedbackTitle,
+            feedbackMessage: values.feedbackMessage,
+          }
+        );
+        handleToggleFeedback();
+      } catch (error) {
+        console.log(error);
+      }
     },
   });
   useEffect(() => {
@@ -140,10 +157,10 @@ const Feedback = ({ isFeedbackVisible, handleToggleFeedback }) => {
               onFocus={() => handleInputFocus("feedbackType")}
             >
               <option value="" label="Select a feedback type" />
-              <option value="Recommendation" label="Recommendation" />
-              <option value="Error Report" label="Error Report" />
-              <option value="Question" label="Question" />
-              <option value="Other" label="Other" />
+              <option value={0} label="Recommendation" />
+              <option value={1} label="Error Report" />
+              <option value={2} label="Question" />
+              <option value={3} label="Other" />
             </select>
           </div>
 
@@ -191,9 +208,9 @@ const Feedback = ({ isFeedbackVisible, handleToggleFeedback }) => {
             />
           </div>
 
-          <div className={classes.submitBtn}>
-            <button type="submit">Submit</button>
-          </div>
+          <button className={classes.submitBtn} type="submit">
+            <p>Submit</p>
+          </button>
         </form>
       </div>
     </div>

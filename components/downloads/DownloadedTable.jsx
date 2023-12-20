@@ -1,7 +1,21 @@
 import React from "react";
 import classes from "./downloads.module.css";
 import Image from "next/image";
-const DownloadedTable = ({ fileName, date, fileSize }) => {
+const DownloadedTable = ({ fileName, date, fileSize, docUrl }) => {
+  const dateCreated = new Date(date);
+
+  const options = { year: "numeric", month: "long", day: "numeric" };
+  const formattedDate = dateCreated.toLocaleDateString(undefined, options);
+
+  function downloadPdfFile(url, fileName) {
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = fileName;
+
+    // Trigger a click event on the link to start the download
+    link.click();
+  }
+  const pdfUrl = `https://gaca.somee.com/${docUrl}`;
   return (
     <div className={classes.downloadTable}>
       <div className={classes.tableHead}>
@@ -15,9 +29,15 @@ const DownloadedTable = ({ fileName, date, fileSize }) => {
           />
           {fileName}
         </p>
-        <p>{date}</p>
+        <p>{formattedDate}</p>
         <p>{fileSize}</p>
-        <p>Downloads</p>
+        <p
+          onClick={() => {
+            downloadPdfFile(pdfUrl, fileName);
+          }}
+        >
+          Downloads
+        </p>
       </div>
     </div>
   );

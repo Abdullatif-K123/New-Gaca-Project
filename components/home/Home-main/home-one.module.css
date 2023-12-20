@@ -249,11 +249,12 @@
   justify-content: center;
   border-radius: 7px;
   cursor: pointer;
+  border: none;
 }
 .submitBtn:hover {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Add box shadow */
 }
-.submitBtn > button {
+.submitBtn > p {
   cursor: pointer;
   color: #fff;
   font-family: Montserrat;

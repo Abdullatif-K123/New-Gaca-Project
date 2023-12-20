@@ -11,6 +11,7 @@
   "dependencies": {
     "@mui/material": "^5.14.20",
     "@mui/x-tree-view": "^6.17.0",
+    "axios": "^1.6.2",
     "filter-tree": "^0.4.0",
     "formik": "^2.4.5",
     "l": "^0.6.0",

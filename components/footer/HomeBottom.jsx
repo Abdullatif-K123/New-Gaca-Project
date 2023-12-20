@@ -3,7 +3,7 @@ import classes from "./home-bottom.module.css";
 import Image from "next/image";
 import Footer from "./footer";
 import Slider from "react-infinite-logo-slider";
-const HomeBottom = () => {
+const HomeBottom = ({ imgs }) => {
   const [sliderWidth, setSliderWidth] = useState("180px");
   useEffect(() => {
     const handleResize = () => {
@@ -28,6 +28,7 @@ const HomeBottom = () => {
             <span>Our</span> Stackholders
           </h2>
         </div>
+
         <div className={classes.partners}>
           <Slider
             width={sliderWidth}
@@ -36,7 +37,21 @@ const HomeBottom = () => {
             blurBorders={true}
             toRight={false}
           >
-            <Slider.Slide>
+            {imgs.map((stakholder) => {
+              return (
+                <Slider.Slide key={stakholder.id}>
+                  <div className={classes.partnerItem}>
+                    <img
+                      src={`https://gaca.somee.com/${stakholder.imageUrl}`}
+                      width={140}
+                      height={140}
+                      alt={stakholder.title}
+                    />
+                  </div>
+                </Slider.Slide>
+              );
+            })}
+            {/* <Slider.Slide>
               <div className={classes.partnerItem}>
                 <Image
                   src="/assets/svg/SANS.svg"
@@ -95,7 +110,7 @@ const HomeBottom = () => {
                   alt="vision"
                 />
               </div>
-            </Slider.Slide>
+            </Slider.Slide> */}
           </Slider>
         </div>
       </div>

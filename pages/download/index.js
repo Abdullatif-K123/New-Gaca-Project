@@ -1,7 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Downloads from "@/components/downloads/Downloads";
 import Footer from "@/components/footer/footer";
+import axios from "axios";
+import LoadingSpinner from "@/components/ui/LoadingSpinner";
 const index = ({ isFeedbackVisible, handleToggleFeedback }) => {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          "https://gaca.somee.com/api/landingpage/downloads"
+        );
+
+        setData(response.data);
+        console.log(response.data);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+  if (loading) {
+    return <LoadingSpinner />;
+  }
   return (
     <div
       onClick={() => {
@@ -14,7 +38,7 @@ const index = ({ isFeedbackVisible, handleToggleFeedback }) => {
         overflow: isFeedbackVisible ? "hidden" : "",
       }}
     >
-      <Downloads />
+      <Downloads data={data} />
       <Footer />
     </div>
   );

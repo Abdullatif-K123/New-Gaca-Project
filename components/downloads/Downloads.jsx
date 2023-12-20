@@ -3,7 +3,7 @@ import classes from "./downloads.module.css";
 import DownloadedTable from "./DownloadedTable";
 import Image from "next/image";
 import { useRouter } from "next/router";
-const Downloads = () => {
+const Downloads = ({ data }) => {
   const router = useRouter();
   return (
     <div className={classes.downloadPage}>
@@ -37,41 +37,17 @@ const Downloads = () => {
           <p>File size</p>
           <p></p>
         </div>
-        <DownloadedTable
-          fileName={"European ATM Master Plan Executive summary (spanish)"}
-          date={"24-05-2017"}
-          fileSize={"634.54KB"}
-        />
-        <DownloadedTable
-          fileName={"European ATM Master Plan Executive summary (English)"}
-          date={"24-05-2017"}
-          fileSize={"634.54KB"}
-        />
-        <DownloadedTable
-          fileName={"European ATM Master Plan Executive summary (France)"}
-          date={"24-05-2017"}
-          fileSize={"634.54KB"}
-        />
-        <DownloadedTable
-          fileName={"European ATM Master Plan Executive summary (Italy)"}
-          date={"24-05-2017"}
-          fileSize={"634.54KB"}
-        />
-        <DownloadedTable
-          fileName={"European ATM Master Plan Executive summary (Spagitty)"}
-          date={"24-05-2017"}
-          fileSize={"634.54KB"}
-        />
-        <DownloadedTable
-          fileName={"European ATM Master Plan Executive summary (spanish)"}
-          date={"24-05-2017"}
-          fileSize={"634.54KB"}
-        />
-        <DownloadedTable
-          fileName={"European ATM Master Plan Executive summary (spanish)"}
-          date={"24-05-2017"}
-          fileSize={"634.54KB"}
-        />
+        {data.map((document) => {
+          return (
+            <DownloadedTable
+              key={document.id}
+              fileName={document.title}
+              date={document.dateCreated}
+              fileSize={""}
+              docUrl={document.imageUrl}
+            />
+          );
+        })}
       </div>
     </div>
   );

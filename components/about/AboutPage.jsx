@@ -3,8 +3,10 @@ import classes from "./about.module.css";
 import Image from "next/image";
 import AboutSection from "./AboutSection";
 import { useRouter } from "next/router";
-const AboutPage = () => {
+
+const AboutPage = ({ data }) => {
   const router = useRouter();
+
   return (
     <div className={classes.aboutPageMain}>
       <div className={classes.choosen}>
@@ -16,34 +18,21 @@ const AboutPage = () => {
           >
             Home
           </span>
-          <Image src="/assets/svg/Chevron.svg" width={16} height={16} />
+          <Image
+            src="/assets/svg/Chevron.svg"
+            width={16}
+            height={16}
+            alt="chev"
+          />
           <span>About</span>
         </p>
       </div>
       <div className={classes.aboutSection}>
         <div className={classes.aboutContent}>
           <h1>About GACA</h1>
-          <AboutSection
-            title={"GACA"}
-            desc1={
-              "The General Authority of Civil Aviation (GACA) of the Kingdom of Saudi Arabia emerged from the Presidency of Civil Aviation in 2006. Since then GACA has been on a mission to become a main contributor to the GDP of the Kingdom while growing and modernizing its aviation sector employing mostly qualified Saudis."
-            }
-            desc2={
-              "Over the years, the Kingdom has achieved unprecedented growth and has made qualitative leaps in civil aviation, whose growth has helped to drive development at airports across Saudi Arabia, covering major developments in passenger transportation, air cargo, airport construction and equipment, air navigation and control."
-            }
-          />
-          <AboutSection
-            title={"Vision"}
-            desc1={
-              "To enable the Kingdom leadership in aviation, by providing customer-centric and digitally enabled regulatory services."
-            }
-          />
-          <AboutSection
-            title={"Mission"}
-            desc1={
-              "A globally leading, innovative and trusted aviation regulator."
-            }
-          />
+          <AboutSection title={"GACA"} desc1={data.content} />
+          <AboutSection title={"Vision"} desc1={data.vision} />
+          <AboutSection title={"Mission"} desc1={data.mission} />
           <AboutSection title={"GACA’s strategic objectives:"} />
           <div className={classes.moreInfo}>
             <p>

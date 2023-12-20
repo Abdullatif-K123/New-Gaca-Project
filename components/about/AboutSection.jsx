@@ -2,6 +2,7 @@ import React from "react";
 import classes from "./about.module.css";
 import Image from "next/image";
 const AboutSection = ({ title, desc1, desc2 }) => {
+  const lines = desc1?.split("\n");
   return (
     <div className={classes.aboutSec1}>
       <div className={classes.sec1Header}>
@@ -21,8 +22,7 @@ const AboutSection = ({ title, desc1, desc2 }) => {
           />
         </div>
       </div>
-      <p>{desc1}</p>
-      <p>{desc2}</p>
+      {lines ? lines.map((line, index) => <p key={index}>{line}</p>) : desc1}
     </div>
   );
 };

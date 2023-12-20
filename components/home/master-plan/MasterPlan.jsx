@@ -82,7 +82,7 @@ const Element = ({
     </div>
   );
 };
-const MasterPlan = () => {
+const MasterPlan = ({ layers }) => {
   const [hoverElement, setHoverElement] = useState(null);
   const [isNowhovering, setIsNowHovering] = useState(false);
   const handleHover = (id) => {
@@ -104,35 +104,35 @@ const MasterPlan = () => {
             imgsrc: "/assets/svg/1.svg",
             width: 130,
             height: 130,
-            text: "Air Navigation Vision & Priority Alignment",
+            text: layers[0].title,
           },
           {
             idnum: 2,
             imgsrc: "/assets/svg/2.svg",
             width: 250,
             height: 110,
-            text: "Future Airspace Structure & Organization",
+            text: layers[1].title,
           },
           {
             idnum: 3,
             imgsrc: "/assets/svg/3.svg",
             width: 400,
             height: 110,
-            text: "Deployment Program & Roadmap",
+            text: layers[2].title,
           },
           {
             idnum: 4,
             imgsrc: "/assets/svg/4.svg",
             width: 525,
             height: 110,
-            text: "Performance Monitoring & Reporting Mechanisms",
+            text: layers[3].title,
           },
           {
             idnum: 5,
             imgsrc: "/assets/svg/5.svg",
             width: 650,
             height: 110,
-            text: "Appendix",
+            text: layers[4].title,
           },
         ].map((id) => {
           return (
