@@ -5,8 +5,7 @@
   align-items: center;
   row-gap: 35px;
   padding: 32px 81px;
-  height: 100vh;
-  overflow: scroll;
+
   background-image: url("/assets/svg/mapWorld.svg");
   background-position: center;
   background-repeat: no-repeat;

@@ -11,7 +11,9 @@ const Footer = ({ conVersion }) => {
     // Open a new tab or window with the specified URL
     window.open(link, "_blank");
   };
-
+  //Getting current year
+  var currentDate = new Date();
+  var currentYear = currentDate.getFullYear();
   const router = useRouter();
   return (
     <div className={classes.footerMain}>
@@ -53,7 +55,9 @@ const Footer = ({ conVersion }) => {
           </li>
         </ul>
         <div className={classes.footerCopyRight}>
-          <p>© {conVersion?.copyright}</p>
+          <p>
+            © {currentYear} {conVersion?.copyright},(V {conVersion?.version})
+          </p>
         </div>
       </div>
     </div>
