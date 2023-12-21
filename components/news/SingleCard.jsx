@@ -59,7 +59,7 @@ const SingleCard = ({
           />
           <p>{humanReadableDate}</p>
         </div>
-        <p>{description}</p>
+        <p>{description.slice(0, 170)}...</p>
       </div>
     </animated.div>
   );
