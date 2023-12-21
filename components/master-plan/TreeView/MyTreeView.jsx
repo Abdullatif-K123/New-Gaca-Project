@@ -41,7 +41,7 @@ const MyTreeView = ({
               }`}
               onClick={() => {
                 setSelected(nodes.title);
-                singleSelectHandling(nodes.title);
+                singleSelectHandling(nodes);
               }}
             >
               {nodes.title}

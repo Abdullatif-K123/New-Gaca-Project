@@ -24,10 +24,13 @@ const MasterPlanMain = ({ plan, data, f1, f2, f3, f4, f5, conVersion }) => {
   const [selectingElem, setSelectingElem] = useState([]);
   const [singleElemSelecting, setSingleElemSelecting] = useState("");
   const [selected, setSelected] = useState([]);
+  const [singleSelectingDesc, setSignelDesc] = useState("");
   const [expanded, setExpanded] = useState([`root${pin ? pin : 1}`]);
   const handleSelecingThing = (elem) => {};
   const handleSelectSingleElem = (elem, idSelect) => {
-    setSingleElemSelecting(elem);
+    setSingleElemSelecting(elem.title);
+    setSignelDesc(elem.description);
+    console.log(elem);
     setExpanded([`root${idSelect}`]);
   };
   useEffect(() => {
@@ -107,7 +110,10 @@ const MasterPlanMain = ({ plan, data, f1, f2, f3, f4, f5, conVersion }) => {
             handleSelect={handleSelect}
             data={data}
           />
-          <MasterPlan singleElem={singleElemSelecting} />
+          <MasterPlan
+            singleDesc={singleSelectingDesc}
+            singleElem={singleElemSelecting}
+          />
         </div>
       </div>
       <Footer conVersion={conVersion} />
