@@ -2,7 +2,14 @@ import React from "react";
 import { useRouter } from "next/router";
 import classes from "./SingleNews.module.css";
 import Image from "next/image";
-const SingleNews = ({ newsDetails }) => {
+const SingleNews = ({ newsDetails, data }) => {
+  const date = new Date(data.dateCreated);
+
+  const year = date.getFullYear();
+  const month = (date.getMonth() + 1).toString().padStart(2, "0"); // Month is zero-indexed
+  const day = date.getDate().toString().padStart(2, "0");
+
+  const humanReadableDate = `${year}-${month}-${day}`;
   const router = useRouter();
   return (
     <div className={classes.newsMain}>
@@ -24,12 +31,12 @@ const SingleNews = ({ newsDetails }) => {
             News
           </span>
           <Image src="/assets/svg/Chevron.svg" width={16} height={16} />
-          <span>{newsDetails?.title.slice(0, 30)}...</span>
+          <span>{data?.title.slice(0, 30)}...</span>
         </p>
       </div>
       <div className={classes.newsDetails}>
-        <Image
-          src={newsDetails?.img}
+        <img
+          src={`https://gaca.somee.com/${data.imageUrl}`}
           width={620}
           height={600}
           alt="news-photo"
@@ -37,7 +44,7 @@ const SingleNews = ({ newsDetails }) => {
         />
         <div className={classes.newsContent}>
           <div className={classes.contentHead}>
-            <p>{newsDetails?.title}</p>
+            <p>{data?.title}</p>
           </div>
           <div className={classes.contentBody}>
             <div className={classes.contentDate}>
@@ -47,10 +54,10 @@ const SingleNews = ({ newsDetails }) => {
                 height={24}
                 alt="calender"
               />
-              <p>{newsDetails?.date}</p>
+              <p>{humanReadableDate}</p>
             </div>
-            <p>{newsDetails?.desc}</p>
-            <button className={classes.newsShare}>
+            <p>{data?.description}</p>
+            {/* <button className={classes.newsShare}>
               <Image
                 src="/assets/svg/share.svg"
                 width={20}
@@ -58,7 +65,7 @@ const SingleNews = ({ newsDetails }) => {
                 alt="share"
               />
               <p>Share Link</p>
-            </button>
+            </button> */}
           </div>
         </div>
       </div>

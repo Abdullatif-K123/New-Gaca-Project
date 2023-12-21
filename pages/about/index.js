@@ -3,7 +3,7 @@ import AboutPage from "@/components/about/AboutPage";
 import Footer from "@/components/footer/footer";
 import LoadingSpinner from "@/components/ui/LoadingSpinner";
 import axios from "axios";
-const index = ({ isFeedbackVisible, handleToggleFeedback }) => {
+const index = ({ isFeedbackVisible, handleToggleFeedback, conVersion }) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
@@ -38,7 +38,7 @@ const index = ({ isFeedbackVisible, handleToggleFeedback }) => {
       }}
     >
       <AboutPage data={data} />
-      <Footer />
+      <Footer conVersion={conVersion} />
     </div>
   );
 };

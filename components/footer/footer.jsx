@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import classes from "./home-bottom.module.css";
 import Image from "next/image";
 import { useRouter } from "next/router";
-const Footer = () => {
+const Footer = ({ conVersion }) => {
+  const [data, setData] = useState({});
+  const [loading, setLoading] = useState(true);
+  const likeAndOpenLink = (link) => {
+    // Perform the action to simulate a "like" (replace with your actual like functionality)
+
+    // Open a new tab or window with the specified URL
+    window.open(link, "_blank");
+  };
+
   const router = useRouter();
   return (
     <div className={classes.footerMain}>
@@ -29,7 +38,11 @@ const Footer = () => {
           >
             News
           </li>
-          <li>
+          <li
+            onClick={() => {
+              likeAndOpenLink(conVersion?.constructor);
+            }}
+          >
             Constructor{" "}
             <Image
               src="/assets/svg/share1.svg"
@@ -40,7 +53,7 @@ const Footer = () => {
           </li>
         </ul>
         <div className={classes.footerCopyRight}>
-          <p>© 2023, All Rights Reserved</p>
+          <p>© {conVersion?.copyright}</p>
         </div>
       </div>
     </div>

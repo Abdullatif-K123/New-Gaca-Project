@@ -1,17 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import classes from "./news.module.css";
 import newsData from "./NewsData";
 import SingleCard from "./SingleCard";
 import Image from "next/image";
 import { useRouter } from "next/router";
-const NewsMain = () => {
+import LoadingSpinner from "../ui/LoadingSpinner";
+const NewsMain = ({ dataNews }) => {
   const [startIndex, setStartIndex] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const [leftRight, setLeftRight] = useState("left");
+  const [news, setNewsData] = useState(dataNews.data);
   const router = useRouter();
 
   const itemsPerPage = 6;
-  const visibleNews = newsData.slice(
+  const visibleNews = news.slice(
     currentPage === 1 ? 0 : 6,
     currentPage === 1 ? 6 : newsData.length
   );
@@ -38,14 +40,14 @@ const NewsMain = () => {
         </div>
         <h1>News</h1>
         <div className={classes.newsCardMain}>
-          {visibleNews.map((news, index) => (
-            <SingleCard key={news.id} {...news} leftRight={leftRight} />
+          {news.map((nws, index) => (
+            <SingleCard key={nws.id} {...nws} leftRight={leftRight} />
           ))}
         </div>
         <div className={classes.paginationContainer}>
           {/* Render pagination links with updated styles */}
           <p>&laquo;</p>
-          {[...Array(Math.ceil(newsData.length / itemsPerPage)).keys()].map(
+          {[...Array(Math.ceil(news.length / itemsPerPage)).keys()].map(
             (page) => (
               <span
                 key={page + 1}

@@ -14,8 +14,9 @@ const SideMenu = ({
   selected,
   handleToggle,
   handleSelect,
+  data,
 }) => {
-  const [subjectData, setSubjectData] = useState(sampleData);
+  const [subjectData, setSubjectData] = useState(data);
 
   // Filter input function
   const onFilterMouseUp = (e) => {
@@ -26,7 +27,7 @@ const SideMenu = ({
       handleToggle("b", []);
       return;
     }
-    let filtred = sampleData.map((data) => {
+    let filtred = data.map((data) => {
       const pathed = filterTree(data, filter);
       return pathed.children?.length ? pathed : {};
     });

@@ -3,7 +3,7 @@ import classes from "./layout.module.css";
 import Image from "next/image";
 import Feedback from "../home/Home-main/Feedback";
 import { useRouter } from "next/router";
-const Navbar = ({ isFeedbackVisible, handleToggleFeedback }) => {
+const Navbar = ({ isFeedbackVisible, handleToggleFeedback, conVersion }) => {
   // creating function menu hamburger
   const [addClass, setAddClass] = useState(false);
   const mobileMenu = () => {
@@ -15,6 +15,12 @@ const Navbar = ({ isFeedbackVisible, handleToggleFeedback }) => {
   const path = router.pathname.split("/").pop();
 
   const aboutPath = path.length > 2;
+  const likeAndOpenLink = (link) => {
+    // Perform the action to simulate a "like" (replace with your actual like functionality)
+
+    // Open a new tab or window with the specified URL
+    window.open(link, "_blank");
+  };
   return (
     <>
       <nav
@@ -86,7 +92,12 @@ const Navbar = ({ isFeedbackVisible, handleToggleFeedback }) => {
             >
               News
             </li>
-            <li onClick={mobileMenu}>
+            <li
+              onClick={() => {
+                mobileMenu();
+                likeAndOpenLink(conVersion.constructor);
+              }}
+            >
               Constructor{" "}
               <Image
                 src={

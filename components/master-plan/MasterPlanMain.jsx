@@ -7,10 +7,20 @@ import Image from "next/image";
 import findNodeAndParentsByName from "@/utils/findNodeAndParent";
 import { findNodeAndParentsById } from "@/utils/findNodeAndParent";
 import { useRouter } from "next/router";
-const MasterPlanMain = ({ plan, data }) => {
+const MasterPlanMain = ({ plan, data, f1, f2, f3, f4, f5, conVersion }) => {
   const router = useRouter();
   const pin = router.query.plan;
 
+  data[0].children = f1;
+  data[1].children = f2;
+  data[2].children = f3;
+  data[3].children = f4;
+  data[4].children = f5;
+  data[0].id = "root1";
+  data[1].id = "root2";
+  data[2].id = "root3";
+  data[3].id = "root4";
+  data[4].id = "root5";
   const [selectingElem, setSelectingElem] = useState([]);
   const [singleElemSelecting, setSingleElemSelecting] = useState("");
   const [selected, setSelected] = useState([]);
@@ -95,11 +105,12 @@ const MasterPlanMain = ({ plan, data }) => {
             selected={selected}
             handleToggle={handleToggle}
             handleSelect={handleSelect}
+            data={data}
           />
           <MasterPlan singleElem={singleElemSelecting} />
         </div>
       </div>
-      <Footer />
+      <Footer conVersion={conVersion} />
     </>
   );
 };

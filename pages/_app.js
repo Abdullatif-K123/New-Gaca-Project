@@ -1,12 +1,35 @@
 import "@/styles/globals.css";
 import Layout from "@/components/layout/Layout";
 import Head from "next/head";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import LoadingSpinner from "@/components/ui/LoadingSpinner";
 export default function App({ Component, pageProps }) {
   const [isFeedbackVisible, setIsFeedbackVisible] = useState(false);
+  const [data, setData] = useState({});
+  const [loading, setLoading] = useState(true);
   const handleToggleFeedback = () => {
     setIsFeedbackVisible(!isFeedbackVisible);
   };
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          "https://gaca.somee.com/api/landingpage/settings"
+        );
+        console.log(response.data);
+        setData(response.data);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+  if (loading) {
+    return <LoadingSpinner />;
+  }
   return (
     <>
       <Head>
@@ -23,11 +46,13 @@ export default function App({ Component, pageProps }) {
       <Layout
         isFeedbackVisible={isFeedbackVisible}
         handleToggleFeedback={handleToggleFeedback}
+        conVersion={data}
       >
         <Component
           {...pageProps}
           isFeedbackVisible={isFeedbackVisible}
           handleToggleFeedback={handleToggleFeedback}
+          conVersion={data}
         />
       </Layout>
     </>

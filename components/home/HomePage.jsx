@@ -4,7 +4,7 @@ import MasterPlan from "./master-plan/MasterPlan";
 import HomeBottom from "../footer/HomeBottom";
 import LoadingSpinner from "../ui/LoadingSpinner";
 import axios from "axios";
-const HomePage = ({ isFeedbackVisible, handleToggleFeedback }) => {
+const HomePage = ({ isFeedbackVisible, handleToggleFeedback, conVersion }) => {
   const [data, setData] = useState({});
   const [loading, setLoading] = useState(true);
   useEffect(() => {
@@ -47,7 +47,7 @@ const HomePage = ({ isFeedbackVisible, handleToggleFeedback }) => {
         desc={heroDescription}
       />
       <MasterPlan layers={data?.masterPlan} />
-      <HomeBottom imgs={data?.stakeHolder} />
+      <HomeBottom imgs={data?.stakeHolder} conVersion={conVersion} />
     </div>
   );
 };

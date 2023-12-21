@@ -3,7 +3,7 @@ import Downloads from "@/components/downloads/Downloads";
 import Footer from "@/components/footer/footer";
 import axios from "axios";
 import LoadingSpinner from "@/components/ui/LoadingSpinner";
-const index = ({ isFeedbackVisible, handleToggleFeedback }) => {
+const index = ({ isFeedbackVisible, handleToggleFeedback, conVersion }) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
@@ -39,7 +39,7 @@ const index = ({ isFeedbackVisible, handleToggleFeedback }) => {
       }}
     >
       <Downloads data={data} />
-      <Footer />
+      <Footer conVersion={conVersion} />
     </div>
   );
 };

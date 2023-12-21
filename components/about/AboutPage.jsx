@@ -33,7 +33,7 @@ const AboutPage = ({ data }) => {
           <AboutSection title={"GACA"} desc1={data.content} />
           <AboutSection title={"Vision"} desc1={data.vision} />
           <AboutSection title={"Mission"} desc1={data.mission} />
-          <AboutSection title={"GACA’s strategic objectives:"} />
+          {/* <AboutSection title={"GACA’s strategic objectives:"} />
           <div className={classes.moreInfo}>
             <p>
               <span>Safety & security</span> Ensure highest levels of safety and
@@ -53,7 +53,7 @@ const AboutPage = ({ data }) => {
               monitor aviation sector strategy implementation and enable new
               technology adoption.
             </p>
-          </div>
+          </div> */}
         </div>
         <div className={classes.worldImages}>
           <Image

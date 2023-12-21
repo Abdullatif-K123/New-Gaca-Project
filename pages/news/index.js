@@ -1,7 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import NewsMain from "@/components/news/NewsMain";
 import Footer from "@/components/footer/footer";
-const index = ({ isFeedbackVisible, handleToggleFeedback }) => {
+import LoadingSpinner from "@/components/ui/LoadingSpinner";
+import axios from "axios";
+const index = ({ isFeedbackVisible, handleToggleFeedback, conVersion }) => {
+  const [data, setData] = useState({});
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          "https://gaca.somee.com/api/landingpage/blogs"
+        );
+        console.log(response.data);
+        setData(response.data);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+  if (loading) {
+    return <LoadingSpinner />;
+  }
   return (
     <div
       onClick={() => {
@@ -14,8 +37,8 @@ const index = ({ isFeedbackVisible, handleToggleFeedback }) => {
         overflow: isFeedbackVisible ? "hidden" : "",
       }}
     >
-      <NewsMain />
-      <Footer />
+      <NewsMain dataNews={data} />
+      <Footer conVersion={conVersion} />
     </div>
   );
 };

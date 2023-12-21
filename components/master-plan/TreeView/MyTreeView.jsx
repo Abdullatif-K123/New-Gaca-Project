@@ -11,6 +11,7 @@ const MyTreeView = ({
   handleSelect,
   selectedTree,
 }) => {
+  console.log(data);
   const [selected, setSelected] = useState("");
   const renderTree = (nodes, index) => {
     const isParent = Array.isArray(nodes.children);
@@ -31,19 +32,19 @@ const MyTreeView = ({
                 height={18}
                 alt="shape"
               />{" "}
-              <p className={classes.children}>{nodes.name}</p>
+              <p className={classes.children}>{nodes.title}</p>
             </div>
           ) : (
             <p
               className={`${classes.childrens} ${
-                selected === nodes.name ? classes.childSelected : null
+                selected === nodes.title ? classes.childSelected : null
               }`}
               onClick={() => {
-                setSelected(nodes.name);
-                singleSelectHandling(nodes.name);
+                setSelected(nodes.title);
+                singleSelectHandling(nodes.title);
               }}
             >
-              {nodes.name}
+              {nodes.title}
             </p>
           )
         }

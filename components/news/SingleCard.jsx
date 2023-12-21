@@ -3,7 +3,24 @@ import classes from "./news.module.css";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useSpring, animated } from "react-spring";
-const SingleCard = ({ title, img, date, summary, leftRight, id }) => {
+const SingleCard = ({
+  title,
+  img,
+
+  summary,
+  leftRight,
+  id,
+  dateCreated,
+  description,
+  imageUrl,
+}) => {
+  const date = new Date(dateCreated);
+
+  const year = date.getFullYear();
+  const month = (date.getMonth() + 1).toString().padStart(2, "0"); // Month is zero-indexed
+  const day = date.getDate().toString().padStart(2, "0");
+
+  const humanReadableDate = `${year}-${month}-${day}`;
   const router = useRouter();
   const cardProps = useSpring({
     from: {
@@ -24,7 +41,12 @@ const SingleCard = ({ title, img, date, summary, leftRight, id }) => {
       }}
     >
       <div className={classes.newsCardHead}>
-        <Image src={img} width={385} height={180} alt="news-photo" />
+        <img
+          src={`https://gaca.somee.com/${imageUrl}`}
+          width={385}
+          height={180}
+          alt="news-photo"
+        />
         <p>{title}</p>
       </div>
       <div className={classes.newsCardBody}>
@@ -35,9 +57,9 @@ const SingleCard = ({ title, img, date, summary, leftRight, id }) => {
             height={25}
             alt="calender"
           />
-          <p>{date}</p>
+          <p>{humanReadableDate}</p>
         </div>
-        <p>{summary}</p>
+        <p>{description}</p>
       </div>
     </animated.div>
   );
