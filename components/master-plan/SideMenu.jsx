@@ -23,7 +23,7 @@ const SideMenu = ({
     const value = e.target.value;
     const filter = value.trim();
     if (!filter) {
-      setSubjectData(() => sampleData);
+      setSubjectData(() => data);
       handleToggle("b", []);
       return;
     }
@@ -31,7 +31,7 @@ const SideMenu = ({
       const pathed = filterTree(data, filter);
       return pathed.children?.length ? pathed : {};
     });
-    let filtredUpdate = filtred.filter((data) => (data.name ? data : null));
+    let filtredUpdate = filtred.filter((data) => (data.title ? data : null));
     setSubjectData(filtredUpdate);
     handleToggle("b", ["root1", "root2", "root3"]);
   };

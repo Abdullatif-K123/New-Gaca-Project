@@ -2,7 +2,7 @@ const findNodeAndParentsByName = (tree, targetName) => {
   const result = [];
 
   const traverse = (node, path) => {
-    if (node.name === targetName) {
+    if (node.title === targetName) {
       // Found the target node, add it to the result along with its path
       result.push({ ...node, path });
     }
@@ -10,7 +10,7 @@ const findNodeAndParentsByName = (tree, targetName) => {
     if (node.children) {
       // Recursively traverse child nodes
       for (const child of node.children) {
-        traverse(child, [...path, node.name]);
+        traverse(child, [...path, node.title]);
       }
     }
   };
@@ -27,7 +27,7 @@ export const findNodeAndParentsById = (tree, targetName) => {
   const result = [];
 
   const traverse = (node, path) => {
-    if (node.name === targetName) {
+    if (node.title === targetName) {
       // Found the target node, add it to the result along with its path
       result.push({ ...node, path });
     }

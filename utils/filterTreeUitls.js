@@ -1,6 +1,6 @@
 // Helper functions for filtering
 export const defaultMatcher = (filterText, node) => {
-  return node.name.toLowerCase().indexOf(filterText.toLowerCase()) !== -1;
+  return node.title.toLowerCase().indexOf(filterText.toLowerCase()) !== -1;
 };
 
 export const defaultMatcherId = (id, node) => {
