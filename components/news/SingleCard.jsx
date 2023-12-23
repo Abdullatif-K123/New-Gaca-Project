@@ -3,6 +3,7 @@ import classes from "./news.module.css";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useSpring, animated } from "react-spring";
+import parse from "html-react-parser";
 const SingleCard = ({
   title,
   img,
@@ -59,7 +60,7 @@ const SingleCard = ({
           />
           <p>{humanReadableDate}</p>
         </div>
-        <p>{description.slice(0, 170)}...</p>
+        <p>{parse(description.slice(0, 170))}...</p>
       </div>
     </animated.div>
   );

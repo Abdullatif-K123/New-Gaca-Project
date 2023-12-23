@@ -171,6 +171,33 @@
   background-color: #007bff;
   color: #fff;
 }
+.pagination {
+  list-style: none;
+  height: 31.5px;
+  width: 31.5px;
+  display: flex;
+  justify-content: center;
+
+  margin-top: 2px;
+  cursor: pointer;
+}
+
+.active {
+  border-radius: 50%;
+  border: 2px dotted #1e50ff;
+  color: #1e50ff;
+}
+
+.pageItem {
+  list-style: none;
+  padding: 2px 12px;
+  height: 31.5px;
+  width: 31.5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2px;
+}
 /* Responsive for less than 1350px */
 @media (max-width: 1350px) {
   .newsCardHead {

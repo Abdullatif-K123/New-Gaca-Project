@@ -1,6 +1,7 @@
 import React from "react";
 import classes from "./about.module.css";
 import Image from "next/image";
+import parse from "html-react-parser";
 const AboutSection = ({ title, desc1, desc2 }) => {
   const lines = desc1?.split("\n");
   return (
@@ -22,7 +23,9 @@ const AboutSection = ({ title, desc1, desc2 }) => {
           />
         </div>
       </div>
-      {lines ? lines.map((line, index) => <p key={index}>{line}</p>) : desc1}
+      {lines
+        ? lines.map((line, index) => <p key={index}>{parse(line)}</p>)
+        : desc1}
     </div>
   );
 };

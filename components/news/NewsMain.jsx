@@ -4,19 +4,30 @@ import newsData from "./NewsData";
 import SingleCard from "./SingleCard";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import LoadingSpinner from "../ui/LoadingSpinner";
+import ReactPaginate from "react-paginate";
+import { AiFillLeftCircle, AiFillRightCircle } from "react-icons/ai";
+import { IconContext } from "react-icons";
 const NewsMain = ({ dataNews }) => {
   const [startIndex, setStartIndex] = useState(0);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(0);
   const [leftRight, setLeftRight] = useState("left");
+  const [filterData, setFilterData] = useState([]);
   const [news, setNewsData] = useState(dataNews.data);
   const router = useRouter();
 
-  const itemsPerPage = 6;
-  const visibleNews = news.slice(
-    currentPage === 1 ? 0 : 6,
-    currentPage === 1 ? 6 : newsData.length
-  );
+  const itemsPerPage = 15;
+  console.log(news);
+  useEffect(() => {
+    setFilterData(
+      news.filter((item, index) => {
+        return (
+          (index >= currentPage * itemsPerPage) &
+          (index < (currentPage + 1) * itemsPerPage)
+        );
+      })
+    );
+  }, [currentPage, dataNews]);
+
   return (
     <div className={classes.newsMain}>
       <div className={classes.newsSection}>
@@ -40,27 +51,31 @@ const NewsMain = ({ dataNews }) => {
         </div>
         <h1>News</h1>
         <div className={classes.newsCardMain}>
-          {news.map((nws, index) => (
-            <SingleCard key={nws.id} {...nws} leftRight={leftRight} />
-          ))}
+          {filterData &&
+            filterData.map((nws, index) => (
+              <SingleCard key={nws.id} {...nws} leftRight={leftRight} />
+            ))}
         </div>
         <div className={classes.paginationContainer}>
           {/* Render pagination links with updated styles */}
-          <p>&laquo;</p>
-          {[...Array(Math.ceil(news.length / itemsPerPage)).keys()].map(
-            (page) => (
-              <span
-                key={page + 1}
-                onClick={() => setCurrentPage(page + 1)}
-                className={`${classes.paginationLink} ${
-                  currentPage === page + 1 ? classes.active : ""
-                }`}
-              >
-                {page + 1}
-              </span>
-            )
-          )}
-          <p>&raquo;</p>
+          <ReactPaginate
+            containerClassName={classes.pagination}
+            pageClassName={classes.pageItem}
+            activeClassName={classes.active}
+            onPageChange={(event) => setCurrentPage(event.selected)}
+            pageCount={Math.ceil(news.length / itemsPerPage)}
+            breakLabel="..."
+            previousLabel={
+              <IconContext.Provider value={{ color: "#B8C1CC", size: "36px" }}>
+                <AiFillLeftCircle />
+              </IconContext.Provider>
+            }
+            nextLabel={
+              <IconContext.Provider value={{ color: "#B8C1CC", size: "36px" }}>
+                <AiFillRightCircle />
+              </IconContext.Provider>
+            }
+          />
         </div>
       </div>
     </div>

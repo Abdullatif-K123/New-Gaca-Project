@@ -2,6 +2,7 @@ import React from "react";
 import { useRouter } from "next/router";
 import classes from "./SingleNews.module.css";
 import Image from "next/image";
+import parse from "html-react-parser";
 const SingleNews = ({ newsDetails, data }) => {
   const date = new Date(data.dateCreated);
 
@@ -56,7 +57,7 @@ const SingleNews = ({ newsDetails, data }) => {
               />
               <p>{humanReadableDate}</p>
             </div>
-            <p>{data?.description}</p>
+            <p>{parse(data?.description)}</p>
             {/* <button className={classes.newsShare}>
               <Image
                 src="/assets/svg/share.svg"
