@@ -4,25 +4,16 @@ import MasterPlan from "./MasterPlan";
 import classes from "./masterPlan.module.css";
 import Footer from "../footer/footer";
 import Image from "next/image";
+
 import findNodeAndParentsByName from "@/utils/findNodeAndParent";
 import { findNodeAndParentsById } from "@/utils/findNodeAndParent";
 import { useRouter } from "next/router";
-const MasterPlanMain = ({ plan, data, f1, f2, f3, f4, f5, conVersion }) => {
+const MasterPlanMain = ({ plan, data, elementSelect, conVersion }) => {
   const router = useRouter();
   const pin = router.query.plan;
 
-  data[0].children = f1;
-  data[1].children = f2;
-  data[2].children = f3;
-  data[3].children = f4;
-  data[4].children = f5;
-  data[0].id = "root1";
-  data[1].id = "root2";
-  data[2].id = "root3";
-  data[3].id = "root4";
-  data[4].id = "root5";
-  const [selectingElem, setSelectingElem] = useState([]);
-  const [singleElemSelecting, setSingleElemSelecting] = useState("");
+  const [selectingElem, setSelectingElem] = useState([elementSelect]);
+  const [singleElemSelecting, setSingleElemSelecting] = useState(elementSelect);
   const [selected, setSelected] = useState([]);
   const [singleSelectingDesc, setSignelDesc] = useState("");
   const [expanded, setExpanded] = useState([`root${pin ? pin : 1}`]);
@@ -33,12 +24,34 @@ const MasterPlanMain = ({ plan, data, f1, f2, f3, f4, f5, conVersion }) => {
     console.log(elem);
     setExpanded([`root${idSelect}`]);
   };
+  const { select } = router.query;
+  console.log(select);
+  useEffect(() => {
+    if (select && select.length > 0) {
+      const result = findNodeAndParentsByName(data, select);
+      console.log(result);
+      if (result.length > 0 && result[0].description) {
+        console.log(result);
+        setSelectingElem(() => [result[0].path[0], result[0].title]);
+        handleSelectSingleElem(result[0], result[0].id);
+      }
+    }
+  }, []);
   useEffect(() => {
     const result = findNodeAndParentsByName(data, singleElemSelecting);
 
-    setSelectingElem(() => {
-      return result.length ? [result[0].path[0], result[0].name] : [];
-    });
+    if (result.length > 0) {
+      console.log(result);
+      setSelectingElem(() => [result[0].path[0], result[0].title]);
+      router.push(
+        {
+          pathname: router.pathname,
+          query: { plan: result[0].masterPlanId, select: result[0].title },
+        },
+        undefined,
+        { shallow: true }
+      );
+    }
   }, [singleElemSelecting]);
   useEffect(() => {
     setSelectingElem(data ? [data[pin ? pin - 1 : 0].name] : []);
