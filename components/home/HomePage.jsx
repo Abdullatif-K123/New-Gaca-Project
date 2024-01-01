@@ -13,7 +13,7 @@ const HomePage = ({ isFeedbackVisible, handleToggleFeedback, conVersion }) => {
         const response = await axios.get(
           "https://gaca.somee.com/api/landingpage/homepage"
         );
-        console.log(response.data);
+
         setData(response.data);
         setLoading(false);
       } catch (error) {
