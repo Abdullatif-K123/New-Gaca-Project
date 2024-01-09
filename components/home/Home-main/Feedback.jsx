@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useFormik } from "formik";
 import axios from "axios";
 import * as Yup from "yup";
+import { API_ROUTES } from "@/utils/apiConfig";
 import toast, { Toaster } from "react-hot-toast";
 const Feedback = ({ isFeedbackVisible, handleToggleFeedback }) => {
   const notify = () => toast("Your feedback has been sent.", { icon: "👏" });
@@ -23,10 +24,8 @@ const Feedback = ({ isFeedbackVisible, handleToggleFeedback }) => {
     initialValues: initialForms,
     validationSchema: Yup.object({
       name: Yup.string().required("Name is required"),
-      email: Yup.string()
-        .email("Invalid email address")
-        .required("Email is required"),
-      phone: Yup.string().required("Phone is required"),
+      email: Yup.string().email("Invalid email address"),
+      phone: Yup.string(),
       feedbackType: Yup.string().required("Feedback type is required"),
       feedbackTitle: Yup.string().required("Feedback title is required"),
       feedbackMessage: Yup.string().required("Feedback message is required"),
@@ -35,17 +34,14 @@ const Feedback = ({ isFeedbackVisible, handleToggleFeedback }) => {
       // Handle form submission here
       console.log(values);
       try {
-        const response = await axios.post(
-          "https://gaca.somee.com/api/landingpage/feedback",
-          {
-            name: values.name,
-            email: values.email,
-            phone: values.phone,
-            feedbackType: Number(values.feedbackType),
-            feedbackTitle: values.feedbackTitle,
-            feedbackMessage: values.feedbackMessage,
-          }
-        );
+        const response = await axios.post(API_ROUTES.feedback.post, {
+          name: values.name,
+          email: values.email,
+          phone: values.phone,
+          feedbackType: Number(values.feedbackType),
+          feedbackTitle: values.feedbackTitle,
+          feedbackMessage: values.feedbackMessage,
+        });
         handleToggleFeedback();
         notify();
       } catch (error) {
@@ -100,15 +96,9 @@ const Feedback = ({ isFeedbackVisible, handleToggleFeedback }) => {
           <div
             className={`${classes.inputLabel} ${
               focusedInput === "email" ? classes.inputLabelFocused : null
-            } ${
-              formik.errors.email && formik.touched.email
-                ? classes.inputLabelError
-                : null
-            }`}
+            } `}
           >
-            <label htmlFor="email">
-              Email{formik.errors.email ? "*" : null}
-            </label>
+            <label htmlFor="email">Email</label>
             <input
               type="text"
               id="email"
@@ -130,9 +120,7 @@ const Feedback = ({ isFeedbackVisible, handleToggleFeedback }) => {
                 : null
             }`}
           >
-            <label htmlFor="phone">
-              Phone{formik.errors.email ? "*" : null}
-            </label>
+            <label htmlFor="phone">Phone</label>
             <input
               type="text"
               id="phone"

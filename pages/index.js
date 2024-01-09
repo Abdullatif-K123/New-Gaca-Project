@@ -10,7 +10,6 @@ export default function Home({
   useEffect(() => {
     const handleWheel = (event) => {
       const delta = event.deltaY || event.detail || event.wheelDelta;
-
       if (delta > 0 && currentSection < 2) {
         setCurrentSection((prevSection) => prevSection + 1);
       } else if (delta < 0 && currentSection > 0) {

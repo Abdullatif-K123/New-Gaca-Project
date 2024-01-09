@@ -33,27 +33,6 @@ const AboutPage = ({ data }) => {
           <AboutSection title={"GACA"} desc1={data.content} />
           <AboutSection title={"Vision"} desc1={data.vision} />
           <AboutSection title={"Mission"} desc1={data.mission} />
-          {/* <AboutSection title={"GACA’s strategic objectives:"} />
-          <div className={classes.moreInfo}>
-            <p>
-              <span>Safety & security</span> Ensure highest levels of safety and
-              security in KSA aviation sector.
-            </p>
-            <p>
-              <span>Environmental sustainability</span> Promote development of
-              sustainable measures to reduce environmental impact.
-            </p>
-            <p>
-              <span>Sector growth & competitiveness</span> Develop economic
-              policies to enable traffic growth, service quality, fair
-              competition and connectivity.
-            </p>
-            <p>
-              <span>Sector strategy activation & delivery </span> Activate and
-              monitor aviation sector strategy implementation and enable new
-              technology adoption.
-            </p>
-          </div> */}
         </div>
         <div className={classes.worldImages}>
           <Image

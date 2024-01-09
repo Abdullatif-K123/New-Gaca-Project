@@ -4,10 +4,10 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useSpring, animated } from "react-spring";
 import parse from "html-react-parser";
+import { API_ROUTES } from "@/utils/apiConfig";
 const SingleCard = ({
   title,
   img,
-
   summary,
   leftRight,
   id,
@@ -43,10 +43,10 @@ const SingleCard = ({
     >
       <div className={classes.newsCardHead}>
         <img
-          src={`https://gaca.somee.com/${imageUrl}`}
+          src={`${API_ROUTES.domainName}/${imageUrl}`}
           width={385}
           height={180}
-          alt="news-photo"
+          alt={title.slice(0, 20)}
         />
         <p>{title}</p>
       </div>

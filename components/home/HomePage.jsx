@@ -3,6 +3,7 @@ import SectionOne from "./Home-main/SectionOne";
 import MasterPlan from "./master-plan/MasterPlan";
 import HomeBottom from "../footer/HomeBottom";
 import LoadingSpinner from "../ui/LoadingSpinner";
+import { API_ROUTES } from "@/utils/apiConfig";
 import axios from "axios";
 const HomePage = ({ isFeedbackVisible, handleToggleFeedback, conVersion }) => {
   const [data, setData] = useState({});
@@ -10,9 +11,7 @@ const HomePage = ({ isFeedbackVisible, handleToggleFeedback, conVersion }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          "https://gaca.somee.com/api/landingpage/homepage"
-        );
+        const response = await axios.get(API_ROUTES.homePage.get);
 
         setData(response.data);
         setLoading(false);

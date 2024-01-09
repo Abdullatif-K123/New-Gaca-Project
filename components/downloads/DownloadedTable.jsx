@@ -1,6 +1,7 @@
 import React from "react";
 import classes from "./downloads.module.css";
 import Image from "next/image";
+import { API_ROUTES } from "@/utils/apiConfig";
 const DownloadedTable = ({ fileName, date, fileSize, docUrl }) => {
   const dateCreated = new Date(date);
 
@@ -15,7 +16,7 @@ const DownloadedTable = ({ fileName, date, fileSize, docUrl }) => {
     // Trigger a click event on the link to start the download
     link.click();
   }
-  const pdfUrl = `https://gaca.somee.com/${docUrl}`;
+  const pdfUrl = `${API_ROUTES.domainName}/${docUrl}`;
   return (
     <div className={classes.downloadTable}>
       <div className={classes.tableHead}>

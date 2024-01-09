@@ -426,3 +426,13 @@
     width: 100%;
   }
 }
+/* Media query for the hight less than 700px */
+@media (max-height: 600px) {
+  .secOneContect {
+    row-gap: 10px;
+    margin-top: 300px;
+  }
+  .sectionOne {
+    padding: 10px 0 20px 10px;
+  }
+}

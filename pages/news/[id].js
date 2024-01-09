@@ -5,6 +5,7 @@ import newsData from "@/components/news/NewsData";
 import Footer from "@/components/footer/footer";
 import LoadingSpinner from "@/components/ui/LoadingSpinner";
 import axios from "axios";
+import { API_ROUTES } from "@/utils/apiConfig";
 const NewsId = ({ isFeedbackVisible, handleToggleFeedback, conVersion }) => {
   const router = useRouter();
   const id = router.query.id;
@@ -16,10 +17,8 @@ const NewsId = ({ isFeedbackVisible, handleToggleFeedback, conVersion }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          `https://gaca.somee.com/api/landingpage/blogs/${id}`
-        );
-        console.log(response.data);
+        const response = await axios.get(`${API_ROUTES.blogs.get}/${id}`);
+
         setData(response.data);
         setLoading(false);
       } catch (error) {

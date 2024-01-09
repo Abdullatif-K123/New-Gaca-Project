@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import MasterPlanMain from "@/components/master-plan/MasterPlanMain";
-import sampleData from "@/components/master-plan/simpleData";
+
 import LoadingSpinner from "@/components/ui/LoadingSpinner";
 import axios from "axios";
+import { API_ROUTES } from "@/utils/apiConfig";
 const index = ({ isFeedbackVisible, handleToggleFeedback, conVersion }) => {
   const router = useRouter();
   const plan = router.query.plan;
@@ -13,9 +14,7 @@ const index = ({ isFeedbackVisible, handleToggleFeedback, conVersion }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          "https://gaca.somee.com/api/landingpage/masterplan"
-        );
+        const response = await axios.get(API_ROUTES.masterPlan.get);
         setData(response.data);
         setLoading(false);
         console.log(response.data);

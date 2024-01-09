@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import classes from "./SingleNews.module.css";
 import Image from "next/image";
 import parse from "html-react-parser";
+import { API_ROUTES } from "@/utils/apiConfig";
 const SingleNews = ({ newsDetails, data }) => {
   const date = new Date(data.dateCreated);
 
@@ -37,11 +38,10 @@ const SingleNews = ({ newsDetails, data }) => {
       </div>
       <div className={classes.newsDetails}>
         <img
-          src={`https://gaca.somee.com/${data.imageUrl}`}
-          width={620}
-          height={600}
-          alt="news-photo"
-          objectFit="cover"
+          src={`${API_ROUTES.domainName}/${data.imageUrl}`}
+          width={500}
+          height={500}
+          alt={data.title.slice(0, 20)}
         />
         <div className={classes.newsContent}>
           <div className={classes.contentHead}>

@@ -4,19 +4,18 @@ import Head from "next/head";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import LoadingSpinner from "@/components/ui/LoadingSpinner";
+import { API_ROUTES } from "@/utils/apiConfig";
 export default function App({ Component, pageProps }) {
   const [isFeedbackVisible, setIsFeedbackVisible] = useState(false);
   const [data, setData] = useState({});
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const handleToggleFeedback = () => {
     setIsFeedbackVisible(!isFeedbackVisible);
   };
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          "https://gaca.somee.com/api/landingpage/settings"
-        );
+        const response = await axios.get(API_ROUTES.settings.get);
         console.log(response.data);
         setData(response.data);
         setLoading(false);
@@ -27,9 +26,9 @@ export default function App({ Component, pageProps }) {
 
     fetchData();
   }, []);
-  if (loading) {
-    return <LoadingSpinner />;
-  }
+  // if (loading) {
+  //   return <LoadingSpinner />;
+  // }
   return (
     <>
       <Head>

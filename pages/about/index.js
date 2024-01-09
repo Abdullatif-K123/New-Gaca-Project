@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import AboutPage from "@/components/about/AboutPage";
 import Footer from "@/components/footer/footer";
 import LoadingSpinner from "@/components/ui/LoadingSpinner";
+import { API_ROUTES } from "@/utils/apiConfig";
 import axios from "axios";
 const index = ({ isFeedbackVisible, handleToggleFeedback, conVersion }) => {
   const [data, setData] = useState(null);
@@ -9,9 +10,7 @@ const index = ({ isFeedbackVisible, handleToggleFeedback, conVersion }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          "https://gaca.somee.com/api/landingpage/about"
-        );
+        const response = await axios.get(API_ROUTES.about.get);
 
         setData(response.data);
         setLoading(false);

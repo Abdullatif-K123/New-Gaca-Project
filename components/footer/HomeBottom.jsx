@@ -3,6 +3,7 @@ import classes from "./home-bottom.module.css";
 import Image from "next/image";
 import Footer from "./footer";
 import Slider from "react-infinite-logo-slider";
+import { API_ROUTES } from "@/utils/apiConfig";
 const HomeBottom = ({ imgs, conVersion }) => {
   const [sliderWidth, setSliderWidth] = useState("180px");
   useEffect(() => {
@@ -42,7 +43,7 @@ const HomeBottom = ({ imgs, conVersion }) => {
                 <Slider.Slide key={stakholder.id}>
                   <div className={classes.partnerItem}>
                     <img
-                      src={`https://gaca.somee.com/${stakholder.imageUrl}`}
+                      src={`${API_ROUTES.domainName}/${stakholder.imageUrl}`}
                       width={140}
                       height={140}
                       alt={stakholder.title}

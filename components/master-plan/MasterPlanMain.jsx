@@ -4,34 +4,28 @@ import MasterPlan from "./MasterPlan";
 import classes from "./masterPlan.module.css";
 import Footer from "../footer/footer";
 import Image from "next/image";
-
 import findNodeAndParentsByName from "@/utils/findNodeAndParent";
 import { findNodeAndParentsById } from "@/utils/findNodeAndParent";
 import { useRouter } from "next/router";
 const MasterPlanMain = ({ plan, data, elementSelect, conVersion }) => {
   const router = useRouter();
   const pin = router.query.plan;
-
   const [selectingElem, setSelectingElem] = useState([elementSelect]);
   const [singleElemSelecting, setSingleElemSelecting] = useState(elementSelect);
   const [selected, setSelected] = useState([]);
   const [singleSelectingDesc, setSignelDesc] = useState("");
   const [expanded, setExpanded] = useState([`root${pin ? pin : 1}`]);
-  const handleSelecingThing = (elem) => {};
   const handleSelectSingleElem = (elem, idSelect) => {
     setSingleElemSelecting(elem.title);
     setSignelDesc(elem.description);
-    console.log(elem);
-    setExpanded([`root${idSelect}`]);
   };
   const { select } = router.query;
-  console.log(select);
+
   useEffect(() => {
     if (select && select.length > 0) {
       const result = findNodeAndParentsByName(data, select);
-      console.log(result);
+
       if (result.length > 0 && result[0].description) {
-        console.log(result);
         setSelectingElem(() => [result[0].path[0], result[0].title]);
         handleSelectSingleElem(result[0], result[0].id);
       }
@@ -54,13 +48,14 @@ const MasterPlanMain = ({ plan, data, elementSelect, conVersion }) => {
     }
   }, [singleElemSelecting]);
   useEffect(() => {
+    console.log("I'm here");
     setSelectingElem(data ? [data[pin ? pin - 1 : 0].name] : []);
-  }, [pin]);
+  }, []);
   //  Toggling to specifc plan
 
   const handleToggle = (event, nodeIds) => {
     let expandedTemp = expanded;
-    console.log(nodeIds);
+
     expandedTemp = nodeIds;
 
     setExpanded(expandedTemp);
