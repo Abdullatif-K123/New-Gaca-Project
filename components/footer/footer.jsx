@@ -60,6 +60,7 @@ const Footer = ({ conVersion }) => {
             width={250}
             height={95}
             alt="vision"
+            className={classes.visionImg}
           />
         </div>
         <div className={classes.footerCopyRight}>
