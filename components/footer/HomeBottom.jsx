@@ -6,6 +6,15 @@ import Slider from "react-infinite-logo-slider";
 import { API_ROUTES } from "@/utils/apiConfig";
 const HomeBottom = ({ imgs, conVersion }) => {
   const [sliderWidth, setSliderWidth] = useState("180px");
+
+  //Handling clicking button up
+  const handleClick = () => {
+    const targetElement = document.getElementById("home");
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   useEffect(() => {
     const handleResize = () => {
       // Adjust the width based on the screen size
@@ -21,9 +30,10 @@ const HomeBottom = ({ imgs, conVersion }) => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
   return (
     <>
-      <div className={classes.homeBottomMain}>
+      <div className={classes.homeBottomMain} id="stakeholder">
         <div className={classes.bottomLogo}>
           <h2>
             <span>Our</span> Stackholders
@@ -53,6 +63,15 @@ const HomeBottom = ({ imgs, conVersion }) => {
               );
             })}
           </Slider>
+        </div>
+        <div className={classes.btnDown} onClick={handleClick}>
+          <Image
+            src="/assets/svg/arrow-up.svg"
+            width={24}
+            height={24}
+            alt="arrow-down"
+            className={classes.arrowDown}
+          />
         </div>
       </div>
       <Footer conVersion={conVersion} />

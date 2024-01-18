@@ -54,6 +54,14 @@ const Footer = ({ conVersion }) => {
             />
           </li>
         </ul>
+        <div className={classes.visionFooter}>
+          <Image
+            src="/assets/svg/vision-footer.svg"
+            width={250}
+            height={95}
+            alt="vision"
+          />
+        </div>
         <div className={classes.footerCopyRight}>
           <p>
             © {currentYear} {conVersion?.copyright},(V {conVersion?.version})

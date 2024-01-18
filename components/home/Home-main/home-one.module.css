@@ -147,6 +147,38 @@
     opacity: 0;
   }
 }
+/* Arrow down button */
+.btnDown {
+  position: absolute;
+  bottom: 0;
+  border-radius: 24.5px;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.2) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  padding: 36px 15px;
+  cursor: pointer;
+}
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px); /* Adjust the distance the arrow moves up */
+  }
+  60% {
+    transform: translateY(-5px); /* Adjust the distance the arrow moves down */
+  }
+}
+
+.arrowDown {
+  animation: bounce 2s infinite; /* Adjust the animation duration as needed */
+}
 
 /* FeedbackSection.css */
 .feedbackSection {
@@ -384,6 +416,11 @@
   }
   .feedbackSection {
     width: 55%;
+  }
+  .btnDown {
+    left: 50%;
+    bottom: 0;
+    padding: 30px 10px;
   }
 }
 @media (max-width: 600px) {

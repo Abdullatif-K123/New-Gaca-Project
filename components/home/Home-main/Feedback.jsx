@@ -136,6 +136,10 @@ const Feedback = ({ isFeedbackVisible, handleToggleFeedback }) => {
           <div
             className={`${classes.inputLabel} ${
               focusedInput === "feedbackType" ? classes.inputLabelFocused : null
+            } ${
+              formik.errors.feedbackType && formik.touched.feedbackType
+                ? classes.inputLabelError
+                : null
             }`}
           >
             <label htmlFor="feedbackType">Feedback Type:</label>
@@ -160,9 +164,15 @@ const Feedback = ({ isFeedbackVisible, handleToggleFeedback }) => {
               focusedInput === "feedbackTitle"
                 ? classes.inputLabelFocused
                 : null
+            } ${
+              formik.errors.feedbackTitle && formik.touched.feedbackTitle
+                ? classes.inputLabelError
+                : null
             }`}
           >
-            <label htmlFor="feedbackTitle">Feedback Title</label>
+            <label htmlFor="feedbackTitle">
+              Feedback Title {formik.errors.feedbackTitle ? "*" : ""}
+            </label>
             <input
               type="text"
               id="feedbackTitle"
@@ -186,7 +196,9 @@ const Feedback = ({ isFeedbackVisible, handleToggleFeedback }) => {
                 : null
             }`}
           >
-            <label htmlFor="feedbackMessage">Feedback Message</label>
+            <label htmlFor="feedbackMessage">
+              Feedback Message {formik.errors.feedbackMessage ? "*" : ""}
+            </label>
             <textarea
               id="feedbackMessage"
               name="feedbackMessage"

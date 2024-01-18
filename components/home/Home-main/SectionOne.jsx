@@ -5,6 +5,12 @@ import { useRouter } from "next/router";
 import parse from "html-react-parser";
 const SectionOne = ({ isFeedbackVisible, title, desc }) => {
   const router = useRouter();
+  const handleClick = () => {
+    const targetElement = document.getElementById("stakeholder");
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   return (
     <div className={classes.sectionOne}>
       <div className={classes.secOneContect}>
@@ -48,6 +54,15 @@ const SectionOne = ({ isFeedbackVisible, title, desc }) => {
             />
           </>
         )}
+      </div>
+      <div className={classes.btnDown} onClick={handleClick}>
+        <Image
+          src="/assets/svg/arrow-down.svg"
+          width={24}
+          height={24}
+          alt="arrow-down"
+          className={classes.arrowDown}
+        />
       </div>
       <div className={classes.semicircle}></div>
     </div>

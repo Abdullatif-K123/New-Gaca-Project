@@ -1,4 +1,10 @@
 /* Navbar styling */
+.navModified {
+  position: relative;
+  z-index: 100;
+  padding-top: 32px;
+  background: #0177c8;
+}
 .navMain {
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;
@@ -6,11 +12,13 @@
   background: #1f8de4;
   height: 111px;
   padding: 30px 81px;
-  position: relative;
-  z-index: 100;
+  padding-top: 25px;
+}
+.aboutModified {
+  padding-top: 0px !important;
 }
 .aboutNav {
-  background-color: #fff;
+  background-color: #ffffff;
   border-bottom: 2px dotted rgba(0, 119, 199, 0.2);
 }
 .logo {
@@ -98,8 +106,11 @@
 }
 .feedBackSection {
   align-self: center;
-  margin-top: 10px;
   justify-self: flex-end;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
 }
 .btnFeedback {
   display: flex;
@@ -226,6 +237,9 @@
     height: 75px;
   }
   .footerContent {
+    display: none;
+  }
+  .vision {
     display: none;
   }
 }

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import classes from "./news.module.css";
-import newsData from "./NewsData";
+
 import SingleCard from "./SingleCard";
 import Image from "next/image";
 import { useRouter } from "next/router";

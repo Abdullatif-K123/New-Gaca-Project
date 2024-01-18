@@ -23,8 +23,10 @@ const Navbar = ({ isFeedbackVisible, handleToggleFeedback, conVersion }) => {
   };
   return (
     <>
-      <nav
-        className={`${classes.navMain} ${aboutPath ? classes.aboutNav : null}`}
+      <div
+        className={`${classes.navModified} ${
+          aboutPath ? classes.aboutModified : null
+        }`}
         onClick={() => {
           isFeedbackVisible ? handleToggleFeedback() : null;
         }}
@@ -32,109 +34,127 @@ const Navbar = ({ isFeedbackVisible, handleToggleFeedback, conVersion }) => {
           filter: isFeedbackVisible ? "brightness(0.5)" : "brightness(1)",
           transition: "all 0.6s ease-in-out",
         }}
+        id="home"
       >
-        <div className={classes.logo}>
-          <Image
-            src={
-              aboutPath ? "/assets/svg/LogoAbout.svg" : "/assets/svg/Logo.svg"
-            }
-            width={140}
-            height={aboutPath ? 64 : 47}
-            alt="logo"
-            onClick={() => {
-              router.push("/");
-            }}
-          />
-        </div>
-        <div
-          className={`${classes.navSections} ${
-            addClass ? classes.navContentHam : null
+        <nav
+          className={`${classes.navMain} ${
+            aboutPath ? classes.aboutNav : null
           }`}
         >
-          <ul
-            className={`${classes.section} ${
-              aboutPath ? classes.secAbout : null
-            }`}
-          >
-            <li
+          <div className={classes.logo}>
+            <Image
+              src={
+                aboutPath ? "/assets/svg/LogoAbout.svg" : "/assets/svg/Logo.svg"
+              }
+              width={140}
+              height={aboutPath ? 64 : 47}
+              alt="logo"
               onClick={() => {
-                mobileMenu();
                 router.push("/");
               }}
-              className={`${path.length ? null : classes.activeHome}`}
-            >
-              Home
-            </li>
-            <li
-              onClick={() => {
-                mobileMenu();
-                router.push("/about");
-              }}
-              className={`${path === "about" ? classes.active : null}`}
-            >
-              About GACA
-            </li>
-            <li
-              onClick={() => {
-                mobileMenu();
-                router.push("/download");
-              }}
-              className={`${path === "download" ? classes.active : null}`}
-            >
-              Downloads
-            </li>
-            <li
-              onClick={() => {
-                mobileMenu();
-                router.push("/news");
-              }}
-              className={`${path === "news" ? classes.active : null}`}
-            >
-              News
-            </li>
-            <li
-              onClick={() => {
-                mobileMenu();
-                likeAndOpenLink(conVersion.constructor);
-              }}
-            >
-              Constructor{" "}
-              <Image
-                src={
-                  aboutPath
-                    ? "/assets/svg/share1Gray.svg"
-                    : "/assets/svg/share1.svg"
-                }
-                width={17}
-                height={17}
-                className={classes.imgMini}
-                alt="share1"
-              />
-            </li>
-          </ul>
-        </div>
-        <div
-          className={`${classes.feedBackSection} ${
-            addClass ? classes.navAuthHam : null
-          }`}
-          onClick={handleToggleFeedback}
-        >
-          <div className={classes.btnFeedback} onClick={mobileMenu}>
-            <Image
-              src="/assets/svg/review1.svg"
-              width={23}
-              height={23}
-              alt="review"
             />
-            <p>Feedback</p>
           </div>
-        </div>
-        <div className="hamburger" onClick={mobileMenu}>
-          <span className={`bar ${aboutPath ? "aboutBar" : null}`}></span>
-          <span className={`bar ${aboutPath ? "aboutBar" : null}`}></span>
-          <span className={`bar ${aboutPath ? "aboutBar" : null}`}></span>
-        </div>
-      </nav>
+          <div
+            className={`${classes.navSections} ${
+              addClass ? classes.navContentHam : null
+            }`}
+          >
+            <ul
+              className={`${classes.section} ${
+                aboutPath ? classes.secAbout : null
+              }`}
+            >
+              <li
+                onClick={() => {
+                  mobileMenu();
+                  router.push("/");
+                }}
+                className={`${path.length ? null : classes.activeHome}`}
+              >
+                Home
+              </li>
+              <li
+                onClick={() => {
+                  mobileMenu();
+                  router.push("/about");
+                }}
+                className={`${path === "about" ? classes.active : null}`}
+              >
+                About GACA
+              </li>
+              <li
+                onClick={() => {
+                  mobileMenu();
+                  router.push("/download");
+                }}
+                className={`${path === "download" ? classes.active : null}`}
+              >
+                Downloads
+              </li>
+              <li
+                onClick={() => {
+                  mobileMenu();
+                  router.push("/news");
+                }}
+                className={`${path === "news" ? classes.active : null}`}
+              >
+                News
+              </li>
+              <li
+                onClick={() => {
+                  mobileMenu();
+                  likeAndOpenLink(conVersion.constructor);
+                }}
+              >
+                Constructor{" "}
+                <Image
+                  src={
+                    aboutPath
+                      ? "/assets/svg/share1Gray.svg"
+                      : "/assets/svg/share1.svg"
+                  }
+                  width={17}
+                  height={17}
+                  className={classes.imgMini}
+                  alt="share1"
+                />
+              </li>
+            </ul>
+          </div>
+
+          <div
+            className={`${classes.feedBackSection} ${
+              addClass ? classes.navAuthHam : null
+            }`}
+            onClick={handleToggleFeedback}
+          >
+            <div className={classes.vision}>
+              {!aboutPath && (
+                <Image
+                  src={"/assets/svg/vision-2030.svg"}
+                  width={98}
+                  height={67}
+                  alt="vision-2030"
+                />
+              )}
+            </div>
+            <div className={classes.btnFeedback} onClick={mobileMenu}>
+              <Image
+                src="/assets/svg/review1.svg"
+                width={23}
+                height={23}
+                alt="review"
+              />
+              <p>Feedback</p>
+            </div>
+          </div>
+          <div className="hamburger" onClick={mobileMenu}>
+            <span className={`bar ${aboutPath ? "aboutBar" : null}`}></span>
+            <span className={`bar ${aboutPath ? "aboutBar" : null}`}></span>
+            <span className={`bar ${aboutPath ? "aboutBar" : null}`}></span>
+          </div>
+        </nav>
+      </div>
       <Feedback
         isFeedbackVisible={isFeedbackVisible}
         handleToggleFeedback={handleToggleFeedback}

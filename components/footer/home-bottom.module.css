@@ -104,6 +104,22 @@
   font-weight: 400;
   line-height: 22px; /* 137.5% */
 }
+/* Arrow down button */
+.btnDown {
+  position: absolute;
+  bottom: -50px;
+  z-index: 100;
+  left: 80px;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(6.449999809265137px);
+  width: 75px;
+  height: 75px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 @media (max-width: 850px) {
   .homeBottomMain {
