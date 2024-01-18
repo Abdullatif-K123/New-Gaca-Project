@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import SingleNews from "@/components/singleNews/SingleNews";
-import newsData from "@/components/news/NewsData";
 import Footer from "@/components/footer/footer";
 import LoadingSpinner from "@/components/ui/LoadingSpinner";
 import axios from "axios";
@@ -9,9 +8,7 @@ import { API_ROUTES } from "@/utils/apiConfig";
 const NewsId = ({ isFeedbackVisible, handleToggleFeedback, conVersion }) => {
   const router = useRouter();
   const id = router.query.id;
-  const newsDetails = newsData.find((news) => {
-    return news.id == id;
-  });
+
   const [data, setData] = useState({});
   const [loading, setLoading] = useState(true);
   useEffect(() => {
@@ -43,7 +40,7 @@ const NewsId = ({ isFeedbackVisible, handleToggleFeedback, conVersion }) => {
         overflow: isFeedbackVisible ? "hidden" : "",
       }}
     >
-      <SingleNews id={id} newsDetails={newsDetails} data={data} />
+      <SingleNews id={id} data={data} />
       <Footer conVersion={conVersion} />
     </div>
   );

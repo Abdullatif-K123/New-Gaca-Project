@@ -4,7 +4,7 @@ import classes from "./SingleNews.module.css";
 import Image from "next/image";
 import parse from "html-react-parser";
 import { API_ROUTES } from "@/utils/apiConfig";
-const SingleNews = ({ newsDetails, data }) => {
+const SingleNews = ({ data }) => {
   const date = new Date(data.dateCreated);
 
   const year = date.getFullYear();
