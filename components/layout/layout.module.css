@@ -3,13 +3,15 @@
   position: relative;
   z-index: 100;
   padding-top: 32px;
-  background: #0177c8;
+  background: linear-gradient(180deg, #00685e 0%, #00685e 100%),
+    linear-gradient(180deg, #00685e 0%, #00685e 100%),
+    linear-gradient(98deg, #00685e 20.86%, #00685e 37.28%, #00685e 91.31%);
 }
 .navMain {
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;
   align-items: center;
-  background: #1f8de4;
+  background: #009889;
   height: 111px;
   padding: 30px 81px;
   padding-top: 25px;
@@ -119,7 +121,7 @@
   justify-content: center;
   gap: 4px;
   border-radius: 22.5px;
-  background: #0076c7;
+  background: #005149;
   width: 151px;
   height: 45px;
   flex-shrink: 0;

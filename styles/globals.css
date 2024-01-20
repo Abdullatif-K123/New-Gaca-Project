@@ -216,7 +216,9 @@ a {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #0e86d8; /* Blue background with some transparency */
+  background: linear-gradient(180deg, #00685e 0%, #00685e 100%),
+    linear-gradient(180deg, #00685e 0%, #00685e 100%),
+    linear-gradient(98deg, #00685e 20.86%, #00685e 37.28%, #00685e 91.31%); /* Blue background with some transparency */
   display: flex;
   justify-content: center;
   align-items: center;

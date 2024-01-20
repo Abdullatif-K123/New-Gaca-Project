@@ -44,7 +44,9 @@ const Navbar = ({ isFeedbackVisible, handleToggleFeedback, conVersion }) => {
           <div className={classes.logo}>
             <Image
               src={
-                aboutPath ? "/assets/svg/LogoAbout.svg" : "/assets/svg/Logo.svg"
+                aboutPath
+                  ? "/assets/svg/LogoAbout.svg"
+                  : "/assets/svg/logo-green.svg"
               }
               width={140}
               height={aboutPath ? 64 : 47}

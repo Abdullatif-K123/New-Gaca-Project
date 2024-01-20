@@ -4,7 +4,9 @@
   align-items: center;
   justify-content: center;
   padding: 50px 0 20px 60px;
-  background: linear-gradient(180deg, #0076c7 0%, #2ca9ff 100%);
+  background: linear-gradient(180deg, #00685e 0%, #00685e 100%),
+    linear-gradient(180deg, #00685e 0%, #00685e 100%),
+    linear-gradient(98deg, #00685e 20.86%, #00685e 37.28%, #00685e 91.31%);
   height: calc(100vh - 111px);
 }
 .secOneContect {
@@ -47,7 +49,7 @@
   box-shadow: 2px 5px 5px #0076c7;
 }
 .secOneButton > p {
-  color: #3ba1fd;
+  color: #005149;
   text-align: center;
   font-feature-settings: "clig" off, "liga" off;
   font-family: Montserrat;

@@ -23,7 +23,7 @@
   line-height: normal;
 }
 .bottomLogo > h2 > span {
-  color: #0076c9;
+  color: #005149;
   text-align: center;
   font-family: Montserrat;
   font-size: 48px;
@@ -60,7 +60,7 @@
 
 /* Styling footer */
 .footerMain {
-  background-image: url("/assets/imges/Wave.png");
+  background-image: url("/assets/imges/Wave-green.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100% 100%;
