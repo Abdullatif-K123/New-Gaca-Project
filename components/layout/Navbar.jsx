@@ -80,7 +80,7 @@ const Navbar = ({ isFeedbackVisible, handleToggleFeedback, conVersion }) => {
                 }}
                 className={`${path === "about" ? classes.active : null}`}
               >
-                About GACA
+                About SNAP
               </li>
               <li
                 onClick={() => {

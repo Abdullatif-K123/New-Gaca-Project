@@ -22,7 +22,7 @@ const SectionOne = ({ isFeedbackVisible, title, desc }) => {
             router.push("/download");
           }}
         >
-          <p>Download Our Master Plan</p>
+          <p>Download SNAP Documents</p>
         </div>
       </div>
       <div className={classes.sectionTwo}>
