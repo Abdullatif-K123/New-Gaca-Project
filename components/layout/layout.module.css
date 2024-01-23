@@ -37,21 +37,17 @@
 .section {
   display: flex;
   align-items: center;
-  gap: 40px;
+  gap: 45px;
 }
 .section > li {
   list-style-type: none;
   color: #fff;
   text-align: center;
-  font-family: Montserrat;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
+  font-family: "DINNext-Regular", sans-serif;
+  font-size: 17px;
   cursor: pointer;
   border-bottom: 2px solid transparent;
   border: none;
-
   position: relative;
 }
 .active {
@@ -78,8 +74,6 @@
 .section > li:hover {
   color: #fff;
   text-align: center;
-  font-family: Montserrat;
-  font-size: 16px;
   font-style: normal;
   text-shadow: 1px 0;
   line-height: normal;

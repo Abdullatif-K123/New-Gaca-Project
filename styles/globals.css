@@ -103,7 +103,19 @@ body::-webkit-scrollbar-track {
 body::-webkit-scrollbar-thumb {
   background-color: transparent;
 }
-
+/* setting up the new fonts */
+@font-face {
+  font-family: "DINNext-Medium";
+  src: url("../public/fonts/DINNextW1G-Medium.otf") format("opentype");
+}
+@font-face {
+  font-family: "DINNext-Bold";
+  src: url("../public/fonts/DINNextW1G-Bold.otf") format("opentype");
+}
+@font-face {
+  font-family: "DINNext-Regular";
+  src: url("../public/fonts/DINNextW1G-Regular.otf") format("opentype");
+}
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(

@@ -13,11 +13,8 @@
 .masterPlanMain > h1 {
   color: #fff;
   text-align: right;
-  font-family: Montserrat;
-  font-size: 32px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
+  font-family: "DINNext-Medium", sans-serif;
+  font-size: 37px;
 }
 .masterpyrmaid {
   display: flex;
@@ -60,8 +57,8 @@
 .masterPlanInfo > p {
   color: #fff;
   text-align: right;
-  font-family: Montserrat;
-  font-size: 16px;
+  font-family: "DINNext-Regular", sans-serif;
+  font-size: 18px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;

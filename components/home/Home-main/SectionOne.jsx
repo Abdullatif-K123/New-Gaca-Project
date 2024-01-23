@@ -6,7 +6,7 @@ import parse from "html-react-parser";
 const SectionOne = ({ isFeedbackVisible, title, desc }) => {
   const router = useRouter();
   const handleClick = () => {
-    const targetElement = document.getElementById("stakeholder");
+    const targetElement = document.getElementById("masterplan");
     if (targetElement) {
       targetElement.scrollIntoView({ behavior: "smooth" });
     }
