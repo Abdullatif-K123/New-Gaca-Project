@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import classes from "./home-bottom.module.css";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import parse from "html-react-parser";
 import {
   AiFillYoutube,
   AiFillInstagram,
@@ -11,7 +10,7 @@ import {
   AiFillLinkedin,
 } from "react-icons/ai";
 
-const Footer = ({ conVersion, desc }) => {
+const Footer = ({ conVersion }) => {
   const [data, setData] = useState({});
   const [loading, setLoading] = useState(true);
   const likeAndOpenLink = (link) => {
@@ -29,7 +28,11 @@ const Footer = ({ conVersion, desc }) => {
       <div className={classes.footerContentMain}>
         <div className={classes.logoSec}>
           <Image src="/assets/svg/logo-green.svg" width={150} height={50} />
-          <p>{parse(desc)}</p>
+          <p>
+            Develop the transport system to make the Kingdom a logistics center
+            linking the three continents and promote sustainable economic
+            development and competitiveness adequate to the Saudi Vision 2030{" "}
+          </p>
           <div className={classes.footerCopyRight}>
             <p>
               © {currentYear} {conVersion?.copyright},(V {conVersion?.version})
