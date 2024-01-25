@@ -35,24 +35,37 @@
   column-gap: 25px;
 }
 .masterPlanInfo {
-  transition: all 0.3s ease-in-out;
-  fill: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.1) 0%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  stroke-width: 1px;
-  stroke: #fff;
-  backdrop-filter: blur(12px);
+  background-image: url("../../../public/assets/imges/Rectangle2.png");
+  background-repeat: no-repeat;
   width: 357px;
   height: 70px;
   flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
   border-radius: 10px;
-  border: 1px solid #585c61;
   padding: 15px 54px;
+  transition: all 0.3s ease-in-out;
+}
+.masterPlanInfo2 {
+  background-image: url("../../../public/assets/imges/Rectangle.png") !important;
+  background-repeat: no-repeat;
+}
+.masterPlanInfoDesc {
+  position: absolute;
+  margin-top: 225px;
+  margin-left: 70px;
+  width: 100%;
+  text-align: left !important;
+}
+.masterPlanInfoDescUp {
+  margin-top: -225px !important;
+  margin-left: 0px !important;
+}
+.masterPlanInfoDescLeft {
+  margin-left: -30px !important;
+  width: 90%;
 }
 .masterPlanInfo > p {
   color: #fff;
@@ -82,11 +95,21 @@
 /* Responsive design for less than 1300px */
 @media (max-width: 1300px) {
   .masterPlanInfo {
+    background-size: contain;
     width: 250px;
-    padding: 15px 24px;
+  }
+  .masterPlanInfoDesc {
+    margin-top: 150px;
+  }
+  .masterPlanInfoDescUp {
+    margin-top: -150px !important;
+  }
+  .masterPlanInfoDescLeft {
+    margin-top: 160px !important;
   }
   .masterPlanInfo > p {
     font-size: 13px;
+    margin-bottom: 20px;
   }
   .even {
     margin-right: 370px;

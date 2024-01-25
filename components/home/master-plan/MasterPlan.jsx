@@ -13,6 +13,7 @@ const Element = ({
   height,
   nowHovering,
   text,
+  desc,
 }) => {
   const classPyramid =
     id === 1
@@ -40,9 +41,17 @@ const Element = ({
                 ? "brightness(1.5)"
                 : "brightness(0.5)"
               : null,
+            opacity: nowHovering ? (isHovered ? "1" : "0") : null,
           }}
         >
           <p>{text}</p>
+          {isHovered && (
+            <p
+              className={`${classes.masterPlanInfoDesc} ${classes.masterPlanInfoDescLeft}`}
+            >
+              {desc}
+            </p>
+          )}
         </div>
       )}
       <Image
@@ -67,16 +76,26 @@ const Element = ({
       />
       {id % 2 ? (
         <div
-          className={classes.masterPlanInfo}
+          className={`${classes.masterPlanInfo} ${classes.masterPlanInfo2}`}
           style={{
             filter: nowHovering
               ? isHovered
                 ? "brightness(1.5)"
                 : "brightness(0.5)"
               : null,
+            opacity: nowHovering ? (isHovered ? "1" : "0") : null,
           }}
         >
           <p>{text}</p>
+          {isHovered && (
+            <p
+              className={`${classes.masterPlanInfoDesc} ${
+                id == 5 ? classes.masterPlanInfoDescUp : null
+              }`}
+            >
+              {desc}
+            </p>
+          )}
         </div>
       ) : null}
     </div>
@@ -89,7 +108,7 @@ const MasterPlan = ({ layers }) => {
     setHoverElement(id);
     setIsNowHovering(true);
   };
-
+  console.log(layers);
   const handleMouseOut = () => {
     setHoverElement(null);
     setIsNowHovering(false);
@@ -105,6 +124,7 @@ const MasterPlan = ({ layers }) => {
             width: 130,
             height: 130,
             text: layers[0].title,
+            desc: layers[0].descripton,
           },
           {
             idnum: 2,
@@ -112,6 +132,7 @@ const MasterPlan = ({ layers }) => {
             width: 250,
             height: 110,
             text: layers[1].title,
+            desc: layers[1].descripton,
           },
           {
             idnum: 3,
@@ -119,6 +140,7 @@ const MasterPlan = ({ layers }) => {
             width: 400,
             height: 110,
             text: layers[2].title,
+            desc: layers[2].descripton,
           },
           {
             idnum: 4,
@@ -126,6 +148,7 @@ const MasterPlan = ({ layers }) => {
             width: 525,
             height: 110,
             text: layers[3].title,
+            desc: layers[3].descripton,
           },
           {
             idnum: 5,
@@ -133,6 +156,7 @@ const MasterPlan = ({ layers }) => {
             width: 650,
             height: 110,
             text: layers[4].title,
+            desc: layers[4].descripton,
           },
         ].map((id) => {
           return (

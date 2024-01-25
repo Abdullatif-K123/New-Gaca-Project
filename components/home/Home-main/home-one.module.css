@@ -42,7 +42,7 @@
   transition: all 0.3s ease-in-out;
 }
 .secOneButton:hover {
-  box-shadow: 2px 5px 5px #0076c7;
+  box-shadow: 2px 5px 5px #109285;
 }
 .secOneButton > p {
   color: #005149;
