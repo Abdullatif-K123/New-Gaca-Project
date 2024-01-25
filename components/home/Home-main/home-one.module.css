@@ -356,6 +356,22 @@
     width: 45%;
   }
 }
+/* Arrow down button */
+.btnUp {
+  position: fixed;
+  bottom: 40px;
+  z-index: 100;
+  left: 40px;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(6.449999809265137px);
+  width: 45px;
+  height: 45px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 /* Responsive style for less than 900px */
 @media (max-width: 900px) {
   .sectionOne {
@@ -422,6 +438,11 @@
   }
 }
 @media (max-width: 600px) {
+  .btnUp {
+    left: 30px;
+    width: 50px;
+    height: 50px;
+  }
   .sectionOne {
     margin-top: -80px;
   }

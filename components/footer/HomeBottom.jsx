@@ -1,19 +1,10 @@
 import React, { useEffect, useState } from "react";
 import classes from "./home-bottom.module.css";
-import Image from "next/image";
 import Footer from "./footer";
 import Slider from "react-infinite-logo-slider";
 import { API_ROUTES } from "@/utils/apiConfig";
-const HomeBottom = ({ imgs, conVersion }) => {
+const HomeBottom = ({ imgs, conVersion, desc }) => {
   const [sliderWidth, setSliderWidth] = useState("180px");
-
-  //Handling clicking button up
-  const handleClick = () => {
-    const targetElement = document.getElementById("home");
-    if (targetElement) {
-      targetElement.scrollIntoView({ behavior: "smooth" });
-    }
-  };
 
   useEffect(() => {
     const handleResize = () => {
@@ -64,17 +55,8 @@ const HomeBottom = ({ imgs, conVersion }) => {
             })}
           </Slider>
         </div>
-        <div className={classes.btnDown} onClick={handleClick}>
-          <Image
-            src="/assets/svg/arrow-up.svg"
-            width={24}
-            height={24}
-            alt="arrow-down"
-            className={classes.arrowDown}
-          />
-        </div>
       </div>
-      <Footer conVersion={conVersion} />
+      <Footer conVersion={conVersion} desc={desc} />
     </>
   );
 };
