@@ -17,7 +17,6 @@ const index = ({ isFeedbackVisible, handleToggleFeedback, conVersion }) => {
         const response = await axios.get(API_ROUTES.masterPlan.get);
         setData(response.data);
         setLoading(false);
-        console.log(response.data);
 
         response.data[0].id = "root1";
         response.data[1].id = "root2";

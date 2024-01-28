@@ -45,6 +45,7 @@ const NewsMain = ({ dataNews }) => {
               width={16}
               height={16}
               alt="chevron"
+              layout="responsive"
             />
             <span>News</span>
           </p>

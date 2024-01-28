@@ -35,7 +35,6 @@ const MasterPlanMain = ({ plan, data, elementSelect, conVersion }) => {
     const result = findNodeAndParentsByName(data, singleElemSelecting);
 
     if (result.length > 0) {
-      console.log(result);
       setSelectingElem(() => [result[0].path[0], result[0].title]);
       router.push(
         {
@@ -48,7 +47,6 @@ const MasterPlanMain = ({ plan, data, elementSelect, conVersion }) => {
     }
   }, [singleElemSelecting]);
   useEffect(() => {
-    console.log("I'm here");
     setSelectingElem(data ? [data[pin ? pin - 1 : 0].name] : []);
   }, []);
   //  Toggling to specifc plan
@@ -121,6 +119,7 @@ const MasterPlanMain = ({ plan, data, elementSelect, conVersion }) => {
           <MasterPlan
             singleDesc={singleSelectingDesc}
             singleElem={singleElemSelecting}
+            data={data}
           />
         </div>
       </div>

@@ -24,8 +24,13 @@ const Feedback = ({ isFeedbackVisible, handleToggleFeedback }) => {
     initialValues: initialForms,
     validationSchema: Yup.object({
       name: Yup.string().required("Name is required"),
-      email: Yup.string().email("Invalid email address"),
-      phone: Yup.string(),
+      email: Yup.string()
+        .email("Invalid email address")
+        .required("Email is required"),
+      phone: Yup.string()
+        .required("Phone is required")
+        .matches(/^[0-9]+$/, "Phone number must contain only numbers")
+        .min(11, "Phone number must be more than 11 numbers long"),
       feedbackType: Yup.string().required("Feedback type is required"),
       feedbackTitle: Yup.string().required("Feedback title is required"),
       feedbackMessage: Yup.string().required("Feedback message is required"),
@@ -80,7 +85,9 @@ const Feedback = ({ isFeedbackVisible, handleToggleFeedback }) => {
                 : null
             }`}
           >
-            <label htmlFor="name">Name{formik.errors.name ? "*" : null}</label>
+            <label htmlFor="name">
+              Name{formik.touched.name && formik.errors.name ? "*" : null}
+            </label>
             <input
               type="text"
               id="name"
@@ -96,9 +103,15 @@ const Feedback = ({ isFeedbackVisible, handleToggleFeedback }) => {
           <div
             className={`${classes.inputLabel} ${
               focusedInput === "email" ? classes.inputLabelFocused : null
-            } `}
+            } ${
+              formik.errors.email && formik.touched.email
+                ? classes.inputLabelError
+                : null
+            }`}
           >
-            <label htmlFor="email">Email</label>
+            <label htmlFor="email">
+              Email{formik.touched.email && formik.errors.email ? "*" : null}
+            </label>
             <input
               type="text"
               id="email"
@@ -120,7 +133,9 @@ const Feedback = ({ isFeedbackVisible, handleToggleFeedback }) => {
                 : null
             }`}
           >
-            <label htmlFor="phone">Phone</label>
+            <label htmlFor="phone">
+              Phone{formik.touched.phone && formik.errors.phone ? "*" : null}
+            </label>
             <input
               type="text"
               id="phone"
@@ -140,7 +155,7 @@ const Feedback = ({ isFeedbackVisible, handleToggleFeedback }) => {
               formik.errors.feedbackType && formik.touched.feedbackType
                 ? classes.inputLabelError
                 : null
-            }`}
+            } `}
           >
             <label htmlFor="feedbackType">Feedback Type:</label>
             <select
@@ -171,7 +186,7 @@ const Feedback = ({ isFeedbackVisible, handleToggleFeedback }) => {
             }`}
           >
             <label htmlFor="feedbackTitle">
-              Feedback Title {formik.errors.feedbackTitle ? "*" : ""}
+              Feedback Title {formik.touched.feedbackTitle ? "*" : ""}
             </label>
             <input
               type="text"
@@ -197,7 +212,7 @@ const Feedback = ({ isFeedbackVisible, handleToggleFeedback }) => {
             }`}
           >
             <label htmlFor="feedbackMessage">
-              Feedback Message {formik.errors.feedbackMessage ? "*" : ""}
+              Feedback Message {formik.touched.feedbackMessage ? "*" : ""}
             </label>
             <textarea
               id="feedbackMessage"
@@ -211,7 +226,20 @@ const Feedback = ({ isFeedbackVisible, handleToggleFeedback }) => {
             />
           </div>
 
-          <button className={classes.submitBtn} type="submit">
+          <button
+            className={classes.submitBtn}
+            type="submit"
+            disabled={
+              formik.errors.name ||
+              formik.errors.email ||
+              formik.errors.feedbackMessage ||
+              formik.errors.feedbackTitle ||
+              formik.errors.feedbackType ||
+              formik.errors.phone
+                ? true
+                : false
+            }
+          >
             <p>Submit</p>
           </button>
         </form>

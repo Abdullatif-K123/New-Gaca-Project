@@ -51,25 +51,19 @@
   position: relative;
 }
 .active {
-  color: #0076c7 !important;
-  border-bottom: 2px solid #0076c7 !important;
-}
-.active:hover {
-  color: #0076c7;
-  border-bottom: 2px solid #0076c7 !important;
-  font-weight: 700 !important;
-
-  font-size: 16px !important;
+  color: #005149 !important;
+  text-shadow: 1px 0px;
+  border-bottom: 2px solid #005149 !important;
 }
 
 .secAbout > li {
   color: #b1b1b1;
 }
 .secAbout > li:hover {
-  color: #0076c7 !important;
+  color: #005149 !important;
 }
 .secAbout > li::after {
-  background-color: #0076c7 !important;
+  background-color: #005149 !important;
 }
 .section > li:hover {
   color: #fff;

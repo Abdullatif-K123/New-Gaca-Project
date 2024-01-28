@@ -207,9 +207,9 @@
   width: 100%;
 }
 .feedbackContent > h2 {
-  color: #0076c7;
-  font-family: Montserrat;
-  font-size: 35px;
+  color: #006258;
+  font-family: "DINNext-meduim", sans-serif;
+  font-size: 40px;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
@@ -263,40 +263,51 @@
 .inputLabel > select,
 .inputLabel > textarea::placeholder {
   color: darkgray;
+  cursor: pointer;
 }
 .inputLabelFocused {
-  border-color: #0076c7;
+  border-color: #00685e;
 }
 .inputLabelError {
-  border-color: rgb(224, 7, 7);
+  border-color: rgb(224, 7, 7) !important;
 }
 .submitBtn {
   width: 100%;
   padding: 15px 50px;
-  background-color: #0076c7;
+  background-color: #015f56;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 7px;
   cursor: pointer;
   border: none;
+  transition: all 0.3s ease-in-out;
 }
 .submitBtn:hover {
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Add box shadow */
+  box-shadow: 0 2px 5px #015f56; /* Add box shadow */
 }
 .submitBtn > p {
-  cursor: pointer;
   color: #fff;
-  font-family: Montserrat;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 400;
+  font-family: "DINNext-meduim", sans-serif;
+  font-size: 20px;
   background-color: transparent;
   border: none;
 }
 .submitBtn:hover > button {
   font-size: 19px;
   font-weight: 500;
+}
+.submitBtn[disabled] {
+  background-color: #ccc; /* Change background color */
+
+  opacity: 0.7; /* Reduce opacity to visually indicate it's disabled */
+  cursor: auto; /* Change cursor to indicate it's not clickable */
+}
+.submitBtn[disabled] > p {
+  color: #999;
+}
+.submitBtn[disabled]:hover {
+  box-shadow: none;
 }
 /* Responsive style for less than 1200px */
 @media (max-width: 1250px) {

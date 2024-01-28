@@ -28,7 +28,7 @@
 }
 
 .choosen > p > span:first-child {
-  color: #2980c3;
+  color: #005149;
 }
 .choosen > p > span:hover {
   font-weight: 600;
@@ -42,7 +42,7 @@
   padding: 0 250px;
 }
 .downloadContent > h1 {
-  color: #0076c7;
+  color: #005149;
   font-family: Montserrat;
   font-size: 32px;
   font-style: normal;
@@ -74,7 +74,7 @@
   align-items: center;
 }
 .tableHead > p:last-child {
-  color: #2980c3;
+  color: #006258;
   cursor: pointer;
 }
 /* Media for less than 1150 */

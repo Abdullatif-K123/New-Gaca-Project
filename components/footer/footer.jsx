@@ -9,10 +9,12 @@ import {
   AiFillFacebook,
   AiFillLinkedin,
 } from "react-icons/ai";
+import Link from "next/link";
 
 const Footer = ({ conVersion }) => {
-  const [data, setData] = useState({});
+  const [links, setLinks] = useState([]);
   const [loading, setLoading] = useState(true);
+
   const likeAndOpenLink = (link) => {
     // Perform the action to simulate a "like" (replace with your actual like functionality)
 
@@ -22,17 +24,16 @@ const Footer = ({ conVersion }) => {
   //Getting current year
   var currentDate = new Date();
   var currentYear = currentDate.getFullYear();
+  useEffect(() => {
+    setLinks(conVersion.links);
+  }, [conVersion]);
   const router = useRouter();
   return (
     <div className={classes.footerMain}>
       <div className={classes.footerContentMain}>
         <div className={classes.logoSec}>
           <Image src="/assets/svg/logo-green.svg" width={150} height={50} />
-          <p>
-            Develop the transport system to make the Kingdom a logistics center
-            linking the three continents and promote sustainable economic
-            development and competitiveness adequate to the Saudi Vision 2030{" "}
-          </p>
+          <p>{conVersion.footerDescription}</p>
           <div className={classes.footerCopyRight}>
             <p>
               © {currentYear} {conVersion?.copyright},(V {conVersion?.version})
@@ -40,6 +41,62 @@ const Footer = ({ conVersion }) => {
           </div>
         </div>
         <div className={classes.contentVision}>
+          <div className={classes.visionFooter}>
+            <div className={classes.linksSlogans}>
+              {links?.map((link) => {
+                return (
+                  <Link href={link.linkAddress} key={link.id}>
+                    <p>{link.title}</p>
+                  </Link>
+                );
+              })}
+            </div>
+
+            <Image
+              src="/assets/svg/vision-footer.svg"
+              width={250}
+              height={95}
+              alt="vision"
+              className={classes.visionImg}
+            />
+          </div>
+        </div>
+        <div className={classes.contact}>
+          <h1>Connect With Us</h1>
+          <div className={classes.socialIcons}>
+            <Link
+              href={
+                conVersion?.social?.youTube ? conVersion.social.youTube : "#"
+              }
+              className={classes.icon}
+            >
+              <AiFillYoutube />
+            </Link>
+            <Link
+              href={
+                conVersion?.social?.instgram ? conVersion.social.instgram : "#"
+              }
+              className={classes.icon}
+            >
+              <AiFillInstagram />
+            </Link>
+            <Link
+              href={
+                conVersion?.social?.twitter ? conVersion.social.twitter : "#"
+              }
+              className={classes.icon}
+            >
+              <AiFillTwitterCircle />
+            </Link>
+            <Link
+              href={
+                conVersion?.social?.faceBook ? conVersion.social.faceBook : "#"
+              }
+              className={classes.icon}
+            >
+              <AiFillFacebook style={{ borderRadius: "50%" }} />
+            </Link>
+          </div>
           <ul className={classes.footerContent}>
             <li
               onClick={() => {
@@ -76,35 +133,6 @@ const Footer = ({ conVersion }) => {
               />
             </li>
           </ul>
-          <div className={classes.visionFooter}>
-            <Image
-              src="/assets/svg/vision-footer.svg"
-              width={250}
-              height={95}
-              alt="vision"
-              className={classes.visionImg}
-            />
-          </div>
-        </div>
-        <div className={classes.contact}>
-          <h1>Connect With Us</h1>
-          <div className={classes.socialIcons}>
-            <div className={classes.icon}>
-              <AiFillYoutube />
-            </div>
-            <div className={classes.icon}>
-              <AiFillInstagram />
-            </div>
-            <div className={classes.icon}>
-              <AiFillTwitterCircle />
-            </div>
-            <div className={classes.icon}>
-              <AiFillFacebook style={{ borderRadius: "50%" }} />
-            </div>
-            <div className={classes.icon}>
-              <AiFillLinkedin style={{ borderRadius: "50%" }} />
-            </div>
-          </div>
         </div>
       </div>
     </div>

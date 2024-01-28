@@ -108,7 +108,6 @@ const MasterPlan = ({ layers }) => {
     setHoverElement(id);
     setIsNowHovering(true);
   };
-  console.log(layers);
   const handleMouseOut = () => {
     setHoverElement(null);
     setIsNowHovering(false);
@@ -171,6 +170,7 @@ const MasterPlan = ({ layers }) => {
               height={id.height}
               nowHovering={isNowhovering}
               text={id.text}
+              desc={id.desc}
             />
           );
         })}
