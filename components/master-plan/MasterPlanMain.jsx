@@ -47,7 +47,8 @@ const MasterPlanMain = ({ plan, data, elementSelect, conVersion }) => {
     }
   }, [singleElemSelecting]);
   useEffect(() => {
-    setSelectingElem(data ? [data[pin ? pin - 1 : 0].name] : []);
+    setSelectingElem(data ? [data[pin ? pin - 1 : 0].title] : []);
+    setSignelDesc(data ? data[pin ? pin - 1 : 0].descripton : "");
   }, []);
   //  Toggling to specifc plan
 
@@ -119,7 +120,6 @@ const MasterPlanMain = ({ plan, data, elementSelect, conVersion }) => {
           <MasterPlan
             singleDesc={singleSelectingDesc}
             singleElem={singleElemSelecting}
-            data={data}
           />
         </div>
       </div>

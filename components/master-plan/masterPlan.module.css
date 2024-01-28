@@ -72,8 +72,8 @@
 /* Sytling for selecting elemtns */
 
 .choosen > p {
-  color: #2980c3;
-  font-family: Montserrat;
+  color: #005149;
+  font-family: "DINNext-meduim", sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
@@ -88,7 +88,7 @@
   color: #000;
 }
 .choosen > p > span:hover {
-  font-weight: 600;
+  text-shadow: 1px 0px;
 }
 /* Master plan content */
 .sideContent {
