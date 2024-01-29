@@ -272,6 +272,52 @@
   font-weight: 400;
   line-height: normal;
 }
+.customSelect {
+  min-width: 350px !important;
+  position: relative;
+  padding: 0px;
+}
+.customSelect > label {
+  padding: 12px 0px 5px 10px;
+}
+.customSelect > select {
+  appearance: none;
+  /*  safari  */
+  -webkit-appearance: none;
+  padding: 12px 10px;
+  /*  other styles for aesthetics */
+  width: 100% !important;
+  font-size: 1.15rem;
+  padding: 0.675em 6em 0.675em 1em;
+  background-color: #fff !important;
+  border: 1px solid #caced1;
+  border-radius: 0.25rem;
+  color: #000;
+  cursor: pointer;
+}
+.customSelect::before,
+.customSelect::after {
+  --size: 0.3rem;
+  content: "";
+  position: absolute;
+  right: 1rem;
+  pointer-events: none;
+}
+
+.customSelect::before {
+  border-left: var(--size) solid transparent;
+  border-right: var(--size) solid transparent;
+  border-bottom: var(--size) solid black;
+  top: 40%;
+}
+
+.customSelect::after {
+  border-left: var(--size) solid transparent;
+  border-right: var(--size) solid transparent;
+  border-top: var(--size) solid black;
+  top: 55%;
+}
+
 .inputLabel > input,
 .inputLabel > select,
 .inputLabel > textarea {

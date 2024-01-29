@@ -67,12 +67,12 @@ const NewsMain = ({ dataNews }) => {
             pageCount={Math.ceil(news.length / itemsPerPage)}
             breakLabel="..."
             previousLabel={
-              <IconContext.Provider value={{ color: "#B8C1CC", size: "36px" }}>
+              <IconContext.Provider value={{ color: "#00685e", size: "36px" }}>
                 <AiFillLeftCircle />
               </IconContext.Provider>
             }
             nextLabel={
-              <IconContext.Provider value={{ color: "#B8C1CC", size: "36px" }}>
+              <IconContext.Provider value={{ color: "#00685e", size: "36px" }}>
                 <AiFillRightCircle />
               </IconContext.Provider>
             }

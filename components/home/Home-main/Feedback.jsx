@@ -166,7 +166,7 @@ const Feedback = ({ isFeedbackVisible, handleToggleFeedback }) => {
               formik.errors.feedbackType && formik.touched.feedbackType
                 ? classes.inputLabelError
                 : null
-            } `}
+            } ${classes.customSelect} `}
           >
             <label htmlFor="feedbackType">Feedback Type:</label>
             <select

@@ -34,7 +34,7 @@
 }
 
 .choosen > p > span:first-child {
-  color: #2980c3;
+  color: #00685e;
 }
 .choosen > p > span:hover {
   font-weight: 600;
@@ -54,8 +54,8 @@
 }
 .newsSection > h1 {
   color: #000;
-  font-family: Montserrat;
-  font-size: 32px;
+  font-family: "DINNext-meduim", sans-serif;
+  font-size: 34px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
@@ -168,7 +168,7 @@
   background-color: #eee;
 }
 .paginationLink.active {
-  background-color: #007bff;
+  background-color: #00685e;
   color: #fff;
 }
 .pagination {
@@ -184,7 +184,7 @@
 
 .active {
   border-radius: 50%;
-  border: 2px dotted #1e50ff;
+  border: 2px dotted #00685e;
   color: #1e50ff;
 }
 

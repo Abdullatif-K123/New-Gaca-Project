@@ -16,7 +16,7 @@
 
 .choosen > p {
   color: #000;
-  font-family: Montserrat;
+  font-family: "DINNext-meduim", sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
@@ -28,10 +28,10 @@
 }
 
 .choosen > p > span:first-child {
-  color: #2980c3;
+  color: #015f56;
 }
 .choosen > p > span:hover {
-  font-weight: 600;
+  text-shadow: 1px 0px;
 }
 .aboutSection {
   display: flex;
@@ -46,7 +46,7 @@
 }
 .aboutContent > h1 {
   color: #000;
-  font-family: Montserrat;
+  font-family: "DINNext-meduim", sans-serif;
   font-size: 32px;
   font-style: normal;
   font-weight: 700;
@@ -174,7 +174,7 @@
 .sec1Header > p {
   color: #000;
   text-align: center;
-  font-family: Montserrat;
+  font-family: "DINNext-meduim", sans-serif;
   font-size: 24px;
   font-style: normal;
   font-weight: 700;
