@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import classes from "./home-one.module.css";
 import Image from "next/image";
 import { useFormik } from "formik";
@@ -9,6 +9,7 @@ import toast, { Toaster } from "react-hot-toast";
 const Feedback = ({ isFeedbackVisible, handleToggleFeedback }) => {
   const notify = () => toast("Your feedback has been sent.", { icon: "👏" });
   const [focusedInput, setFocusedInput] = useState(null);
+  const [sendFeedback, setSendFeedback] = useState(false);
   const [initialForms, setInitialForms] = useState({
     name: "",
     email: "",
@@ -20,6 +21,7 @@ const Feedback = ({ isFeedbackVisible, handleToggleFeedback }) => {
   const handleInputFocus = (inputName) => {
     setFocusedInput(inputName);
   };
+  const inputRef = useRef("");
   const formik = useFormik({
     initialValues: initialForms,
     validationSchema: Yup.object({
@@ -38,6 +40,7 @@ const Feedback = ({ isFeedbackVisible, handleToggleFeedback }) => {
     onSubmit: async (values) => {
       // Handle form submission here
       console.log(values);
+      setSendFeedback(true);
       try {
         const response = await axios.post(API_ROUTES.feedback.post, {
           name: values.name,
@@ -52,6 +55,7 @@ const Feedback = ({ isFeedbackVisible, handleToggleFeedback }) => {
       } catch (error) {
         console.log(error);
       }
+      setSendFeedback(false);
     },
   });
   useEffect(() => {
@@ -92,6 +96,7 @@ const Feedback = ({ isFeedbackVisible, handleToggleFeedback }) => {
               type="text"
               id="name"
               name="name"
+              ref={inputRef}
               placeholder="Name"
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
@@ -99,7 +104,9 @@ const Feedback = ({ isFeedbackVisible, handleToggleFeedback }) => {
               onFocus={() => handleInputFocus("name")}
             />
           </div>
-
+          {formik.touched.name && formik.errors.name && (
+            <span className={classes.errorMessage}>{formik.errors.name}</span>
+          )}
           <div
             className={`${classes.inputLabel} ${
               focusedInput === "email" ? classes.inputLabelFocused : null
@@ -123,7 +130,9 @@ const Feedback = ({ isFeedbackVisible, handleToggleFeedback }) => {
               onFocus={() => handleInputFocus("email")}
             />
           </div>
-
+          {formik.touched.email && formik.errors.email && (
+            <span className={classes.errorMessage}>{formik.errors.email}</span>
+          )}
           <div
             className={`${classes.inputLabel} ${
               focusedInput === "phone" ? classes.inputLabelFocused : null
@@ -147,7 +156,9 @@ const Feedback = ({ isFeedbackVisible, handleToggleFeedback }) => {
               onFocus={() => handleInputFocus("phone")}
             />
           </div>
-
+          {formik.touched.phone && formik.errors.phone && (
+            <span className={classes.errorMessage}>{formik.errors.phone}</span>
+          )}
           <div
             className={`${classes.inputLabel} ${
               focusedInput === "feedbackType" ? classes.inputLabelFocused : null
@@ -173,7 +184,11 @@ const Feedback = ({ isFeedbackVisible, handleToggleFeedback }) => {
               <option value={3} label="Other" />
             </select>
           </div>
-
+          {formik.touched.feedbackType && formik.errors.feedbackType && (
+            <span className={classes.errorMessage}>
+              {formik.errors.feedbackType}
+            </span>
+          )}
           <div
             className={`${classes.inputLabel} ${
               focusedInput === "feedbackTitle"
@@ -186,7 +201,10 @@ const Feedback = ({ isFeedbackVisible, handleToggleFeedback }) => {
             }`}
           >
             <label htmlFor="feedbackTitle">
-              Feedback Title {formik.touched.feedbackTitle ? "*" : ""}
+              Feedback Title{" "}
+              {formik.touched.feedbackTitle && formik.errors.feedbackTitle
+                ? "*"
+                : ""}
             </label>
             <input
               type="text"
@@ -199,7 +217,11 @@ const Feedback = ({ isFeedbackVisible, handleToggleFeedback }) => {
               onFocus={() => handleInputFocus("feedbackTitle")}
             />
           </div>
-
+          {formik.touched.feedbackTitle && formik.errors.feedbackTitle && (
+            <span className={classes.errorMessage}>
+              {formik.errors.feedbackTitle}
+            </span>
+          )}
           <div
             className={`${classes.inputLabel} ${
               focusedInput === "feedbackMessage"
@@ -212,7 +234,10 @@ const Feedback = ({ isFeedbackVisible, handleToggleFeedback }) => {
             }`}
           >
             <label htmlFor="feedbackMessage">
-              Feedback Message {formik.touched.feedbackMessage ? "*" : ""}
+              Feedback Message{" "}
+              {formik.touched.feedbackMessage && formik.errors.feedbackMessage
+                ? "*"
+                : ""}
             </label>
             <textarea
               id="feedbackMessage"
@@ -225,7 +250,11 @@ const Feedback = ({ isFeedbackVisible, handleToggleFeedback }) => {
               onFocus={() => handleInputFocus("feedbackMessage")}
             />
           </div>
-
+          {formik.touched.feedbackMessage && formik.errors.feedbackMessage && (
+            <span className={classes.errorMessage}>
+              {formik.errors.feedbackMessage}
+            </span>
+          )}
           <button
             className={classes.submitBtn}
             type="submit"
@@ -235,7 +264,9 @@ const Feedback = ({ isFeedbackVisible, handleToggleFeedback }) => {
               formik.errors.feedbackMessage ||
               formik.errors.feedbackTitle ||
               formik.errors.feedbackType ||
-              formik.errors.phone
+              formik.errors.phone ||
+              !inputRef.current.value ||
+              sendFeedback
                 ? true
                 : false
             }
