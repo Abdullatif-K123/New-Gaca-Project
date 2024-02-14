@@ -27,7 +27,7 @@ const SectionOne = ({ isFeedbackVisible, title, desc }) => {
       </div>
       <div className={classes.sectionTwo}>
         <Image
-          src="/assets/svg/landing-page-cover.svg"
+          src="/assets/imges/landing-page-cover.png"
           width={690}
           height={510}
           className={classes.streetPlane}

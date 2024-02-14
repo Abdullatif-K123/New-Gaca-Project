@@ -54,13 +54,13 @@
 }
 .masterPlanInfoDesc {
   position: absolute;
-  margin-top: 225px;
+  margin-top: 200px;
   margin-left: 70px;
   width: 100%;
   text-align: left !important;
 }
 .masterPlanInfoDescUp {
-  margin-top: -225px !important;
+  margin-top: -200px !important;
   margin-left: 0px !important;
 }
 .masterPlanInfoDescLeft {

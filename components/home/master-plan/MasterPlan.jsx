@@ -49,7 +49,7 @@ const Element = ({
             <p
               className={`${classes.masterPlanInfoDesc} ${classes.masterPlanInfoDescLeft}`}
             >
-              {desc}
+              {desc.slice(0, 200)}...
             </p>
           )}
         </div>
@@ -93,7 +93,7 @@ const Element = ({
                 id == 5 ? classes.masterPlanInfoDescUp : null
               }`}
             >
-              {desc}
+              {desc.slice(0, 200)}...
             </p>
           )}
         </div>
@@ -119,7 +119,7 @@ const MasterPlan = ({ layers }) => {
         {[
           {
             idnum: 1,
-            imgsrc: "/assets/svg/1-green.svg",
+            imgsrc: "/assets/svg/light-green1.svg",
             width: 130,
             height: 130,
             text: layers[0].title,
@@ -127,7 +127,7 @@ const MasterPlan = ({ layers }) => {
           },
           {
             idnum: 2,
-            imgsrc: "/assets/svg/2-green.svg",
+            imgsrc: "/assets/svg/light-green2.svg",
             width: 250,
             height: 110,
             text: layers[1].title,
@@ -135,7 +135,7 @@ const MasterPlan = ({ layers }) => {
           },
           {
             idnum: 3,
-            imgsrc: "/assets/svg/3-green.svg",
+            imgsrc: "/assets/svg/light-green3.svg",
             width: 400,
             height: 110,
             text: layers[2].title,
@@ -143,7 +143,7 @@ const MasterPlan = ({ layers }) => {
           },
           {
             idnum: 4,
-            imgsrc: "/assets/svg/4-green.svg",
+            imgsrc: "/assets/svg/light-green4.svg",
             width: 525,
             height: 110,
             text: layers[3].title,
@@ -151,7 +151,7 @@ const MasterPlan = ({ layers }) => {
           },
           {
             idnum: 5,
-            imgsrc: "/assets/svg/5-green.svg",
+            imgsrc: "/assets/svg/light-green5.svg",
             width: 650,
             height: 110,
             text: layers[4].title,
