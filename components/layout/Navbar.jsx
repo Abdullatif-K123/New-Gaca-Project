@@ -130,6 +130,7 @@ const Navbar = ({ isFeedbackVisible, handleToggleFeedback, conVersion }) => {
             }`}
             onClick={handleToggleFeedback}
           >
+            <p className={classes.language}>AR</p>
             <div className={classes.vision}>
               {!aboutPath && (
                 <Image

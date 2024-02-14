@@ -8,7 +8,6 @@ import ReactPaginate from "react-paginate";
 import { AiFillLeftCircle, AiFillRightCircle } from "react-icons/ai";
 import { IconContext } from "react-icons";
 const NewsMain = ({ dataNews }) => {
-  const [startIndex, setStartIndex] = useState(0);
   const [currentPage, setCurrentPage] = useState(0);
   const [leftRight, setLeftRight] = useState("left");
   const [filterData, setFilterData] = useState([]);

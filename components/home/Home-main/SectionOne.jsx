@@ -27,12 +27,12 @@ const SectionOne = ({ isFeedbackVisible, title, desc }) => {
       </div>
       <div className={classes.sectionTwo}>
         <Image
-          src="/assets/svg/airportstreet.svg"
-          width={925}
-          height={550}
+          src="/assets/svg/landing-page-cover.svg"
+          width={690}
+          height={510}
           className={classes.streetPlane}
         />
-        {isFeedbackVisible ? null : (
+        {/* {isFeedbackVisible ? null : (
           <>
             <Image
               src="/assets/svg/streetbeauty.svg"
@@ -53,7 +53,7 @@ const SectionOne = ({ isFeedbackVisible, title, desc }) => {
               className={classes.planeAnimatedtwo}
             />
           </>
-        )}
+        )} */}
       </div>
       <div className={classes.btnDown} onClick={handleClick}>
         <Image
@@ -64,7 +64,7 @@ const SectionOne = ({ isFeedbackVisible, title, desc }) => {
           className={classes.arrowDown}
         />
       </div>
-      <div className={classes.semicircle}></div>
+      {/* <div className={classes.semicircle}></div> */}
     </div>
   );
 };

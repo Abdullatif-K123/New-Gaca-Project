@@ -1,18 +1,23 @@
 /* Styling for section one in the home page */
 .sectionOne {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   align-items: center;
   justify-content: center;
-  padding: 50px 0 20px 60px;
-  background: linear-gradient(180deg, #00685e 0%, #00685e 100%),
-    linear-gradient(180deg, #00685e 0%, #00685e 100%),
-    linear-gradient(98deg, #00685e 20.86%, #00685e 37.28%, #00685e 91.31%);
+  padding: 20px 0px 20px 60px;
+  background-image: url("../../../public/assets/imges/landing-page-background.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #1c7a54;
   height: calc(100vh - 111px);
 }
 .secOneContect {
+  justify-self: center;
   display: flex;
   flex-direction: column;
-  row-gap: 30px;
+  row-gap: 25px;
+  width: 80%;
   position: relative;
   z-index: 10;
 }
@@ -149,13 +154,16 @@
 .btnDown {
   position: absolute;
   bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
   border-radius: 24.5px;
   background: linear-gradient(
     180deg,
     rgba(0, 0, 0, 0.2) 0%,
     rgba(0, 0, 0, 0) 100%
   );
-  padding: 36px 15px;
+  padding: 30px 12px;
   cursor: pointer;
 }
 @keyframes bounce {
