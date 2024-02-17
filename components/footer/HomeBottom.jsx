@@ -4,9 +4,10 @@ import Footer from "./footer";
 import Slider from "react-infinite-logo-slider";
 import { API_ROUTES } from "@/utils/apiConfig";
 import NewsLandingpage from "./NewsLandingpage";
+import Image from "next/image";
 const HomeBottom = ({ imgs, conVersion, desc, news }) => {
   const [sliderWidth, setSliderWidth] = useState("180px");
-
+  const [leftRight, setLeftRight] = useState(false);
   useEffect(() => {
     const handleResize = () => {
       // Adjust the width based on the screen size
@@ -32,14 +33,33 @@ const HomeBottom = ({ imgs, conVersion, desc, news }) => {
             <span>Our</span> Stackholders
           </h2>
         </div>
-
+        <div className={classes.stakholderArrows}>
+          <Image
+            src="assets/svg/stackholderArrow.svg"
+            width={25}
+            height={25}
+            alt="ArrowLeft"
+            onClick={() => {
+              setLeftRight(false);
+            }}
+          />
+          <Image
+            src="assets/svg/stackholderArrow.svg"
+            width={25}
+            height={25}
+            alt="ArrowLeft"
+            onClick={() => {
+              setLeftRight(true);
+            }}
+          />
+        </div>
         <div className={classes.partners}>
           <Slider
             width={sliderWidth}
             duration={15}
             pauseOnHover={true}
             blurBorders={true}
-            toRight={false}
+            toRight={leftRight}
           >
             {imgs.map((stakholder) => {
               return (

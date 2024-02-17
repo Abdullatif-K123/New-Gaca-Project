@@ -14,7 +14,7 @@ import Link from "next/link";
 const Footer = ({ conVersion }) => {
   const [links, setLinks] = useState([]);
   const [loading, setLoading] = useState(true);
-
+  console.log(conVersion);
   const likeAndOpenLink = (link) => {
     // Perform the action to simulate a "like" (replace with your actual like functionality)
 
@@ -51,14 +51,29 @@ const Footer = ({ conVersion }) => {
                 );
               })}
             </div>
-
-            <Image
-              src="/assets/svg/vision-footer.svg"
-              width={250}
-              height={95}
-              alt="vision"
-              className={classes.visionImg}
-            />
+            <div className={classes.footerVisions}>
+              <Image
+                src="/assets/svg/vision-footer.svg"
+                width={140}
+                height={50}
+                alt="vision"
+                className={classes.visionImg}
+              />
+              <Image
+                src="/assets/svg/vision-2030.svg"
+                width={140}
+                height={50}
+                alt="vision"
+                className={classes.visionImg}
+              />
+              <Image
+                src="/assets/svg/gov-sa.svg"
+                width={140}
+                height={50}
+                alt="vision"
+                className={classes.visionImg}
+              />
+            </div>
           </div>
         </div>
         <div className={classes.contact}>
@@ -66,11 +81,16 @@ const Footer = ({ conVersion }) => {
           <div className={classes.socialIcons}>
             <Link
               href={
-                conVersion?.social?.youTube ? conVersion.social.youTube : "#"
+                conVersion?.social?.faceBook ? conVersion.social.faceBook : "#"
               }
               className={classes.icon}
             >
-              <AiFillYoutube />
+              <Image
+                src="assets/svg/ico-facebook.svg"
+                alt="facebook"
+                width={24}
+                height={24}
+              />
             </Link>
             <Link
               href={
@@ -78,7 +98,12 @@ const Footer = ({ conVersion }) => {
               }
               className={classes.icon}
             >
-              <AiFillInstagram />
+              <Image
+                src="assets/svg/ico-instgram.svg"
+                alt="facebook"
+                width={24}
+                height={24}
+              />
             </Link>
             <Link
               href={
@@ -86,15 +111,25 @@ const Footer = ({ conVersion }) => {
               }
               className={classes.icon}
             >
-              <AiFillTwitterCircle />
+              <Image
+                src="assets/svg/xIcon.svg"
+                alt="facebook"
+                width={24}
+                height={24}
+              />
             </Link>
             <Link
               href={
-                conVersion?.social?.faceBook ? conVersion.social.faceBook : "#"
+                conVersion?.social?.youTube ? conVersion.social.youTube : "#"
               }
               className={classes.icon}
             >
-              <AiFillFacebook style={{ borderRadius: "50%" }} />
+              <Image
+                src="assets/svg/ico-youtube.svg"
+                alt="facebook"
+                width={24}
+                height={24}
+              />
             </Link>
           </div>
           <ul className={classes.footerContent}>

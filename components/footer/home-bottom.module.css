@@ -9,6 +9,18 @@
   background-color: #fff;
   position: relative;
 }
+.stakholderArrows {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.stakholderArrows > img {
+  cursor: pointer;
+}
+.stakholderArrows > img:first-child {
+  transform: rotate(180deg);
+}
 .bottomLogo {
   display: flex;
   flex-direction: column;
@@ -54,10 +66,14 @@
 
 /* Styling footer */
 .footerMain {
-  background-color: #00685e;
+  width: 100%;
+  height: 100%;
 }
 .footerContentMain {
+  background: linear-gradient(to right, #1c7a54 100%, #3d9e7b 100%);
+  background-color: #3d9e7b;
   height: 100%;
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
@@ -65,7 +81,6 @@
   column-gap: 100px;
   padding: 40px 70px;
   column-gap: 100px;
-  background-image: url("../../public/assets/imges/bac-footaer.png"); /* Replace 'your-image.jpg' with the URL or path to your image */
   background-size: 65% auto;
   background-repeat: no-repeat;
   background-position: left top;
@@ -141,18 +156,17 @@
 .contact {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
   gap: 20px;
 }
 .contact > h1 {
   font-family: "DINNext-medium", sans-serif;
   margin-top: -9px;
+  font-size: 22px;
 }
 .socialIcons {
   display: flex;
   align-items: center;
-  justify-content: center;
 
   gap: 10px;
 }
@@ -165,15 +179,22 @@
 .icon:hover {
   color: #e59256;
 }
+.footerVisions {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  margin-top: 20px;
+}
 /* Slogans */
 .linksSlogans {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-  font-family: "DINNext-medium", sans-serif !important;
+  gap: 2px;
+  font-family: "DINNext-Light", sans-serif !important;
   font-size: 1rem;
-  text-align: center;
+  text-decoration: underline;
   margin-bottom: 10px;
+  margin-left: 12px;
 }
 
 @media (max-width: 1125px) {
