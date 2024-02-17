@@ -72,6 +72,7 @@ const HomePage = ({ isFeedbackVisible, handleToggleFeedback, conVersion }) => {
       />
       <MasterPlan layers={data?.masterPlan} />
       <HomeBottom
+        news={data?.news}
         imgs={data?.stakeHolder}
         conVersion={conVersion}
         desc={heroDescription}

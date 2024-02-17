@@ -116,6 +116,10 @@ body::-webkit-scrollbar-thumb {
   font-family: "DINNext-Regular";
   src: url("../public/fonts/DINNextW1G-Regular.otf") format("opentype");
 }
+@font-face {
+  font-family: "DINNext-Light";
+  src: url("../public/fonts/DINNextW1G-Light.otf") format("opentype");
+}
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(

@@ -63,6 +63,7 @@
 .newsArrow {
   position: absolute;
   left: -50px;
+  z-index: 20;
   display: inline-flex;
   padding: 11.957px;
   align-items: flex-start;
@@ -197,6 +198,31 @@
   justify-content: center;
   align-items: center;
   margin-top: 2px;
+}
+/* Styling for news in landing page */
+.newsHeader {
+  display: flex;
+  flex-direction: column;
+  row-gap: 30px;
+}
+.newsTopHeading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #1c7a54;
+}
+.newsTopHeading > h3 {
+  font-family: "DINNext-Regular", sans-serif;
+  font-size: 24px;
+}
+.newsTopHeading > h3 > span {
+  font-family: "DINNext-Bold", sans-serif;
+  color: #000;
+}
+.newsTopHeading > a {
+  text-decoration: underline;
+  font-size: 16px;
+  font-family: "DINNext-Light", sans-serif;
 }
 /* Responsive for less than 1350px */
 @media (max-width: 1350px) {

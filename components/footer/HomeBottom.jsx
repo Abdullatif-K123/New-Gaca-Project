@@ -3,7 +3,8 @@ import classes from "./home-bottom.module.css";
 import Footer from "./footer";
 import Slider from "react-infinite-logo-slider";
 import { API_ROUTES } from "@/utils/apiConfig";
-const HomeBottom = ({ imgs, conVersion, desc }) => {
+import NewsLandingpage from "./NewsLandingpage";
+const HomeBottom = ({ imgs, conVersion, desc, news }) => {
   const [sliderWidth, setSliderWidth] = useState("180px");
 
   useEffect(() => {
@@ -26,6 +27,7 @@ const HomeBottom = ({ imgs, conVersion, desc }) => {
     <>
       <div className={classes.homeBottomMain} id="stakeholder">
         <div className={classes.bottomLogo}>
+          <NewsLandingpage news={news} />
           <h2>
             <span>Our</span> Stackholders
           </h2>
