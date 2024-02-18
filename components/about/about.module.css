@@ -3,9 +3,7 @@
   display: flex;
   flex-direction: column;
   row-gap: 35px;
-  padding: 32px 81px;
   height: 100%;
-  background-image: url("/assets/svg/mapWorld.svg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -13,7 +11,23 @@
   position: relative;
   color: #000;
 }
-
+.choosen {
+  background-image: url("../../public/assets/imges/about-background.png");
+  background-size: cover;
+  background-position: bottom;
+  padding: 32px 81px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  gap: 20px;
+}
+.choosen > h1 {
+  font-size: 48px;
+  color: #fff;
+  font-family: Montserrat;
+}
 .choosen > p {
   color: #000;
   font-family: "DINNext-meduim", sans-serif;
@@ -28,166 +42,70 @@
 }
 
 .choosen > p > span:first-child {
-  color: #015f56;
+  color: #fff;
 }
 .choosen > p > span:hover {
   text-shadow: 1px 0px;
 }
 .aboutSection {
   display: flex;
-
-  justify-content: space-between;
-  column-gap: 300px;
+  padding: 32px 81px;
+  justify-content: space-around;
+  align-items: center;
+  column-gap: 50px;
 }
-.aboutContent {
+.content {
   display: flex;
   flex-direction: column;
-  row-gap: 40px;
+  font-family: "DINNext-light", sans-serif;
+  gap: 15px;
 }
-.aboutContent > h1 {
-  color: #000;
-  font-family: "DINNext-meduim", sans-serif;
-  font-size: 32px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
+.content > h1 {
+  font-family: "DINNext-medium", sans-serif;
 }
-.moreInfo {
+.visionMission {
+  padding: 32px 81px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-self: center;
+  justify-self: center;
+  gap: 100px;
+}
+.vision {
   display: flex;
   flex-direction: column;
-  row-gap: 32px;
-  margin-top: -32px;
-  text-align: justify;
-}
-.moreInfo > p {
-  color: #000;
-  font-family: Montserrat;
+  gap: 25px;
   font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 25px;
+  font-family: "DINNext-light", sans-serif;
 }
-.moreInfo > p > span {
-  color: #0076c9;
-  font-family: Montserrat;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 25px; /* 178.571% */
-}
-.worldImages {
-  position: relative;
-}
-.earth {
-  margin-top: 10px;
-  position: relative;
-  z-index: 2;
-}
-.clouds {
-  position: absolute;
-  top: 0;
-  right: -10px;
-  z-index: 1;
-  animation: cloudMoving 2s linear infinite;
-}
-.cloudsmore {
-  position: absolute;
-  top: 0;
-  right: -10px;
-  z-index: 2;
-  animation: cloudMoving 2s linear infinite;
-}
-.plane {
-  position: absolute;
-  top: 200px;
-  right: 0;
-  z-index: 3;
-  animation: movePlane 4s linear infinite;
-}
-@keyframes movePlane {
-  0% {
-    top: 200px;
-    right: -50px;
-    width: 50px;
-    height: 50px;
-    opacity: 0;
-  }
-
-  25% {
-    right: 50px;
-    top: 150px;
-    width: 150px;
-    height: 150px;
-    opacity: 1;
-  }
-  50% {
-    right: 150px;
-    top: 100px;
-    width: 200px;
-    height: 200px;
-    opacity: 1;
-  }
-  75% {
-    right: 225px;
-    top: 70px;
-    width: 200px;
-    height: 200px;
-    opacity: 1;
-  }
-  100% {
-    right: 300px;
-    top: 50px;
-
-    width: 200px;
-    height: 200px;
-    opacity: 0;
-  }
-}
-@keyframes cloudMoving {
-  0% {
-    transform: translateX(30px);
-  }
-
-  50% {
-    transform: translateX(0px);
-  }
-  100% {
-    transform: translateX(30px);
-  }
-}
-/* Styling Section for About section info */
-.aboutSec1 {
-  display: flex;
-  flex-direction: column;
-  row-gap: 25px;
-}
-.sec1Header {
-  display: flex;
-  align-items: flex-end;
-  column-gap: 5px;
-}
-.planeImg {
-  display: flex;
-  align-items: flex-end;
-  margin-bottom: -5px;
-}
-.sec1Header > p {
-  color: #000;
-  text-align: center;
+.vision > h1 {
   font-family: "DINNext-meduim", sans-serif;
   font-size: 24px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
 }
-
-.aboutSec1 > p {
-  color: #000;
+.strategic {
+  padding: 42px 81px;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+.strategiContent {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  font-family: "DINNext-medium", sans-serif;
+  font-size: 15px;
+  gap: 20px;
+}
+.singleStrategic {
+  display: flex;
   font-family: Montserrat;
-  font-size: 14px;
-  font-style: normal;
   font-weight: 500;
-  line-height: 25px; /* 178.571% */
+  font-size: 14px;
+  line-height: 1.3em;
+  gap: 5px;
+}
+.strategicImg {
+  justify-self: flex-end;
+  align-self: center;
 }
 /* Responsive web designs for less than 1275px */
 @media (max-width: 1270px) {

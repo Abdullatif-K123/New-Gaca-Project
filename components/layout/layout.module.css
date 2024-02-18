@@ -49,7 +49,6 @@
   position: relative;
 }
 .active {
-  color: #005149 !important;
   text-shadow: 1px 0px;
   border-bottom: 2px solid #005149 !important;
 }

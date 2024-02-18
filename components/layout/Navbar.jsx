@@ -14,7 +14,7 @@ const Navbar = ({ isFeedbackVisible, handleToggleFeedback, conVersion }) => {
   const router = useRouter();
   const path = router.pathname.split("/").pop();
 
-  const aboutPath = path.length > 2;
+  const aboutPath = false;
   const likeAndOpenLink = (link) => {
     // Perform the action to simulate a "like" (replace with your actual like functionality)
 

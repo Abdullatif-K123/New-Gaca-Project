@@ -2,13 +2,6 @@ import React, { useEffect, useState } from "react";
 import classes from "./home-bottom.module.css";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import {
-  AiFillYoutube,
-  AiFillInstagram,
-  AiFillTwitterCircle,
-  AiFillFacebook,
-  AiFillLinkedin,
-} from "react-icons/ai";
 import Link from "next/link";
 
 const Footer = ({ conVersion }) => {
