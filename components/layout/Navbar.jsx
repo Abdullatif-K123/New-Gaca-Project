@@ -3,9 +3,21 @@ import classes from "./layout.module.css";
 import Image from "next/image";
 import Feedback from "../home/Home-main/Feedback";
 import { useRouter } from "next/router";
+import DialogModal from "../ui/DialogModal";
 const Navbar = ({ isFeedbackVisible, handleToggleFeedback, conVersion }) => {
   // creating function menu hamburger
+  console.log(conVersion);
   const [addClass, setAddClass] = useState(false);
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   const mobileMenu = () => {
     const hamburger = document.querySelector(".hamburger");
     hamburger.classList.toggle("active");
@@ -14,7 +26,7 @@ const Navbar = ({ isFeedbackVisible, handleToggleFeedback, conVersion }) => {
   const router = useRouter();
   const path = router.pathname.split("/").pop();
 
-  const aboutPath = false;
+  const aboutPath = path.length > 2;
   const likeAndOpenLink = (link) => {
     // Perform the action to simulate a "like" (replace with your actual like functionality)
 
@@ -36,20 +48,12 @@ const Navbar = ({ isFeedbackVisible, handleToggleFeedback, conVersion }) => {
         }}
         id="home"
       >
-        <nav
-          className={`${classes.navMain} ${
-            aboutPath ? classes.aboutNav : null
-          }`}
-        >
+        <nav className={`${classes.navMain}  `}>
           <div className={classes.logo}>
             <Image
-              src={
-                aboutPath
-                  ? "/assets/svg/LogoAbout.svg"
-                  : "/assets/svg/logo-green.svg"
-              }
+              src={"/assets/svg/logo-green.svg"}
               width={140}
-              height={aboutPath ? 64 : 47}
+              height={47}
               alt="logo"
               onClick={() => {
                 router.push("/");
@@ -61,11 +65,7 @@ const Navbar = ({ isFeedbackVisible, handleToggleFeedback, conVersion }) => {
               addClass ? classes.navContentHam : null
             }`}
           >
-            <ul
-              className={`${classes.section} ${
-                aboutPath ? classes.secAbout : null
-              }`}
-            >
+            <ul className={`${classes.section}  `}>
               <li
                 onClick={() => {
                   mobileMenu();
@@ -105,16 +105,12 @@ const Navbar = ({ isFeedbackVisible, handleToggleFeedback, conVersion }) => {
               <li
                 onClick={() => {
                   mobileMenu();
-                  likeAndOpenLink(conVersion.constructor);
+                  handleClickOpen();
                 }}
               >
                 Constructor{" "}
                 <Image
-                  src={
-                    aboutPath
-                      ? "/assets/svg/share1Gray.svg"
-                      : "/assets/svg/share1.svg"
-                  }
+                  src={"/assets/svg/share1.svg"}
                   width={17}
                   height={17}
                   className={classes.imgMini}
@@ -132,14 +128,12 @@ const Navbar = ({ isFeedbackVisible, handleToggleFeedback, conVersion }) => {
           >
             <p className={classes.language}>AR</p>
             <div className={classes.vision}>
-              {!aboutPath && (
-                <Image
-                  src={"/assets/svg/vision-2030.svg"}
-                  width={98}
-                  height={67}
-                  alt="vision-2030"
-                />
-              )}
+              <Image
+                src={"/assets/svg/vision-2030.svg"}
+                width={98}
+                height={67}
+                alt="vision-2030"
+              />
             </div>
             <div className={classes.btnFeedback} onClick={mobileMenu}>
               <Image
@@ -152,12 +146,17 @@ const Navbar = ({ isFeedbackVisible, handleToggleFeedback, conVersion }) => {
             </div>
           </div>
           <div className="hamburger" onClick={mobileMenu}>
-            <span className={`bar ${aboutPath ? "aboutBar" : null}`}></span>
-            <span className={`bar ${aboutPath ? "aboutBar" : null}`}></span>
-            <span className={`bar ${aboutPath ? "aboutBar" : null}`}></span>
+            <span className={`bar  `}></span>
+            <span className={`bar  `}></span>
+            <span className={`bar `}></span>
           </div>
         </nav>
       </div>
+      <DialogModal
+        open={open}
+        handleClose={handleClose}
+        openLink={likeAndOpenLink}
+      />
       <Feedback
         isFeedbackVisible={isFeedbackVisible}
         handleToggleFeedback={handleToggleFeedback}

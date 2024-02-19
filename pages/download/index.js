@@ -25,6 +25,7 @@ const index = ({ isFeedbackVisible, handleToggleFeedback, conVersion }) => {
   if (loading) {
     return <LoadingSpinner />;
   }
+
   return (
     <div
       onClick={() => {
@@ -38,6 +39,7 @@ const index = ({ isFeedbackVisible, handleToggleFeedback, conVersion }) => {
       }}
     >
       <Downloads data={data} />
+
       <Footer conVersion={conVersion} />
     </div>
   );

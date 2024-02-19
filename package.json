@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@mui/material": "^5.14.20",
+    "@mui/material": "^5.15.10",
     "@mui/x-tree-view": "^6.17.0",
     "axios": "^1.6.2",
     "filter-tree": "^0.4.0",
