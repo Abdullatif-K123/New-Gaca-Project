@@ -3,11 +3,19 @@ import classes from "./home-bottom.module.css";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import Link from "next/link";
-
+import DialogModal from "../ui/DialogModal";
 const Footer = ({ conVersion }) => {
-  const [links, setLinks] = useState([]);
-  const [loading, setLoading] = useState(true);
   console.log(conVersion);
+  const [links, setLinks] = useState([]);
+  const [linkProvide, setLinkProvide] = useState("");
+  //setting up for the dialog modal
+  const [open, setOpen] = useState(false);
+  const handleClose = () => {
+    setOpen(false);
+  };
+  const handleOpen = () => {
+    setOpen(true);
+  };
   const likeAndOpenLink = (link) => {
     // Perform the action to simulate a "like" (replace with your actual like functionality)
 
@@ -38,9 +46,16 @@ const Footer = ({ conVersion }) => {
             <div className={classes.linksSlogans}>
               {links?.map((link) => {
                 return (
-                  <Link href={link.linkAddress} key={link.id}>
+                  <div
+                    style={{ cursor: "pointer" }}
+                    onClick={() => {
+                      handleOpen();
+                      setLinkProvide(link.linkAddress);
+                    }}
+                    key={link.id}
+                  >
                     <p>{link.title}</p>
-                  </Link>
+                  </div>
                 );
               })}
             </div>
@@ -56,14 +71,14 @@ const Footer = ({ conVersion }) => {
                 src="/assets/svg/vision-2030.svg"
                 width={140}
                 height={50}
-                alt="vision"
+                alt="vision-2030"
                 className={classes.visionImg}
               />
               <Image
                 src="/assets/svg/gov-sa.svg"
                 width={140}
                 height={50}
-                alt="vision"
+                alt="Saudi"
                 className={classes.visionImg}
               />
             </div>
@@ -79,7 +94,7 @@ const Footer = ({ conVersion }) => {
               className={classes.icon}
             >
               <Image
-                src="assets/svg/ico-facebook.svg"
+                src="/assets/svg/ico-facebook.svg"
                 alt="facebook"
                 width={24}
                 height={24}
@@ -92,8 +107,8 @@ const Footer = ({ conVersion }) => {
               className={classes.icon}
             >
               <Image
-                src="assets/svg/ico-instgram.svg"
-                alt="facebook"
+                src="/assets/svg/ico-instgram.svg"
+                alt="instgram"
                 width={24}
                 height={24}
               />
@@ -105,8 +120,8 @@ const Footer = ({ conVersion }) => {
               className={classes.icon}
             >
               <Image
-                src="assets/svg/xIcon.svg"
-                alt="facebook"
+                src="/assets/svg/xIcon.svg"
+                alt="X"
                 width={24}
                 height={24}
               />
@@ -118,8 +133,8 @@ const Footer = ({ conVersion }) => {
               className={classes.icon}
             >
               <Image
-                src="assets/svg/ico-youtube.svg"
-                alt="facebook"
+                src="/assets/svg/ico-youtube.svg"
+                alt="youtube"
                 width={24}
                 height={24}
               />
@@ -162,6 +177,12 @@ const Footer = ({ conVersion }) => {
             </li>
           </ul>
         </div>
+        <DialogModal
+          open={open}
+          handleClose={handleClose}
+          openLink={likeAndOpenLink}
+          link={linkProvide}
+        />
       </div>
     </div>
   );

@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import classes from "./layout.module.css";
 import Image from "next/image";
-import Feedback from "../home/Home-main/Feedback";
 import { useRouter } from "next/router";
 import DialogModal from "../ui/DialogModal";
-const Navbar = ({ isFeedbackVisible, handleToggleFeedback, conVersion }) => {
+import FeedBack from "./FeedBack";
+const Navbar = ({
+  handleSubmitFeedback,
+  isFeedbackVisible,
+  handleToggleFeedback,
+  conVersion,
+}) => {
   // creating function menu hamburger
-  console.log(conVersion);
   const [addClass, setAddClass] = useState(false);
   const [open, setOpen] = React.useState(false);
 
@@ -17,7 +21,14 @@ const Navbar = ({ isFeedbackVisible, handleToggleFeedback, conVersion }) => {
   const handleClose = () => {
     setOpen(false);
   };
-
+  //setting up state and functions for feedback dialog
+  const [openFeedback, setOpenFeedback] = useState(false);
+  const handleClickOpenFeedback = () => {
+    setOpenFeedback(true);
+  };
+  const handleCloseFeedback = () => {
+    setOpenFeedback(false);
+  };
   const mobileMenu = () => {
     const hamburger = document.querySelector(".hamburger");
     hamburger.classList.toggle("active");
@@ -124,7 +135,6 @@ const Navbar = ({ isFeedbackVisible, handleToggleFeedback, conVersion }) => {
             className={`${classes.feedBackSection} ${
               addClass ? classes.navAuthHam : null
             }`}
-            onClick={handleToggleFeedback}
           >
             <p className={classes.language}>AR</p>
             <div className={classes.vision}>
@@ -135,7 +145,13 @@ const Navbar = ({ isFeedbackVisible, handleToggleFeedback, conVersion }) => {
                 alt="vision-2030"
               />
             </div>
-            <div className={classes.btnFeedback} onClick={mobileMenu}>
+            <div
+              className={classes.btnFeedback}
+              onClick={() => {
+                mobileMenu();
+                handleClickOpenFeedback();
+              }}
+            >
               <Image
                 src="/assets/svg/review1.svg"
                 width={23}
@@ -157,9 +173,10 @@ const Navbar = ({ isFeedbackVisible, handleToggleFeedback, conVersion }) => {
         handleClose={handleClose}
         openLink={likeAndOpenLink}
       />
-      <Feedback
-        isFeedbackVisible={isFeedbackVisible}
-        handleToggleFeedback={handleToggleFeedback}
+      <FeedBack
+        handleSubmitFeedback={handleSubmitFeedback}
+        open={openFeedback}
+        handleClose={handleCloseFeedback}
       />
     </>
   );

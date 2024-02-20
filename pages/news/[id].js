@@ -8,14 +8,13 @@ import { API_ROUTES } from "@/utils/apiConfig";
 const NewsId = ({ isFeedbackVisible, handleToggleFeedback, conVersion }) => {
   const router = useRouter();
   const id = router.query.id;
-
+  console.log(conVersion);
   const [data, setData] = useState({});
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(`${API_ROUTES.blogs.get}/${id}`);
-
         setData(response.data);
         setLoading(false);
       } catch (error) {
@@ -40,7 +39,8 @@ const NewsId = ({ isFeedbackVisible, handleToggleFeedback, conVersion }) => {
         overflow: isFeedbackVisible ? "hidden" : "",
       }}
     >
-      <SingleNews id={id} data={data} />
+      <SingleNews id={id} data={data} conVersion={conVersion} />
+
       <Footer conVersion={conVersion} />
     </div>
   );

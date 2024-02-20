@@ -48,8 +48,8 @@ const NewsMain = ({ dataNews }) => {
             />
             <span>News</span>
           </p>
+          <h1>News</h1>
         </div>
-        <h1>News</h1>
         <div className={classes.newsCardMain}>
           {filterData &&
             filterData.map((nws, index) => (
@@ -66,15 +66,9 @@ const NewsMain = ({ dataNews }) => {
             pageCount={Math.ceil(news.length / itemsPerPage)}
             breakLabel="..."
             previousLabel={
-              <IconContext.Provider value={{ color: "#00685e", size: "36px" }}>
-                <AiFillLeftCircle />
-              </IconContext.Provider>
+              <div className={classes.paginationTerm}>Previous</div>
             }
-            nextLabel={
-              <IconContext.Provider value={{ color: "#00685e", size: "36px" }}>
-                <AiFillRightCircle />
-              </IconContext.Provider>
-            }
+            nextLabel={<div className={classes.paginationTerm}>Next</div>}
           />
         </div>
       </div>

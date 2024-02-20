@@ -147,6 +147,276 @@
   padding: 12px;
   border-radius: 30px;
 }
+/* Styling section for Feedback dialog */
+.feedbackhead {
+  text-align: center;
+  color: "#4B465C";
+  font-size: 26px;
+  font-family: "DINNext-meduim", sans-serif;
+}
+.feedbackDesc {
+  text-align: center;
+  color: "#4B465C";
+  font-size: 18px;
+
+  font-family: "DINNext-Regular", sans-serif;
+}
+.formsInput {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 10px;
+}
+.inputLabel {
+  gap: 5px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  align-self: flex-start;
+  size-adjust: inherit;
+  width: 100%;
+}
+.emailPhone {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  gap: 10px;
+}
+.feedTypeTitle {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.errorMessage {
+  width: fit-content;
+  font-family: "DINNext-meduim", sans-serif;
+  font-size: 14px;
+  background: #c51244 !important;
+  padding: 10px !important;
+  border-radius: 0 !important;
+  position: absolute;
+  bottom: -45px;
+  z-index: 20;
+  box-shadow: 1px 1px 1px #aaaaaa;
+}
+.errorMessage:before {
+  content: "";
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid #c51244;
+  position: absolute;
+  top: -10px;
+}
+.errorMessage:after {
+  color: #c51244 !important;
+}
+.inputLabel > label {
+  color: gray;
+  font-family: "DINNext-Regular", sans-serif;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.customSelect {
+  position: relative;
+}
+
+.customSelect > select {
+  appearance: none;
+  /*  safari  */
+  -webkit-appearance: none;
+  padding: 12px 10px;
+  /*  other styles for aesthetics */
+  width: 100% !important;
+  font-size: 1.15rem;
+  padding: 0.675em 6em 0.675em 1em;
+  background-color: #fff !important;
+  border: 1px solid #caced1;
+  border-radius: 0.25rem;
+  color: #000;
+  cursor: pointer;
+}
+.customSelect > select > option:hover {
+  background-color: #005149;
+}
+.customSelect::before,
+.customSelect::after {
+  --size: 0.3rem;
+  content: "";
+  position: absolute;
+  margin-top: 10px;
+  right: 1rem;
+  pointer-events: none;
+}
+
+.customSelect::before {
+  border-left: var(--size) solid transparent;
+  border-right: var(--size) solid transparent;
+  border-bottom: var(--size) solid black;
+  top: 40%;
+}
+
+.customSelect::after {
+  border-left: var(--size) solid transparent;
+  border-right: var(--size) solid transparent;
+  border-top: var(--size) solid black;
+  top: 55%;
+}
+
+.inputLabel > input,
+.inputLabel > select,
+.inputLabel > textarea {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  background-color: transparent;
+  font-family: "DINNext-Regular", sans-serif;
+
+  border-radius: 8px;
+  padding: 12px 10px;
+  border: 2px solid #e8eaed;
+  color: #000;
+}
+
+.inputLabel > input::placeholder,
+.inputLabel > select,
+.inputLabel > textarea::placeholder {
+  color: darkgray;
+  cursor: pointer;
+}
+
+.inputLabelFocused {
+  border-color: #00685e;
+}
+.inputLabelError {
+  border-color: rgb(224, 7, 7) !important;
+}
+.submitBtn {
+  width: 100%;
+  padding: 15px 50px;
+  background-color: #015f56;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 7px;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease-in-out;
+}
+.submitBtn:hover {
+  box-shadow: 0 2px 5px #015f56; /* Add box shadow */
+}
+.submitBtn > p {
+  color: #fff;
+  font-family: "DINNext-meduim", sans-serif;
+  font-size: 20px;
+  background-color: transparent;
+  border: none;
+}
+.submitBtn:hover > button {
+  font-size: 19px;
+  font-weight: 500;
+}
+.submitBtn[disabled] {
+  background-color: #ccc; /* Change background color */
+
+  opacity: 0.7; /* Reduce opacity to visually indicate it's disabled */
+  cursor: auto; /* Change cursor to indicate it's not clickable */
+}
+.submitBtn[disabled] > p {
+  color: #999;
+}
+.submitBtn[disabled]:hover {
+  box-shadow: none;
+}
+.btnSubmit {
+  text-transform: none;
+  color: #fff !important;
+  background-color: #63c69a;
+}
+.btnCancel {
+  text-transform: none;
+  color: #a8aaae;
+}
+
+/* Responsive style for less than 1200px */
+@media (max-width: 1250px) {
+  .sectionOne {
+    padding: 20px 0 20px 20px;
+  }
+  .streetPlane {
+    width: 725px;
+  }
+  .airStreetBeauty {
+    margin-top: 30px;
+  }
+  .planeAnimated {
+    margin-top: 50px;
+    width: 200px;
+    height: 200px;
+  }
+  .planeAnimatedtwo {
+    margin-top: 50px;
+    width: 200px;
+    height: 200px;
+  }
+  .feedbackSection {
+    width: 45%;
+  }
+}
+/* Responsive style for less than 1200px */
+@media (max-width: 1050px) {
+  .sectionOne {
+    padding: 10px 0 20px 10px;
+  }
+  .streetPlane {
+    width: 625px;
+    height: 500px;
+  }
+  .airStreetBeauty {
+    margin-top: 30px;
+  }
+  .planeAnimated {
+    margin-top: 50px;
+    width: 200px;
+    height: 200px;
+  }
+  .planeAnimatedtwo {
+    margin-top: 50px;
+    width: 200px;
+    height: 200px;
+  }
+
+  .secOneContect > h1 {
+    font-size: 43px;
+  }
+  .secOneContect > p {
+    font-size: 15px;
+  }
+  .feedbackSection {
+    width: 45%;
+  }
+}
+/* Arrow down button */
+.btnUp {
+  position: fixed;
+  bottom: 40px;
+  z-index: 100;
+  left: 40px;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(6.449999809265137px);
+  width: 45px;
+  height: 45px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 /* Responsive design for less than 1100px */
 @media (max-width: 1099px) {
   .navMain {

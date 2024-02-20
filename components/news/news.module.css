@@ -2,14 +2,7 @@
 .newsMain {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  row-gap: 35px;
-  padding: 32px 81px;
 
-  background-image: url("/assets/svg/mapWorld.svg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
   background-color: #fff;
   position: relative;
   color: #000;
@@ -18,11 +11,25 @@
   width: 0;
 }
 .choosen {
-  align-self: flex-start;
+  background-image: url("../../public/assets/imges/about-background.png");
+  background-size: cover;
+  background-position: bottom;
+  padding: 32px 81px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  gap: 20px;
+}
+.choosen > h1 {
+  font-size: 48px;
+  color: #fff;
+  font-family: Montserrat;
 }
 .choosen > p {
   color: #000;
-  font-family: Montserrat;
+  font-family: "DINNext-meduim", sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
@@ -34,13 +41,18 @@
 }
 
 .choosen > p > span:first-child {
-  color: #00685e;
+  color: #fff;
+}
+.choosen > p > span:first-child {
+  color: #fff;
 }
 .choosen > p > span:hover {
   font-weight: 600;
 }
 .newsCardMain {
   position: relative;
+
+  padding: 32px 81px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
@@ -151,17 +163,18 @@
 }
 .paginationContainer {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
+
+  padding: 32px 81px;
   align-items: center;
-  margin-top: 20px;
 }
 .paginationLink {
-  padding: 8px 12px;
+  padding: 7px 12px;
   margin: 0 5px;
   cursor: pointer;
   text-decoration: none;
   color: #333;
-  border: 1px solid #ddd;
+  border: 1px solid #952a2a;
   border-radius: 4px;
   transition: background-color 0.3s;
 }
@@ -174,19 +187,27 @@
 }
 .pagination {
   list-style: none;
-  height: 31.5px;
-  width: 31.5px;
-  display: flex;
-  justify-content: center;
 
+  display: flex;
+  gap: 3px;
+  align-items: center;
   margin-top: 2px;
   cursor: pointer;
 }
-
+.paginationTerm {
+  color: #4b465c;
+  font-size: 16px;
+  background-color: rgb(233, 229, 229);
+  padding: 7px;
+  font-family: "DINNext-light", sans-serif;
+  border-radius: 5px;
+}
 .active {
-  border-radius: 50%;
-  border: 2px dotted #00685e;
-  color: #1e50ff;
+  background-color: #1c7a54 !important;
+  color: #fff;
+  border-radius: 5px;
+
+  font-family: "DINNext-light", sans-serif;
 }
 
 .pageItem {
@@ -198,6 +219,11 @@
   justify-content: center;
   align-items: center;
   margin-top: 2px;
+  background-color: rgb(233, 229, 229);
+  border-radius: 7px;
+  padding: 7px;
+  color: #fff;
+  font-family: "DINNext-light", sans-serif;
 }
 /* Styling for news in landing page */
 .newsHeader {

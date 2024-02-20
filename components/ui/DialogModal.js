@@ -10,7 +10,7 @@ import Image from "next/image";
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
-const DialogModal = ({ open, handleClose, openLink }) => {
+const DialogModal = ({ open, handleClose, openLink, link }) => {
   return (
     <Dialog
       TransitionComponent={Transition}
@@ -65,7 +65,8 @@ const DialogModal = ({ open, handleClose, openLink }) => {
               color="success"
               onClick={() => {
                 // Add your custom logic here
-                openLink();
+                openLink(link);
+                handleClose();
               }}
               style={{
                 textTransform: "none",

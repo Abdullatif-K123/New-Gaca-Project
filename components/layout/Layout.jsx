@@ -1,7 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "./Navbar";
+import axios from "axios";
+import { API_ROUTES } from "@/utils/apiConfig";
+import toast, { Toaster } from "react-hot-toast";
 const Layout = (props) => {
   const { isFeedbackVisible, handleToggleFeedback, conVersion } = props;
+  const notify = () => toast("Your feedback has been sent.", { icon: "👏" });
+  const handleSubmitFeedback = async (obj) => {
+    console.log("I'm here");
+    try {
+      const response = await axios.post(API_ROUTES.feedback.post, {
+        name: obj.name,
+        email: obj.email,
+        phone: obj.phone,
+        feedbackType: Number(obj.feedbackType),
+        feedbackTitle: obj.feedbackTitle,
+        feedbackMessage: obj.feedbackMessage,
+      });
+      console.log(response);
+      notify();
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <>
@@ -9,8 +30,11 @@ const Layout = (props) => {
         isFeedbackVisible={isFeedbackVisible}
         handleToggleFeedback={handleToggleFeedback}
         conVersion={conVersion}
+        handleSubmitFeedback={handleSubmitFeedback}
       />
       {props.children}
+
+      <Toaster />
     </>
   );
 };

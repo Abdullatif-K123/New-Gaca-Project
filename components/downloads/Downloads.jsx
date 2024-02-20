@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import classes from "./downloads.module.css";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -21,17 +21,29 @@ import { AiFillLeftCircle, AiFillRightCircle } from "react-icons/ai";
 import { IconContext } from "react-icons";
 import ReactPaginate from "react-paginate";
 const Downloads = ({ data }) => {
+  const [filterTerm, setFilterTerm] = useState(data);
   const [currentPage, setCurrentPage] = useState(0);
-  const [leftRight, setLeftRight] = useState("left");
-  const [filterData, setFilterData] = useState([]);
   //Filter but selecting options
   const [selectedOption, setSelectedOption] = useState(10);
 
   const handleSelectChange = (event) => {
+    setCurrentPage((prev) => {
+      return 0;
+    });
     setSelectedOption(event.target.value);
   };
 
-  const [filterTerm, setFilterTerm] = useState(data);
+  useEffect(() => {
+    setFilterTerm((prevData) => {
+      console.log(currentPage);
+      return data.filter((item, index) => {
+        return (
+          index >= currentPage * selectedOption &&
+          index < (currentPage + 1) * selectedOption
+        );
+      });
+    });
+  }, [currentPage, selectedOption]);
 
   // Function to search for a specific title in the array
   function searchByTitle(searchTerm) {
@@ -97,9 +109,11 @@ const Downloads = ({ data }) => {
               onChange={handleSelectChange}
               defaultValue={"10"}
             >
-              <MenuItem value="option1">10</MenuItem>
-              <MenuItem value="option2">15</MenuItem>
-              <MenuItem value="option3">20</MenuItem>
+              <MenuItem value={1}>1</MenuItem>
+              <MenuItem value={2}>2</MenuItem>
+              <MenuItem value={10}>10</MenuItem>
+              <MenuItem value={15}>15</MenuItem>
+              <MenuItem value={20}>20</MenuItem>
             </Select>
             <FormLabel>Entries</FormLabel>
           </div>
@@ -175,8 +189,8 @@ const Downloads = ({ data }) => {
                   <TableRow key={document.id}>
                     <TableCell>{document.title}</TableCell>
                     <TableCell>{formattedDate}</TableCell>
-                    <TableCell>..........</TableCell>
-                    <TableCell>Action</TableCell>
+                    <TableCell>.............</TableCell>
+                    <TableCell>Download</TableCell>
                   </TableRow>
                 );
               })}
@@ -190,7 +204,8 @@ const Downloads = ({ data }) => {
             pageClassName={classes.pageItem}
             activeClassName={classes.active}
             onPageChange={(event) => setCurrentPage(event.selected)}
-            pageCount={Math.ceil(filterTerm.length / selectedOption)}
+            pageCount={Math.ceil(data.length / selectedOption)}
+            onPageActive={currentPage}
             breakLabel="..."
             previousLabel={
               <div className={classes.paginationTerm}>Previous</div>
