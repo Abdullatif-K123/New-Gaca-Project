@@ -80,7 +80,6 @@ const FeedBack = ({ open, handleClose, handleSubmitFeedback }) => {
           overflowY: "unset",
           overflowX: "unset",
           padding: "30px 50px",
-          width: "50%",
         },
       }}
     >

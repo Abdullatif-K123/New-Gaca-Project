@@ -169,9 +169,6 @@
 }
 /* Media for less than 900 */
 @media (max-width: 900px) {
-  .downloadPage {
-    padding: 32px 40px;
-  }
   .downloadContent {
     padding: 0 20px;
   }
@@ -179,18 +176,20 @@
     grid-template-columns: 5fr 1fr 1fr 1fr;
     font-size: 12px;
   }
+  .downloadTables {
+    padding: 32px 21px;
+  }
 }
 /* Media for less than 500 */
 @media (max-width: 500px) {
   .downloadContent > h1 {
     font-size: 24px;
   }
-  .downloadPage {
-    padding: 32px 10px;
+  .choosen {
+    padding: 32px 20px;
   }
-
   .downloadContent {
-    padding: 0 0px;
+    padding: 0px 10px;
   }
 
   .tableHead {
@@ -200,5 +199,8 @@
   }
   .tableHead > p {
     justify-self: flex-start;
+  }
+  .downloadTables {
+    padding: 12px 0px;
   }
 }

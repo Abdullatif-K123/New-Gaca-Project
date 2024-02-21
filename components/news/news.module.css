@@ -99,12 +99,14 @@
 /* News Cards  */
 .newsCard {
   border-radius: 20px;
-  height: 490px;
+  width: 409px;
   box-shadow: 4px 0px 23.5px 0px rgba(189, 189, 189, 0.25);
   display: flex;
   flex-direction: column;
   cursor: pointer;
   transition: transform 0.3s ease-in-out;
+
+  background-color: #fff;
 }
 .newsCard:hover {
   transform: scale(1.05) !important; /* Scale up the card on hover */
@@ -112,7 +114,7 @@
 .newsCardHead {
   border-radius: 20px;
   padding: 14px 12px;
-  width: 409px;
+  width: 100%;
   background: #f9f9f9;
   display: flex;
   flex-direction: column;
@@ -251,11 +253,11 @@
 }
 /* Responsive for less than 1350px */
 @media (max-width: 1350px) {
-  .newsCardHead {
-    width: 320px;
+  .newsCard {
+    width: 370px;
   }
   .newsCardHead > img {
-    width: 300px;
+    width: 350px;
   }
   .newsCardBody {
     width: 320px;
@@ -269,20 +271,13 @@
   }
 }
 /* Resonsive for less than 1100px */
-@media (max-width: 1100px) {
-  .newsMain {
-    padding: 32px 0px;
-  }
-}
+
 @media (max-width: 1000px) {
-  .choosen {
-    align-self: center;
-  }
-  .newsSection {
-    text-align: center;
-  }
   .newsCardMain {
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
   }
 }
 /* Media screen for less than 650px */

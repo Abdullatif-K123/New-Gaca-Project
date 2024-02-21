@@ -17,8 +17,6 @@ import {
   MenuItem,
 } from "@mui/material";
 
-import { AiFillLeftCircle, AiFillRightCircle } from "react-icons/ai";
-import { IconContext } from "react-icons";
 import ReactPaginate from "react-paginate";
 const Downloads = ({ data }) => {
   const [filterTerm, setFilterTerm] = useState(data);

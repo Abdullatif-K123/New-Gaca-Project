@@ -11,7 +11,6 @@ const HomePage = ({ isFeedbackVisible, handleToggleFeedback, conVersion }) => {
   const [data, setData] = useState({});
   const [loading, setLoading] = useState(true);
   const [showBtn, setShowBtn] = useState(false);
-  const [windowYs, setWindowYs] = useState(0);
   useEffect(() => {
     const fetchData = async () => {
       try {
