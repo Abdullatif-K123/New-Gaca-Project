@@ -158,6 +158,17 @@
   color: #fff;
   font-family: "DINNext-light", sans-serif;
 }
+.submitBtn {
+  padding: 10px 30px;
+  background-color: #63c69a;
+  display: flex;
+  border-radius: 7px;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease-in-out;
+
+  align-self: flex-end;
+}
 /* Media for less than 1150 */
 @media (max-width: 1150px) {
   .downloadContent {

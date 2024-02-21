@@ -16,7 +16,7 @@ import {
   Select,
   MenuItem,
 } from "@mui/material";
-
+import { API_ROUTES } from "@/utils/apiConfig";
 import ReactPaginate from "react-paginate";
 const Downloads = ({ data }) => {
   const [filterTerm, setFilterTerm] = useState(data);
@@ -73,6 +73,18 @@ const Downloads = ({ data }) => {
     });
   };
   const router = useRouter();
+  //function to do the download for each document
+
+  function downloadPdfFile(url, fileName) {
+    console.log(url, fileName);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = fileName;
+
+    // Trigger a click event on the link to start the download
+    link.click();
+  }
+
   return (
     <div className={classes.downloadPage}>
       <div className={classes.choosen}>
@@ -183,12 +195,23 @@ const Downloads = ({ data }) => {
                   undefined,
                   options
                 );
+                console.log(document);
+                const pdfUrl = `${API_ROUTES.domainName}/${document.imageUrl}`;
                 return (
                   <TableRow key={document.id}>
                     <TableCell>{document.title}</TableCell>
                     <TableCell>{formattedDate}</TableCell>
                     <TableCell>.............</TableCell>
-                    <TableCell>Download</TableCell>
+                    <TableCell>
+                      <button
+                        className={classes.submitBtn}
+                        onClick={() => {
+                          downloadPdfFile(pdfUrl, document.title);
+                        }}
+                      >
+                        <p>Submit</p>
+                      </button>
+                    </TableCell>
                   </TableRow>
                 );
               })}
