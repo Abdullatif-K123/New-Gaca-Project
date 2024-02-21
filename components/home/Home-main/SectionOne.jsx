@@ -32,28 +32,6 @@ const SectionOne = ({ isFeedbackVisible, title, desc }) => {
           height={510}
           className={classes.streetPlane}
         />
-        {/* {isFeedbackVisible ? null : (
-          <>
-            <Image
-              src="/assets/svg/streetbeauty.svg"
-              width={525}
-              height={350}
-              className={classes.airStreetBeauty}
-            />
-            <Image
-              src="/assets/svg/bigplane.svg"
-              width={300}
-              height={300}
-              className={classes.planeAnimated}
-            />
-            <Image
-              src="/assets/svg/smallplane.svg"
-              width={250}
-              height={250}
-              className={classes.planeAnimatedtwo}
-            />
-          </>
-        )} */}
       </div>
       <div className={classes.btnDown} onClick={handleClick}>
         <Image
@@ -64,7 +42,6 @@ const SectionOne = ({ isFeedbackVisible, title, desc }) => {
           className={classes.arrowDown}
         />
       </div>
-      {/* <div className={classes.semicircle}></div> */}
     </div>
   );
 };

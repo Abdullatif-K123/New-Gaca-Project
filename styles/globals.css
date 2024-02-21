@@ -129,6 +129,14 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+.Mui-selected {
+  background-color: #1c7a54 !important;
+  color: #fff;
+}
+.MuiMenuItem-root:hover {
+  background-color: #63c69a;
+  color: #fff;
+}
 
 a {
   color: inherit;
@@ -180,9 +188,7 @@ a {
   flex-direction: column;
   gap: 25px !important;
 }
-.Mui-selected {
-  background-color: transparent !important;
-}
+
 .css-1bcfi89-MuiTreeItem-content:hover {
   background: transparent !important;
 }

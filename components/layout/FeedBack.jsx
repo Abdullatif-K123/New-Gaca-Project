@@ -10,6 +10,8 @@ import {
   DialogActions,
   Dialog,
   Grid,
+  Select,
+  MenuItem,
 } from "@mui/material";
 import { API_ROUTES } from "@/utils/apiConfig";
 import { useFormik } from "formik";
@@ -104,7 +106,7 @@ const FeedBack = ({ open, handleClose, handleSubmitFeedback }) => {
       >
         <Image src="/assets/svg/x.svg" width={23} height={23} alt="x" />
       </div>
-      <DialogTitle className={classes.feedbackhead}>{"Feedback"}</DialogTitle>
+      <DialogTitle className={classes.feedbackhead}>Feedback</DialogTitle>
       <DialogContent>
         <DialogContentText className={classes.feedbackDesc}>
           You Can Send Your Feedback From This Form
@@ -206,10 +208,11 @@ const FeedBack = ({ open, handleClose, handleSubmitFeedback }) => {
               value={formik.values.name}
               onFocus={() => handleInputFocus("name")}
             />
+            {formik.touched.name && formik.errors.name && (
+              <span className={classes.errorMessage}>{formik.errors.name}</span>
+            )}
           </div>
-          {formik.touched.name && formik.errors.name && (
-            <span className={classes.errorMessage}>{formik.errors.name}</span>
-          )}
+
           <div className={classes.feedTypeTitle}>
             <div
               className={`${classes.inputLabel} ${
@@ -257,20 +260,23 @@ const FeedBack = ({ open, handleClose, handleSubmitFeedback }) => {
               } ${classes.customSelect} `}
             >
               <label htmlFor="feedbackType">Feedback Type:</label>
-              <select
+              <Select
                 id="feedbackType"
                 name="feedbackType"
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.feedbackType}
                 onFocus={() => handleInputFocus("feedbackType")}
+                placeholder="Select a feedback type"
+                style={{ height: "45px", borderRadius: "8px" }}
               >
-                <option value="" label="Select a feedback type" />
-                <option value={0} label="Recommendation" />
-                <option value={1} label="Error Report" />
-                <option value={2} label="Question" />
-                <option value={3} label="Other" />
-              </select>
+                <MenuItem value={0}>
+                  <p>Recommendation</p>
+                </MenuItem>
+                <MenuItem value={1}>Error Report</MenuItem>
+                <MenuItem value={2}>Question</MenuItem>
+                <MenuItem value={3}>Other</MenuItem>
+              </Select>
               {formik.touched.feedbackType && formik.errors.feedbackType && (
                 <span className={classes.errorMessage}>
                   {formik.errors.feedbackType}
