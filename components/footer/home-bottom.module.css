@@ -204,6 +204,7 @@
   }
   .footerContentMain {
     padding: 60px 10px;
+    gap: 30px;
     background-size: 85% auto;
   }
   .footerContent {
@@ -245,7 +246,12 @@
     width: 250px;
   }
 }
-
+@media (max-width: 650px) {
+  .visionImg {
+    width: 130px;
+    height: 50px;
+  }
+}
 @media (max-width: 600px) {
   .btnDown {
     left: 30px;
@@ -284,5 +290,14 @@
   .logoSec > p {
     width: 100%;
     text-align: center;
+  }
+  .contact {
+    align-items: center;
+    padding-bottom: 30px;
+  }
+}
+@media (max-width: 400px) {
+  .visionImg {
+    width: 100px;
   }
 }

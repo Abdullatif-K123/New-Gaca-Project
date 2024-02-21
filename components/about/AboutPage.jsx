@@ -85,6 +85,7 @@ const AboutPage = ({ data }) => {
           width={700}
           height={400}
           alt="strategic"
+          layout="responsive"
           className={classes.strategicImg}
         />
       </div>
