@@ -27,9 +27,9 @@ const SectionOne = ({ isFeedbackVisible, title, desc }) => {
       </div>
       <div className={classes.sectionTwo}>
         <Image
-          src="/assets/imges/landing-page-cover.png"
-          width={690}
-          height={510}
+          src="/assets/imges/Brochure-landingpage.webp"
+          width={700}
+          height={520}
           className={classes.streetPlane}
         />
       </div>

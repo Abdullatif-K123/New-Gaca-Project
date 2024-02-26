@@ -12,11 +12,13 @@
   color: #000;
 }
 .choosen {
-  background-image: url("../../public/assets/imges/about-background.png");
+  background-image: url("../../public/assets/imges/aboutBackground.png");
   background-size: cover;
+
+  background-repeat: no-repeat;
   background-position: bottom;
-  padding: 32px 81px;
-  height: 300px;
+  padding: 38px 91px;
+  height: 390px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -29,7 +31,7 @@
   font-family: Montserrat;
 }
 .choosen > p {
-  color: #000;
+  color: #fff;
   font-family: "DINNext-meduim", sans-serif;
   font-size: 14px;
   font-style: normal;
@@ -59,6 +61,8 @@
   flex-direction: column;
   font-family: "DINNext-light", sans-serif;
   gap: 15px;
+
+  line-height: 1.8em;
 }
 .content > h1 {
   font-family: "DINNext-medium", sans-serif;
@@ -85,7 +89,7 @@
 .strategic {
   padding: 42px 81px;
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 1fr 1fr;
 }
 .strategiContent {
   align-self: center;
@@ -93,14 +97,16 @@
   flex-direction: column;
   font-family: "DINNext-medium", sans-serif;
   font-size: 15px;
+  width: 75%;
   gap: 20px;
 }
 .singleStrategic {
   display: flex;
   font-family: Montserrat;
+
   font-weight: 500;
   font-size: 14px;
-  line-height: 1.3em;
+  line-height: 1.8em;
   gap: 5px;
 }
 .strategicImg {

@@ -12,11 +12,12 @@
   color: #000;
 }
 .choosen {
-  background-image: url("../../public/assets/imges/about-background.png");
+  background-image: url("../../public/assets/imges/aboutBackground.png");
   background-size: cover;
+  background-repeat: no-repeat;
   background-position: bottom;
-  padding: 32px 81px;
-  height: 300px;
+  padding: 38px 91px;
+  height: 390px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;

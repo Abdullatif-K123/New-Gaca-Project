@@ -62,7 +62,7 @@ const Navbar = ({
         <nav className={`${classes.navMain}  `}>
           <div className={classes.logo}>
             <Image
-              src={"/assets/svg/logo-green.svg"}
+              src={"/assets/svg/whiteLogo.svg"}
               width={140}
               height={47}
               alt="logo"
@@ -120,13 +120,6 @@ const Navbar = ({
                 }}
               >
                 Constructor{" "}
-                <Image
-                  src={"/assets/svg/share1.svg"}
-                  width={17}
-                  height={17}
-                  className={classes.imgMini}
-                  alt="share1"
-                />
               </li>
             </ul>
           </div>

@@ -70,7 +70,7 @@
   height: 100%;
 }
 .footerContentMain {
-  background: linear-gradient(to right, #1c7a54 100%, #3d9e7b 100%);
+  background: linear-gradient(to right, #1c7a54 100%, #1c7a54 100%);
   background-color: #3d9e7b;
   height: 100%;
   width: 100%;
@@ -79,7 +79,8 @@
   align-items: flex-start;
   justify-content: center;
   column-gap: 100px;
-  padding: 40px 70px;
+  padding: 32px 70px;
+
   column-gap: 100px;
   background-size: 65% auto;
   background-repeat: no-repeat;
@@ -95,31 +96,30 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 30px;
+  gap: 12px;
 }
 .logoSec > p {
-  font-size: 14px;
-  padding-right: 20px;
+  font-size: 16px;
   width: 340px;
   font-family: "DINNext-Regular", sans-serif;
 }
 .contentVision {
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 20px;
 }
 .footerContent {
   list-style-type: none;
   display: flex;
   align-items: center;
-  column-gap: 10px;
+  column-gap: 15px;
 }
 .footerContent > li {
   color: #fff;
-  font-family: "DINNext-medium", sans-serif;
+  font-family: "DINNext-light", sans-serif;
   font-size: 16px;
   font-style: normal;
+  text-decoration: underline;
   font-weight: 400;
   line-height: 22px; /* 137.5% */
   cursor: pointer;
@@ -161,7 +161,7 @@
 }
 .contact > h1 {
   font-family: "DINNext-medium", sans-serif;
-  margin-top: -9px;
+
   font-size: 22px;
 }
 .socialIcons {
@@ -176,27 +176,30 @@
   border-radius: 30px;
   transition: all 0.2s ease-in-out;
 }
-.icon:hover {
-  color: #e59256;
-}
+
 .footerVisions {
   display: flex;
   align-items: center;
-  gap: 25px;
-  margin-top: 20px;
+  margin-left: -7px;
+  gap: 15px;
 }
 /* Slogans */
 .linksSlogans {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2px;
-  font-family: "DINNext-Light", sans-serif !important;
+  font-family: "DINNext-light", sans-serif !important;
   font-size: 1rem;
   text-decoration: underline;
-  margin-bottom: 10px;
-  margin-left: 12px;
 }
-
+.visionFooter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 7px;
+}
+.visionImg {
+  justify-content: flex-start;
+}
 @media (max-width: 1125px) {
   .visionImg {
     width: 200px;

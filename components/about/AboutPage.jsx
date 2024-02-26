@@ -82,7 +82,7 @@ const AboutPage = ({ data }) => {
         </div>
         <Image
           src="/assets/imges/stratigec-img.png"
-          width={700}
+          width={600}
           height={400}
           alt="strategic"
           layout="responsive"

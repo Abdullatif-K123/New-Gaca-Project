@@ -120,7 +120,7 @@ const MasterPlan = ({ layers }) => {
           {
             idnum: 1,
             imgsrc: "/assets/svg/light-green1.svg",
-            width: 130,
+            width: 140,
             height: 130,
             text: layers[0].title,
             desc: layers[0].descripton,
@@ -128,7 +128,7 @@ const MasterPlan = ({ layers }) => {
           {
             idnum: 2,
             imgsrc: "/assets/svg/light-green2.svg",
-            width: 250,
+            width: 262,
             height: 110,
             text: layers[1].title,
             desc: layers[1].descripton,
@@ -136,7 +136,7 @@ const MasterPlan = ({ layers }) => {
           {
             idnum: 3,
             imgsrc: "/assets/svg/light-green3.svg",
-            width: 400,
+            width: 390,
             height: 110,
             text: layers[2].title,
             desc: layers[2].descripton,

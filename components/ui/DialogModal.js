@@ -1,5 +1,4 @@
 import React from "react";
-import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
@@ -7,6 +6,7 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import Slide from "@mui/material/Slide";
 import Image from "next/image";
+import classes from "./ui.module.css";
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
@@ -24,24 +24,8 @@ const DialogModal = ({ open, handleClose, openLink, link }) => {
       }}
     >
       <div style={{ position: "relative" }}>
-        <div
-          style={{
-            backgroundColor: "lightgray",
-            position: "absolute",
-            cursor: "pointer",
-            top: "-15px",
-            right: "-15px",
-            padding: "8px 9px ",
-            borderRadius: "8px",
-            backgroundColor: "#fff",
-            boxShadow: "5px 5px 10px rgba(0, 0, 0, 0.2)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-          onClick={handleClose}
-        >
-          <Image src="/assets/svg/x.svg" width={23} height={23} alt="x" />
+        <div className={classes.closeBtn} onClick={handleClose}>
+          <Image src="/assets/svg/x.svg" width={17} height={17} alt="x" />
         </div>
         <div style={{ padding: 8 }}>
           <DialogTitle style={{ color: "#4B465C" }}>{"Alert"}</DialogTitle>
@@ -52,15 +36,15 @@ const DialogModal = ({ open, handleClose, openLink, link }) => {
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button
+            <button
               variant="contained"
               color="inherit"
               onClick={handleClose}
-              style={{ color: "#A8AAAE", textTransform: "none" }}
+              className={classes.btnCancel}
             >
               Cancel
-            </Button>
-            <Button
+            </button>
+            <button
               variant="contained"
               color="success"
               onClick={() => {
@@ -68,14 +52,10 @@ const DialogModal = ({ open, handleClose, openLink, link }) => {
                 openLink(link);
                 handleClose();
               }}
-              style={{
-                textTransform: "none",
-                fontFamily: "Montserrat",
-                backgroundColor: "#63C69A",
-              }}
+              className={classes.btnSuccess}
             >
               Confirm
-            </Button>
+            </button>
           </DialogActions>
         </div>
       </div>

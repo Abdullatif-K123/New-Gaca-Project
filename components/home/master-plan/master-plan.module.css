@@ -19,7 +19,7 @@
 .masterpyrmaid {
   display: flex;
   flex-direction: column;
-  row-gap: 5px;
+  row-gap: 8px;
   align-items: center;
   margin-top: 50px;
   margin-left: 40px;
@@ -83,6 +83,11 @@
 .even {
   margin-right: 450px;
 }
+.pyramid1,
+.pyramid3,
+.pyramid5 {
+  margin-right: 10px;
+}
 /* Responsive design for less than 1400px */
 @media (max-width: 1400px) {
   .masterPlanInfo {
@@ -137,6 +142,7 @@
     margin-left: 100px;
   }
 }
+
 /* Responsive design for less than 1000px */
 @media (max-width: 1000px) {
   .masterPlanInfo {

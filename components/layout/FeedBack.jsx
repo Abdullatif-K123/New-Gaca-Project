@@ -12,15 +12,17 @@ import {
   Grid,
   Select,
   MenuItem,
+  Fade,
+  FormControl,
+  InputLabel,
 } from "@mui/material";
 import { API_ROUTES } from "@/utils/apiConfig";
 import { useFormik } from "formik";
 
 import * as Yup from "yup";
 const Transition = React.forwardRef(function Transition(props, ref) {
-  return <Slide direction="up" ref={ref} {...props} />;
+  return <Fade ref={ref} {...props} />;
 });
-
 const FeedBack = ({ open, handleClose, handleSubmitFeedback }) => {
   const [focusedInput, setFocusedInput] = useState(null);
   const [sendFeedback, setSendFeedback] = useState(false);
@@ -72,6 +74,9 @@ const FeedBack = ({ open, handleClose, handleSubmitFeedback }) => {
   return (
     <Dialog
       open={open}
+      fullWidth
+      maxWidth="md"
+      scroll="body"
       TransitionComponent={Transition}
       keepMounted
       onClose={handleClose}
@@ -84,26 +89,13 @@ const FeedBack = ({ open, handleClose, handleSubmitFeedback }) => {
       }}
     >
       <div
-        style={{
-          backgroundColor: "lightgray",
-          position: "absolute",
-          cursor: "pointer",
-          top: "-15px",
-          right: "-15px",
-          padding: "7px 8px ",
-          borderRadius: "8px",
-          backgroundColor: "#fff",
-          boxShadow: "5px 5px 10px rgba(0, 0, 0, 0.2)",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
+        className={classes.closeBtn}
         onClick={() => {
           handleClose();
           formik.resetForm();
         }}
       >
-        <Image src="/assets/svg/x.svg" width={23} height={23} alt="x" />
+        <Image src="/assets/svg/x.svg" width={19} height={19} alt="x" />
       </div>
       <DialogTitle className={classes.feedbackhead}>Feedback</DialogTitle>
       <DialogContent>
@@ -111,17 +103,8 @@ const FeedBack = ({ open, handleClose, handleSubmitFeedback }) => {
           You Can Send Your Feedback From This Form
         </DialogContentText>
       </DialogContent>
-      <Grid
-        container
-        spacing={1}
-        style={{
-          marginTop: "10px",
-          display: "felx",
-          alignItems: "center",
-          justifyContent: "center",
-          minWidth: "300px",
-        }}
-      >
+
+      <Grid spacing={6}>
         <form onSubmit={formik.handleSubmit} className={classes.formsInput}>
           <div className={classes.emailPhone}>
             <div
@@ -319,7 +302,7 @@ const FeedBack = ({ open, handleClose, handleSubmitFeedback }) => {
           </div>
 
           <DialogActions>
-            <Button
+            <button
               variant="contained"
               color="inherit"
               onClick={() => {
@@ -329,7 +312,7 @@ const FeedBack = ({ open, handleClose, handleSubmitFeedback }) => {
               className={classes.btnCancel}
             >
               Cancel
-            </Button>
+            </button>
             <Button
               type="submit"
               variant="contained"

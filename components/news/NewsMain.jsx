@@ -50,7 +50,7 @@ const NewsMain = ({ dataNews }) => {
           </p>
           <h1>News</h1>
         </div>
-        <div className={classes.newsCardMain}>
+        <div className={classes.newsCardMain2}>
           {filterData &&
             filterData.map((nws, index) => (
               <SingleCard key={nws.id} {...nws} leftRight={leftRight} />
