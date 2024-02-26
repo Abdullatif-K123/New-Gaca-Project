@@ -85,6 +85,7 @@ const NewsLandingpage = ({ news }) => {
         >
           <OwlCarousel
             startPosition={currentSlide}
+            animateIn={true}
             className="owl-theme"
             {...options}
             center={true}

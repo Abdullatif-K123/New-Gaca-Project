@@ -131,16 +131,16 @@ body {
 }
 .Mui-selected {
   background-color: #1c7a54 !important;
-  color: #fff;
+  color: #fff !important;
 }
 .MuiMenuItem-root:hover {
-  background-color: #63c69a;
-  color: #fff;
+  background-color: #63c69a !important;
+  color: #fff !important;
 }
 .MuiMenuItem-root {
-  padding: 8px 15px;
-  border-radius: 6px;
-  margin: 5px 8px;
+  padding: 8px 15px !important;
+  border-radius: 6px !important;
+  margin: 5px 8px !important;
 }
 a {
   color: inherit;
