@@ -137,7 +137,11 @@ body {
   background-color: #63c69a;
   color: #fff;
 }
-
+.MuiMenuItem-root {
+  padding: 8px 15px;
+  border-radius: 6px;
+  margin: 5px 8px;
+}
 a {
   color: inherit;
   text-decoration: none;

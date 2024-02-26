@@ -30,7 +30,7 @@ const FeedBack = ({ open, handleClose, handleSubmitFeedback }) => {
     name: "",
     email: "",
     phone: "",
-    feedbackType: "",
+    feedbackType: 0,
     feedbackTitle: "",
     feedbackMessage: "",
   });
@@ -87,6 +87,7 @@ const FeedBack = ({ open, handleClose, handleSubmitFeedback }) => {
           padding: "30px 50px",
         },
       }}
+      className={classes.dialogStyle}
     >
       <div
         className={classes.closeBtn}
@@ -242,6 +243,7 @@ const FeedBack = ({ open, handleClose, handleSubmitFeedback }) => {
               } ${classes.customSelect} `}
             >
               <label htmlFor="feedbackType">Feedback Type:</label>
+
               <Select
                 id="feedbackType"
                 name="feedbackType"
