@@ -7,7 +7,6 @@ const Layout = (props) => {
   const { isFeedbackVisible, handleToggleFeedback, conVersion } = props;
   const notify = () => toast("Your feedback has been sent.", { icon: "👏" });
   const handleSubmitFeedback = async (obj) => {
-    console.log("I'm here");
     try {
       const response = await axios.post(API_ROUTES.feedback.post, {
         name: obj.name,

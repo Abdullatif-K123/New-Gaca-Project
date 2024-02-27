@@ -5,15 +5,23 @@ import Image from "next/image";
 import parse from "html-react-parser";
 import { API_ROUTES } from "@/utils/apiConfig";
 import SingleCard from "../news/SingleCard";
+
+import toast, { Toaster } from "react-hot-toast";
 const SingleNews = ({ data }) => {
   const date = new Date(data.dateCreated);
-
+  const notify = () => toast("The link has been copied.", { icon: "👏" });
   const year = date.getFullYear();
   const month = (date.getMonth() + 1).toString().padStart(2, "0"); // Month is zero-indexed
   const day = date.getDate().toString().padStart(2, "0");
 
   const humanReadableDate = `${year}-${month}-${day}`;
   const router = useRouter();
+
+  //handling share link button
+  const handleClickShare = () => {
+    notify();
+    navigator.clipboard.writeText(router.asPath);
+  };
   return (
     <div className={classes.newsMain}>
       <div className={classes.choosen}>
@@ -59,7 +67,7 @@ const SingleNews = ({ data }) => {
               <p>{humanReadableDate}</p>
             </div>
             <p>{parse(data?.description)}</p>
-            <button className={classes.newsShare}>
+            <button className={classes.newsShare} onClick={handleClickShare}>
               <Image
                 src="/assets/svg/share.svg"
                 width={20}
@@ -87,6 +95,7 @@ const SingleNews = ({ data }) => {
           ))}
         </div>
       </div>
+      <Toaster />
     </div>
   );
 };
