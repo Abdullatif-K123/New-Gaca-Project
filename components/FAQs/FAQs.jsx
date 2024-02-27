@@ -24,24 +24,19 @@ const FAQs = () => {
             margin: "5px",
             padding: "0px 10px",
             borderRadius: "10px",
-            borderTopLeftRadius: "10px",
-            borderTopRightRadius: "10px",
+            borderTopLeftRadius: "6px",
+            borderTopRightRadius: "6px",
+            background: "#fff",
+            boxShadow:
+              "0px 2px 4px 1px rgba(51, 48, 60, 0.03),0px 3px 4px 0px rgba(51, 48, 60, 0.02),0px 1px 3px 2px rgba(51, 48, 60, 0.01)",
           },
         },
       },
-      MuiAccordionSummary: {
-        styleOverrides: {
-          root: {
-            backgroundColor: "#fff", // Customize summary background color
-            borderRadius: "10px",
-          },
-        },
-      },
+
       MuiAccordionDetails: {
         styleOverrides: {
           root: {
             borderRadius: "10px",
-            padding: "10px",
           },
         },
       },
@@ -87,9 +82,7 @@ const FAQs = () => {
                     />
                   }
                 >
-                  <Typography
-                    sx={{ fontWeight: "500", color: "rgba(51, 48, 60, 0.87)" }}
-                  >
+                  <Typography className={classes.freq}>
                     Frequently Asked Questions.
                   </Typography>
                 </AccordionSummary>

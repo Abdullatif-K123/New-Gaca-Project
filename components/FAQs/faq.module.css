@@ -67,5 +67,9 @@
 .faQestions {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 0px;
+}
+.freq {
+  color: rgba(51, 48, 60, 0.87);
+  font-size: 15px;
 }
