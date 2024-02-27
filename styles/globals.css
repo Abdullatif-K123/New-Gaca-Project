@@ -330,6 +330,18 @@ a {
     margin-right: 10px; /* Add margin between items */
   }
 }
+.MuiAccordion-root::before {
+  background-color: transparent !important;
+}
+.MuiAccordion-rounded::before {
+  background-color: transparent !important;
+}
+.MuiAccordion-root {
+  background-color: transparent !important;
+}
+.MuiAccordion-rounded {
+  background-color: transparent !important;
+}
 .css-p3qvma-MuiPaper-root-MuiAccordion-root::before {
   background-color: #fff !important;
 }
