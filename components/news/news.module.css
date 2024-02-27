@@ -61,6 +61,7 @@
 .newsCardMain2 {
   position: relative;
   padding: 32px 81px;
+  padding-bottom: 0px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
@@ -176,10 +177,9 @@
 }
 .paginationContainer {
   display: flex;
-  justify-content: flex-end;
-
+  justify-content: center;
   padding: 32px 81px;
-  align-items: center;
+  padding-top: 0px;
 }
 .paginationLink {
   padding: 7px 12px;
@@ -200,20 +200,22 @@
 }
 .pagination {
   list-style: none;
-
   display: flex;
   gap: 3px;
-  align-items: center;
-  margin-top: 2px;
   cursor: pointer;
 }
 .paginationTerm {
-  color: #4b465c;
-  font-size: 16px;
-  background-color: rgb(233, 229, 229);
-  padding: 7px;
-  font-family: "DINNext-light", sans-serif;
-  border-radius: 5px;
+  background-color: #fff;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: 0.5s all ease-in-out;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+.paginationTerm:hover {
+  background-color: #eae5e5;
 }
 .active {
   background-color: #1c7a54 !important;
@@ -225,16 +227,13 @@
 
 .pageItem {
   list-style: none;
-  padding: 2px 12px;
-  height: 31.5px;
-  width: 31.5px;
+  width: 32px;
+  height: 32px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 2px;
   background-color: rgb(233, 229, 229);
-  border-radius: 7px;
-  padding: 7px;
+  border-radius: 50%;
   color: #fff;
   font-family: "DINNext-light", sans-serif;
 }

@@ -65,9 +65,26 @@ const NewsMain = ({ dataNews }) => {
             pageCount={Math.ceil(news.length / itemsPerPage)}
             breakLabel="..."
             previousLabel={
-              <div className={classes.paginationTerm}>Previous</div>
+              <div className={classes.paginationTerm}>
+                <Image
+                  src="/assets/svg/chevron-right.svg"
+                  width={12}
+                  height={12}
+                  alt="expand-more"
+                  style={{ transform: "rotate(180deg)" }}
+                />
+              </div>
             }
-            nextLabel={<div className={classes.paginationTerm}>Next</div>}
+            nextLabel={
+              <div className={classes.paginationTerm}>
+                <Image
+                  src="/assets/svg/chevron-right.svg"
+                  width={12}
+                  height={12}
+                  alt="expand-more"
+                />
+              </div>
+            }
           />
         </div>
       </div>

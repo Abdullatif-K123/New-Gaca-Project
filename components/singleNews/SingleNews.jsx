@@ -4,6 +4,7 @@ import classes from "./SingleNews.module.css";
 import Image from "next/image";
 import parse from "html-react-parser";
 import { API_ROUTES } from "@/utils/apiConfig";
+import SingleCard from "../news/SingleCard";
 const SingleNews = ({ data }) => {
   const date = new Date(data.dateCreated);
 
@@ -58,7 +59,7 @@ const SingleNews = ({ data }) => {
               <p>{humanReadableDate}</p>
             </div>
             <p>{parse(data?.description)}</p>
-            {/* <button className={classes.newsShare}>
+            <button className={classes.newsShare}>
               <Image
                 src="/assets/svg/share.svg"
                 width={20}
@@ -66,8 +67,24 @@ const SingleNews = ({ data }) => {
                 alt="share"
               />
               <p>Share Link</p>
-            </button> */}
+            </button>
           </div>
+        </div>
+      </div>
+      <div className={classes.articleRelated}>
+        <p>
+          <span>Articles</span> Related
+        </p>
+        <div className={classes.newsCardMain2}>
+          {[1, 2, 3].map((nws, index) => (
+            <SingleCard
+              key={index}
+              title={data.title}
+              description={data.description}
+              dateCreated={data.dateCreated}
+              imageUrl={data.imageUrl}
+            />
+          ))}
         </div>
       </div>
     </div>

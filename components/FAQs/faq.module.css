@@ -52,15 +52,20 @@
   display: flex;
   flex-direction: column;
   gap: 50px;
-  padding: 50px 80px;
-  width: 100%;
+  padding: 70px 120px;
+  font-size: 16px;
   justify-content: center;
 }
-.faqContent > h2 {
-  font-family: "DINNext-medium", sans-serif;
+.faqContent > p {
+  font-family: Montserrat;
+  font-weight: 400;
+  color: #000;
+  text-align: center;
+
+  margin: auto;
 }
 .faQestions {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 10px;
 }
