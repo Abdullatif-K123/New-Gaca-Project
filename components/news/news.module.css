@@ -2,7 +2,6 @@
 .newsMain {
   display: flex;
   flex-direction: column;
-
   background-color: #fff;
   position: relative;
   color: #000;
@@ -279,8 +278,20 @@
     row-gap: 70px;
     column-gap: 10px;
   }
+  .newsCardMain2 {
+    row-gap: 70px;
+    column-gap: 10px;
+  }
   .paginationContainer {
     margin-top: 70px;
+  }
+}
+@media (max-width: 1200px) {
+  .newsCardMain2 {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 }
 /* Resonsive for less than 1100px */
@@ -296,6 +307,19 @@
 /* Media screen for less than 650px */
 @media (max-width: 650px) {
   .newsCardMain {
-    grid-template-columns: 1fr;
+    display: flex;
+    align-items: center;
+    max-width: 550px;
+  }
+  .choosen {
+    height: 250px;
+    padding: 25px;
+    gap: 10px;
+  }
+  .newsCard {
+    width: 340px;
+  }
+  .newsCardHead > img {
+    width: 340px;
   }
 }

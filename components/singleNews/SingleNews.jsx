@@ -33,8 +33,8 @@ const SingleNews = ({ data }) => {
             News
           </span>
           <Image src="/assets/svg/Chevron.svg" width={16} height={16} />
-          <span>{data?.title.slice(0, 30)}...</span>
         </p>
+        <h1>{data?.title}</h1>
       </div>
       <div className={classes.newsDetails}>
         <img

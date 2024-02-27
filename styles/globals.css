@@ -322,3 +322,8 @@ a {
     transform: rotate(1turn);
   }
 }
+@media (min-width: 600px) {
+  .owl-carousel .owl-item {
+    margin-right: 10px; /* Add margin between items */
+  }
+}

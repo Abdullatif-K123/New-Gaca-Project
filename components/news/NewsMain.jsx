@@ -46,7 +46,6 @@ const NewsMain = ({ dataNews }) => {
               alt="chevron"
               layout="responsive"
             />
-            <span>News</span>
           </p>
           <h1>News</h1>
         </div>

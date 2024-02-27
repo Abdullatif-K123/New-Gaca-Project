@@ -24,9 +24,12 @@ const Navbar = ({
   //setting up state and functions for feedback dialog
   const [openFeedback, setOpenFeedback] = useState(false);
   const handleClickOpenFeedback = () => {
+    document.body.style.overflow = "hidden";
+    console.log("open");
     setOpenFeedback(true);
   };
   const handleCloseFeedback = () => {
+    document.body.style.overflow = "scroll";
     setOpenFeedback(false);
   };
   const mobileMenu = () => {
@@ -112,6 +115,15 @@ const Navbar = ({
                 className={`${path === "news" ? classes.active : null}`}
               >
                 News
+              </li>
+              <li
+                onClick={() => {
+                  mobileMenu();
+                  router.push("/faq");
+                }}
+                className={`${path === "faq" ? classes.active : null}`}
+              >
+                FAQ
               </li>
               <li
                 onClick={() => {

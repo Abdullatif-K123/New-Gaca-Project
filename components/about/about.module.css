@@ -288,6 +288,16 @@
   .choosen {
     padding: 22px 31px;
   }
+  .strategic {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  .strategiContent {
+    width: 100%;
+  }
 }
 /* Responsive for 450px */
 @media (max-width: 450px) {

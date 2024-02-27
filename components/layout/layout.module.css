@@ -463,7 +463,7 @@
     position: fixed;
     padding-top: 0px;
     left: -100%;
-    top: 6rem;
+    top: 8.3rem;
     height: 320px;
     background-color: #fff;
     width: 100%;
@@ -481,7 +481,8 @@
     position: fixed;
     z-index: 999;
     left: -100%;
-    top: 21rem;
+    top: 24rem;
+    padding-right: 40px;
     align-items: center;
     justify-content: center;
 
@@ -490,10 +491,10 @@
     transition: 0.3s;
   }
   .section > li:hover {
-    color: #0076c7;
+    color: #016258;
   }
   .section > li::after {
-    background-color: #0076c7;
+    background-color: #016258;
   }
   .section {
     position: relative;
@@ -504,7 +505,7 @@
     z-index: 99 !important;
   }
   .section > li {
-    color: #0076c7;
+    color: #63c69a;
   }
   .navSection {
     display: block;

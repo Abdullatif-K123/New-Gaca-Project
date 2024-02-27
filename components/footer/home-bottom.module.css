@@ -245,8 +245,21 @@
   .footerCopyRight > p {
     font-size: 15px;
   }
+
+  .logoSec {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
   .logoSec > p {
-    width: 250px;
+    width: 100%;
+    text-align: center;
+  }
+  .visionFooter {
+    align-items: center;
+  }
+  .linksSlogans {
+    gap: 50px;
   }
 }
 @media (max-width: 650px) {

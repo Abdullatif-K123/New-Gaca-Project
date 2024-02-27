@@ -1,0 +1,66 @@
+.faqMain {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  position: relative;
+  color: #000;
+}
+.faqMain::-webkit-scrollbar {
+  width: 0;
+}
+.choosen {
+  background-image: url("../../public/assets/imges/aboutBackground.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  padding: 38px 91px;
+  height: 390px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  gap: 20px;
+}
+.choosen > h1 {
+  font-size: 48px;
+  color: #fff;
+  font-family: Montserrat;
+}
+.choosen > p {
+  color: #000;
+  font-family: "DINNext-meduim", sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px; /* 114.286% */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: all 0.5s ease-in-out;
+}
+
+.choosen > p > span:first-child {
+  color: #fff;
+}
+.choosen > p > span:first-child {
+  color: #fff;
+}
+.choosen > p > span:hover {
+  font-weight: 600;
+}
+.faqContent {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  padding: 50px 80px;
+  width: 100%;
+  justify-content: center;
+}
+.faqContent > h2 {
+  font-family: "DINNext-medium", sans-serif;
+}
+.faQestions {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}

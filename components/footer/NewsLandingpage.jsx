@@ -14,20 +14,7 @@ import dynamic from "next/dynamic";
 const OwlCarousel = dynamic(() => import("react-owl-carousel"), {
   ssr: false,
 });
-const Responsive = {
-  0: {
-    items: 1.5,
-    margin: 5,
-  },
-  768: {
-    items: 2.5,
-    margin: 10,
-  },
-  1024: {
-    items: 3.5,
-    margin: 20,
-  },
-};
+
 const options = {
   animateOut: "slideOutDown",
   animateIn: "flipInX",
@@ -36,13 +23,24 @@ const options = {
   stagePadding: 30,
   smartSpeed: 450,
   loop: true,
+  autoplayTimeout: 3000,
+  autoplayHoverPause: true,
+  autoplay: true,
+
+  responsive: {
+    0: {
+      items: 1,
+    },
+    600: {
+      items: 2,
+    },
+    1000: {
+      items: 3,
+    },
+  },
 };
-const NewsLandingpage = ({ news }) => {
-  const [filterData, setFilterData] = useState([]);
-  const owlCarouselRef = useRef(null);
-  const [startIndex, setStartIndex] = useState(0);
-  const [leftRight, setLeftRight] = useState("left");
-  const [currentSlide, setCurrentSlide] = useState(0);
+const NewsLandingpage = React.memo(({ news }) => {
+  const [currentSlide, setCurrentSlide] = useState(1);
 
   const handleRight = () => {
     setCurrentSlide((prevSlide) => (prevSlide + 1) % news.length);
@@ -51,11 +49,7 @@ const NewsLandingpage = ({ news }) => {
   const handleLeft = () => {
     setCurrentSlide((prevSlide) => (prevSlide - 1 + news.length) % news.length);
   };
-  const visibleNews = [
-    news[(startIndex - 1 + news.length) % news.length],
-    news[startIndex],
-    news[(startIndex + 1) % news.length],
-  ];
+
   return (
     <div className={classes.newsHeader}>
       <div className={classes.newsTopHeading}>
@@ -86,16 +80,12 @@ const NewsLandingpage = ({ news }) => {
           <OwlCarousel
             startPosition={currentSlide}
             animateIn={true}
-            className="owl-theme"
+            className="owl-carousel owl-theme"
             {...options}
             center={true}
           >
             {news.map((newsData, index) => (
-              <SingleCard
-                key={newsData.id}
-                {...newsData}
-                leftRight={leftRight}
-              />
+              <SingleCard key={newsData.id} {...newsData} />
             ))}
           </OwlCarousel>
         </div>
@@ -114,6 +104,6 @@ const NewsLandingpage = ({ news }) => {
       </div>
     </div>
   );
-};
+});
 
 export default NewsLandingpage;

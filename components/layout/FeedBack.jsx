@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import classes from "./layout.module.css";
 import Image from "next/image";
 import {
@@ -13,10 +13,7 @@ import {
   Select,
   MenuItem,
   Fade,
-  FormControl,
-  InputLabel,
 } from "@mui/material";
-import { API_ROUTES } from "@/utils/apiConfig";
 import { useFormik } from "formik";
 
 import * as Yup from "yup";
@@ -26,6 +23,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 const FeedBack = ({ open, handleClose, handleSubmitFeedback }) => {
   const [focusedInput, setFocusedInput] = useState(null);
   const [sendFeedback, setSendFeedback] = useState(false);
+  const [dialogPadding, setDialogPadding] = useState("30px 50px");
   const [initialForms, setInitialForms] = useState({
     name: "",
     email: "",
@@ -71,12 +69,28 @@ const FeedBack = ({ open, handleClose, handleSubmitFeedback }) => {
       formik.resetForm();
     },
   });
+  useEffect(() => {
+    const handleResize = () => {
+      // Adjust padding based on screen width
+      if (window.innerWidth < 600) {
+        setDialogPadding("20px 20px"); // Example padding for smaller screens
+      } else {
+        setDialogPadding("30px 50px"); // Default padding for larger screens
+      }
+    };
+
+    // Call handleResize initially and add event listener
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    // Remove event listener on component unmount
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
   return (
     <Dialog
       open={open}
       fullWidth
       maxWidth="md"
-      scroll="body"
       TransitionComponent={Transition}
       keepMounted
       onClose={handleClose}
@@ -84,7 +98,7 @@ const FeedBack = ({ open, handleClose, handleSubmitFeedback }) => {
         style: {
           overflowY: "unset",
           overflowX: "unset",
-          padding: "30px 50px",
+          padding: dialogPadding,
         },
       }}
       className={classes.dialogStyle}
