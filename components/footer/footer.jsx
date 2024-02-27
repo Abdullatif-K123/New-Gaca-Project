@@ -29,7 +29,6 @@ const Footer = ({ conVersion }) => {
     setLinks(conVersion.links);
   }, [conVersion]);
   const router = useRouter();
-  console.log(router.pathname);
   return (
     <div className={classes.footerMain}>
       <div className={classes.footerContentMain}>

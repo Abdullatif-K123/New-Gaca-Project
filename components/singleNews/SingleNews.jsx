@@ -20,7 +20,7 @@ const SingleNews = ({ data }) => {
   //handling share link button
   const handleClickShare = () => {
     notify();
-    navigator.clipboard.writeText(router.asPath);
+    navigator.clipboard.writeText("https://e-snap.vercel.app" + router.asPath);
   };
   return (
     <div className={classes.newsMain}>

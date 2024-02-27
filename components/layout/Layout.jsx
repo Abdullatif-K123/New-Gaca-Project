@@ -16,7 +16,6 @@ const Layout = (props) => {
         feedbackTitle: obj.feedbackTitle,
         feedbackMessage: obj.feedbackMessage,
       });
-      console.log(response);
       notify();
     } catch (error) {
       console.log(error);
