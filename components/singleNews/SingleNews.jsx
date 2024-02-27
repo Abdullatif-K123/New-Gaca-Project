@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import classes from "./SingleNews.module.css";
 import Image from "next/image";
 import parse from "html-react-parser";
 import { API_ROUTES } from "@/utils/apiConfig";
 import SingleCard from "../news/SingleCard";
-
+import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
-const SingleNews = ({ data }) => {
+import LoadingSpinner from "../ui/LoadingSpinner";
+const SingleNews = ({ id }) => {
+  const [data, setData] = useState({});
+
+  const [loading, setLoading] = useState(true);
   const date = new Date(data.dateCreated);
   const notify = () => toast("The link has been copied.", { icon: "👏" });
   const year = date.getFullYear();
@@ -16,7 +20,23 @@ const SingleNews = ({ data }) => {
 
   const humanReadableDate = `${year}-${month}-${day}`;
   const router = useRouter();
+  //Fetching data
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`${API_ROUTES.blogs.get}/${id}`);
+        setData(response.data);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
 
+    fetchData();
+  }, []);
+  if (loading) {
+    return <LoadingSpinner />;
+  }
   //handling share link button
   const handleClickShare = () => {
     notify();

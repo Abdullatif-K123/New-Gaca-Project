@@ -7,6 +7,7 @@ import { API_ROUTES } from "@/utils/apiConfig";
 const index = ({ isFeedbackVisible, handleToggleFeedback, conVersion }) => {
   const [data, setData] = useState({});
   const [loading, setLoading] = useState(true);
+  console.log("I'm here");
   useEffect(() => {
     const fetchData = async () => {
       try {
