@@ -25,7 +25,6 @@ const AboutPage = ({ data }) => {
             height={16}
             alt="chev"
           />
-          <span>About</span>
         </p>
         <h1>About SNAP</h1>
       </div>

@@ -285,6 +285,7 @@ a {
   border: 4px solid #0000;
   border-radius: 50%;
   border-color: #e4e4ed #0000;
+
   animation: s6 1s infinite linear;
 }
 .custom-loader::before,
@@ -314,6 +315,8 @@ a {
     linear-gradient(180deg, #00685e 0%, #00685e 100%),
     linear-gradient(98deg, #00685e 20.86%, #00685e 37.28%, #00685e 91.31%); /* Blue background with some transparency */
   display: flex;
+  flex-direction: column;
+  gap: 20px;
   justify-content: center;
   align-items: center;
 }
