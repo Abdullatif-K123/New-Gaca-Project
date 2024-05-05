@@ -13,7 +13,7 @@ export const API_ROUTES = {
     get: "https://snap.somee.com/api/downloads",
   },
   blogs: {
-    get: "https://gaca.somee.com/api/landingpage/blogs",
+    get: "https://snap.somee.com/api/news",
   },
   settings: {
     get: "https://gaca.somee.com/api/landingpage/settings",

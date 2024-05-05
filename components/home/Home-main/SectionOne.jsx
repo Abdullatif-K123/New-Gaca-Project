@@ -3,7 +3,7 @@ import classes from "./home-one.module.css";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import parse from "html-react-parser";
-const SectionOne = ({ isFeedbackVisible, title, desc }) => {
+const SectionOne = ({ isFeedbackVisible, title, desc,rtl }) => {
   const router = useRouter();
   const handleClick = () => {
     const targetElement = document.getElementById("masterplan");
@@ -12,7 +12,7 @@ const SectionOne = ({ isFeedbackVisible, title, desc }) => {
     }
   };
   return (
-    <div className={classes.sectionOne}>
+    <div className={classes.sectionOne} style={{direction: rtl? "rtl": ""}}>
       {/* Video background */}
       <div className={classes.videoContainer}>
         <video autoPlay muted loop className={classes.video}>
@@ -32,7 +32,7 @@ const SectionOne = ({ isFeedbackVisible, title, desc }) => {
             router.push("/download");
           }}
         >
-          <p>Download SNAP Documents</p>
+          <p> {rtl? "تحميل ملفات " : "Download SNAP Documents"}</p>
         </div>
       </div>
       <div className={classes.sectionTwo}>

@@ -6,6 +6,7 @@ export default function Home({
   handleToggleFeedback,
   conVersion,
   data, 
+  rtl
 }) {
   console.log(data) 
   return (
@@ -15,6 +16,7 @@ export default function Home({
         handleToggleFeedback={handleToggleFeedback}
         conVersion={conVersion}
         dataHome={data}
+        rtl={rtl}
       />
     </div>
   );

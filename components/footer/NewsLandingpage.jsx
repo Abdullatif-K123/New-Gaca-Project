@@ -39,7 +39,7 @@ const options = {
     },
   },
 };
-const NewsLandingpage = React.memo(({ news }) => {
+const NewsLandingpage = React.memo(({ news,rtl }) => {
   const [currentSlide, setCurrentSlide] = useState(1);
 
   const handleRight = () => {
@@ -52,12 +52,12 @@ const NewsLandingpage = React.memo(({ news }) => {
 
   return (
     <div className={classes.newsHeader}>
-      <div className={classes.newsTopHeading}>
+      <div className={classes.newsTopHeading} style={{direction:rtl? "rtl": ""}}>
         <h3>
-          Our <span>News</span>
+          {rtl? "أخبارنا":"Our"} <span>{!rtl? "News": ""}</span>
         </h3>
 
-        <Link href={"/news"}>View all</Link>
+        <Link href={"/news"}>{rtl? "عرض الكل": "View all"}</Link>
       </div>
       <div className={classes.newsCardMain} style={{ padding: "32px 0px" }}>
         <button className={classes.newsArrow} onClick={handleLeft}>
@@ -85,7 +85,7 @@ const NewsLandingpage = React.memo(({ news }) => {
             center={true}
           >
             {news.map((newsData, index) => (
-              <SingleCard key={newsData.id} {...newsData} />
+              <SingleCard key={newsData.id} {...newsData} rtl={rtl} />
             ))}
           </OwlCarousel>
         </div>

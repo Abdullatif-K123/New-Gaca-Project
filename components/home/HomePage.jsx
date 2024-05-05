@@ -7,7 +7,7 @@ import { API_ROUTES } from "@/utils/apiConfig";
 import classes from "./Home-main/home-one.module.css";
 import axios from "axios";
 import Image from "next/image";
-const HomePage = ({ dataHome,  isFeedbackVisible, handleToggleFeedback, conVersion, lang }) => {
+const HomePage = ({ dataHome,  isFeedbackVisible, handleToggleFeedback, conVersion, lang, rtl }) => {
   
   const [showBtn, setShowBtn] = useState(false);
    
@@ -34,8 +34,8 @@ const HomePage = ({ dataHome,  isFeedbackVisible, handleToggleFeedback, conVersi
   };
   
   //constract the title and description from data api hero section 
-  const title = !lang? dataHome.hero.titleEN : dataHome.hero.title; 
-  const desc = !lang? dataHome.hero.descriptionEN : dataHome.hero.description;
+  const title = !rtl? dataHome.hero.titleEN : dataHome.hero.title; 
+  const desc = !rtl? dataHome.hero.descriptionEN : dataHome.hero.description;
  
   return (
     <div
@@ -54,13 +54,15 @@ const HomePage = ({ dataHome,  isFeedbackVisible, handleToggleFeedback, conVersi
         handleToggleFeedback={handleToggleFeedback}
         title={title}
         desc={desc}
+        rtl={rtl}
       />
-      <MasterPlan layers={ dataHome?.masterPlanLayers} />
+      <MasterPlan layers={ dataHome?.masterPlanLayers} rtl={rtl} />
       <HomeBottom
         news={dataHome?.lastNews}
         imgs={dataHome?.stakeHolders}
         conVersion={conVersion}
         desc={desc}
+        rtl={rtl}
       />
       {showBtn && (
         <div className={classes.btnUp} onClick={handleClick}>

@@ -9,6 +9,7 @@
   background-color: #1c7a54;
   height: calc(100vh - 111px);
   z-index: 2;
+  position: relative;
 }
 .videoContainer {
   position: absolute;
@@ -169,7 +170,7 @@
 /* Arrow down button */
 .btnDown {
   position: absolute;
-  bottom: 0;
+  bottom:10%;
   left: 50%;
   transform: translateX(-50%);
   z-index: 20;

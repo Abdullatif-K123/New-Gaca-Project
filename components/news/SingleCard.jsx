@@ -17,6 +17,8 @@ const SingleCard = ({
   createdAt
 
 }) => {
+  console.log(titleEN); 
+  console.log("I'm hereeeeeeeeee")
   const date = new Date(createdAt);
   const src = imageUrl? API_ROUTES.domainName +'/'+imageUrl : "assets/imges/img3.jpg"
   const year = date.getFullYear();

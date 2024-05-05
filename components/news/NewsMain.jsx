@@ -11,7 +11,7 @@ const NewsMain = ({ dataNews }) => {
   const [currentPage, setCurrentPage] = useState(0);
   const [leftRight, setLeftRight] = useState("left");
   const [filterData, setFilterData] = useState([]);
-  const [news, setNewsData] = useState(dataNews.data);
+  const [news, setNewsData] = useState(dataNews);
   const router = useRouter();
 
   const itemsPerPage = 15;
@@ -26,7 +26,7 @@ const NewsMain = ({ dataNews }) => {
       })
     );
   }, [currentPage, dataNews]);
-
+   console.log(filterData)
   return (
     <div className={classes.newsMain}>
       <div className={classes.newsSection}>

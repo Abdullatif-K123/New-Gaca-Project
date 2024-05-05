@@ -9,6 +9,11 @@ export default function App({ Component, pageProps }) {
   const [isFeedbackVisible, setIsFeedbackVisible] = useState(false);
   const [data, setData] = useState({});
   const [loading, setLoading] = useState(false);
+  const [rtl, setRtl] = useState(false); 
+  //handling language rtl i18l localization
+  const handleRtl = ()=>{
+      setRtl(!rtl); 
+  }
   const handleToggleFeedback = () => {
     setIsFeedbackVisible(!isFeedbackVisible);
   };
@@ -46,9 +51,13 @@ export default function App({ Component, pageProps }) {
         isFeedbackVisible={isFeedbackVisible}
         handleToggleFeedback={handleToggleFeedback}
         conVersion={data}
+        rtl={rtl}
+        handleRtl={handleRtl}
       >
         <Component
           {...pageProps}
+          rtl={rtl}
+          handleRtl={handleRtl}
           isFeedbackVisible={isFeedbackVisible}
           handleToggleFeedback={handleToggleFeedback}
           conVersion={data}

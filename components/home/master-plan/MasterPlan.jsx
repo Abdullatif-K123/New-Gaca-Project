@@ -101,7 +101,7 @@ const Element = ({
     </div>
   );
 };
-const MasterPlan = ({ layers }) => {
+const MasterPlan = ({ layers, rtl }) => {
   const [hoverElement, setHoverElement] = useState(null);
   const [isNowhovering, setIsNowHovering] = useState(false);
   const handleHover = (id) => {
@@ -121,52 +121,52 @@ const MasterPlan = ({ layers }) => {
           Your browser does not support the video tag.
         </video>
       </div>
-    <div id={"masterplan"} className={classes.masterPlanMain}>
+    <div id={"masterplan"} className={classes.masterPlanMain} style={{marginBottom: "48px"}}>
       <h1>Master Plan Level</h1>
        {/* Video background */}
     
 
-      <div className={classes.masterpyrmaid}>
+      <div className={classes.masterpyrmaid} >
         {[
           {
             idnum: 1,
             imgsrc: "/assets/svg/light-green1.svg",
             width: 140,
             height: 130,
-            text: layers[0].titleEN,
-            desc: layers[0].descriptionEN,
+            text: rtl? layers[0].title : layers[0].titleEN,
+            desc: rtl? layers[0].description : layers[0].descriptionEN,
           },
           {
             idnum: 2,
             imgsrc: "/assets/svg/light-green2.svg",
             width: 262,
             height: 110,
-            text: layers[1].titleEN,
-            desc: layers[1].descriptionEN,
+            text: rtl? layers[1].title : layers[1].titleEN,
+            desc: rtl? layers[1].description : layers[1].descriptionEN,
           },
           {
             idnum: 3,
             imgsrc: "/assets/svg/light-green3.svg",
             width: 390,
             height: 110,
-            text: layers[2].titleEN,
-            desc: layers[2].descriptionEN,
+            text: rtl? layers[2].title : layers[2].titleEN,
+            desc: rtl? layers[2].description : layers[2].descriptionEN,
           },
           {
             idnum: 4,
             imgsrc: "/assets/svg/light-green4.svg",
             width: 525,
             height: 110,
-            text: layers[3].titleEN,
-            desc: layers[3].descriptionEN,
+            text: rtl? layers[3].title : layers[3].titleEN,
+            desc: rtl? layers[3].description : layers[3].descriptionEN,
           },
           {
             idnum: 5,
             imgsrc: "/assets/svg/light-green5.svg",
             width: 650,
             height: 110,
-            text: layers[4].titleEN,
-            desc: layers[4].descriptionEN,
+            text: rtl? layers[4].title : layers[4].titleEN,
+            desc: rtl? layers[4].description : layers[4].descriptionEN,
           },
         ].map((id) => {
           return (

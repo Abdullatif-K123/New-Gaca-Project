@@ -6,7 +6,8 @@ import { API_ROUTES } from "@/utils/apiConfig";
 import NewsLandingpage from "./NewsLandingpage";
 import Image from "next/image";
 import Link from "next/link";
-const HomeBottom = ({ imgs, conVersion, desc, news }) => {
+import SubSection from "./SubSection";
+const HomeBottom = ({ imgs, conVersion, desc, news, rtl }) => {
   const [sliderWidth, setSliderWidth] = useState("180px");
   const [leftRight, setLeftRight] = useState(false);
   useEffect(() => {
@@ -29,9 +30,10 @@ const HomeBottom = ({ imgs, conVersion, desc, news }) => {
     <>
       <div className={classes.homeBottomMain} id="stakeholder">
         <div className={classes.bottomLogo}>
-          <NewsLandingpage news={news} />
-          <h2>
-            <span>Our</span> Stackholders
+          <NewsLandingpage news={news} rtl={rtl}/>
+          <SubSection/>
+          <h2 style={{direction: rtl? "rtl": ""}}>
+            <span>{rtl? "أصحاب":"Our"}</span> {rtl? "المصلحة":"Stackholders"}
           </h2>
         </div>
         <div className={classes.stakholderArrows}>

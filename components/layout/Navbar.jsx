@@ -9,6 +9,8 @@ const Navbar = ({
   isFeedbackVisible,
   handleToggleFeedback,
   conVersion,
+  rtl,
+  handleRtl
 }) => {
   // creating function menu hamburger
   const [addClass, setAddClass] = useState(false);
@@ -63,32 +65,32 @@ function formatArabicDate() {
   };
 
   // Format the date and return the result
-  return new Intl.DateTimeFormat('ar-SA-u-nu-latn', options).format(now);
+  return new Intl.DateTimeFormat(!rtl? 'us':'ar-SA-u-nu-latn', options).format(now);
 }
   return (
     <>
-    <div className={classes.navBottom}> 
-        <div className={classes.langAcess}>
-          <div className={classes.languageRtl}>
+    <div className={classes.navBottom} style={{direction: rtl? "rtl": ""}}> 
+        <div className={classes.langAcess} style={{direction: rtl? "rtl": ""}}>
+          <div className={classes.languageRtl}onClick={handleRtl} style={{direction: rtl? "rtl": ""}}>
              <Image src="/assets/svg/icon-language.svg" width={30} height={30} alt="lang"/>
-              <p>English</p>
+              <p>{rtl? "عربي" : "English"}</p>
              </div>
               <Image src="/assets/svg/accessability.svg" width={20} height={20} alt="accessability" />
-            <div className={classes.fonts}>
+            <div className={classes.fonts} style={{direction: rtl? "rtl": ""}}>
                 <p>A+</p>
                 <p>AA</p>
                 <p>A-</p>
             </div>
         </div>
-        <div className={classes.contactDate}>
-          <div className={classes.emailSec}>
+        <div className={classes.contactDate} style={{direction: rtl? "rtl": ""}}>
+          <div className={classes.emailSec} style={{direction: rtl? "rtl": ""}}>
              <p>info@gmail.com</p>
              <Image src="/assets/svg/mail.svg" width={15} height={15} alt="mail"/>
           </div>
-            <div className={classes.phoneSec}>
+            <div className={classes.phoneSec} style={{direction: rtl? "rtl": ""}} >
                <p>12345678</p>
                <Image src="/assets/svg/phone.svg" width={15} height={15} alt="phone"/>
-               <p>الاتصال</p>
+               <p>{rtl? "الاتصال": "Phone"}</p>
             </div>
               <div className={classes.dateSaudi}>
                  <p>{formatArabicDate()}</p>

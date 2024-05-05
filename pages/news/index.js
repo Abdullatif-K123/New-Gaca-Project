@@ -4,27 +4,11 @@ import Footer from "@/components/footer/footer";
 import LoadingSpinner from "@/components/ui/LoadingSpinner";
 import axios from "axios";
 import { API_ROUTES } from "@/utils/apiConfig";
-const index = ({ isFeedbackVisible, handleToggleFeedback, conVersion }) => {
-  const [data, setData] = useState({});
+const index = ({ isFeedbackVisible, handleToggleFeedback, conVersion, dataNews }) => {
+ 
+  const [data, setData] = useState(dataNews);
   const [loading, setLoading] = useState(true);
-  console.log("I'm here");
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(API_ROUTES.blogs.get);
-        console.log(response.data);
-        setData(response.data);
-        setLoading(false);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
-    fetchData();
-  }, []);
-  if (loading) {
-    return <LoadingSpinner />;
-  }
+   console.log(dataNews)
   return (
     <div
       onClick={() => {
@@ -42,5 +26,19 @@ const index = ({ isFeedbackVisible, handleToggleFeedback, conVersion }) => {
     </div>
   );
 };
+export async function getStaticProps(){
+  try{
+    const response = await axios.get(API_ROUTES.blogs.get); 
+    return{
+      props:{
+        dataNews: response.data,
+      },
+      revalidate: 10,
+    }
+  }catch(error){
+    console.log("Error fetching data:", error); 
+    return null;
+  }
+}
 
 export default index;
