@@ -1,5 +1,5 @@
 export const API_ROUTES = {
-  domainName: "https://gaca.somee.com",
+  domainName: "https://snap.somee.com/",
   homePage: {
     get: "https://gaca.somee.com/api/landingpage/homepage",
   },

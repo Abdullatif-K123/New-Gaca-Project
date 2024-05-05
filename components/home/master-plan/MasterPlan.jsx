@@ -49,7 +49,7 @@ const Element = ({
             <p
               className={`${classes.masterPlanInfoDesc} ${classes.masterPlanInfoDescLeft}`}
             >
-              {desc.slice(0, 200)}...
+              {desc?.slice(0, 200)}...
             </p>
           )}
         </div>
@@ -113,8 +113,19 @@ const MasterPlan = ({ layers }) => {
     setIsNowHovering(false);
   };
   return (
+    <>
+      <div className={classes.videoContainer}>
+        <video autoPlay muted loop className={classes.video}>
+          <source src="/assets/video/vid-background.mp4" type="video/mp4" />
+          {/* Add additional source elements for different video formats if needed */}
+          Your browser does not support the video tag.
+        </video>
+      </div>
     <div id={"masterplan"} className={classes.masterPlanMain}>
       <h1>Master Plan Level</h1>
+       {/* Video background */}
+    
+
       <div className={classes.masterpyrmaid}>
         {[
           {
@@ -122,40 +133,40 @@ const MasterPlan = ({ layers }) => {
             imgsrc: "/assets/svg/light-green1.svg",
             width: 140,
             height: 130,
-            text: layers[0].title,
-            desc: layers[0].descripton,
+            text: layers[0].titleEN,
+            desc: layers[0].descriptionEN,
           },
           {
             idnum: 2,
             imgsrc: "/assets/svg/light-green2.svg",
             width: 262,
             height: 110,
-            text: layers[1].title,
-            desc: layers[1].descripton,
+            text: layers[1].titleEN,
+            desc: layers[1].descriptionEN,
           },
           {
             idnum: 3,
             imgsrc: "/assets/svg/light-green3.svg",
             width: 390,
             height: 110,
-            text: layers[2].title,
-            desc: layers[2].descripton,
+            text: layers[2].titleEN,
+            desc: layers[2].descriptionEN,
           },
           {
             idnum: 4,
             imgsrc: "/assets/svg/light-green4.svg",
             width: 525,
             height: 110,
-            text: layers[3].title,
-            desc: layers[3].descripton,
+            text: layers[3].titleEN,
+            desc: layers[3].descriptionEN,
           },
           {
             idnum: 5,
             imgsrc: "/assets/svg/light-green5.svg",
             width: 650,
             height: 110,
-            text: layers[4].title,
-            desc: layers[4].descripton,
+            text: layers[4].titleEN,
+            desc: layers[4].descriptionEN,
           },
         ].map((id) => {
           return (
@@ -176,6 +187,7 @@ const MasterPlan = ({ layers }) => {
         })}
       </div>
     </div>
+    </>
   );
 };
 

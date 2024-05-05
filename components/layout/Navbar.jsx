@@ -47,8 +47,54 @@ const Navbar = ({
     // Open a new tab or window with the specified URL
     window.open(link, "_blank");
   };
+  // Function to format the current date in the desired Arabic format
+function formatArabicDate() {
+  const now = new Date();
+
+  // Options for formatting the date in Arabic
+  const options = {
+      weekday: 'long', // Full day name (الاحد)
+      day: 'numeric', // Day of the month (٢٧)
+      month: 'long', // Full month name (مارس)
+      year: 'numeric', // Year (٢٠٢٢)
+      era: 'short', // Era (٢٣ شعبان ١٤٤٣)
+     hour: '2-digit', // Hour (٠٧)
+      minute: '2-digit', // Minute (١٣)
+  };
+
+  // Format the date and return the result
+  return new Intl.DateTimeFormat('ar-SA-u-nu-latn', options).format(now);
+}
   return (
     <>
+    <div className={classes.navBottom}> 
+        <div className={classes.langAcess}>
+          <div className={classes.languageRtl}>
+             <Image src="/assets/svg/icon-language.svg" width={30} height={30} alt="lang"/>
+              <p>English</p>
+             </div>
+              <Image src="/assets/svg/accessability.svg" width={20} height={20} alt="accessability" />
+            <div className={classes.fonts}>
+                <p>A+</p>
+                <p>AA</p>
+                <p>A-</p>
+            </div>
+        </div>
+        <div className={classes.contactDate}>
+          <div className={classes.emailSec}>
+             <p>info@gmail.com</p>
+             <Image src="/assets/svg/mail.svg" width={15} height={15} alt="mail"/>
+          </div>
+            <div className={classes.phoneSec}>
+               <p>12345678</p>
+               <Image src="/assets/svg/phone.svg" width={15} height={15} alt="phone"/>
+               <p>الاتصال</p>
+            </div>
+              <div className={classes.dateSaudi}>
+                 <p>{formatArabicDate()}</p>
+              </div>
+        </div>
+    </div>
       <div
         className={`${classes.navModified} ${
           aboutPath ? classes.aboutModified : null
@@ -125,14 +171,7 @@ const Navbar = ({
               >
                 FAQ
               </li>
-              <li
-                onClick={() => {
-                  mobileMenu();
-                  handleClickOpen();
-                }}
-              >
-                Constructor{" "}
-              </li>
+             
             </ul>
           </div>
 
@@ -140,8 +179,7 @@ const Navbar = ({
             className={`${classes.feedBackSection} ${
               addClass ? classes.navAuthHam : null
             }`}
-          >
-            <p className={classes.language}>AR</p>
+          > 
             <div className={classes.vision}>
               <Image
                 src={"/assets/svg/vision-2030.svg"}

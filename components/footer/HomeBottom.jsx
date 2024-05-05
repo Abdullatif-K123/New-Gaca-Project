@@ -5,6 +5,7 @@ import Slider from "react-infinite-logo-slider";
 import { API_ROUTES } from "@/utils/apiConfig";
 import NewsLandingpage from "./NewsLandingpage";
 import Image from "next/image";
+import Link from "next/link";
 const HomeBottom = ({ imgs, conVersion, desc, news }) => {
   const [sliderWidth, setSliderWidth] = useState("180px");
   const [leftRight, setLeftRight] = useState(false);
@@ -23,7 +24,7 @@ const HomeBottom = ({ imgs, conVersion, desc, news }) => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-
+   const src = imgs.avatar? imgs.avatar : "/assets/svg/SANS.svg"
   return (
     <>
       <div className={classes.homeBottomMain} id="stakeholder">
@@ -64,14 +65,16 @@ const HomeBottom = ({ imgs, conVersion, desc, news }) => {
             {imgs.map((stakholder) => {
               return (
                 <Slider.Slide key={stakholder.id}>
+                  <Link href={stakholder.url}  _blank >
                   <div className={classes.partnerItem}>
-                    <img
-                      src={`${API_ROUTES.domainName}/${stakholder.imageUrl}`}
+                   {stakholder.avatar?<img
+                      src={`${API_ROUTES.domainName}/${stakholder.avatar}`}
                       width={140}
                       height={140}
                       alt={stakholder.title}
-                    />
+                    />: <div style={{background: "yellow", width: 140, height: 140, borderRadius: "80px" }}></div> } 
                   </div>
+                  </Link>
                 </Slider.Slide>
               );
             })}

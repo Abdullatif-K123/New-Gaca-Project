@@ -6,17 +6,19 @@ import { useSpring, animated } from "react-spring";
 import parse from "html-react-parser";
 import { API_ROUTES } from "@/utils/apiConfig";
 const SingleCard = ({
-  title,
-  img,
+  title, 
   summary,
   leftRight,
-  id,
-  dateCreated,
+  id, 
   description,
   imageUrl,
-}) => {
-  const date = new Date(dateCreated);
+  titleEN, 
+  descriptionEN,
+  createdAt
 
+}) => {
+  const date = new Date(createdAt);
+  const src = imageUrl? API_ROUTES.domainName +'/'+imageUrl : "assets/imges/img3.jpg"
   const year = date.getFullYear();
   const month = (date.getMonth() + 1).toString().padStart(2, "0"); // Month is zero-indexed
   const day = date.getDate().toString().padStart(2, "0");
@@ -43,12 +45,12 @@ const SingleCard = ({
     >
       <div className={classes.newsCardHead}>
         <img
-          src={`${API_ROUTES.domainName}/${imageUrl}`}
+          src={src}
           width={385}
           height={180}
-          alt={title.slice(0, 20)}
+          alt={titleEN.slice(0, 20)}
         />
-        <p>{title}</p>
+        <p>{titleEN}</p>
       </div>
       <div className={classes.newsCardBody}>
         <div className={classes.newsDate}>
@@ -60,7 +62,7 @@ const SingleCard = ({
           />
           <p>{humanReadableDate}</p>
         </div>
-        <p>{parse(description.slice(0, 170))}...</p>
+        <p>{parse(descriptionEN.slice(0, 170))}...</p>
       </div>
     </animated.div>
   );

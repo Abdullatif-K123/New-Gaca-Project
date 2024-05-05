@@ -7,24 +7,10 @@ import { API_ROUTES } from "@/utils/apiConfig";
 import classes from "./Home-main/home-one.module.css";
 import axios from "axios";
 import Image from "next/image";
-const HomePage = ({ isFeedbackVisible, handleToggleFeedback, conVersion }) => {
-  const [data, setData] = useState({});
-  const [loading, setLoading] = useState(true);
+const HomePage = ({ dataHome,  isFeedbackVisible, handleToggleFeedback, conVersion, lang }) => {
+  
   const [showBtn, setShowBtn] = useState(false);
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(API_ROUTES.homePage.get);
-
-        setData(response.data);
-        setLoading(false);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
-    fetchData();
-  }, []);
+   
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
@@ -46,11 +32,11 @@ const HomePage = ({ isFeedbackVisible, handleToggleFeedback, conVersion }) => {
       targetElement.scrollIntoView({ behavior: "smooth" });
     }
   };
-  const heroTitle = data?.hero?.title || "Default Title";
-  const heroDescription = data?.hero?.description || "Default Description";
-  if (loading) {
-    return <LoadingSpinner />;
-  }
+  
+  //constract the title and description from data api hero section 
+  const title = !lang? dataHome.hero.titleEN : dataHome.hero.title; 
+  const desc = !lang? dataHome.hero.descriptionEN : dataHome.hero.description;
+ 
   return (
     <div
       onClick={() => {
@@ -66,15 +52,15 @@ const HomePage = ({ isFeedbackVisible, handleToggleFeedback, conVersion }) => {
       <SectionOne
         isFeedbackVisible={isFeedbackVisible}
         handleToggleFeedback={handleToggleFeedback}
-        title={heroTitle}
-        desc={heroDescription}
+        title={title}
+        desc={desc}
       />
-      <MasterPlan layers={data?.masterPlan} />
+      <MasterPlan layers={ dataHome?.masterPlanLayers} />
       <HomeBottom
-        news={data?.news}
-        imgs={data?.stakeHolder}
+        news={dataHome?.lastNews}
+        imgs={dataHome?.stakeHolders}
         conVersion={conVersion}
-        desc={heroDescription}
+        desc={desc}
       />
       {showBtn && (
         <div className={classes.btnUp} onClick={handleClick}>

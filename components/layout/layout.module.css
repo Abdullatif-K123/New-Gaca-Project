@@ -2,8 +2,69 @@
 .navModified {
   position: relative;
   z-index: 100;
-  padding-top: 32px;
-  background: #016258;
+}
+.navBottom{
+   background: #1C7A54; 
+   padding-bottom: 32px;
+   z-index: 100;
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr; 
+  padding: 18px 100px;
+}
+.langAcess{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.languageRtl{
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  border-right: 1px solid #fff;
+  padding-right: 20px;
+}
+.languageRtl > img{
+   margin-bottom: -10px;
+}
+.languageRtl > p {
+   font-size: 14px;
+   font-family: "DINNext-Regular", sans-serif;
+}
+.languageRtl >p:hover{
+   text-shadow: 1px 0px;
+}
+.fonts{
+   display: flex;
+   align-items: center;
+   gap: 15px;
+}
+.fonts > p {
+   padding-right:  15px;
+  border-right: 1px solid #fff;
+}
+.fonts > p:last-child{
+   border-right: none;
+}
+.contactDate{
+   display: flex;
+   align-items: center;
+   gap: 20px;
+   font-family: "DINNext-Regular", sans-serif;
+}
+.emailSec{
+   display: flex;
+   align-items: center;
+   gap: 10px;
+   
+}
+.phoneSec{
+   display: flex;
+   align-items: center;
+   gap: 10px;
+   
+   padding-right:  15px;
+  border-right: 1px solid #fff;
 }
 .navMain {
   display: grid;

@@ -13,6 +13,16 @@ const SectionOne = ({ isFeedbackVisible, title, desc }) => {
   };
   return (
     <div className={classes.sectionOne}>
+      {/* Video background */}
+      <div className={classes.videoContainer}>
+        <video autoPlay muted loop className={classes.video}>
+          <source src="/assets/video/vid-background.mp4" type="video/mp4" />
+          {/* Add additional source elements for different video formats if needed */}
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+        {/* Content */}
       <div className={classes.secOneContect}>
         <h1>{title}</h1>
         <p>{parse(desc)}</p>
