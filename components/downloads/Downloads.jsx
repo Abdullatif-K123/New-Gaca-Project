@@ -18,7 +18,7 @@ import {
 } from "@mui/material";
 import { API_ROUTES } from "@/utils/apiConfig";
 import ReactPaginate from "react-paginate";
-const Downloads = ({ data }) => {
+const Downloads = ({ data }) => { 
   const [filterTerm, setFilterTerm] = useState(data);
   const [currentPage, setCurrentPage] = useState(0);
   //Filter but selecting options
@@ -32,8 +32,7 @@ const Downloads = ({ data }) => {
   };
 
   useEffect(() => {
-    setFilterTerm((prevData) => {
-      console.log(currentPage);
+    setFilterTerm((prevData) => { 
       return data.filter((item, index) => {
         return (
           index >= currentPage * selectedOption &&
@@ -50,7 +49,7 @@ const Downloads = ({ data }) => {
 
     // Filter the array to get objects that match the search term in their title
     const searchResults = data.filter((item) =>
-      item.title.toLowerCase().includes(searchTermLower)
+      item.titleEN.toLowerCase().includes(searchTermLower)
     );
     setFilterTerm(searchResults);
   }
@@ -184,8 +183,8 @@ const Downloads = ({ data }) => {
             </TableHead>
             <TableBody>
               {filterTerm.map((document) => {
-                const dateCreated = new Date(document.dateCreated);
-
+                const dateCreated = new Date(document.createdAt);
+                const dateUpdated = new Date(document.updatedAt)
                 const options = {
                   year: "numeric",
                   month: "long",
@@ -195,13 +194,17 @@ const Downloads = ({ data }) => {
                   undefined,
                   options
                 );
+                const formatteUpdate = dateUpdated.toLocaleDateString(
+                   undefined,
+                   options
+                )
                 console.log(document);
-                const pdfUrl = `${API_ROUTES.domainName}/${document.imageUrl}`;
+                const pdfUrl = `${API_ROUTES.domainName}/${document.fileUrl}`;
                 return (
                   <TableRow key={document.id}>
-                    <TableCell>{document.title}</TableCell>
+                    <TableCell>{document.titleEN.slice(0,29)}...</TableCell>
                     <TableCell>{formattedDate}</TableCell>
-                    <TableCell>.............</TableCell>
+                    <TableCell>{formatteUpdate}</TableCell>
                     <TableCell>
                       <button
                         className={classes.submitBtn}

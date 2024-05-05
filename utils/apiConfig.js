@@ -7,10 +7,10 @@ export const API_ROUTES = {
     post: "https://gaca.somee.com/api/landingpage/feedback",
   },
   about: {
-    get: "https://gaca.somee.com/api/landingpage/about",
+    get: "https://snap.somee.com/api/about",
   },
   downloads: {
-    get: "https://gaca.somee.com/api/landingpage/downloads",
+    get: "https://snap.somee.com/api/downloads",
   },
   blogs: {
     get: "https://gaca.somee.com/api/landingpage/blogs",
@@ -21,4 +21,7 @@ export const API_ROUTES = {
   masterPlan: {
     get: "https://gaca.somee.com/api/landingpage/masterplan",
   },
+  FAQ:{
+     get: "https://snap.somee.com/api/faqs",
+  }
 };

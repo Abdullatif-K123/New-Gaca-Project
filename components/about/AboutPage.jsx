@@ -37,7 +37,7 @@ const AboutPage = ({ data }) => {
         />
         <div className={classes.content}>
           <h1>SNAP</h1>
-          {parse(data.content)}
+          {parse(data.information.contentEN)}
         </div>
       </div>
       <div className={classes.visionMission}>
@@ -49,7 +49,7 @@ const AboutPage = ({ data }) => {
             alt="vision"
           />
           <h1>Vision</h1>
-          {parse(data.vision)}
+          {parse(data.information.visionEN)}
         </div>
         <div className={classes.vision}>
           <Image
@@ -59,13 +59,13 @@ const AboutPage = ({ data }) => {
             alt="mission"
           />
           <h1>Mission</h1>
-          {parse(data.mission)}
+          {parse(data.information.missionEN)}
         </div>
       </div>
       <div className={classes.strategic}>
         <div className={classes.strategiContent}>
           <h1>SNAP’s strategic objectives:</h1>
-          {data.dataStrategicObjectives.map((content) => {
+          {data.objectives.map((content) => {
             return (
               <div key={content.id} className={classes.singleStrategic}>
                 <Image
@@ -74,7 +74,7 @@ const AboutPage = ({ data }) => {
                   height={20}
                   alt="left-icon"
                 />
-                <p>{content.text}</p>
+                <p>{content.titleEN}</p>
               </div>
             );
           })}

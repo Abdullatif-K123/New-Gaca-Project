@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 
-const FAQs = () => {
+const FAQs = ({data}) => {
   const theme = createTheme({
     palette: {
       primary: {
@@ -70,7 +70,7 @@ const FAQs = () => {
             are kept for convenient user reference.
           </p>
           <div className={classes.faQestions}>
-            {[1, 2, 3].map((item, index) => (
+            {data.map((item, index) => (
               <Accordion key={item}>
                 <AccordionSummary
                   expandIcon={
@@ -83,12 +83,12 @@ const FAQs = () => {
                   }
                 >
                   <Typography className={classes.freq}>
-                    Frequently Asked Questions.
+                     {item.titleEN.slice(0,80)}...
                   </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                   <Typography sx={{ color: "rgba(51, 48, 60, 0.87)" }}>
-                    Here is the answer to Frequently Asked Questions.
+                   {item.descriptionEN}
                   </Typography>
                 </AccordionDetails>
               </Accordion>

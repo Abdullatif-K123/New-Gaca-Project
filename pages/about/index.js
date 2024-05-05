@@ -4,26 +4,26 @@ import Footer from "@/components/footer/footer";
 import LoadingSpinner from "@/components/ui/LoadingSpinner";
 import { API_ROUTES } from "@/utils/apiConfig";
 import axios from "axios";
-const index = ({ isFeedbackVisible, handleToggleFeedback, conVersion }) => {
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(API_ROUTES.about.get);
+const index = ({ isFeedbackVisible, handleToggleFeedback, conVersion, dataInfo }) => {
+  const [data, setData] = useState(dataInfo); 
+   
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await axios.get(API_ROUTES.about.get);
 
-        setData(response.data);
-        setLoading(false);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
+  //       setData(response.data);
+  //       setLoading(false);
+  //     } catch (error) {
+  //       console.error("Error fetching data:", error);
+  //     }
+  //   };
 
-    fetchData();
-  }, []);
-  if (loading) {
-    return <LoadingSpinner />;
-  }
+  //   fetchData();
+  // }, []);
+  // if (loading) {
+  //   return <LoadingSpinner />;
+  // }
   return (
     <div
       onClick={() => {
@@ -42,4 +42,18 @@ const index = ({ isFeedbackVisible, handleToggleFeedback, conVersion }) => {
   );
 };
 
+export async function getStaticProps(){
+   try{
+     const response = await axios.get(API_ROUTES.about.get); 
+     return{
+       props:{
+         dataInfo: response.data,
+       }, 
+       revalidate: 10
+     }
+   }catch(error){
+     console.log("Error fetch about page", error); 
+     return null
+   }
+}
 export default index;
