@@ -4,6 +4,8 @@ import Head from "next/head";
 import { useEffect, useState } from "react";
 import axios from "axios"; 
 import { API_ROUTES } from "@/utils/apiConfig";
+
+import WelcomeDialog from "@/components/ui/WelcomeToGaca";
 export default function App({ Component, pageProps }) {
   const [isFeedbackVisible, setIsFeedbackVisible] = useState(false);
   const [data, setData] = useState({});
@@ -34,9 +36,13 @@ export default function App({ Component, pageProps }) {
 
     fetchData();
   }, []);
-  // if (loading) {
-  //   return <LoadingSpinner />;
-  // }
+  //Welcoming page 
+  const [showWelcomeDialog, setShowWelcomeDialog] = useState(true);
+
+  const handleWelcomeDialogClose = () => {
+    setShowWelcomeDialog(false);
+  };
+
   return (
     <div style={{filter: accessiblity?   "grayscale(100%)" : "" }}>
       <Head>
@@ -49,7 +55,7 @@ export default function App({ Component, pageProps }) {
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <title>GACA</title>
       </Head>
-
+      {showWelcomeDialog && <WelcomeDialog onClose={handleWelcomeDialogClose} />}
       <Layout
         isFeedbackVisible={isFeedbackVisible}
         handleToggleFeedback={handleToggleFeedback}
