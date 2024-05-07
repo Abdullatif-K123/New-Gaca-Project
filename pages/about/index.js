@@ -4,7 +4,7 @@ import Footer from "@/components/footer/footer";
 import LoadingSpinner from "@/components/ui/LoadingSpinner";
 import { API_ROUTES } from "@/utils/apiConfig";
 import axios from "axios";
-const index = ({ isFeedbackVisible, handleToggleFeedback, conVersion, dataInfo }) => {
+const index = ({ isFeedbackVisible, handleToggleFeedback, conVersion, dataInfo, rtl }) => {
   const [data, setData] = useState(dataInfo); 
    
   // useEffect(() => {
@@ -36,8 +36,8 @@ const index = ({ isFeedbackVisible, handleToggleFeedback, conVersion, dataInfo }
         overflow: isFeedbackVisible ? "hidden" : "",
       }}
     >
-      <AboutPage data={data} />
-      <Footer conVersion={conVersion} />
+      <AboutPage data={data} rtl={rtl} />
+      <Footer conVersion={conVersion} rtl={rtl} />
     </div>
   );
 };

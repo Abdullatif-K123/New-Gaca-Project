@@ -10,6 +10,7 @@
   position: relative;
   display: grid;
   grid-template-columns: 1fr 1fr; 
+
   padding: 18px 100px;
 }
 .langAcess{
@@ -23,6 +24,12 @@
   align-items: center;
   border-right: 1px solid #fff;
   padding-right: 20px;
+}
+.langArabic{
+   border-right: none;
+   padding-left: 20px;
+   padding-right: 0;
+   border-left: 1px solid #fff;
 }
 .languageRtl > img{
    margin-bottom: -10px;
@@ -42,6 +49,13 @@
 .fonts > p {
    padding-right:  15px;
   border-right: 1px solid #fff;
+  cursor: pointer;
+}
+.fonts > p {
+   font-family: "DINNext-Regular", sans-serif;
+}
+.fonts > p:hover{
+   text-shadow: 1px 0px;
 }
 .fonts > p:last-child{
    border-right: none;
@@ -56,15 +70,21 @@
    display: flex;
    align-items: center;
    gap: 10px;
-   
+   cursor: pointer;
+}
+.emailSec:hover{
+   text-shadow: 1px 0px;
 }
 .phoneSec{
    display: flex;
    align-items: center;
    gap: 10px;
-   
+   cursor: pointer;
    padding-right:  15px;
   border-right: 1px solid #fff;
+}
+.phoneSec:hover{
+   text-shadow: 1px 0px;
 }
 .navMain {
   display: grid;

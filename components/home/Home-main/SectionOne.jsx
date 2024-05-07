@@ -35,12 +35,13 @@ const SectionOne = ({ isFeedbackVisible, title, desc,rtl }) => {
           <p> {rtl? "تحميل ملفات " : "Download SNAP Documents"}</p>
         </div>
       </div>
-      <div className={classes.sectionTwo}>
+      <div className={classes.sectionTwo}  style={{marginRight: rtl? "0px": ""}}>
         <Image
           src="/assets/imges/Brochure-landingpage.webp"
           width={700}
           height={520}
           className={classes.streetPlane}
+         
         />
       </div>
       <div className={classes.btnDown} onClick={handleClick}>

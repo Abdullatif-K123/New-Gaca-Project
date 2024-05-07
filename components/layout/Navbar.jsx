@@ -4,13 +4,15 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import DialogModal from "../ui/DialogModal";
 import FeedBack from "./FeedBack";
+import Link from "next/link";
 const Navbar = ({
   handleSubmitFeedback,
   isFeedbackVisible,
   handleToggleFeedback,
   conVersion,
   rtl,
-  handleRtl
+  handleRtl,
+  handleAccessibility
 }) => {
   // creating function menu hamburger
   const [addClass, setAddClass] = useState(false);
@@ -70,25 +72,25 @@ function formatArabicDate() {
   return (
     <>
     <div className={classes.navBottom} style={{direction: rtl? "rtl": ""}}> 
-        <div className={classes.langAcess} style={{direction: rtl? "rtl": ""}}>
-          <div className={classes.languageRtl}onClick={handleRtl} style={{direction: rtl? "rtl": ""}}>
+        <div className={classes.langAcess}  >
+          <div className={`${classes.languageRtl} ${rtl? classes.langArabic: ""}`}onClick={handleRtl} style={{borderLeft: rtl? "1px solid #fff": ""}}  >
              <Image src="/assets/svg/icon-language.svg" width={30} height={30} alt="lang"/>
               <p>{rtl? "عربي" : "English"}</p>
              </div>
-              <Image src="/assets/svg/accessability.svg" width={20} height={20} alt="accessability" />
+              <Image onClick={handleAccessibility} src="/assets/svg/accessability.svg" width={20} height={20} alt="accessability" style={{cursor: "pointer"}} />
             <div className={classes.fonts} style={{direction: rtl? "rtl": ""}}>
                 <p>A+</p>
                 <p>AA</p>
-                <p>A-</p>
+                <p>A-</p> 
             </div>
         </div>
-        <div className={classes.contactDate} style={{direction: rtl? "rtl": ""}}>
+        <div className={classes.contactDate} style={{alignItems : rtl? "flex-start":"flex-end"}}  >
           <div className={classes.emailSec} style={{direction: rtl? "rtl": ""}}>
-             <p>info@gmail.com</p>
+             <Link href="mailto:info@gmail.com?subject=Inquire%20About%20something"><p>info@gmail.com</p></Link>
              <Image src="/assets/svg/mail.svg" width={15} height={15} alt="mail"/>
           </div>
             <div className={classes.phoneSec} style={{direction: rtl? "rtl": ""}} >
-               <p>12345678</p>
+              <Link href="tel:+1234567"><p>12345678</p></Link> 
                <Image src="/assets/svg/phone.svg" width={15} height={15} alt="phone"/>
                <p>{rtl? "الاتصال": "Phone"}</p>
             </div>
@@ -107,8 +109,10 @@ function formatArabicDate() {
         style={{
           filter: isFeedbackVisible ? "brightness(0.5)" : "brightness(1)",
           transition: "all 0.6s ease-in-out",
+          direction: rtl? "rtl" : ""
         }}
         id="home"
+        
       >
         <nav className={`${classes.navMain}  `}>
           <div className={classes.logo}>
@@ -135,7 +139,7 @@ function formatArabicDate() {
                 }}
                 className={`${path.length ? null : classes.activeHome}`}
               >
-                Home
+                {rtl? "الرئيسية" :"Home"}
               </li>
               <li
                 onClick={() => {
@@ -144,7 +148,7 @@ function formatArabicDate() {
                 }}
                 className={`${path === "about" ? classes.active : null}`}
               >
-                About SNAP
+                {rtl? "حول":"About SNAP"}
               </li>
               <li
                 onClick={() => {
@@ -153,7 +157,7 @@ function formatArabicDate() {
                 }}
                 className={`${path === "download" ? classes.active : null}`}
               >
-                Downloads
+                {rtl? "التحميلات": "Downloads"}
               </li>
               <li
                 onClick={() => {
@@ -162,7 +166,7 @@ function formatArabicDate() {
                 }}
                 className={`${path === "news" ? classes.active : null}`}
               >
-                News
+                {rtl? "الاخبار" :"News"}
               </li>
               <li
                 onClick={() => {
@@ -171,7 +175,7 @@ function formatArabicDate() {
                 }}
                 className={`${path === "faq" ? classes.active : null}`}
               >
-                FAQ
+                {rtl? "الاسئلة الشائعة" :"FAQ" }
               </li>
              
             </ul>
@@ -203,7 +207,7 @@ function formatArabicDate() {
                 height={23}
                 alt="review"
               />
-              <p>Feedback</p>
+              <p style={{fontSize: rtl? "18px": ""}}>{rtl? "شكاوي":"Feedback"}</p>
             </div>
           </div>
           <div className="hamburger" onClick={mobileMenu}>

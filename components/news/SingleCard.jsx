@@ -14,11 +14,10 @@ const SingleCard = ({
   imageUrl,
   titleEN, 
   descriptionEN,
-  createdAt
+  createdAt,
+   rtl
 
-}) => {
-  console.log(titleEN); 
-  console.log("I'm hereeeeeeeeee")
+}) => { 
   const date = new Date(createdAt);
   const src = imageUrl? API_ROUTES.domainName +'/'+imageUrl : "assets/imges/img3.jpg"
   const year = date.getFullYear();
@@ -40,10 +39,11 @@ const SingleCard = ({
   return (
     <animated.div
       className={classes.newsCard}
-      style={{ ...cardProps }}
+      style={{ ...cardProps, direction: rtl? "rtl": "" }}
       onClick={() => {
         router.push(`/news/${id}`);
       }}
+      
     >
       <div className={classes.newsCardHead}>
         <img
@@ -52,10 +52,10 @@ const SingleCard = ({
           height={180}
           alt={titleEN.slice(0, 20)}
         />
-        <p>{titleEN}</p>
+        <p>{rtl? title:titleEN}</p>
       </div>
       <div className={classes.newsCardBody}>
-        <div className={classes.newsDate}>
+        <div className={classes.newsDate}  > 
           <Image
             src="/assets/svg/calender.svg"
             width={25}
@@ -64,7 +64,7 @@ const SingleCard = ({
           />
           <p>{humanReadableDate}</p>
         </div>
-        <p>{parse(descriptionEN.slice(0, 170))}...</p>
+        <p  >{parse(rtl? description.slice(0,170):descriptionEN.slice(0, 170))}...</p>
       </div>
     </animated.div>
   );

@@ -2,17 +2,20 @@ import "@/styles/globals.css";
 import Layout from "@/components/layout/Layout";
 import Head from "next/head";
 import { useEffect, useState } from "react";
-import axios from "axios";
-import LoadingSpinner from "@/components/ui/LoadingSpinner";
+import axios from "axios"; 
 import { API_ROUTES } from "@/utils/apiConfig";
 export default function App({ Component, pageProps }) {
   const [isFeedbackVisible, setIsFeedbackVisible] = useState(false);
   const [data, setData] = useState({});
   const [loading, setLoading] = useState(false);
   const [rtl, setRtl] = useState(false); 
+  const [accessiblity, setAccessiblity] = useState(false); 
   //handling language rtl i18l localization
   const handleRtl = ()=>{
       setRtl(!rtl); 
+  }
+  const handleAccessibility = ()=>{
+     setAccessiblity(!accessiblity);
   }
   const handleToggleFeedback = () => {
     setIsFeedbackVisible(!isFeedbackVisible);
@@ -35,7 +38,7 @@ export default function App({ Component, pageProps }) {
   //   return <LoadingSpinner />;
   // }
   return (
-    <>
+    <div style={{filter: accessiblity?   "grayscale(100%)" : "" }}>
       <Head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -52,7 +55,8 @@ export default function App({ Component, pageProps }) {
         handleToggleFeedback={handleToggleFeedback}
         conVersion={data}
         rtl={rtl}
-        handleRtl={handleRtl}
+        handleRtl={handleRtl} 
+        handleAccessibility={handleAccessibility}
       >
         <Component
           {...pageProps}
@@ -63,6 +67,6 @@ export default function App({ Component, pageProps }) {
           conVersion={data}
         />
       </Layout>
-    </>
+    </div>
   );
 }

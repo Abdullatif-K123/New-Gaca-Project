@@ -4,12 +4,11 @@ import Image from "next/image";
 import parse from "html-react-parser";
 import { useRouter } from "next/router";
 
-const AboutPage = ({ data }) => {
+const AboutPage = ({ data, rtl }) => {
   const router = useRouter();
-  console.log(data);
 
   return (
-    <div className={classes.aboutPageMain}>
+    <div className={classes.aboutPageMain} style={{direction:rtl? "rtl":""}}>
       <div className={classes.choosen}>
         <p>
           <span
@@ -17,16 +16,17 @@ const AboutPage = ({ data }) => {
               router.push("/");
             }}
           >
-            Home
+            {rtl? "الصفحة الرئيسية":"Home"}
           </span>
           <Image
             src="/assets/svg/Chevron.svg"
             width={16}
             height={16}
             alt="chev"
+            style={{transform: rtl?"rotate(180deg)": ""}}
           />
         </p>
-        <h1>About SNAP</h1>
+        <h1>{rtl? "حول": "About SNAP"}</h1>
       </div>
       <div className={classes.aboutSection}>
         <Image
@@ -36,8 +36,8 @@ const AboutPage = ({ data }) => {
           alt="snap-imges"
         />
         <div className={classes.content}>
-          <h1>SNAP</h1>
-          {parse(data.information.contentEN)}
+          <h1>{rtl? "سناب": "SNAP"}</h1>
+          {parse(rtl? data.information.content:data.information.contentEN)}
         </div>
       </div>
       <div className={classes.visionMission}>
@@ -48,8 +48,8 @@ const AboutPage = ({ data }) => {
             height={64}
             alt="vision"
           />
-          <h1>Vision</h1>
-          {parse(data.information.visionEN)}
+          <h1>{rtl? "الرؤية": "Vision"}</h1>
+          {parse(rtl? data.information.vision:data.information.visionEN)}
         </div>
         <div className={classes.vision}>
           <Image
@@ -58,23 +58,25 @@ const AboutPage = ({ data }) => {
             height={64}
             alt="mission"
           />
-          <h1>Mission</h1>
-          {parse(data.information.missionEN)}
+          <h1>{rtl? "المهام":"Mission"}</h1>
+          {parse(rtl?data.information.mission:data.information.missionEN)}
         </div>
       </div>
       <div className={classes.strategic}>
         <div className={classes.strategiContent}>
-          <h1>SNAP’s strategic objectives:</h1>
+          <h1>{rtl? "أهدافنا الاستراتيجية:" :"SNAP’s strategic objectives:"}</h1>
           {data.objectives.map((content) => {
             return (
-              <div key={content.id} className={classes.singleStrategic}>
+              <div key={content.id} className={classes.singleStrategic} >
                 <Image
                   src="/assets/svg/leftIconStrategic.svg"
                   width={20}
                   height={20}
                   alt="left-icon"
+                  
+            style={{transform: rtl?"rotate(180deg)": ""}}
                 />
-                <p>{content.titleEN}</p>
+                <p>{rtl? content.title: content.titleEN}</p>
               </div>
             );
           })}
@@ -86,6 +88,7 @@ const AboutPage = ({ data }) => {
           alt="strategic"
           layout="responsive"
           className={classes.strategicImg}
+          
         />
       </div>
     </div>

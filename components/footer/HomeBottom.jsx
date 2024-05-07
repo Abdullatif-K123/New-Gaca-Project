@@ -83,7 +83,7 @@ const HomeBottom = ({ imgs, conVersion, desc, news, rtl }) => {
           </Slider>
         </div>
       </div>
-      <Footer conVersion={conVersion} desc={desc} />
+      <Footer conVersion={conVersion} desc={desc} rtl={rtl} />
     </>
   );
 };

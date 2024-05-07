@@ -5,12 +5,11 @@
   flex-direction: column;
   align-items: center;
   justify-content: center; 
-  position: relative;
-  z-index: 2;
+  position: relative; 
 }
-.masterPlanMain > h1 {
+.masterPlanMainH > h1 {
   color: #fff;
-  text-align: right;
+  text-align: center;
   font-family: "DINNext-Medium", sans-serif;
   font-size: 37px;
 }
@@ -28,6 +27,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  z-index: 0;
 }
 
 .masterpyrmaid {

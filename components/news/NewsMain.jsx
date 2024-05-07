@@ -4,9 +4,7 @@ import classes from "./news.module.css";
 import SingleCard from "./SingleCard";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import ReactPaginate from "react-paginate";
-import { AiFillLeftCircle, AiFillRightCircle } from "react-icons/ai";
-import { IconContext } from "react-icons";
+import ReactPaginate from "react-paginate"; 
 const NewsMain = ({ dataNews }) => {
   const [currentPage, setCurrentPage] = useState(0);
   const [leftRight, setLeftRight] = useState("left");
@@ -25,8 +23,7 @@ const NewsMain = ({ dataNews }) => {
         );
       })
     );
-  }, [currentPage, dataNews]);
-   console.log(filterData)
+  }, [currentPage, dataNews]); 
   return (
     <div className={classes.newsMain}>
       <div className={classes.newsSection}>

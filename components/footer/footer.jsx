@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import DialogModal from "../ui/DialogModal";
-const Footer = ({ conVersion }) => {
+const Footer = ({ conVersion, rtl }) => {
   console.log(conVersion);
   const [links, setLinks] = useState([]);
   const [linkProvide, setLinkProvide] = useState("");
@@ -23,6 +23,8 @@ const Footer = ({ conVersion }) => {
     window.open(link, "_blank");
   };
   //Getting current year
+  console.log("Hello I'm conversion")
+  console.log(conVersion)
   var currentDate = new Date();
   var currentYear = currentDate.getFullYear();
   useEffect(() => {
@@ -30,7 +32,7 @@ const Footer = ({ conVersion }) => {
   }, [conVersion]);
   const router = useRouter();
   return (
-    <div className={classes.footerMain}>
+    <div className={classes.footerMain} style={{direction: rtl? "rtl": ""}}>
       <div className={classes.footerContentMain}>
         <div className={classes.logoSec}>
           <Image src="/assets/svg/GacaFooter.svg" width={135} height={50} />
