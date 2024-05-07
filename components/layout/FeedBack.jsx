@@ -38,18 +38,17 @@ const FeedBack = ({ open, handleClose, handleSubmitFeedback, rtl }) => {
   const inputRef = useRef("");
   const formik = useFormik({
     initialValues: initialForms,
-    validationSchema: Yup.object({
-      name: Yup.string().required("Name is required"),
-      email: Yup.string()
-        .email("Invalid email address")
-        .required("Email is required"),
-      phone: Yup.string()
-        .required("Phone is required")
-        .matches(/^[0-9]+$/, "Phone number must contain only numbers")
-        .min(11, "Phone number must be more than 11 numbers long"),
-      feedbackType: Yup.string().required("Feedback type is required"),
-      feedbackTitle: Yup.string().required("Feedback title is required"),
-      feedbackMessage: Yup.string().required("Feedback message is required"),
+    validationSchema: Yup.object({name: Yup.string().required(rtl ? "الاسم مطلوب" : "Name is required"),
+    email: Yup.string()
+      .email("Invalid email address")
+      .required(rtl ? "البريد الإلكتروني مطلوب" : "Email is required"),
+    phone: Yup.string()
+      .required(rtl ? "رقم الهاتف مطلوب" : "Phone is required")
+      .matches(/^[0-9]+$/, rtl ? "يجب أن يحتوي رقم الهاتف على أرقام فقط" : "Phone number must contain only numbers")
+      .min(11, rtl ? "يجب أن يكون رقم الهاتف أكثر من 11 رقمًا" : "Phone number must be more than 11 numbers long"),
+    feedbackType: Yup.string().required(rtl ? "نوع التغذية المرتجعة مطلوب" : "Feedback type is required"),
+    feedbackTitle: Yup.string().required(rtl ? "عنوان التغذية المرتجعة مطلوب" : "Feedback title is required"),
+    feedbackMessage: Yup.string().required(rtl ? "رسالة التغذية المرتجعة مطلوبة" : "Feedback message is required"),
     }),
     onSubmit: async (values) => {
       // Handle form submission here

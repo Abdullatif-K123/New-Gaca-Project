@@ -4,7 +4,7 @@ import Footer from "@/components/footer/footer";
 import axios from "axios";
 import LoadingSpinner from "@/components/ui/LoadingSpinner";
 import { API_ROUTES } from "@/utils/apiConfig";
-const index = ({ isFeedbackVisible, handleToggleFeedback, conVersion, dataDownload }) => {
+const index = ({ isFeedbackVisible, handleToggleFeedback, conVersion, dataDownload,rtl }) => {
   const [data, setData] = useState(dataDownload);
   const [loading, setLoading] = useState(true);
  
@@ -20,9 +20,9 @@ const index = ({ isFeedbackVisible, handleToggleFeedback, conVersion, dataDownlo
         overflow: isFeedbackVisible ? "hidden" : "",
       }}
     >
-      <Downloads data={data} />
+      <Downloads data={data} conversion={conVersion} rtl={rtl}/>
 
-      <Footer conVersion={conVersion} />
+      <Footer conVersion={conVersion} rtl={rtl} />
     </div>
   );
 };

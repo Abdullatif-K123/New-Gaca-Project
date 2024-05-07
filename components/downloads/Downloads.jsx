@@ -18,11 +18,12 @@ import {
 } from "@mui/material";
 import { API_ROUTES } from "@/utils/apiConfig";
 import ReactPaginate from "react-paginate";
-const Downloads = ({ data }) => { 
+const Downloads = ({ data, conversion,rtl }) => { 
+  
   const [filterTerm, setFilterTerm] = useState(data);
   const [currentPage, setCurrentPage] = useState(0);
   //Filter but selecting options
-  const [selectedOption, setSelectedOption] = useState(10);
+  const [selectedOption, setSelectedOption] = useState(6);
 
   const handleSelectChange = (event) => {
     setCurrentPage((prev) => {
@@ -49,7 +50,7 @@ const Downloads = ({ data }) => {
 
     // Filter the array to get objects that match the search term in their title
     const searchResults = data.filter((item) =>
-      item.titleEN.toLowerCase().includes(searchTermLower)
+     rtl? item.title.includes(searchTermLower) : item.titleEN.toLowerCase().includes(searchTermLower)
     );
     setFilterTerm(searchResults);
   }
@@ -74,8 +75,7 @@ const Downloads = ({ data }) => {
   const router = useRouter();
   //function to do the download for each document
 
-  function downloadPdfFile(url, fileName) {
-    console.log(url, fileName);
+  function downloadPdfFile(url, fileName) { 
     const link = document.createElement("a");
     link.href = url;
     link.download = fileName;
@@ -85,7 +85,7 @@ const Downloads = ({ data }) => {
   }
 
   return (
-    <div className={classes.downloadPage}>
+    <div className={classes.downloadPage}  >
       <div className={classes.choosen}>
         <p>
           <span
@@ -93,60 +93,56 @@ const Downloads = ({ data }) => {
               router.push("/");
             }}
           >
-            Home
+            {rtl? "الرئيسية" : "Home"}
           </span>
-          <Image src="/assets/svg/Chevron.svg" width={16} height={16} />
+          <Image src="/assets/svg/Chevron.svg" width={16} height={16} style={{transform: rtl? "rotate(180deg)": ""}} />
         </p>
-        <h1>Downloads</h1>
+        <h1>{rtl? "التنزيلات" : "Downloads"}</h1>
       </div>
       <div className={classes.downloadContent}>
         <p>
-          Documents listed in the archive part are complementary to the content
-          of the eATm Portal and may be downloaded by clicking the appropriate
-          "Download" text. They were previously in the main{" "}
-          <span>download</span> are and have been replaced by newer versions.
-          Here they are kept for convenient user reference.
+         {rtl? conversion.globalSettings?.downloadPageDescription:  conversion.globalSettings?.downloadPageDescriptionEN}
         </p>
       </div>
       <div className={classes.downloadTables}>
         <div className={classes.filteringDocument}>
           <div className={classes.filterByNumber}>
-            <FormLabel>Show</FormLabel>
+            <FormLabel>{rtl?"العرض" :  "Show"}</FormLabel>
             <Select
               size="small"
               value={selectedOption}
               onChange={handleSelectChange}
-              defaultValue={"10"}
+              defaultValue={"6"}
             >
-              <MenuItem value={1}>1</MenuItem>
-              <MenuItem value={2}>2</MenuItem>
-              <MenuItem value={10}>10</MenuItem>
+              <MenuItem value={1}>3</MenuItem>
+              <MenuItem value={2}>4</MenuItem>
+              <MenuItem value={6}>6</MenuItem>
               <MenuItem value={15}>15</MenuItem>
               <MenuItem value={20}>20</MenuItem>
             </Select>
-            <FormLabel>Entries</FormLabel>
+            <FormLabel>{rtl? "المدخلات" : "Entries"}</FormLabel>
           </div>
           <Grid spacing={1} alignItems="center">
             <Grid
               item
               style={{ display: "flex", alignItems: "center", gap: "10px" }}
             >
-              <FormLabel htmlFor="search">Search:</FormLabel>
+              <FormLabel htmlFor="search">{rtl? "البحث" : "Search:"}</FormLabel>
               <TextField
                 size="small"
                 variant="outlined"
-                placeholder="Title"
+                placeholder={rtl? "العنوان" : "Title"}
                 onChange={(e) => searchByTitle(e.target.value)}
                 id="search"
               />
             </Grid>
           </Grid>
         </div>
-        <TableContainer component={Paper}>
+        <TableContainer component={Paper} >
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell>TITLE</TableCell>
+                <TableCell>{rtl? "العنوان" : "TITLE"}</TableCell>
                 <TableCell
                   style={{ display: "flex", alignItems: "center", gap: "10px" }}
                 >
@@ -175,10 +171,10 @@ const Downloads = ({ data }) => {
                       style={{ transform: "rotate(180deg)" }}
                     />{" "}
                   </div>
-                  DATE
+                  {rtl? "التاريخ" : "DATE"}
                 </TableCell>
-                <TableCell>UPDATE</TableCell>
-                <TableCell>ACTION</TableCell>
+                <TableCell>{rtl? "التعديل" : "UPDATE"}</TableCell>
+                <TableCell>{rtl? "العملية" : "ACTION"}</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -197,22 +193,21 @@ const Downloads = ({ data }) => {
                 const formatteUpdate = dateUpdated.toLocaleDateString(
                    undefined,
                    options
-                )
-                console.log(document);
+                ) 
                 const pdfUrl = `${API_ROUTES.domainName}/${document.fileUrl}`;
                 return (
-                  <TableRow key={document.id}>
-                    <TableCell>{document.titleEN.slice(0,29)}...</TableCell>
+                  <TableRow key={document.id} >
+                    <TableCell>{rtl? document.title.slice(0,29) : document.titleEN.slice(0,29)}...</TableCell>
                     <TableCell>{formattedDate}</TableCell>
                     <TableCell>{formatteUpdate}</TableCell>
-                    <TableCell>
+                    <TableCell  >
                       <button
                         className={classes.submitBtn}
                         onClick={() => {
                           downloadPdfFile(pdfUrl, document.title);
                         }}
                       >
-                        <p>Submit</p>
+                        <p>{rtl? "التحميل": "Submit"}</p>
                       </button>
                     </TableCell>
                   </TableRow>
