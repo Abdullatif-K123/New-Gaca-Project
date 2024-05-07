@@ -8,6 +8,9 @@
   position: relative;  
   background-color: #1c7a54;
   background-image: url("/assets/imges/master-background.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 .masterPlanMainH > h1 {
   color: #fff;
