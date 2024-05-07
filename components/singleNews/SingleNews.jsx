@@ -8,16 +8,16 @@ import SingleCard from "../news/SingleCard";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 import LoadingSpinner from "../ui/LoadingSpinner";
-const SingleNews = ({ id }) => {
+const SingleNews = ({ id, rtl }) => {
   const [data, setData] = useState({});
 
   const [loading, setLoading] = useState(true);
-  const date = new Date(data.dateCreated);
+  const date = new Date(data.createdAt);
   const notify = () => toast("The link has been copied.", { icon: "👏" });
   const year = date.getFullYear();
   const month = (date.getMonth() + 1).toString().padStart(2, "0"); // Month is zero-indexed
   const day = date.getDate().toString().padStart(2, "0");
-
+  const src = data.imageUrl? API_ROUTES.domainName +'/'+ data.imageUrl : "/assets/imges/img3.jpg"
   const humanReadableDate = `${year}-${month}-${day}`;
   const router = useRouter();
   //Fetching data
@@ -43,7 +43,7 @@ const SingleNews = ({ id }) => {
     navigator.clipboard.writeText("https://e-snap.vercel.app" + router.asPath);
   };
   return (
-    <div className={classes.newsMain}>
+    <div className={classes.newsMain} style={{direction: rtl? "rtl" : ""}}>
       <div className={classes.choosen}>
         <p>
           <span
@@ -51,30 +51,30 @@ const SingleNews = ({ id }) => {
               router.push("/");
             }}
           >
-            Home
+            {rtl? "الرئيسية" : "Home"}
           </span>
-          <Image src="/assets/svg/Chevron.svg" width={16} height={16} />
+          <Image src="/assets/svg/Chevron.svg" width={16} height={16} style={{transform: rtl? "rotate(180deg)" : ""}} />
           <span
             onClick={() => {
               router.push("/news");
             }}
           >
-            News
+            {rtl? "الاخبار": "News"}
           </span>
-          <Image src="/assets/svg/Chevron.svg" width={16} height={16} />
+          <Image src="/assets/svg/Chevron.svg" width={16} height={16} style={{transform: rtl? "rotate(180deg)" : ""}} />
         </p>
-        <h1>{data?.title}</h1>
+        <h1>{rtl? data.title : data?.titleEN}</h1>
       </div>
       <div className={classes.newsDetails}>
         <img
-          src={`${API_ROUTES.domainName}/${data.imageUrl}`}
+          src={src}
           width={500}
           height={500}
           alt={data.title.slice(0, 20)}
         />
         <div className={classes.newsContent}>
           <div className={classes.contentHead}>
-            <p>{data?.title}</p>
+            <p>{rtl? data?.title: data.titleEN}</p>
           </div>
           <div className={classes.contentBody}>
             <div className={classes.contentDate}>
@@ -86,7 +86,7 @@ const SingleNews = ({ id }) => {
               />
               <p>{humanReadableDate}</p>
             </div>
-            <p>{parse(data?.description)}</p>
+            <p>{parse(rtl? data.description  : data?.descriptionEN)}</p>
             <button className={classes.newsShare} onClick={handleClickShare}>
               <Image
                 src="/assets/svg/share.svg"
@@ -104,13 +104,15 @@ const SingleNews = ({ id }) => {
           <span>Articles</span> Related
         </p>
         <div className={classes.newsCardMain2}>
-          {[1, 2, 3].map((nws, index) => (
+          {  [1, 2, 3].map((nws, index) => (
             <SingleCard
+            rtl={rtl}
               key={index}
               title={data.title}
               description={data.description}
-              dateCreated={data.dateCreated}
-              imageUrl={data.imageUrl}
+              titleEN={data.titleEN}
+              descriptionEN={data.descriptionEN}
+              createdAt={data.createdAt} 
             />
           ))}
         </div>

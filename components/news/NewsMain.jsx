@@ -5,7 +5,7 @@ import SingleCard from "./SingleCard";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import ReactPaginate from "react-paginate"; 
-const NewsMain = ({ dataNews }) => {
+const NewsMain = ({ dataNews, rtl }) => {
   const [currentPage, setCurrentPage] = useState(0);
   const [leftRight, setLeftRight] = useState("left");
   const [filterData, setFilterData] = useState([]);
@@ -25,7 +25,7 @@ const NewsMain = ({ dataNews }) => {
     );
   }, [currentPage, dataNews]); 
   return (
-    <div className={classes.newsMain}>
+    <div className={classes.newsMain} style={{direction: rtl? "rtl": ""}}>
       <div className={classes.newsSection}>
         <div className={classes.choosen}>
           <p>
@@ -34,7 +34,7 @@ const NewsMain = ({ dataNews }) => {
                 router.push("/");
               }}
             >
-              Home
+              {rtl? "الرئيسية": "Home"}
             </span>
             <Image
               src="/assets/svg/Chevron.svg"
@@ -42,14 +42,15 @@ const NewsMain = ({ dataNews }) => {
               height={16}
               alt="chevron"
               layout="responsive"
+              style={{transform: rtl? "rotate(180deg)":""}}
             />
           </p>
-          <h1>News</h1>
+          <h1>{rtl? "الاخبار" : "News"}</h1>
         </div>
         <div className={classes.newsCardMain2}>
           {filterData &&
             filterData.map((nws, index) => (
-              <SingleCard key={nws.id} {...nws} leftRight={leftRight} />
+              <SingleCard key={nws.id} {...nws} rtl={rtl} leftRight={leftRight} />
             ))}
         </div>
         <div className={classes.paginationContainer}>

@@ -5,7 +5,7 @@ import Footer from "@/components/footer/footer";
 import LoadingSpinner from "@/components/ui/LoadingSpinner";
 import axios from "axios";
 import { API_ROUTES } from "@/utils/apiConfig";
-const NewsId = ({ isFeedbackVisible, handleToggleFeedback, conVersion }) => {
+const NewsId = ({ isFeedbackVisible, handleToggleFeedback, conVersion,rtl }) => {
   const router = useRouter();
   const id = router.query.id;
   if (!id) {
@@ -23,9 +23,9 @@ const NewsId = ({ isFeedbackVisible, handleToggleFeedback, conVersion }) => {
         overflow: isFeedbackVisible ? "hidden" : "",
       }}
     >
-      <SingleNews id={id} conVersion={conVersion} />
+      <SingleNews id={id} conVersion={conVersion} rtl={rtl} />
 
-      <Footer conVersion={conVersion} />
+      <Footer conVersion={conVersion} rtl={rtl} />
     </div>
   );
 };

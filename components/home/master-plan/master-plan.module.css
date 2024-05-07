@@ -6,6 +6,7 @@
   align-items: center;
   justify-content: center; 
   position: relative;  
+  background-color: #1c7a54;
 }
 .masterPlanMainH > h1 {
   color: #fff;
@@ -33,7 +34,7 @@
 .masterpyrmaid {
   display: flex;
   flex-direction: column;
-  row-gap: 8px;
+  row-gap: 4px;
   align-items: center;
   margin-top: 50px;
   margin-left: 40px;

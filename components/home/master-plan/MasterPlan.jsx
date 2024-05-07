@@ -117,14 +117,14 @@ const MasterPlan = ({ layers, rtl }) => {
      
     <div id={"masterplan"} className={classes.masterPlanMain}  >
     <div className={classes.videoContainer}>
-        <video autoPlay muted loop className={classes.video}>
-          <source src="/assets/video/masterPlanvid.mp4" type="video/mp4" />
+        <video    onloadedmetadata="this.muted = true" playsinline     muted loop className={classes.video}>
+          <source src="/assets/video/vid-masterplan.mp4" type="video/mp4" />
           {/* Add additional source elements for different video formats if needed */}
           Your browser does not support the video tag.
         </video>
       </div>
       <div style={{zIndex: "99"}} className={classes.masterPlanMainH}>
-      <h1>Master Plan Level</h1>
+      <h1>{rtl? "الخطة الوطنية السعودية للملاحة الجوية": "Saudi National Air Navigation Plan" }</h1>
        {/* Video background */}
     
 

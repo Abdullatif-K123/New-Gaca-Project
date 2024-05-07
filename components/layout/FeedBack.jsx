@@ -193,7 +193,7 @@ const FeedBack = ({ open, handleClose, handleSubmitFeedback, rtl }) => {
             }`}
           >
             <label htmlFor="name">
-              {rtl? "اسم المستخدم" : "UserName"}{formik.touched.name && formik.errors.name ? "*" : null}
+              {rtl? "اسم المستخدم" : "Full Name"}{formik.touched.name && formik.errors.name ? "*" : null}
             </label>
             <input
               type="text"
