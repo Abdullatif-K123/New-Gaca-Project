@@ -6,7 +6,7 @@ import axios from "axios";
 import * as Yup from "yup";
 import { API_ROUTES } from "@/utils/apiConfig";
 import toast, { Toaster } from "react-hot-toast";
-const Feedback = ({ isFeedbackVisible, handleToggleFeedback }) => {
+const Feedback = ({ isFeedbackVisible, handleToggleFeedback, rtl }) => {
   const notify = () => toast("Your feedback has been sent.", { icon: "👏" });
   const [focusedInput, setFocusedInput] = useState(null);
   const [sendFeedback, setSendFeedback] = useState(false);
@@ -66,10 +66,11 @@ const Feedback = ({ isFeedbackVisible, handleToggleFeedback }) => {
       className={`${classes.feedbackSection} ${
         isFeedbackVisible ? classes.visible : ""
       }`}
+      style={{direction: rtl? "rtl": ""}}
     >
       <div className={classes.feedbackContent}>
         <h2>
-          Feedback{" "}
+          {rtl? "اقتراحات وشكاوي": "Feedback"}{" "}
           <Image
             src="/assets/svg/exit.svg"
             width={27}

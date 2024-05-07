@@ -4,7 +4,7 @@ export const API_ROUTES = {
     get: "https://gaca.somee.com/api/landingpage/homepage",
   },
   feedback: {
-    post: "https://gaca.somee.com/api/landingpage/feedback",
+    post: "https://snap.somee.com/api/messages",
   },
   about: {
     get: "https://snap.somee.com/api/about",
@@ -16,7 +16,7 @@ export const API_ROUTES = {
     get: "https://snap.somee.com/api/news",
   },
   settings: {
-    get: "https://gaca.somee.com/api/landingpage/settings",
+    get: "https://snap.somee.com/api/settings",
   },
   masterPlan: {
     get: "https://gaca.somee.com/api/landingpage/masterplan",

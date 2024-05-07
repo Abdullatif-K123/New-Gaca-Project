@@ -4,8 +4,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import DialogModal from "../ui/DialogModal";
-const Footer = ({ conVersion, rtl }) => {
-  console.log(conVersion);
+const Footer = ({ conVersion, rtl }) => { 
   const [links, setLinks] = useState([]);
   const [linkProvide, setLinkProvide] = useState("");
   //setting up for the dialog modal
@@ -22,13 +21,12 @@ const Footer = ({ conVersion, rtl }) => {
     // Open a new tab or window with the specified URL
     window.open(link, "_blank");
   };
-  //Getting current year
-  console.log("Hello I'm conversion")
-  console.log(conVersion)
+  //Getting current year 
   var currentDate = new Date();
   var currentYear = currentDate.getFullYear();
+  console.log(conVersion)
   useEffect(() => {
-    setLinks(conVersion.links);
+    setLinks(conVersion.shortLinks);
   }, [conVersion]);
   const router = useRouter();
   return (
@@ -37,11 +35,11 @@ const Footer = ({ conVersion, rtl }) => {
         <div className={classes.logoSec}>
           <Image src="/assets/svg/GacaFooter.svg" width={135} height={50} />
           <p>
-            {conVersion ? conVersion?.globalSettings?.footerDescription : null}
+            {rtl ? conVersion.globalSettings.footerDescription : conVersion?.globalSettings?.footerDescriptionEN  }
           </p>
           <div className={classes.footerCopyRight}>
             <p>
-              © {currentYear} {conVersion?.copyright},(V {conVersion?.version})
+              © {currentYear}  
             </p>
           </div>
         </div>
@@ -98,12 +96,12 @@ const Footer = ({ conVersion, rtl }) => {
         </div>
 
         <div className={classes.contact}>
-          <h1>Connect With Us</h1>
+          <h1>{rtl? "تواصل معنا": "Connect With Us"}</h1>
           <div className={classes.socialIcons}>
             <div
               onClick={() => {
                 handleOpen();
-                setLinkProvide(conVersion?.social?.faceBook);
+                setLinkProvide(conVersion?.socialMedia?.faceBook);
               }}
               className={classes.icon}
             >
@@ -117,7 +115,7 @@ const Footer = ({ conVersion, rtl }) => {
             <div
               onClick={() => {
                 handleOpen();
-                setLinkProvide(conVersion?.social?.instgram);
+                setLinkProvide(conVersion?.socialMedia?.instgram);
               }}
               className={classes.icon}
             >
@@ -131,7 +129,7 @@ const Footer = ({ conVersion, rtl }) => {
             <div
               onClick={() => {
                 handleOpen();
-                setLinkProvide(conVersion?.social?.twitter);
+                setLinkProvide(conVersion?.socialMedia?.twitter);
               }}
               className={classes.icon}
             >
@@ -145,7 +143,7 @@ const Footer = ({ conVersion, rtl }) => {
             <div
               onClick={() => {
                 handleOpen();
-                setLinkProvide(conVersion?.social?.youTube);
+                setLinkProvide(conVersion?.socialMedia?.youTube);
               }}
               className={classes.icon}
             >
@@ -163,28 +161,28 @@ const Footer = ({ conVersion, rtl }) => {
                 router.push("/");
               }}
             >
-              Home
+              {rtl? "الرئيسية": "Home"}
             </li>
             <li
               onClick={() => {
                 router.push("/about");
               }}
             >
-              About
+              {rtl? "حول": "About"}
             </li>
             <li
               onClick={() => {
                 router.push("/download");
               }}
             >
-              Downloads
+              {rtl? "التحميلات": "Downloads"}
             </li>
             <li
               onClick={() => {
                 router.push("/news");
               }}
             >
-              Articles
+              {rtl? "الأخبار": "News"}
             </li>
             <li
               onClick={() => {
@@ -192,7 +190,7 @@ const Footer = ({ conVersion, rtl }) => {
                 setLinkProvide(conVersion?.globalSettings.constructorUrl);
               }}
             >
-              Constructor
+            {rtl? "البناء": "Constructor"}
             </li>
           </ul>
         </div>

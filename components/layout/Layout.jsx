@@ -4,7 +4,7 @@ import axios from "axios";
 import { API_ROUTES } from "@/utils/apiConfig";
 import toast, { Toaster } from "react-hot-toast";
 const Layout = (props) => {
-  const { isFeedbackVisible, handleToggleFeedback, conVersion, rtl, handleRtl, handleAccessibility } = props;
+  const { isFeedbackVisible, handleToggleFeedback, conVersion, rtl, handleRtl, handleAccessibility, handleCaptilizling } = props;
   const notify = () => toast("Your feedback has been sent.", { icon: "👏" });
   const handleSubmitFeedback = async (obj) => {
     try {
@@ -31,6 +31,7 @@ const Layout = (props) => {
         handleSubmitFeedback={handleSubmitFeedback}
         rtl={rtl}
         handleRtl={handleRtl}
+        handleCaptilizling={handleCaptilizling}
         handleAccessibility={handleAccessibility}
 
       />

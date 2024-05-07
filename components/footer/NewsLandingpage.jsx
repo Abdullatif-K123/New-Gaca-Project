@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import classes from "../news/news.module.css";
 import Link from "next/link";
 import SingleCard from "../news/SingleCard";
@@ -39,9 +39,10 @@ const options = {
     },
   },
 };
-const NewsLandingpage = React.memo(({ news,rtl }) => {
-  const [currentSlide, setCurrentSlide] = useState(1);
 
+const NewsLandingpage = React.memo(({ news,rtl }) => {
+  const [currentSlide, setCurrentSlide] = useState(1); 
+  useEffect(()=>{handleLeft()}, [rtl])
   const handleRight = () => {
     setCurrentSlide((prevSlide) => (prevSlide + 1) % news.length);
   };
@@ -49,7 +50,8 @@ const NewsLandingpage = React.memo(({ news,rtl }) => {
   const handleLeft = () => {
     setCurrentSlide((prevSlide) => (prevSlide - 1 + news.length) % news.length);
   };
-
+  //refresh the page or rerender it the component for every rtl
+   
   return (
     <div className={classes.newsHeader}>
       <div className={classes.newsTopHeading} style={{direction:rtl? "rtl": ""}}>

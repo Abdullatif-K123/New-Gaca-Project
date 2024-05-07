@@ -20,7 +20,7 @@ import * as Yup from "yup";
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Fade ref={ref} {...props} />;
 });
-const FeedBack = ({ open, handleClose, handleSubmitFeedback }) => {
+const FeedBack = ({ open, handleClose, handleSubmitFeedback, rtl }) => {
   const [focusedInput, setFocusedInput] = useState(null);
   const [sendFeedback, setSendFeedback] = useState(false);
   const [dialogPadding, setDialogPadding] = useState("30px 50px");
@@ -99,9 +99,11 @@ const FeedBack = ({ open, handleClose, handleSubmitFeedback }) => {
           overflowY: "unset",
           overflowX: "unset",
           padding: dialogPadding,
+          direction: rtl? "rtl" : ""
         },
       }}
       className={classes.dialogStyle}
+      
     >
       <div
         className={classes.closeBtn}
@@ -112,10 +114,10 @@ const FeedBack = ({ open, handleClose, handleSubmitFeedback }) => {
       >
         <Image src="/assets/svg/x.svg" width={19} height={19} alt="x" />
       </div>
-      <DialogTitle className={classes.feedbackhead}>Feedback</DialogTitle>
+      <DialogTitle className={classes.feedbackhead}>{rtl? "الشكاوي والاقتراحات": "Feedback"}</DialogTitle>
       <DialogContent>
         <DialogContentText className={classes.feedbackDesc}>
-          You Can Send Your Feedback From This Form
+         {rtl? "تستطيع ارسال شكاويك او اقتراحاتك هنا": " You Can Send Your Feedback From This Form"}
         </DialogContentText>
       </DialogContent>
 
@@ -132,14 +134,14 @@ const FeedBack = ({ open, handleClose, handleSubmitFeedback }) => {
               }`}
             >
               <label htmlFor="email">
-                Email Address
+             {rtl? "البريد الاكتروني": "Email Address"}  
                 {formik.touched.email && formik.errors.email ? "*" : null}
               </label>
               <input
                 type="text"
                 id="email"
                 name="email"
-                placeholder="Email"
+                placeholder={rtl? "الايميل": "Email"}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.email}
@@ -162,7 +164,7 @@ const FeedBack = ({ open, handleClose, handleSubmitFeedback }) => {
               }`}
             >
               <label htmlFor="phone">
-                Phone Number
+                {rtl? "رقم الهاتف" : "Phone Number"}
                 {formik.touched.phone && formik.errors.phone ? "*" : null}
               </label>
               <input
@@ -192,14 +194,14 @@ const FeedBack = ({ open, handleClose, handleSubmitFeedback }) => {
             }`}
           >
             <label htmlFor="name">
-              UserName{formik.touched.name && formik.errors.name ? "*" : null}
+              {rtl? "اسم المستخدم" : "UserName"}{formik.touched.name && formik.errors.name ? "*" : null}
             </label>
             <input
               type="text"
               id="name"
               name="name"
               ref={inputRef}
-              placeholder="Name"
+              placeholder={rtl? "الاسم": "Name"}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               value={formik.values.name}
@@ -223,7 +225,7 @@ const FeedBack = ({ open, handleClose, handleSubmitFeedback }) => {
               }`}
             >
               <label htmlFor="feedbackTitle">
-                Feedback Title{" "}
+                {rtl? "العنوان" : "Feedback Title"}{" "}
                 {formik.touched.feedbackTitle && formik.errors.feedbackTitle
                   ? "*"
                   : ""}
@@ -232,7 +234,7 @@ const FeedBack = ({ open, handleClose, handleSubmitFeedback }) => {
                 type="text"
                 id="feedbackTitle"
                 name="feedbackTitle"
-                placeholder="Feedback Title"
+                placeholder={rtl? "العنوان": "Feedback Title"}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.feedbackTitle}
@@ -256,7 +258,7 @@ const FeedBack = ({ open, handleClose, handleSubmitFeedback }) => {
                   : null
               } ${classes.customSelect} `}
             >
-              <label htmlFor="feedbackType">Feedback Type:</label>
+              <label htmlFor="feedbackType">{rtl? "نوع الشكوى": "Feedback Type:"}</label>
 
               <Select
                 id="feedbackType"
@@ -269,11 +271,11 @@ const FeedBack = ({ open, handleClose, handleSubmitFeedback }) => {
                 style={{ height: "45px", borderRadius: "8px" }}
               >
                 <MenuItem value={0}>
-                  <p>Recommendation</p>
+                  <p>{rtl? "توصيات" : "Recommendation"}</p>
                 </MenuItem>
-                <MenuItem value={1}>Error Report</MenuItem>
-                <MenuItem value={2}>Question</MenuItem>
-                <MenuItem value={3}>Other</MenuItem>
+                <MenuItem value={1}>{rtl? "تقرير لوجود خطأ": "Error Report"}</MenuItem>
+                <MenuItem value={2}>{rtl? "سؤال" : "Question"}</MenuItem>
+                <MenuItem value={3}>{rtl? "اخرى" : "Other"}</MenuItem>
               </Select>
               {formik.touched.feedbackType && formik.errors.feedbackType && (
                 <span className={classes.errorMessage}>
@@ -294,7 +296,7 @@ const FeedBack = ({ open, handleClose, handleSubmitFeedback }) => {
             }`}
           >
             <label htmlFor="feedbackMessage">
-              Feedback Message{" "}
+             {rtl? "الرسالة" : "Feedback Message"}{" "}
               {formik.touched.feedbackMessage && formik.errors.feedbackMessage
                 ? "*"
                 : ""}
@@ -302,7 +304,7 @@ const FeedBack = ({ open, handleClose, handleSubmitFeedback }) => {
             <textarea
               id="feedbackMessage"
               name="feedbackMessage"
-              placeholder="Feedback Message"
+              placeholder={rtl?"الرسالة" : "Feedback Message"}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               rows={4}
@@ -327,7 +329,7 @@ const FeedBack = ({ open, handleClose, handleSubmitFeedback }) => {
               }}
               className={classes.btnCancel}
             >
-              Cancel
+              {rtl? "الغاء": "Cancel"}
             </button>
             <Button
               type="submit"
@@ -347,7 +349,7 @@ const FeedBack = ({ open, handleClose, handleSubmitFeedback }) => {
                   : false
               }
             >
-              Submit
+              {rtl?"ارسال": "Submit"}
             </Button>
           </DialogActions>
         </form>

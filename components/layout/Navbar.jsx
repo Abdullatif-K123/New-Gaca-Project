@@ -12,7 +12,8 @@ const Navbar = ({
   conVersion,
   rtl,
   handleRtl,
-  handleAccessibility
+  handleAccessibility,
+  handleCaptilizling
 }) => {
   // creating function menu hamburger
   const [addClass, setAddClass] = useState(false);
@@ -80,7 +81,7 @@ function formatArabicDate() {
               <Image onClick={handleAccessibility} src="/assets/svg/accessability.svg" width={20} height={20} alt="accessability" style={{cursor: "pointer"}} />
             <div className={classes.fonts} style={{direction: rtl? "rtl": ""}}>
                 <p>A+</p>
-                <p>AA</p>
+                <p onClick={handleCaptilizling}>AA</p>
                 <p>A-</p> 
             </div>
         </div>
@@ -156,6 +157,7 @@ function formatArabicDate() {
                   router.push("/download");
                 }}
                 className={`${path === "download" ? classes.active : null}`}
+               
               >
                 {rtl? "التحميلات": "Downloads"}
               </li>
@@ -226,6 +228,7 @@ function formatArabicDate() {
         handleSubmitFeedback={handleSubmitFeedback}
         open={openFeedback}
         handleClose={handleCloseFeedback}
+        rtl={rtl}
       />
     </>
   );

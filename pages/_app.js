@@ -8,27 +8,31 @@ import { API_ROUTES } from "@/utils/apiConfig";
 import WelcomeDialog from "@/components/ui/WelcomeToGaca";
 export default function App({ Component, pageProps }) {
   const [isFeedbackVisible, setIsFeedbackVisible] = useState(false);
-  const [data, setData] = useState({});
-  const [loading, setLoading] = useState(false);
+  const [data, setData] = useState({}); 
   const [rtl, setRtl] = useState(false); 
   const [accessiblity, setAccessiblity] = useState(false); 
+  const [captilize, setCaptilize] = useState(false); 
   //handling language rtl i18l localization
   const handleRtl = ()=>{
       setRtl(!rtl); 
   }
+  // Handling the accessiblity for all people
   const handleAccessibility = ()=>{
      setAccessiblity(!accessiblity);
   }
   const handleToggleFeedback = () => {
     setIsFeedbackVisible(!isFeedbackVisible);
   };
+  // handling captlizing button
+  const handleCaptilizling = ()=>{
+     setCaptilize(!captilize)
+  }
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(API_ROUTES.settings.get);
         console.log(response.data);
-        setData(response.data);
-        setLoading(false);
+        setData(response.data); 
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -44,7 +48,7 @@ export default function App({ Component, pageProps }) {
   };
 
   return (
-    <div style={{filter: accessiblity?   "grayscale(100%)" : "" }}>
+    <div style={{filter: accessiblity?   "grayscale(100%)" : "", textTransform: captilize? "uppercase" : "" }}>
       <Head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -63,6 +67,7 @@ export default function App({ Component, pageProps }) {
         rtl={rtl}
         handleRtl={handleRtl} 
         handleAccessibility={handleAccessibility}
+        handleCaptilizling={handleCaptilizling}
       >
         <Component
           {...pageProps}
