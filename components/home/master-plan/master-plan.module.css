@@ -7,6 +7,7 @@
   justify-content: center; 
   position: relative;  
   background-color: #1c7a54;
+  background-image: url("/assets/imges/master-background.png");
 }
 .masterPlanMainH > h1 {
   color: #fff;
