@@ -23,8 +23,7 @@ const Footer = ({ conVersion, rtl }) => {
   };
   //Getting current year 
   var currentDate = new Date();
-  var currentYear = currentDate.getFullYear();
-  console.log(conVersion)
+  var currentYear = currentDate.getFullYear(); 
   useEffect(() => {
     setLinks(conVersion.shortLinks);
   }, [conVersion]);
@@ -33,7 +32,7 @@ const Footer = ({ conVersion, rtl }) => {
     <div className={classes.footerMain} style={{direction: rtl? "rtl": ""}}>
       <div className={classes.footerContentMain}>
         <div className={classes.logoSec}>
-          <Image src="/assets/svg/GacaFooter.svg" width={135} height={50} />
+          <Image src="/assets/svg/GacaFooter.svg" width={135} height={50}  alt="Gaca"/>
           <p>
             {rtl ? conVersion.globalSettings.footerDescription : conVersion?.globalSettings?.footerDescriptionEN  }
           </p>
@@ -110,6 +109,7 @@ const Footer = ({ conVersion, rtl }) => {
                 alt="facebook"
                 width={24}
                 height={24}
+              
               />
             </div>
             <div

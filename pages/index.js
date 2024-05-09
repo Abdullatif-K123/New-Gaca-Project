@@ -7,8 +7,7 @@ export default function Home({
   conVersion,
   data, 
   rtl
-}) {
-  console.log(data) 
+}) { 
   return (
     <div>
       <HomePage

@@ -38,8 +38,7 @@ const Feedback = ({ isFeedbackVisible, handleToggleFeedback, rtl }) => {
       feedbackMessage: Yup.string().required("Feedback message is required"),
     }),
     onSubmit: async (values) => {
-      // Handle form submission here
-      console.log(values);
+      // Handle form submission here 
       setSendFeedback(true);
       try {
         const response = await axios.post(API_ROUTES.feedback.post, {

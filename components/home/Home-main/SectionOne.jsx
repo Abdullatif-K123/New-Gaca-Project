@@ -41,7 +41,7 @@ const SectionOne = ({ isFeedbackVisible, title, desc,rtl }) => {
           width={700}
           height={520}
           className={classes.streetPlane}
-         
+           alt="Banner"
         />
       </div>
       <div className={classes.btnDown} onClick={handleClick}>

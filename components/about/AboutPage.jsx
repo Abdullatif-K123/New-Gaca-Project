@@ -65,9 +65,9 @@ const AboutPage = ({ data, rtl }) => {
       <div className={classes.strategic}>
         <div className={classes.strategiContent}>
           <h1>{rtl? "أهدافنا الاستراتيجية:" :"SNAP’s strategic objectives:"}</h1>
-          {data.objectives.map((content) => {
+          {data.objectives.map((content,index) => {
             return (
-              <div key={content.id} className={classes.singleStrategic} >
+              <div key={index} className={classes.singleStrategic} >
                 <Image
                   src="/assets/svg/leftIconStrategic.svg"
                   width={20}

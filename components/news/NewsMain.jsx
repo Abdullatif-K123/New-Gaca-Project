@@ -12,8 +12,7 @@ const NewsMain = ({ dataNews, rtl }) => {
   const [news, setNewsData] = useState(dataNews);
   const router = useRouter();
 
-  const itemsPerPage = 15;
-  console.log(news);
+  const itemsPerPage = 15; 
   useEffect(() => {
     setFilterData(
       news.filter((item, index) => {

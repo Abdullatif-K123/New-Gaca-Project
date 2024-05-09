@@ -120,7 +120,7 @@ const FeedBack = ({ open, handleClose, handleSubmitFeedback, rtl }) => {
         </DialogContentText>
       </DialogContent>
 
-      <Grid spacing={6}>
+      <Grid  >
         <form onSubmit={formik.handleSubmit} className={classes.formsInput}>
           <div className={classes.emailPhone}>
             <div

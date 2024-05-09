@@ -22,8 +22,7 @@ const SingleCard = ({
   const src = imageUrl? API_ROUTES.domainName +'/'+imageUrl : "/assets/imges/img3.jpg"
   const year = date.getFullYear();
   const month = (date.getMonth() + 1).toString().padStart(2, "0"); // Month is zero-indexed
-  const day = date.getDate().toString().padStart(2, "0");
- console.log(rtl)
+  const day = date.getDate().toString().padStart(2, "0"); 
   const humanReadableDate = `${year}-${month}-${day}`;
   const router = useRouter();
   const cardProps = useSpring({

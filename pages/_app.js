@@ -30,8 +30,7 @@ export default function App({ Component, pageProps }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(API_ROUTES.settings.get);
-        console.log(response.data);
+        const response = await axios.get(API_ROUTES.settings.get); 
         setData(response.data); 
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -48,8 +47,7 @@ export default function App({ Component, pageProps }) {
   };
 
   return (
-    <div style={{filter: accessiblity?   "grayscale(100%)" : "", textTransform: captilize? "uppercase" : "" }}>
-      <Head>
+     <>      <Head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
@@ -59,6 +57,7 @@ export default function App({ Component, pageProps }) {
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <title>GACA</title>
       </Head>
+       <div style={{filter: accessiblity?   "grayscale(100%)" : "", textTransform: captilize? "uppercase" : "" }}>
       {showWelcomeDialog && <WelcomeDialog onClose={handleWelcomeDialogClose} />}
       <Layout
         isFeedbackVisible={isFeedbackVisible}
@@ -79,5 +78,7 @@ export default function App({ Component, pageProps }) {
         />
       </Layout>
     </div>
+    </>
+
   );
 }

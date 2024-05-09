@@ -72,25 +72,25 @@ function formatArabicDate() {
 }
   return (
     <>
-    <div className={classes.navBottom} style={{direction: rtl? "rtl": ""}}> 
+    <div className={classes.navBottom} style={{direction: rtl? "rtl": "initial"}}> 
         <div className={classes.langAcess}  >
-          <div className={`${classes.languageRtl} ${rtl? classes.langArabic: ""}`}onClick={handleRtl} style={{borderLeft: rtl? "1px solid #fff": ""}}  >
+          <div className={`${classes.languageRtl} ${rtl? classes.langArabic: ""}`}onClick={handleRtl} style={{borderLeft: rtl? "1px solid #fff": "none"}}  >
              <Image src="/assets/svg/icon-language.svg" width={30} height={30} alt="lang"/>
               <p>{rtl? "عربي" : "English"}</p>
              </div>
-              <Image onClick={handleAccessibility} src="/assets/svg/accessability.svg" width={20} height={20} alt="accessability" style={{cursor: "pointer"}} />
-            <div className={classes.fonts} style={{direction: rtl? "rtl": ""}}>
+              <Image onClick={handleAccessibility} src="/assets/svg/accessability.svg" width={20} height={20} alt="accessability" style={{cursor: "pointer"}}/>
+            <div className={classes.fonts} >
                 <p>A+</p>
                 <p onClick={handleCaptilizling}>AA</p>
                 <p>A-</p> 
             </div>
         </div>
         <div className={classes.contactDate} style={{alignItems : rtl? "flex-start":"flex-end"}}  >
-          <div className={classes.emailSec} style={{direction: rtl? "rtl": ""}}>
+          <div className={classes.emailSec}  >
              <Link href="mailto:info@gmail.com?subject=Inquire%20About%20something"><p>info@gmail.com</p></Link>
              <Image src="/assets/svg/mail.svg" width={15} height={15} alt="mail"/>
           </div>
-            <div className={classes.phoneSec} style={{direction: rtl? "rtl": ""}} >
+            <div className={classes.phoneSec} >
               <Link href="tel:+1234567"><p>12345678</p></Link> 
                <Image src="/assets/svg/phone.svg" width={15} height={15} alt="phone"/>
                <p>{rtl? "الاتصال": "Phone"}</p>
@@ -109,8 +109,7 @@ function formatArabicDate() {
         }}
         style={{
           filter: isFeedbackVisible ? "brightness(0.5)" : "brightness(1)",
-          transition: "all 0.6s ease-in-out",
-          direction: rtl? "rtl" : ""
+          transition: "all 0.6s ease-in-out", 
         }}
         id="home"
         
@@ -209,7 +208,7 @@ function formatArabicDate() {
                 height={23}
                 alt="review"
               />
-              <p style={{fontSize: rtl? "18px": ""}}>{rtl? "شكاوي":"Feedback"}</p>
+              <p style={{fontSize: rtl? "18px": "none"}}>{rtl? "شكاوي":"Feedback"}</p>
             </div>
           </div>
           <div className="hamburger" onClick={mobileMenu}>
