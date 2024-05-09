@@ -48,3 +48,55 @@
 .btnSuccess:hover {
   background-color: #55ab84;
 }
+
+/* Subscribe section ui */
+
+.emailing{
+  background: #D2D0CD;
+  padding: 30px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 80px;
+
+  font-family: Montserrat, sans-serif;
+ }
+.emailing>h3{
+ font-weight: 600;
+ font-size: 1.2rem;
+  color: #0e0e0e;
+}
+.emailing > p{
+  color: #373d44;
+  font-size: 0.7rem;
+  font-weight: bold;
+}
+
+.emaillist{
+  
+ display: flex;
+ align-items: center;
+ width: 30%;
+ position: relative;
+}
+.emaillist > input{
+  background-color: #fff;
+  color: #797b7d;
+  padding: 15px 20px;
+  border: none;
+  border-radius: 30px; 
+  width: 80%;
+}
+.emaillist > button{
+  background-color: #e48d4e;
+  color: #fff;
+  border: none;
+  padding: 15px 40px;
+  border-radius: 30px;
+  position: absolute; 
+  cursor: pointer;
+  transition: 0.2s all ease-in-out;
+}
+.emaillist > button:hover{
+ box-shadow: 0px 2px 3px  #e48d4e;
+}

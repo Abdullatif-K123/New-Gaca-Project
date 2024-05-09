@@ -18,6 +18,7 @@ import {
 } from "@mui/material";
 import { API_ROUTES } from "@/utils/apiConfig";
 import ReactPaginate from "react-paginate";
+import Subscribe from "../ui/Subscribe";
 const Downloads = ({ data, conversion,rtl }) => { 
   
   const [filterTerm, setFilterTerm] = useState(data);
@@ -233,6 +234,7 @@ const Downloads = ({ data, conversion,rtl }) => {
           />
         </div>
       </div>
+      <Subscribe rtl={rtl}/>
     </div>
   );
 };

@@ -3,7 +3,7 @@ import classes from "./about.module.css";
 import Image from "next/image";
 import parse from "html-react-parser";
 import { useRouter } from "next/router";
-
+import Subscribe from "../ui/Subscribe";
 const AboutPage = ({ data, rtl }) => {
   const router = useRouter();
 
@@ -91,6 +91,7 @@ const AboutPage = ({ data, rtl }) => {
           
         />
       </div>
+      <Subscribe rtl={rtl}/>
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import classes from "./news.module.css";
-
+import Subscribe from "../ui/Subscribe";
 import SingleCard from "./SingleCard";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -24,7 +24,7 @@ const NewsMain = ({ dataNews, rtl }) => {
     );
   }, [currentPage, dataNews]); 
   return (
-    <div className={classes.newsMain} style={{direction: rtl? "rtl": ""}}>
+    <div className={classes.newsMain}>
       <div className={classes.newsSection}>
         <div className={classes.choosen}>
           <p>
@@ -85,6 +85,7 @@ const NewsMain = ({ dataNews, rtl }) => {
           />
         </div>
       </div>
+     <Subscribe/>
     </div>
   );
 };

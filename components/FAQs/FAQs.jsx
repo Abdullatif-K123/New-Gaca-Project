@@ -9,7 +9,7 @@ import {
   Typography,
 } from "@mui/material";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
-
+import Subscribe from "../ui/Subscribe";
 const FAQs = ({data, conVersion, rtl}) => {
   const theme = createTheme({
     palette: {
@@ -44,13 +44,8 @@ const FAQs = ({data, conVersion, rtl}) => {
   });
 
   const router = useRouter(); 
-  const [titleBackgroundColor, setTitleBackgroundColor] = useState("#ffffff"); // State to store title background color
   const [expandedIndices, setExpandedIndices] = useState([]);
-  // Function to handle background color change
-  const handleBackgroundColorChange = (backgroundColor) => {
-    setTitleBackgroundColor(backgroundColor);
-  }
-
+ 
    // Function to handle accordion expansion
    const handleAccordionChange = (index) => {
     if (expandedIndices.includes(index)) {
@@ -107,14 +102,7 @@ const FAQs = ({data, conVersion, rtl}) => {
       ))}
     </div>
         </div>
-        <div className={classes.emailing}>
-           <h3>{rtl? "قائمة الرسائل" : "Mailing List"}</h3>
-           <p>{rtl? "لتبقى على اطلاع بأخبار وزارة النقل يرجى الاشتراك في القائمة البريدية" : <>To keep up-to-date with the news of the Ministry <br/> of Transport, Please subscribe to the mailing list</>}</p>
-           <div className={classes.emaillist}>
-             <input type="email" placeholder="Email" />
-              <button style={{left: rtl? "0": "", right: rtl? "" : "0"}}>{rtl? "اشتراك" : "Subscribe"}</button>
-           </div>
-        </div>
+       <Subscribe rtl={rtl}/>       
       </div>
     </ThemeProvider>
   );

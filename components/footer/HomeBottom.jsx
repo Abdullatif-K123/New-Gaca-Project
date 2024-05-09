@@ -5,8 +5,8 @@ import Slider from "react-infinite-logo-slider";
 import { API_ROUTES } from "@/utils/apiConfig";
 import NewsLandingpage from "./NewsLandingpage";
 import Image from "next/image";
-import Link from "next/link";
-import SubSection from "./SubSection";
+import Link from "next/link"; 
+import Subscribe from "../ui/Subscribe";
 const HomeBottom = ({ imgs, conVersion, desc, news, rtl }) => {
   const [sliderWidth, setSliderWidth] = useState("180px");
   const [leftRight, setLeftRight] = useState(false);
@@ -30,8 +30,7 @@ const HomeBottom = ({ imgs, conVersion, desc, news, rtl }) => {
     <>
       <div className={classes.homeBottomMain} id="stakeholder">
         <div className={classes.bottomLogo}>
-          <NewsLandingpage news={news} rtl={rtl}/>
-          <SubSection/>
+          <NewsLandingpage news={news} rtl={rtl}/> 
           <h2 style={{direction: rtl? "rtl": ""}}>
             <span>{rtl? "أصحاب":"Our"}</span> {rtl? "المصلحة":"Stackholders"}
           </h2>
@@ -83,6 +82,7 @@ const HomeBottom = ({ imgs, conVersion, desc, news, rtl }) => {
           </Slider>
         </div>
       </div>
+        <Subscribe rtl={rtl}/>
       <Footer conVersion={conVersion} desc={desc} rtl={rtl} />
     </>
   );
