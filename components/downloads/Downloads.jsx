@@ -96,7 +96,7 @@ const Downloads = ({ data, conversion,rtl }) => {
           >
             {rtl? "الرئيسية" : "Home"}
           </span>
-          <Image src="/assets/svg/Chevron.svg" width={16} height={16} style={{transform: rtl? "rotate(180deg)": ""}} />
+          <Image src="/assets/svg/Chevron.svg" width={16} height={16} style={{transform: rtl? "rotate(180deg)": ""}} alt="chevron"/>
         </p>
         <h1>{rtl? "التنزيلات" : "Downloads"}</h1>
       </div>
@@ -123,7 +123,7 @@ const Downloads = ({ data, conversion,rtl }) => {
             </Select>
             <FormLabel>{rtl? "المدخلات" : "Entries"}</FormLabel>
           </div>
-          <Grid spacing={1} alignItems="center">
+          <Grid   alignItems="center">
             <Grid
               item
               style={{ display: "flex", alignItems: "center", gap: "10px" }}
@@ -195,7 +195,7 @@ const Downloads = ({ data, conversion,rtl }) => {
                    undefined,
                    options
                 ) 
-                const pdfUrl = `${API_ROUTES.domainName}/${document.fileUrl}`;
+                const pdfUrl = `${API_ROUTES.domainName}${document.fileUrl}`;
                 return (
                   <TableRow key={document.id} >
                     <TableCell>{rtl? document.title.slice(0,29) : document.titleEN.slice(0,29)}...</TableCell>

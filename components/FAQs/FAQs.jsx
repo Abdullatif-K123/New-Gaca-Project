@@ -55,7 +55,7 @@ const FAQs = ({data, conVersion, rtl}) => {
       // If the accordion is not expanded, expand it
       setExpandedIndices([...expandedIndices, index]);
     }
-  };
+  }; 
 
   return (
     <ThemeProvider theme={theme} >
@@ -69,7 +69,7 @@ const FAQs = ({data, conVersion, rtl}) => {
             >
               {rtl? "الرئيسية" : "Home"}
             </span>
-            <Image src="/assets/svg/Chevron.svg" width={16} height={16} style={{transform: rtl? "rotate(180deg)" :  ""}}/>
+            <Image src="/assets/svg/Chevron.svg" width={16} height={16} style={{transform: rtl? "rotate(180deg)" :  ""}} alt="chevorn"/>
           </p>
           <h1>{rtl? "الاسئلة الاكثر تكرار" : "FAQ"}</h1>
         </div>
@@ -79,13 +79,13 @@ const FAQs = ({data, conVersion, rtl}) => {
           </p>
           <div className={classes.faQestions}>
       {data.map((item, index) => (
-        <Accordion key={item} style={{ boxShadow: "none", padding:"0"   }}  expanded={expandedIndices.includes(index)} onChange={() => handleAccordionChange(index)}>
+        <Accordion key={index} style={{ boxShadow: "none", padding:"0"   }}  expanded={expandedIndices.includes(index)} onChange={() => handleAccordionChange(index)}>
           <AccordionSummary
             expandIcon={expandedIndices.includes(index) ? "_" : "+"} 
               // Set background color dynamically
-              style={{background: expandedIndices.includes(index)? "#f1f0f2" : "",  borderLeft:expandedIndices.includes(index)? "2px solid #1C7A54": "" }}
+              style={{background: expandedIndices.includes(index)? "#f1f0f2" : "#fff",  borderLeft:expandedIndices.includes(index)? "2px solid #1C7A54": "none" }}
           >
-            <Typography className={classes.freq} style={{color:expandedIndices.includes(index) ? "#1C7A54" : ""}}>
+            <Typography className={classes.freq} style={{color:expandedIndices.includes(index) ? "#1C7A54" : "#000"}}>
               <Image src={`/assets/svg/${expandedIndices.includes(index) ? "star-green.svg": "star.svg"}`} width={18} height={18} alt="star" />
               {rtl ? item.title.slice(0, 80) : item.titleEN.slice(0, 80)}...
             </Typography>

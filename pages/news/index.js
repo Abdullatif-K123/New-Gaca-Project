@@ -6,9 +6,7 @@ import axios from "axios";
 import { API_ROUTES } from "@/utils/apiConfig";
 const index = ({ isFeedbackVisible, handleToggleFeedback, conVersion, dataNews, rtl }) => {
  
-  const [data, setData] = useState(dataNews);
-  const [loading, setLoading] = useState(true);
-   console.log(dataNews)
+  const [data, setData] = useState(dataNews); 
   return (
     <div
       onClick={() => {
