@@ -84,18 +84,18 @@ const FAQs = ({data, conVersion, rtl}) => {
           </p>
           <div className={classes.faQestions}>
       {data.map((item, index) => (
-        <Accordion key={item} style={{ boxShadow: "none", border: "none" }}  expanded={expandedIndices.includes(index)} onChange={() => handleAccordionChange(index)}>
+        <Accordion key={item} style={{ boxShadow: "none", padding:"0"   }}  expanded={expandedIndices.includes(index)} onChange={() => handleAccordionChange(index)}>
           <AccordionSummary
             expandIcon={expandedIndices.includes(index) ? "_" : "+"} 
               // Set background color dynamically
-              style={{background: expandedIndices.includes(index)? "#f1f0f2" : "" }}
+              style={{background: expandedIndices.includes(index)? "#f1f0f2" : "",  borderLeft:expandedIndices.includes(index)? "2px solid #1C7A54": "" }}
           >
             <Typography className={classes.freq} style={{color:expandedIndices.includes(index) ? "#1C7A54" : ""}}>
               <Image src={`/assets/svg/${expandedIndices.includes(index) ? "star-green.svg": "star.svg"}`} width={18} height={18} alt="star" />
               {rtl ? item.title.slice(0, 80) : item.titleEN.slice(0, 80)}...
             </Typography>
           </AccordionSummary>
-          <AccordionDetails style={{ background: "#f1f0f2", marginTop: "-20px", }}>
+          <AccordionDetails style={{borderRadius: "0px", background: "#f1f0f2", marginTop: "-20px",  borderLeft:expandedIndices.includes(index)? "2px solid #1C7A54": ""  }}>
             <Typography
               sx={{ color: "rgba(51, 48, 60, 0.87)", fontSize: "13px" }}
             
