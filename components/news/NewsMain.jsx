@@ -85,7 +85,7 @@ const NewsMain = ({ dataNews, rtl }) => {
           />
         </div>
       </div>
-     <Subscribe/>
+     <Subscribe rtl={rtl}/>
     </div>
   );
 };
