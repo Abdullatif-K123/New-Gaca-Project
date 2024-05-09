@@ -3,12 +3,12 @@ import FAQs from "@/components/FAQs/FAQs";
 import Footer from "@/components/footer/footer";
 import { API_ROUTES } from "@/utils/apiConfig";
 import axios from "axios";
-const index = ({ conVersion, data }) => { 
+const index = ({ conVersion, data,rtl }) => { 
   
   return (
     <div>
-      <FAQs data={data} />
-      <Footer conVersion={conVersion} />
+      <FAQs data={data} rtl={rtl} conVersion={conVersion.globalSettings}/>
+      <Footer conVersion={conVersion} rtl={rtl} />
     </div>
   );
 };

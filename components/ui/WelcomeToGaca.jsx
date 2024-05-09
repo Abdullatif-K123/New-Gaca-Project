@@ -20,12 +20,17 @@ const WelcomeDialog = ({ onClose }) => {
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         ></iframe>
       </DialogContent>
-      <div style={{ textAlign: 'center', marginTop: '16px' }}>
-        <Button variant="contained" onClick={handleClose}>
+      <div style={{ textAlign: 'center', marginTop: '16px', }}>
+        <Button onClick={handleClose} style={{backgroundColor:"#1c7a54", 
+           borderRadius: "50px", width: "200px", height: "51px", color:"#fff"
+           
+        }}>
           Close
         </Button>
       </div>
     </Dialog>
+  
+
   );
 };
 

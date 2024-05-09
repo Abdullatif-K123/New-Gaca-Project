@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/router";
 import classes from "./faq.module.css";
 import Image from "next/image";
@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 
-const FAQs = ({data}) => {
+const FAQs = ({data, conVersion, rtl}) => {
   const theme = createTheme({
     palette: {
       primary: {
@@ -43,11 +43,28 @@ const FAQs = ({data}) => {
     },
   });
 
-  const router = useRouter();
+  const router = useRouter(); 
+  const [titleBackgroundColor, setTitleBackgroundColor] = useState("#ffffff"); // State to store title background color
+  const [expandedIndices, setExpandedIndices] = useState([]);
+  // Function to handle background color change
+  const handleBackgroundColorChange = (backgroundColor) => {
+    setTitleBackgroundColor(backgroundColor);
+  }
+
+   // Function to handle accordion expansion
+   const handleAccordionChange = (index) => {
+    if (expandedIndices.includes(index)) {
+      // If the accordion is already expanded, collapse it
+      setExpandedIndices(expandedIndices.filter(i => i !== index));
+    } else {
+      // If the accordion is not expanded, expand it
+      setExpandedIndices([...expandedIndices, index]);
+    }
+  };
 
   return (
-    <ThemeProvider theme={theme}>
-      <div className={classes.faqMain}>
+    <ThemeProvider theme={theme} >
+      <div className={classes.faqMain} style={{direction: rtl? "rtl" : ""}}>
         <div className={classes.choosen}>
           <p>
             <span
@@ -55,45 +72,48 @@ const FAQs = ({data}) => {
                 router.push("/");
               }}
             >
-              Home
+              {rtl? "الرئيسية" : "Home"}
             </span>
-            <Image src="/assets/svg/Chevron.svg" width={16} height={16} />
+            <Image src="/assets/svg/Chevron.svg" width={16} height={16} style={{transform: rtl? "rotate(180deg)" :  ""}}/>
           </p>
-          <h1>FAQ</h1>
+          <h1>{rtl? "الاسئلة الاكثر تكرار" : "FAQ"}</h1>
         </div>
         <div className={classes.faqContent}>
           <p>
-            Documents listed in the archive part are complementary to the
-            content of the eSNAP Portal and may be downloaded by clicking the
-            appropriate "Download" text. They were previously in the main
-            download area and have been replaced by newer versions. Here they
-            are kept for convenient user reference.
+            {rtl? conVersion?.faqPageDescription : conVersion?.faqPageDescriptionEN}
           </p>
           <div className={classes.faQestions}>
-            {data.map((item, index) => (
-              <Accordion key={item}>
-                <AccordionSummary
-                  expandIcon={
-                    <Image
-                      src="/assets/svg/chevron-right.svg"
-                      width={18}
-                      height={18}
-                      alt="expand-more"
-                    />
-                  }
-                >
-                  <Typography className={classes.freq}>
-                     {item.titleEN.slice(0,80)}...
-                  </Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                  <Typography sx={{ color: "rgba(51, 48, 60, 0.87)" }}>
-                   {item.descriptionEN}
-                  </Typography>
-                </AccordionDetails>
-              </Accordion>
-            ))}
-          </div>
+      {data.map((item, index) => (
+        <Accordion key={item} style={{ boxShadow: "none", border: "none" }}  expanded={expandedIndices.includes(index)} onChange={() => handleAccordionChange(index)}>
+          <AccordionSummary
+            expandIcon={expandedIndices.includes(index) ? "_" : "+"} 
+              // Set background color dynamically
+              style={{background: expandedIndices.includes(index)? "#f1f0f2" : "" }}
+          >
+            <Typography className={classes.freq} style={{color:expandedIndices.includes(index) ? "#1C7A54" : ""}}>
+              <Image src={`/assets/svg/${expandedIndices.includes(index) ? "star-green.svg": "star.svg"}`} width={18} height={18} alt="star" />
+              {rtl ? item.title.slice(0, 80) : item.titleEN.slice(0, 80)}...
+            </Typography>
+          </AccordionSummary>
+          <AccordionDetails style={{ background: "#f1f0f2", marginTop: "-20px", }}>
+            <Typography
+              sx={{ color: "rgba(51, 48, 60, 0.87)", fontSize: "13px" }}
+            
+            >
+              {rtl ? item.description : item.descriptionEN}
+            </Typography>
+          </AccordionDetails>
+        </Accordion>
+      ))}
+    </div>
+        </div>
+        <div className={classes.emailing}>
+           <h3>{rtl? "قائمة الرسائل" : "Mailing List"}</h3>
+           <p>{rtl? "لتبقى على اطلاع بأخبار وزارة النقل يرجى الاشتراك في القائمة البريدية" : <>To keep up-to-date with the news of the Ministry <br/> of Transport, Please subscribe to the mailing list</>}</p>
+           <div className={classes.emaillist}>
+             <input type="email" placeholder="Email" />
+              <button style={{left: rtl? "0": "", right: rtl? "" : "0"}}>{rtl? "اشتراك" : "Subscribe"}</button>
+           </div>
         </div>
       </div>
     </ThemeProvider>
