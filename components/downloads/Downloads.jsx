@@ -87,7 +87,7 @@ const Downloads = ({ data, conversion,rtl }) => {
 
   return (
     <div className={classes.downloadPage}  >
-      <div className={classes.choosen}>
+      <div className={classes.choosen} style={{direction: rtl? "rtl":"ltr"}}>
         <p>
           <span
             onClick={() => {
@@ -234,6 +234,7 @@ const Downloads = ({ data, conversion,rtl }) => {
           />
         </div>
       </div>
+      
       <Subscribe rtl={rtl}/>
     </div>
   );

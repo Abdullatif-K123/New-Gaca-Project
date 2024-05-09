@@ -24,7 +24,7 @@ const NewsMain = ({ dataNews, rtl }) => {
     );
   }, [currentPage, dataNews]); 
   return (
-    <div className={classes.newsMain}>
+    <div className={classes.newsMain} style={{direction: rtl? "rtl": "ltr"}}>
       <div className={classes.newsSection}>
         <div className={classes.choosen}>
           <p>

@@ -57,7 +57,7 @@ export default function App({ Component, pageProps }) {
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <title>GACA</title>
       </Head>
-       <div style={{filter: accessiblity?   "grayscale(100%)" : "", textTransform: captilize? "uppercase" : "", direction: rtl? "rtl": "" }}>
+       <div style={{filter: accessiblity?   "grayscale(100%)" : "", textTransform: captilize? "uppercase" : "",  }}>
       {showWelcomeDialog && <WelcomeDialog onClose={handleWelcomeDialogClose} />}
       <Layout
         isFeedbackVisible={isFeedbackVisible}

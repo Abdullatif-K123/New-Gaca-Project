@@ -115,7 +115,7 @@ const MasterPlan = ({ layers, rtl }) => {
   return (
     <>
      
-    <div id={"masterplan"} className={classes.masterPlanMain}  >
+    <div id={"masterplan"} className={classes.masterPlanMain}   >
    
       <div style={{zIndex: "99"}} className={classes.masterPlanMainH}>
       <h1>{rtl? "الخطة الوطنية السعودية للملاحة الجوية": "Saudi National Air Navigation Plan" }</h1>

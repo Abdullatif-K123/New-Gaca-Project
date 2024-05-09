@@ -8,6 +8,7 @@ import SingleCard from "../news/SingleCard";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 import LoadingSpinner from "../ui/LoadingSpinner";
+import Subscribe from "../ui/Subscribe";
 const SingleNews = ({ id, rtl }) => {
   const [data, setData] = useState({});
 
@@ -43,6 +44,7 @@ const SingleNews = ({ id, rtl }) => {
     navigator.clipboard.writeText("https://e-snap.vercel.app" + router.asPath);
   };
   return (
+    <>
     <div className={classes.newsMain} style={{direction: rtl? "rtl" : ""}}>
       <div className={classes.choosen}>
         <p>
@@ -119,6 +121,8 @@ const SingleNews = ({ id, rtl }) => {
       </div>
       <Toaster />
     </div>
+      <Subscribe rtl={rtl}/>
+      </>
   );
 };
 
