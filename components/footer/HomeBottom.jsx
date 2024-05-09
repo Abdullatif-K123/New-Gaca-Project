@@ -7,7 +7,7 @@ import NewsLandingpage from "./NewsLandingpage";
 import Image from "next/image";
 import Link from "next/link"; 
 import Subscribe from "../ui/Subscribe";
-const HomeBottom = ({ imgs, conVersion, desc, news, rtl }) => {
+const HomeBottom = ({ imgs, conVersion, desc, news, rtl }) => { 
   const [sliderWidth, setSliderWidth] = useState("180px");
   const [leftRight, setLeftRight] = useState(false);
   useEffect(() => {
@@ -63,9 +63,9 @@ const HomeBottom = ({ imgs, conVersion, desc, news, rtl }) => {
             blurBorders={true}
             toRight={leftRight}
           >
-            {imgs.map((stakholder) => {
+            {imgs.map((stakholder, index) => {
               return (
-                <Slider.Slide key={stakholder.id}>
+                <Slider.Slide key={`${index}${stakholder.name}`}>
                   <Link href={stakholder.url}  _blank >
                   <div className={classes.partnerItem}>
                    {stakholder.avatar?<img
