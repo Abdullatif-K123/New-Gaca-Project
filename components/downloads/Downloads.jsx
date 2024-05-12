@@ -195,7 +195,7 @@ const Downloads = ({ data, conversion,rtl }) => {
                    undefined,
                    options
                 ) 
-                const pdfUrl = `${API_ROUTES.domainName}${document.fileUrl}`;
+                const pdfUrl = `${document.fileUrl}`;
                 return (
                   <TableRow key={document.id} >
                     <TableCell>{rtl? document.title.slice(0,29) : document.titleEN.slice(0,29)}...</TableCell>

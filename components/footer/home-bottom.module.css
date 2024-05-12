@@ -189,6 +189,7 @@
   grid-template-columns: repeat(3, 1fr);
   font-family: "DINNext-light", sans-serif !important;
   font-size: 1rem;
+  row-gap: 14px;
   text-decoration: underline;
 }
 .visionFooter {

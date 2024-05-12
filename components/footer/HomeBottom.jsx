@@ -69,7 +69,7 @@ const HomeBottom = ({ imgs, conVersion, desc, news, rtl }) => {
                   <Link href={stakholder.url}  _blank >
                   <div className={classes.partnerItem}>
                    {stakholder.avatar?<img
-                      src={`${API_ROUTES.domainName}/${stakholder.avatar}`}
+                      src={`${stakholder.avatar}`}
                       width={140}
                       height={140}
                       alt={stakholder.title}

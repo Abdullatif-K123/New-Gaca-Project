@@ -12,6 +12,13 @@ export default function App({ Component, pageProps }) {
   const [rtl, setRtl] = useState(false); 
   const [accessiblity, setAccessiblity] = useState(false); 
   const [captilize, setCaptilize] = useState(false); 
+  
+  const changeFontSize = (size) => {
+    // document.body.classList.remove('small-text', 'medium-text', 'large-text');
+    // document.body.classList.add(size + '-text');
+    alert("There are some issues we are fixing it right now!!!")
+};
+
   //handling language rtl i18l localization
   const handleRtl = ()=>{
       setRtl(!rtl); 
@@ -31,7 +38,8 @@ export default function App({ Component, pageProps }) {
     const fetchData = async () => {
       try {
         const response = await axios.get(API_ROUTES.settings.get); 
-        setData(response.data); 
+        
+        setData(response.data.returnData); 
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -47,7 +55,8 @@ export default function App({ Component, pageProps }) {
   };
 
   return (
-     <>      <Head>
+     <> 
+       <Head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
@@ -67,6 +76,7 @@ export default function App({ Component, pageProps }) {
         handleRtl={handleRtl} 
         handleAccessibility={handleAccessibility}
         handleCaptilizling={handleCaptilizling}
+        changeFontSize={changeFontSize}
       >
         <Component
           {...pageProps}

@@ -15,7 +15,8 @@ const Navbar = ({
   rtl,
   handleRtl,
   handleAccessibility,
-  handleCaptilizling
+  handleCaptilizling,
+  changeFontSize
 }) => {
   // creating function menu hamburger
   const [addClass, setAddClass] = useState(false);
@@ -91,9 +92,9 @@ const handleMenuClick = (event) => {
              </div>
               <Image onClick={handleAccessibility} src="/assets/svg/accessability.svg" width={20} height={20} alt="accessability" style={{cursor: "pointer"}}/>
             <div className={classes.fonts} >
-                <p>A+</p>
+                <p onClick={changeFontSize}>A+</p>
                 <p onClick={handleCaptilizling}>AA</p>
-                <p>A-</p> 
+                <p onClick={changeFontSize}>A-</p> 
             </div>
         </div>
         <div className={classes.contactDate} style={{alignItems : rtl? "flex-start":"flex-end"}}  >

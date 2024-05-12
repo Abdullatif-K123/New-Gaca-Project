@@ -16,7 +16,7 @@ const DownloadedTable = ({ fileName, date, fileSize, docUrl }) => {
     // Trigger a click event on the link to start the download
     link.click();
   }
-  const pdfUrl = `${API_ROUTES.domainName}/${docUrl}`;
+  const pdfUrl = `${docUrl}`;
   return (
     <div className={classes.downloadTable}>
       <div className={classes.tableHead}>

@@ -25,9 +25,10 @@ export async function getStaticProps() {
   // Implement cache logic here
   try {
     const response = await axios.get('https://snap.somee.com/api/home');
+    console.log(response.data.returnData)
     return {
       props: {
-        data: response.data, 
+        data: response.data.returnData, 
       },
       revalidate: 10, // Cache validation time in seconds
   }

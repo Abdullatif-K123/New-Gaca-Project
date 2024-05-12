@@ -9,7 +9,7 @@ const NewsMain = ({ dataNews, rtl }) => {
   const [currentPage, setCurrentPage] = useState(0);
   const [leftRight, setLeftRight] = useState("left");
   const [filterData, setFilterData] = useState([]);
-  const [news, setNewsData] = useState(dataNews);
+  const [news, setNewsData] = useState(dataNews.data);
   const router = useRouter();
 
   const itemsPerPage = 15; 

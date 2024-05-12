@@ -29,7 +29,7 @@ export async function getStaticProps(){
     const response = await axios.get(API_ROUTES.blogs.get); 
     return{
       props:{
-        dataNews: response.data,
+        dataNews: response.data.returnData,
       },
       revalidate: 10,
     }

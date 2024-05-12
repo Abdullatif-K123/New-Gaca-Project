@@ -47,7 +47,7 @@ export async function getStaticProps(){
      const response = await axios.get(API_ROUTES.about.get); 
      return{
        props:{
-         dataInfo: response.data,
+         dataInfo: response.data.returnData,
        }, 
        revalidate: 10
      }

@@ -5,8 +5,7 @@ import axios from "axios";
 import LoadingSpinner from "@/components/ui/LoadingSpinner";
 import { API_ROUTES } from "@/utils/apiConfig";
 const index = ({ isFeedbackVisible, handleToggleFeedback, conVersion, dataDownload,rtl }) => {
-  const [data, setData] = useState(dataDownload);
-  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState(dataDownload); 
  
   return (
     <div
@@ -21,7 +20,6 @@ const index = ({ isFeedbackVisible, handleToggleFeedback, conVersion, dataDownlo
       }}
     >
       <Downloads data={data} conversion={conVersion} rtl={rtl}/>
-
       <Footer conVersion={conVersion} rtl={rtl} />
     </div>
   );
@@ -32,7 +30,7 @@ export async function getStaticProps(){
      const response = await axios.get(API_ROUTES.downloads.get); 
      return{
        props:{
-         dataDownload: response.data,
+         dataDownload: response.data.returnData,
        },
        revalidate: 10,
      }

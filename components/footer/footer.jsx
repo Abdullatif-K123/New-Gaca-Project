@@ -48,14 +48,14 @@ const Footer = ({ conVersion, rtl }) => {
             {links?.map((link) => {
               return (
                 <div
-                  style={{ cursor: "pointer", fontSize: "14px" }}
+                  style={{ cursor: "pointer", fontSize: "12px", }}
                   onClick={() => {
                     handleOpen();
                     setLinkProvide(link.linkAddress);
                   }}
                   key={link.id}
                 >
-                  <p>{link.title}</p>
+                  <p style={{ width: "100%", margin: 0,  }}>{link.title}</p>
                 </div>
               );
             })}

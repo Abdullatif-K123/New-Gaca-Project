@@ -18,7 +18,7 @@ export async function getStaticProps() {
     const response = await axios.get(API_ROUTES.FAQ.get);
     return {
       props: {
-        data: response.data, 
+        data: response.data.returnData, 
       },
       revalidate: 10, // Cache validation time in seconds
   }
