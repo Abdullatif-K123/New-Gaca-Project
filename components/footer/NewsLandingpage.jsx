@@ -56,10 +56,10 @@ const NewsLandingpage = React.memo(({ news,rtl }) => {
     <div className={classes.newsHeader}>
       <div className={classes.newsTopHeading} style={{direction:rtl? "rtl": ""}}>
         <h3>
-          {rtl? "أخبارنا":"Our"} <span>{!rtl? "News": ""}</span>
+          {rtl? "أخبارنا":"Last"} <span>{!rtl? "News": ""}</span>
         </h3>
 
-        <Link href={"/news"}>{rtl? "عرض الكل": "View all"}</Link>
+        <Link href={"/news"}>{rtl? "عرض الكل": "All news"}</Link>
       </div>
       <div className={classes.newsCardMain} style={{ padding: "32px 0px" }}>
         <button className={classes.newsArrow} onClick={handleLeft}>
