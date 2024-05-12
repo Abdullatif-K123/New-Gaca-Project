@@ -18,7 +18,7 @@ const SingleNews = ({ id, rtl }) => {
   const year = date.getFullYear();
   const month = (date.getMonth() + 1).toString().padStart(2, "0"); // Month is zero-indexed
   const day = date.getDate().toString().padStart(2, "0");
-  const src = data.imageUrl? API_ROUTES.domainName +'/'+ data.imageUrl : "/assets/imges/img3.jpg"
+  const src = data.imageUrl?  data.imageUrl : "/assets/imges/img3.jpg"
   const humanReadableDate = `${year}-${month}-${day}`;
   const router = useRouter();
   //Fetching data
@@ -26,7 +26,8 @@ const SingleNews = ({ id, rtl }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(`${API_ROUTES.blogs.get}/${id}`);
-        setData(response.data);
+        console.log(response.data.returnData.news)
+        setData(response.data.returnData.news);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -106,7 +107,7 @@ const SingleNews = ({ id, rtl }) => {
           <span>Articles</span> Related
         </p>
         <div className={classes.newsCardMain2}>
-          {  [1, 2, 3].map((nws, index) => (
+          {  [1, 2, 3,5].map((nws, index) => (
             <SingleCard
             rtl={rtl}
               key={index}
