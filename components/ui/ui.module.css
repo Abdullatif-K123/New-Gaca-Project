@@ -100,3 +100,26 @@
 .emaillist > button:hover{
  box-shadow: 0px 2px 3px  #e48d4e;
 }
+@media (max-width: 750px) {
+ .emailing{
+  padding: 30px 10px;
+   gap: 20px;
+ }
+ .emailing>h3{
+  font-weight: 600;
+  font-size: 1rem;
+ }
+
+ .emailing > p{
+  text-align: center;
+ }
+ .emaillist{
+  width: 60%; 
+}
+.emaillist > input{ 
+  padding: 10px 20px;
+}
+.emaillist > button{
+  padding: 10px 20px;
+}
+}

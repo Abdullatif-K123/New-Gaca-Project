@@ -10,8 +10,13 @@
   position: relative;
   display: grid;
   grid-template-columns: 1fr 1fr; 
-
+  
   padding: 18px 100px;
+}
+@media (max-width: 900px) {
+ .navBottom{
+  display: none;
+ }
 }
 .langAcess{
   display: flex;

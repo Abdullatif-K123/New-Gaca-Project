@@ -5,6 +5,8 @@ import { useRouter } from "next/router";
 import DialogModal from "../ui/DialogModal";
 import FeedBack from "./FeedBack";
 import Link from "next/link";
+import { Hidden, IconButton, Menu, MenuItem } from "@mui/material";
+
 const Navbar = ({
   handleSubmitFeedback,
   isFeedbackVisible,
@@ -70,6 +72,15 @@ function formatArabicDate() {
   // Format the date and return the result
   return new Intl.DateTimeFormat(!rtl? 'us':'ar-SA-u-nu-latn', options).format(now);
 }
+ 
+const [anchorEl, setAnchorEl] = useState(null);
+
+const handleMenuClick = (event) => {
+    setAnchorEl(event.currentTarget);
+};
+ const handleCloseMenu = ()=>{
+   setAnchorEl(false)
+ }
   return (
     <>
     <div className={classes.navBottom} style={{direction: rtl? "rtl": "initial"}}> 
@@ -100,6 +111,7 @@ function formatArabicDate() {
               </div>
         </div>
     </div>
+      
       <div
         className={`${classes.navModified} ${
           aboutPath ? classes.aboutModified : null
@@ -110,10 +122,32 @@ function formatArabicDate() {
         style={{
           filter: isFeedbackVisible ? "brightness(0.5)" : "brightness(1)",
           transition: "all 0.6s ease-in-out", 
+         direction: rtl? "rtl": "initial" 
         }}
         id="home"
         
+        
       >
+          {/* Responsive Menu */}
+          <Hidden mdUp >
+                <div style={{position:"absolute", bottom: "0", zIndex:"99"}}>
+                    <IconButton onClick={handleMenuClick}>
+                        <Image src="/assets/imges/more.png" width={25} height={25} alt='more' style={{transform: "rotate(90deg)"}}/>
+                    </IconButton>
+                    <Menu
+                        anchorEl={anchorEl}
+                        open={Boolean(anchorEl)}
+                        onClose={handleCloseMenu}
+                    >
+                        <MenuItem onClick={handleRtl}  ><div className={`${classes.languageRtl} ${rtl? classes.langArabic: ""}`}style={{borderLeft: rtl? "1px solid #fff": "none"}}  >
+            
+              <p>{rtl? "عربي" : "English"}</p>
+             </div></MenuItem>
+                        <MenuItem onClick={handleAccessibility} >Accessibility</MenuItem>
+                        <MenuItem  onClick={handleCaptilizling}>Captilizling</MenuItem>
+                    </Menu>
+                </div>
+            </Hidden>
         <nav className={`${classes.navMain}  `}>
           <div className={classes.logo}>
             <Image
