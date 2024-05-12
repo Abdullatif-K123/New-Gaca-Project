@@ -20,8 +20,7 @@ const Navbar = ({
 }) => {
   // creating function menu hamburger
   const [addClass, setAddClass] = useState(false);
-  const [open, setOpen] = React.useState(false);
-
+  const [open, setOpen] = React.useState(false); 
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -32,8 +31,7 @@ const Navbar = ({
   //setting up state and functions for feedback dialog
   const [openFeedback, setOpenFeedback] = useState(false);
   const handleClickOpenFeedback = () => {
-    document.body.style.overflow = "hidden";
-    console.log("open");
+    document.body.style.overflow = "hidden"; 
     setOpenFeedback(true);
   };
   const handleCloseFeedback = () => {
@@ -99,11 +97,11 @@ const handleMenuClick = (event) => {
         </div>
         <div className={classes.contactDate} style={{alignItems : rtl? "flex-start":"flex-end"}}  >
           <div className={classes.emailSec}  >
-             <Link href="mailto:info@gmail.com?subject=Inquire%20About%20something"><p>info@gmail.com</p></Link>
+             <Link href={`mailto:${conVersion?.globalSettings?.email}?subject=Inquire%20About%20something`}><p>{conVersion.globalSettings?.email}</p></Link>
              <Image src="/assets/svg/mail.svg" width={15} height={15} alt="mail"/>
           </div>
             <div className={classes.phoneSec} >
-              <Link href="tel:+1234567"><p>12345678</p></Link> 
+              <Link href={`tel:+${conVersion?.globalSettings?.phone}`}><p>{conVersion?.globalSettings?.phone}</p></Link> 
                <Image src="/assets/svg/phone.svg" width={15} height={15} alt="phone"/>
                <p>{rtl? "الاتصال": "Phone"}</p>
             </div>

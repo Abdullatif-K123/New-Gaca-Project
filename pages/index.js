@@ -24,8 +24,7 @@ export default function Home({
 export async function getStaticProps() {
   // Implement cache logic here
   try {
-    const response = await axios.get('https://snap.somee.com/api/home');
-    console.log(response.data.returnData)
+    const response = await axios.get('https://snap.somee.com/api/home'); 
     return {
       props: {
         data: response.data.returnData, 

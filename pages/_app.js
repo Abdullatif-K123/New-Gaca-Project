@@ -67,7 +67,7 @@ export default function App({ Component, pageProps }) {
         <title>GACA</title>
       </Head>
        <div style={{filter: accessiblity?   "grayscale(100%)" : "", textTransform: captilize? "uppercase" : "",  }}>
-      {showWelcomeDialog && <WelcomeDialog onClose={handleWelcomeDialogClose} />}
+      {showWelcomeDialog && <WelcomeDialog onClose={handleWelcomeDialogClose} videoUrl={data?.globalSettings?.globalVideo}  />}
       <Layout
         isFeedbackVisible={isFeedbackVisible}
         handleToggleFeedback={handleToggleFeedback}

@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import { useSpring, animated } from "react-spring";
 import parse from "html-react-parser";
 import { API_ROUTES } from "@/utils/apiConfig";
+import Link from "next/link";
 const SingleCard = ({
   title, 
   summary,
@@ -17,7 +18,7 @@ const SingleCard = ({
   createdAt,
    rtl
 
-}) => { 
+}) => {  
   const date = new Date(createdAt);
   const src = imageUrl? imageUrl : "/assets/imges/img3.jpg"
   const year = date.getFullYear();
@@ -36,13 +37,10 @@ const SingleCard = ({
     config: { tension: 0, friction: 1 },
   });
   return (
+    <Link href={`/news/${id}`}>
     <animated.div
       className={classes.newsCard}
       style={{ ...cardProps, direction: rtl? "rtl": "" }}
-      onClick={() => {
-        router.push(`/news/${id}`);
-      }}
-      
     >
       <div className={classes.newsCardHead}>
         <img
@@ -66,6 +64,7 @@ const SingleCard = ({
         <p>{parse(rtl? description?.slice(0,170):descriptionEN?.slice(0, 170))}...</p>
       </div>
     </animated.div>
+    </Link>
   );
 };
 

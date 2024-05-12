@@ -1,12 +1,21 @@
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Dialog, DialogContent, Button,Slide  } from '@mui/material';
 
-const WelcomeDialog = ({ onClose }) => {
+const WelcomeDialog = ({ onClose, videoUrl }) => {
+  const [videSrc, setVideoSrc] = useState( "https://www.youtube.com/embed/qaTB_u1THVs")
   const handleClose = () => {
     onClose();
   };
-
+ useEffect(()=>{
+  var regex = /[?&]v=([^&]+)/;
+  var match = videoUrl?.match(regex);
+  console.log(match)
+  if(videoUrl){
+  const newUrl = "https://www.youtube.com/embed/"+match[1];
+      setVideoSrc(newUrl)
+  }
+ },[videoUrl] )
   return (
     
      <Dialog   TransitionComponent={Slide}
@@ -15,7 +24,7 @@ const WelcomeDialog = ({ onClose }) => {
         <iframe
           width="750px"
           height="600px"
-          src="https://www.youtube.com/embed/qaTB_u1THVs"
+          src={videSrc}
           title="YouTube video player"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         ></iframe>

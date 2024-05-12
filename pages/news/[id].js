@@ -8,6 +8,7 @@ import { API_ROUTES } from "@/utils/apiConfig";
 const NewsId = ({ isFeedbackVisible, handleToggleFeedback, conVersion,rtl }) => {
   const router = useRouter();
   const id = router.query.id;
+  console.log(router.pathname)
   if (!id) {
     return <LoadingSpinner />;
   }

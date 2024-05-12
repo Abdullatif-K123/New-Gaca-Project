@@ -11,7 +11,7 @@ import LoadingSpinner from "../ui/LoadingSpinner";
 import Subscribe from "../ui/Subscribe";
 const SingleNews = ({ id, rtl }) => {
   const [data, setData] = useState({});
-
+  const [relateData, setRelatedData] = useState([]);
   const [loading, setLoading] = useState(true);
   const date = new Date(data.createdAt);
   const notify = () => toast("The link has been copied.", { icon: "👏" });
@@ -21,12 +21,16 @@ const SingleNews = ({ id, rtl }) => {
   const src = data.imageUrl?  data.imageUrl : "/assets/imges/img3.jpg"
   const humanReadableDate = `${year}-${month}-${day}`;
   const router = useRouter();
+  
   //Fetching data
   useEffect(() => {
+   
     const fetchData = async () => {
       try {
+        setLoading(true)
         const response = await axios.get(`${API_ROUTES.blogs.get}/${id}`);
-        console.log(response.data.returnData.news)
+        console.log(response.data.returnData)
+        setRelatedData(response.data.returnData.relatedNews)
         setData(response.data.returnData.news);
         setLoading(false);
       } catch (error) {
@@ -35,7 +39,7 @@ const SingleNews = ({ id, rtl }) => {
     };
 
     fetchData();
-  }, []);
+  }, [router.pathname]);
   if (loading) {
     return <LoadingSpinner />;
   }
@@ -56,7 +60,7 @@ const SingleNews = ({ id, rtl }) => {
           >
             {rtl? "الرئيسية" : "Home"}
           </span>
-          <Image src="/assets/svg/Chevron.svg" width={16} height={16} style={{transform: rtl? "rotate(180deg)" : ""}} />
+          <Image src="/assets/svg/Chevron.svg" width={16} height={16} style={{transform: rtl? "rotate(180deg)" : ""}} alt="chev" />
           <span
             onClick={() => {
               router.push("/news");
@@ -64,7 +68,7 @@ const SingleNews = ({ id, rtl }) => {
           >
             {rtl? "الاخبار": "News"}
           </span>
-          <Image src="/assets/svg/Chevron.svg" width={16} height={16} style={{transform: rtl? "rotate(180deg)" : ""}} />
+          <Image src="/assets/svg/Chevron.svg" width={16} height={16} style={{transform: rtl? "rotate(180deg)" : ""}} alt="chev" />
         </p>
         <h1>{rtl? data.title : data?.titleEN}</h1>
       </div>
@@ -107,15 +111,17 @@ const SingleNews = ({ id, rtl }) => {
           <span>Articles</span> Related
         </p>
         <div className={classes.newsCardMain2}>
-          {  [1, 2, 3,5].map((nws, index) => (
+          { relateData.map((nws, index) => (
             <SingleCard
-            rtl={rtl}
-              key={index}
-              title={data.title}
-              description={data.description}
-              titleEN={data.titleEN}
-              descriptionEN={data.descriptionEN}
-              createdAt={data.createdAt} 
+             id={nws.id}
+              rtl={rtl}
+              key={nws.id}
+              title={nws.title}
+              description={nws.description}
+              titleEN={nws.titleEN}
+              descriptionEN={nws.descriptionEN}
+              createdAt={nws.createdAt} 
+              imageUrl={nws.imageUrl}
             />
           ))}
         </div>
