@@ -60,14 +60,16 @@ const Footer = ({ conVersion, rtl }) => {
               );
             })}
           </div>
-
+          <div style={{width: "100%", display:"flex", justifyContent: "center", marginLeft: "-20px"}}>
           <Image
             src="/assets/svg/digitalGov.svg"
             width={200}
             height={80}
             alt="vision"
             className={classes.visionImg}
+           
           />
+          </div>
           <div className={classes.footerVisions}>
             <Image
               src="/assets/svg/vision-2030.svg"

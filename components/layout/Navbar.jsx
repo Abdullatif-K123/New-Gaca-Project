@@ -82,9 +82,9 @@ const handleMenuClick = (event) => {
  }
   return (
     <>
-    <div className={classes.navBottom} style={{direction: rtl? "rtl": "initial"}}> 
+    <div className={classes.navBottom} style={{direction: !rtl? "rtl": "initial"}}> 
         <div className={classes.langAcess}  >
-          <div className={`${classes.languageRtl} ${rtl? classes.langArabic: ""}`}onClick={handleRtl} style={{borderLeft: rtl? "1px solid #fff": "none"}}  >
+          <div className={`${classes.languageRtl} ${!rtl? classes.langArabic: ""}`}onClick={handleRtl} style={{borderLeft: !rtl? "1px solid #fff": "none"}}  >
              <Image src="/assets/svg/icon-language.svg" width={30} height={30} alt="lang"/>
               <p>{rtl? "عربي" : "English"}</p>
              </div>

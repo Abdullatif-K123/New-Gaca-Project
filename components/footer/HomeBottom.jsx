@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
 import classes from "./home-bottom.module.css";
 import Footer from "./footer";
-import Slider from "react-infinite-logo-slider";
-import { API_ROUTES } from "@/utils/apiConfig";
+import Slider from "react-infinite-logo-slider"; 
 import NewsLandingpage from "./NewsLandingpage";
 import DialogModal from "../ui/DialogModal";
-import Image from "next/image";
-import Link from "next/link"; 
+import Image from "next/image"; 
 import Subscribe from "../ui/Subscribe";
 const HomeBottom = ({ imgs, conVersion, desc, news, rtl }) => { 
   const [sliderWidth, setSliderWidth] = useState("180px");
