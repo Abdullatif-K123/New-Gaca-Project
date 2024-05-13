@@ -17,7 +17,7 @@ const OwlCarousel = dynamic(() => import("react-owl-carousel"), {
 
 const options = {
   animateOut: "slideOutDown",
-  animateIn: "flipInX",
+  animateIn: "flipInX", 
   items: 3,
   margin: 40,
   stagePadding: 30,
@@ -76,7 +76,7 @@ const NewsLandingpage = React.memo(({ news,rtl }) => {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            display: "inline-block",
+            display: "inline-block", 
           }}
         >
           <OwlCarousel
@@ -85,6 +85,7 @@ const NewsLandingpage = React.memo(({ news,rtl }) => {
             className="owl-carousel owl-theme"
             {...options}
             center={true}
+            dots={false}
           >
             {news.map((newsData, index) => (
               <SingleCard key={newsData.id} {...newsData} rtl={rtl} />

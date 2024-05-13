@@ -4,12 +4,28 @@ import Footer from "./footer";
 import Slider from "react-infinite-logo-slider";
 import { API_ROUTES } from "@/utils/apiConfig";
 import NewsLandingpage from "./NewsLandingpage";
+import DialogModal from "../ui/DialogModal";
 import Image from "next/image";
 import Link from "next/link"; 
 import Subscribe from "../ui/Subscribe";
 const HomeBottom = ({ imgs, conVersion, desc, news, rtl }) => { 
   const [sliderWidth, setSliderWidth] = useState("180px");
   const [leftRight, setLeftRight] = useState(false);
+  const [linkProvide, setLinkProvide] = useState("");
+  //setting up for the dialog modal
+  const [open, setOpen] = useState(false);
+  const handleClose = () => {
+    setOpen(false);
+  };
+  const handleOpen = () => {
+    setOpen(true);
+  };
+  const likeAndOpenLink = (link) => {
+    // Perform the action to simulate a "like" (replace with your actual like functionality)
+
+    // Open a new tab or window with the specified URL
+    window.open(link, "_blank");
+  };
   useEffect(() => {
     const handleResize = () => {
       // Adjust the width based on the screen size
@@ -65,8 +81,11 @@ const HomeBottom = ({ imgs, conVersion, desc, news, rtl }) => {
           >
             {imgs.map((stakholder, index) => {
               return (
-                <Slider.Slide key={`${index}${stakholder.name}`}>
-                  <Link href={stakholder.url}  _blank >
+                <Slider.Slide key={`${index}${stakholder.name}`}   onClick={() => {
+                  handleOpen();
+                  setLinkProvide(stakholder.url);
+                }}>
+                   
                   <div className={classes.partnerItem}>
                    {stakholder.avatar?<img
                       src={`${stakholder.avatar}`}
@@ -75,12 +94,18 @@ const HomeBottom = ({ imgs, conVersion, desc, news, rtl }) => {
                       alt={stakholder.title}
                     />: <div style={{background: "yellow", width: 140, height: 140, borderRadius: "80px" }}></div> } 
                   </div>
-                  </Link>
+                  
                 </Slider.Slide>
               );
             })}
           </Slider>
         </div>
+        <DialogModal
+          open={open}
+          handleClose={handleClose}
+          openLink={likeAndOpenLink}
+          link={linkProvide}
+        />
       </div>
         <Subscribe rtl={rtl}/>
       <Footer conVersion={conVersion} desc={desc} rtl={rtl} />
