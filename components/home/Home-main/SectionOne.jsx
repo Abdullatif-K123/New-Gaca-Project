@@ -20,6 +20,7 @@ const SectionOne = ({ isFeedbackVisible, title, desc,rtl }) => {
           {/* Add additional source elements for different video formats if needed */}
           Your browser does not support the video tag.
         </video>
+         <div className={classes.overlay}></div>
       </div>
 
         {/* Content */}
