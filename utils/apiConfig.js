@@ -23,5 +23,8 @@ export const API_ROUTES = {
   },
   FAQ:{
      get: "https://snap.somee.com/api/faqs",
+  },
+  subscribe:{
+     post: "https://snap.somee.com/api/subscribe"
   }
 };
