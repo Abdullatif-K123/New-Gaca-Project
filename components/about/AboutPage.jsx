@@ -15,6 +15,7 @@ const AboutPage = ({ data, rtl }) => {
             onClick={() => {
               router.push("/");
             }}
+            style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}}
           >
             {rtl? "الصفحة الرئيسية":"Home"}
           </span>
@@ -26,7 +27,8 @@ const AboutPage = ({ data, rtl }) => {
             style={{transform: rtl?"rotate(180deg)": ""}}
           />
         </p>
-        <h1>{rtl? "حول": "About SNAP"}</h1>
+        <h1
+        style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}}>{rtl? "حول": "About SNAP"}</h1>
       </div>
       <div className={classes.aboutSection}>
         <Image
@@ -36,8 +38,8 @@ const AboutPage = ({ data, rtl }) => {
           alt="snap-imges"
         />
         <div className={classes.content}>
-          <h1>{rtl? "سناب": "SNAP"}</h1>
-          {parse(rtl? data.information.content:data.information.contentEN)}
+          <h1 style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}}>{rtl? "سناب": "SNAP"}</h1>
+         <p style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}}>{parse(rtl? data.information.content:data.information.contentEN)}</p>  
         </div>
       </div>
       <div className={classes.visionMission}>
@@ -48,8 +50,8 @@ const AboutPage = ({ data, rtl }) => {
             height={64}
             alt="vision"
           />
-          <h1>{rtl? "الرؤية": "Vision"}</h1>
-          {parse(rtl? data.information.vision:data.information.visionEN)}
+          <h1 style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}}>{rtl? "الرؤية": "Vision"}</h1>
+          <p  style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}} > {parse(rtl? data.information.vision:data.information.visionEN)}</p>
         </div>
         <div className={classes.vision}>
           <Image
@@ -58,13 +60,13 @@ const AboutPage = ({ data, rtl }) => {
             height={64}
             alt="mission"
           />
-          <h1>{rtl? "المهام":"Mission"}</h1>
-          {parse(rtl?data.information.mission:data.information.missionEN)}
+          <h1 style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}}>{rtl? "المهام":"Mission"}</h1>
+           <p  style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}}>{parse(rtl?data.information.mission:data.information.missionEN)}</p>
         </div>
       </div>
       <div className={classes.strategic}>
         <div className={classes.strategiContent}>
-          <h1>{rtl? "أهدافنا الاستراتيجية:" :"SNAP’s strategic objectives:"}</h1>
+          <h1 style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}}>{rtl? "أهدافنا الاستراتيجية:" :"SNAP’s strategic objectives:"}</h1>
           {data.objectives.map((content,index) => {
             return (
               <div key={index} className={classes.singleStrategic} >
@@ -76,7 +78,7 @@ const AboutPage = ({ data, rtl }) => {
                   
             style={{transform: rtl?"rotate(180deg)": ""}}
                 />
-                <p>{rtl? content.title: content.titleEN}</p>
+                <p style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}}>{rtl? content.title: content.titleEN}</p>
               </div>
             );
           })}

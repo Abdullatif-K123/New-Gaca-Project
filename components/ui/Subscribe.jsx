@@ -22,8 +22,8 @@ const Subscribe = ({rtl})=>{
     };
      return(
         <div className={classes.emailing} style={{direction: rtl? "rtl":""}}>
-        <h3>{rtl? "القائمة البريدية" : "Mailing List"}</h3>
-        <p>{rtl? "لتبقى على اطلاع بأخبار وزارة النقل يرجى الاشتراك في القائمة البريدية" : <>To keep up-to-date with the news of the Ministry <br/> of Transport, Please subscribe to the mailing list</>}</p>
+        <h3 style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}} >{rtl? "القائمة البريدية" : "Mailing List"}</h3>
+        <p style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}} >{rtl? "لتبقى على اطلاع بأخبار وزارة النقل يرجى الاشتراك في القائمة البريدية" : <>To keep up-to-date with the news of the Ministry <br/> of Transport, Please subscribe to the mailing list</>}</p>
         <div className={classes.emaillist}>
           <input type="email" placeholder={rtl? "يرجى كتابة الإيميل الخاص بك" : "Email"} 
           value={email} onChange={(e)=>{setEmail(e.target.value)}}

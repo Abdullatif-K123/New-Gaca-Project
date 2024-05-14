@@ -46,7 +46,7 @@ const HomeBottom = ({ imgs, conVersion, desc, news, rtl }) => {
         <div className={classes.bottomLogo}>
           <NewsLandingpage news={news} rtl={rtl}/> 
           <h2 style={{direction: rtl? "rtl": ""}}>
-            <span>{rtl? "أصحاب":"Our"}</span> {rtl? "المصلحة":"Stackholders"}
+            <span style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}} >{rtl? "أصحاب":"Our"}</span> {rtl? "المصلحة":"Stackholders"}
           </h2>
         </div>
         <div className={classes.stakholderArrows}>

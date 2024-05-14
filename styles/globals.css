@@ -120,6 +120,10 @@ body::-webkit-scrollbar-thumb {
   font-family: "DINNext-Light";
   src: url("../public/fonts/DINNextW1G-Light.otf") format("opentype");
 }
+@font-face{
+   font-family: "DINNext-Arabic-meduim";
+   src: url("../public/fonts/DINNextLTArabic-Medium-4.ttf") format("truetype");
+}
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(

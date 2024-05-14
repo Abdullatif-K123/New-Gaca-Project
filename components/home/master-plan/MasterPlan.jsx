@@ -14,6 +14,7 @@ const Element = ({
   nowHovering,
   text,
   desc,
+  rtl
 }) => {
   const classPyramid =
     id === 1
@@ -44,10 +45,11 @@ const Element = ({
             opacity: nowHovering ? (isHovered ? "1" : "0") : null,
           }}
         >
-          <p>{text}</p>
+          <p style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}} >{text}</p>
           {isHovered && (
             <p
               className={`${classes.masterPlanInfoDesc} ${classes.masterPlanInfoDescLeft}`}
+              style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}} 
             >
               {desc?.slice(0, 200)}...
             </p>
@@ -86,12 +88,13 @@ const Element = ({
             opacity: nowHovering ? (isHovered ? "1" : "0") : null,
           }}
         >
-          <p>{text}</p>
+          <p style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}}  >{text}</p>
           {isHovered && (
             <p
               className={`${classes.masterPlanInfoDesc} ${
                 id == 5 ? classes.masterPlanInfoDescUp : null
               }`}
+              style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}} 
             >
               {desc.slice(0, 200)}...
             </p>
@@ -118,7 +121,7 @@ const MasterPlan = ({ layers, rtl }) => {
     <div id={"masterplan"} className={classes.masterPlanMain}   >
    
       <div style={{zIndex: "99"}} className={classes.masterPlanMainH}>
-      <h1>{rtl? "الخطة الوطنية السعودية للملاحة الجوية": "Saudi National Air Navigation Plan" }</h1>
+      <h1 style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}} >{rtl? "الخطة الوطنية السعودية للملاحة الجوية": "Saudi National Air Navigation Plan" }</h1>
        {/* Video background */}
     
 
@@ -178,6 +181,7 @@ const MasterPlan = ({ layers, rtl }) => {
               nowHovering={isNowhovering}
               text={id.text}
               desc={id.desc}
+              rtl={rtl}
             />
           );
         })}

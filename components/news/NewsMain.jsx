@@ -32,6 +32,7 @@ const NewsMain = ({ dataNews, rtl }) => {
               onClick={() => {
                 router.push("/");
               }}
+              style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}} 
             >
               {rtl? "الرئيسية": "Home"}
             </span>
@@ -44,7 +45,7 @@ const NewsMain = ({ dataNews, rtl }) => {
               style={{transform: rtl? "rotate(180deg)":""}}
             />
           </p>
-          <h1>{rtl? "الاخبار" : "News"}</h1>
+          <h1 style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}} >{rtl? "الاخبار" : "News"}</h1>
         </div>
         <div className={classes.newsCardMain2}>
           {filterData &&
@@ -52,7 +53,7 @@ const NewsMain = ({ dataNews, rtl }) => {
               <SingleCard key={nws.id} {...nws} rtl={rtl} leftRight={leftRight} />
             ))}
         </div>
-        <div className={classes.paginationContainer}>
+        <div className={classes.paginationContainer} >
           {/* Render pagination links with updated styles */}
           <ReactPaginate
             containerClassName={classes.pagination}

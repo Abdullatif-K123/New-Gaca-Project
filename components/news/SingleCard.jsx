@@ -49,7 +49,7 @@ const SingleCard = ({
           height={180}
           alt={titleEN?.slice(0, 20)}
         />
-        <p>{rtl? title:titleEN}</p>
+        <p style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}} >{rtl? title:titleEN}</p>
       </div>
       <div className={classes.newsCardBody}>
         <div className={classes.newsDate}  > 
@@ -59,9 +59,9 @@ const SingleCard = ({
             height={25}
             alt="calender"
           />
-          <p>{humanReadableDate}</p>
+          <p style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}} >{humanReadableDate}</p>
         </div>
-        <p>{parse(rtl? description?.slice(0,170):descriptionEN?.slice(0, 170))}...</p>
+        <p style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}} >{parse(rtl? description?.slice(0,170):descriptionEN?.slice(0, 170))}...</p>
       </div>
     </animated.div>
     </Link>

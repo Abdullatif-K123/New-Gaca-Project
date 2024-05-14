@@ -20,7 +20,7 @@ const index = ({ isFeedbackVisible, handleToggleFeedback, conVersion, dataNews, 
       }}
     >
       <NewsMain dataNews={data} rtl={rtl} />
-      <Footer conVersion={conVersion} />
+      <Footer conVersion={conVersion} rtl={rtl} />
     </div>
   );
 };

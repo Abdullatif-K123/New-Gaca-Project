@@ -57,6 +57,7 @@ const SingleNews = ({ id, rtl }) => {
             onClick={() => {
               router.push("/");
             }}
+            style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}} 
           >
             {rtl? "الرئيسية" : "Home"}
           </span>
@@ -65,6 +66,7 @@ const SingleNews = ({ id, rtl }) => {
             onClick={() => {
               router.push("/news");
             }}
+            style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}} 
           >
             {rtl? "الاخبار": "News"}
           </span>

@@ -93,12 +93,13 @@ const Downloads = ({ data, conversion,rtl }) => {
             onClick={() => {
               router.push("/");
             }}
+            style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}} 
           >
             {rtl? "الرئيسية" : "Home"}
           </span>
           <Image src="/assets/svg/Chevron.svg" width={16} height={16} style={{transform: rtl? "rotate(180deg)": ""}} alt="chevron"/>
         </p>
-        <h1>{rtl? "التنزيلات" : "Downloads"}</h1>
+        <h1 style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}} >{rtl? "التنزيلات" : "Downloads"}</h1>
       </div>
       <div className={classes.downloadContent}>
         <p>
@@ -108,7 +109,7 @@ const Downloads = ({ data, conversion,rtl }) => {
       <div className={classes.downloadTables}>
         <div className={classes.filteringDocument}>
           <div className={classes.filterByNumber}>
-            <FormLabel>{rtl?"العرض" :  "Show"}</FormLabel>
+            <FormLabel style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}} >{rtl?"العرض" :  "Show"}</FormLabel>
             <Select
               size="small"
               value={selectedOption}
@@ -121,14 +122,14 @@ const Downloads = ({ data, conversion,rtl }) => {
               <MenuItem value={15}>15</MenuItem>
               <MenuItem value={20}>20</MenuItem>
             </Select>
-            <FormLabel>{rtl? "المدخلات" : "Entries"}</FormLabel>
+            <FormLabel style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}} >{rtl? "المدخلات" : "Entries"}</FormLabel>
           </div>
           <Grid   alignItems="center">
             <Grid
               item
               style={{ display: "flex", alignItems: "center", gap: "10px" }}
             >
-              <FormLabel htmlFor="search">{rtl? "البحث" : "Search:"}</FormLabel>
+              <FormLabel htmlFor="search" style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}} >{rtl? "البحث" : "Search:"}</FormLabel>
               <TextField
                 size="small"
                 variant="outlined"
@@ -143,9 +144,9 @@ const Downloads = ({ data, conversion,rtl }) => {
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell>{rtl? "العنوان" : "TITLE"}</TableCell>
+                <TableCell style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}}>{rtl? "العنوان" : "TITLE"}</TableCell>
                 <TableCell
-                  style={{ display: "flex", alignItems: "center", gap: "10px" }}
+                  style={{ display: "flex", alignItems: "center", gap: "10px",fontFamily: rtl? "DINNext-Arabic-meduim " : "" }}
                 >
                   {" "}
                   <div
@@ -174,8 +175,8 @@ const Downloads = ({ data, conversion,rtl }) => {
                   </div>
                   {rtl? "التاريخ" : "DATE"}
                 </TableCell>
-                <TableCell>{rtl? "التعديل" : "UPDATE"}</TableCell>
-                <TableCell>{rtl? "العملية" : "ACTION"}</TableCell>
+                <TableCell style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}} >{rtl? "التعديل" : "UPDATE"}</TableCell>
+                <TableCell style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}} >{rtl? "العملية" : "ACTION"}</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -198,7 +199,7 @@ const Downloads = ({ data, conversion,rtl }) => {
                 const pdfUrl = `${document.fileUrl}`;
                 return (
                   <TableRow key={document.id} >
-                    <TableCell>{rtl? document.title.slice(0,29) : document.titleEN.slice(0,29)}...</TableCell>
+                    <TableCell style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}}>{rtl? document.title.slice(0,29) : document.titleEN.slice(0,29)}...</TableCell>
                     <TableCell>{formattedDate}</TableCell>
                     <TableCell>{formatteUpdate}</TableCell>
                     <TableCell  >
@@ -208,7 +209,7 @@ const Downloads = ({ data, conversion,rtl }) => {
                           downloadPdfFile(pdfUrl, document.title);
                         }}
                       >
-                        <p>{rtl? "التحميل": "Submit"}</p>
+                        <p style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}}>{rtl? "التحميل": "Submit"}</p>
                       </button>
                     </TableCell>
                   </TableRow>

@@ -55,7 +55,7 @@ const NewsLandingpage = React.memo(({ news,rtl }) => {
   return (
     <div className={classes.newsHeader}>
       <div className={classes.newsTopHeading} style={{direction:rtl? "rtl": ""}}>
-        <h3>
+        <h3 style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}} >
           {rtl? "أخبارنا":"Last"} <span>{!rtl? "News": ""}</span>
         </h3>
 

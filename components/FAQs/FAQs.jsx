@@ -66,6 +66,7 @@ const FAQs = ({data, conVersion, rtl}) => {
               onClick={() => {
                 router.push("/");
               }}
+              style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}}
             >
               {rtl? "الرئيسية" : "Home"}
             </span>
@@ -74,7 +75,7 @@ const FAQs = ({data, conVersion, rtl}) => {
           <h1>{rtl? "الاسئلة الاكثر تكرار" : "FAQ"}</h1>
         </div>
         <div className={classes.faqContent}>
-          <p>
+          <p  style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}} >
             {rtl? conVersion?.faqPageDescription : conVersion?.faqPageDescriptionEN}
           </p>
           <div className={classes.faQestions}>
@@ -85,14 +86,14 @@ const FAQs = ({data, conVersion, rtl}) => {
               // Set background color dynamically
               style={{background: expandedIndices.includes(index)? "#f1f0f2" : "#fff",  borderLeft:expandedIndices.includes(index)? "2px solid #1C7A54": "none" }}
           >
-            <Typography className={classes.freq} style={{color:expandedIndices.includes(index) ? "#1C7A54" : "#000"}}>
+            <Typography className={classes.freq} style={{color:expandedIndices.includes(index) ? "#1C7A54" : "#000", fontFamily: rtl? "DINNext-Arabic-meduim " : ""}}>
               <Image src={`/assets/svg/${expandedIndices.includes(index) ? "star-green.svg": "star.svg"}`} width={18} height={18} alt="star" />
               {rtl ? item.title.slice(0, 80) : item.titleEN.slice(0, 80)}...
             </Typography>
           </AccordionSummary>
           <AccordionDetails style={{borderRadius: "0px", background: "#f1f0f2", marginTop: "-20px",  borderLeft:expandedIndices.includes(index)? "2px solid #1C7A54": ""  }}>
             <Typography
-              sx={{ color: "rgba(51, 48, 60, 0.87)", fontSize: "13px" }}
+              sx={{ color: "rgba(51, 48, 60, 0.87)", fontSize: "13px", fontFamily: rtl? "DINNext-Arabic-meduim " : "" }}
             
             >
               {rtl ? item.description : item.descriptionEN}

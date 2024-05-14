@@ -25,15 +25,15 @@ const SectionOne = ({ isFeedbackVisible, title, desc,rtl }) => {
 
         {/* Content */}
       <div className={classes.secOneContect}>
-        <h1>{title}</h1>
-        <p>{parse(desc)}</p>
+        <h1 style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}} >{title}</h1>
+        <p style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}} >{parse(desc)}</p>
         <div
           className={classes.secOneButton}
           onClick={() => {
             router.push("/download");
           }}
         >
-          <p> {rtl? "تحميل ملفات " : "Download SNAP Documents"}</p>
+          <p style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}} >  {rtl? "تحميل ملفات " : "Download SNAP Documents"}</p>
         </div>
       </div>
       <div className={classes.sectionTwo}  style={{marginRight: rtl? "0px": ""}}>

@@ -55,7 +55,7 @@ const Footer = ({ conVersion, rtl }) => {
                   }}
                   key={link.id}
                 >
-                  <p style={{ width: "100%", margin: 0,  }}>{link.title}</p>
+                  <p style={{fontFamily: rtl? "DINNext-Arabic-meduim " : "", width: "100%", margin: 0,  }}>{link.title}</p>
                 </div>
               );
             })}
@@ -162,6 +162,7 @@ const Footer = ({ conVersion, rtl }) => {
               onClick={() => {
                 router.push("/");
               }}
+              style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}} 
             >
               {rtl? "الرئيسية": "Home"}
             </li>
@@ -169,6 +170,7 @@ const Footer = ({ conVersion, rtl }) => {
               onClick={() => {
                 router.push("/about");
               }}
+              style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}} 
             >
               {rtl? "حول": "About"}
             </li>
@@ -176,6 +178,7 @@ const Footer = ({ conVersion, rtl }) => {
               onClick={() => {
                 router.push("/download");
               }}
+              style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}} 
             >
               {rtl? "التحميلات": "Downloads"}
             </li>
@@ -183,6 +186,7 @@ const Footer = ({ conVersion, rtl }) => {
               onClick={() => {
                 router.push("/news");
               }}
+              style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}} 
             >
               {rtl? "الأخبار": "News"}
             </li>
@@ -191,6 +195,7 @@ const Footer = ({ conVersion, rtl }) => {
                 handleOpen();
                 setLinkProvide(conVersion?.globalSettings.constructorUrl);
               }}
+              style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}} 
             >
             {rtl? "البناء": "Constructor"}
             </li>

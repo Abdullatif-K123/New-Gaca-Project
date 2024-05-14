@@ -4,7 +4,7 @@ import axios from "axios";
 import { API_ROUTES } from "@/utils/apiConfig";
 import toast, { Toaster } from "react-hot-toast";
 const Layout = (props) => {
-  const {changeFontSize, isFeedbackVisible, handleToggleFeedback, conVersion, rtl, handleRtl, handleAccessibility, handleCaptilizling } = props;
+  const {fontStyles, changeFontSize, isFeedbackVisible, handleToggleFeedback, conVersion, rtl, handleRtl, handleAccessibility, handleCaptilizling } = props;
   const notify = () => toast("Your feedback has been sent.", { icon: "👏" });
   const handleSubmitFeedback = async (obj) => {
     try {
@@ -23,7 +23,7 @@ const Layout = (props) => {
   };
 
   return (
-    <>
+    <div style={{fontFamily: rtl? "DINNext-Arabic-meduim !important" : ""}}>
       <Navbar
         isFeedbackVisible={isFeedbackVisible}
         handleToggleFeedback={handleToggleFeedback}
@@ -39,7 +39,7 @@ const Layout = (props) => {
       {props.children}
 
       <Toaster />
-    </>
+    </div>
   );
 };
 

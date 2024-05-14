@@ -53,6 +53,10 @@ export default function App({ Component, pageProps }) {
   const handleWelcomeDialogClose = () => {
     setShowWelcomeDialog(false);
   };
+    // Apply custom font family based on selected language
+  const fontStyles = rtl ? `
+  font-family: "DINNext-Arabic-meduim", sans-serif;
+` : '';
 
   return (
      <> 
@@ -66,7 +70,7 @@ export default function App({ Component, pageProps }) {
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <title>GACA</title>
       </Head>
-       <div style={{filter: accessiblity?   "grayscale(100%)" : "", textTransform: captilize? "uppercase" : "",  }}>
+       <div style={{ filter: accessiblity?   "grayscale(100%)" : "", textTransform: captilize? "uppercase" : "",  }}>
       {showWelcomeDialog && <WelcomeDialog onClose={handleWelcomeDialogClose} videoUrl={data?.globalSettings?.globalVideo}  />}
       <Layout
         isFeedbackVisible={isFeedbackVisible}
@@ -77,6 +81,7 @@ export default function App({ Component, pageProps }) {
         handleAccessibility={handleAccessibility}
         handleCaptilizling={handleCaptilizling}
         changeFontSize={changeFontSize}
+        fontStyles={fontStyles}
       >
         <Component
           {...pageProps}

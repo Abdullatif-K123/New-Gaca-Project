@@ -86,7 +86,7 @@ const handleMenuClick = (event) => {
         <div className={classes.langAcess}  >
           <div className={`${classes.languageRtl} ${!rtl? classes.langArabic: ""}`}onClick={handleRtl} style={{borderLeft: !rtl? "1px solid #fff": "none"}}  >
              <Image src="/assets/svg/icon-language.svg" width={30} height={30} alt="lang"/>
-              <p>{rtl? "عربي" : "English"}</p>
+              <p style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}}>{rtl? "عربي" : "English"}</p>
              </div>
               <Image onClick={handleAccessibility} src="/assets/svg/accessability.svg" width={20} height={20} alt="accessability" style={{cursor: "pointer"}}/>
             <div className={classes.fonts} >
@@ -103,10 +103,10 @@ const handleMenuClick = (event) => {
             <div className={classes.phoneSec} >
               <Link href={`tel:+${conVersion?.globalSettings?.phone}`}><p>{conVersion?.globalSettings?.phone}</p></Link> 
                <Image src="/assets/svg/phone.svg" width={15} height={15} alt="phone"/>
-               <p>{rtl? "الاتصال": "Phone"}</p>
+               <p  style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}}>{rtl? "الاتصال": "Phone"}</p>
             </div>
               <div className={classes.dateSaudi}>
-                 <p>{formatArabicDate()}</p>
+                 <p  style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}}>{formatArabicDate()}</p>
               </div>
         </div>
     </div>
@@ -164,13 +164,14 @@ const handleMenuClick = (event) => {
               addClass ? classes.navContentHam : null
             }`}
           >
-            <ul className={`${classes.section}  `}>
+            <ul className={`${classes.section}  `} >
               <li
                 onClick={() => {
                   mobileMenu();
                   router.push("/");
                 }}
                 className={`${path.length ? null : classes.activeHome}`}
+                style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}}
               >
                 {rtl? "الرئيسية" :"Home"}
               </li>
@@ -180,6 +181,7 @@ const handleMenuClick = (event) => {
                   router.push("/about");
                 }}
                 className={`${path === "about" ? classes.active : null}`}
+                style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}}
               >
                 {rtl? "حول":"About SNAP"}
               </li>
@@ -189,6 +191,7 @@ const handleMenuClick = (event) => {
                   router.push("/download");
                 }}
                 className={`${path === "download" ? classes.active : null}`}
+                style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}}
                
               >
                 {rtl? "التحميلات": "Downloads"}
@@ -199,6 +202,7 @@ const handleMenuClick = (event) => {
                   router.push("/news");
                 }}
                 className={`${path === "news" ? classes.active : null}`}
+                style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}}
               >
                 {rtl? "الاخبار" :"News"}
               </li>
@@ -208,6 +212,7 @@ const handleMenuClick = (event) => {
                   router.push("/faq");
                 }}
                 className={`${path === "faq" ? classes.active : null}`}
+                style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}}
               >
                 {rtl? "الاسئلة الشائعة" :"FAQ" }
               </li>
@@ -241,7 +246,7 @@ const handleMenuClick = (event) => {
                 height={23}
                 alt="review"
               />
-              <p style={{fontSize: rtl? "18px": "none"}}>{rtl? "شكاوي":"Feedback"}</p>
+              <p   style={{fontSize: rtl? "18px": "none",fontFamily: rtl? "DINNext-Arabic-meduim " : "" }}>{rtl? "شكاوي":"Feedback"}</p>
             </div>
           </div>
           <div className="hamburger" onClick={mobileMenu}>
