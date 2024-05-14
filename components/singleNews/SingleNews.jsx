@@ -39,7 +39,7 @@ const SingleNews = ({ id, rtl }) => {
     };
 
     fetchData();
-  }, [router.pathname]);
+  }, [id]);
   if (loading) {
     return <LoadingSpinner />;
   }
