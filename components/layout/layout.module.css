@@ -62,9 +62,9 @@
 .fonts > p:hover{
    text-shadow: 1px 0px;
 }
-.fonts > p:last-child{
-   border-right: none;
-}
+ .fonts > p:first-child{
+  border: none
+ }
 .contactDate{
    display: flex;
    align-items: center;

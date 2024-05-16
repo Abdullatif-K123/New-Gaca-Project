@@ -29,7 +29,7 @@ const SingleNews = ({ id, rtl }) => {
       try {
         setLoading(true)
         const response = await axios.get(`${API_ROUTES.blogs.get}/${id}`);
-        console.log(response.data.returnData)
+      
         setRelatedData(response.data.returnData.relatedNews)
         setData(response.data.returnData.news);
         setLoading(false);
@@ -45,6 +45,7 @@ const SingleNews = ({ id, rtl }) => {
   }
   //handling share link button
   const handleClickShare = () => {
+    console.log("Hello")
     notify();
     navigator.clipboard.writeText("https://e-snap.vercel.app" + router.asPath);
   };
@@ -72,7 +73,7 @@ const SingleNews = ({ id, rtl }) => {
           </span>
           <Image src="/assets/svg/Chevron.svg" width={16} height={16} style={{transform: rtl? "rotate(180deg)" : ""}} alt="chev" />
         </p>
-        <h1>{rtl? data.title : data?.titleEN}</h1>
+        <h1   style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}} >{rtl? data.title : data?.titleEN}</h1>
       </div>
       <div className={classes.newsDetails}>
         <img
@@ -83,7 +84,7 @@ const SingleNews = ({ id, rtl }) => {
         />
         <div className={classes.newsContent}>
           <div className={classes.contentHead}>
-            <p>{rtl? data?.title: data.titleEN}</p>
+            <p   style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}} >{rtl? data?.title: data.titleEN}</p>
           </div>
           <div className={classes.contentBody}>
             <div className={classes.contentDate}>
@@ -93,9 +94,9 @@ const SingleNews = ({ id, rtl }) => {
                 height={24}
                 alt="calender"
               />
-              <p>{humanReadableDate}</p>
+              <p   style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}}  >{humanReadableDate}</p>
             </div>
-            <p>{parse(rtl? data.description  : data?.descriptionEN)}</p>
+            <p style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}} >{parse(rtl? data.description  : data?.descriptionEN)}</p>
             <button className={classes.newsShare} onClick={handleClickShare}>
               <Image
                 src="/assets/svg/share.svg"
@@ -103,14 +104,14 @@ const SingleNews = ({ id, rtl }) => {
                 height={20}
                 alt="share"
               />
-              <p>Share Link</p>
+              <p style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}}> {rtl ? "نسخ الرابط": "Copy link"}</p>
             </button>
           </div>
         </div>
       </div>
       <div className={classes.articleRelated}>
-        <p>
-          <span>Articles</span> Related
+        <p style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}}>
+          <span style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}}>{rtl? "مقالات" : "Articles"}</span> {rtl? "ذات صلة" : "Related"}
         </p>
         <div className={classes.newsCardMain2}>
           { relateData.map((nws, index) => (

@@ -4,7 +4,8 @@ import Head from "next/head";
 import { useEffect, useState } from "react";
 import axios from "axios"; 
 import { API_ROUTES } from "@/utils/apiConfig";
-
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // Import AOS CSS
 import WelcomeDialog from "@/components/ui/WelcomeToGaca";
 export default function App({ Component, pageProps }) {
   const [isFeedbackVisible, setIsFeedbackVisible] = useState(false);
@@ -15,8 +16,7 @@ export default function App({ Component, pageProps }) {
   
   const changeFontSize = (size) => {
     // document.body.classList.remove('small-text', 'medium-text', 'large-text');
-    // document.body.classList.add(size + '-text');
-    alert("There are some issues we are fixing it right now!!!")
+    // document.body.classList.add(size + '-text'); 
 };
 
   //handling language rtl i18l localization
@@ -35,6 +35,7 @@ export default function App({ Component, pageProps }) {
      setCaptilize(!captilize)
   }
   useEffect(() => {
+    AOS.init(); // Initialize AOS
     const fetchData = async () => {
       try {
         const response = await axios.get(API_ROUTES.settings.get); 

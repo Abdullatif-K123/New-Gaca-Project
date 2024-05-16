@@ -24,7 +24,7 @@ const SectionOne = ({ isFeedbackVisible, title, desc,rtl }) => {
       </div>
 
         {/* Content */}
-      <div className={classes.secOneContect}>
+      <div className={classes.secOneContect} data-aos="fade-right">
         <h1 style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}} >{title}</h1>
         <p style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}} >{parse(desc)}</p>
         <div
@@ -36,13 +36,14 @@ const SectionOne = ({ isFeedbackVisible, title, desc,rtl }) => {
           <p style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}} >  {rtl? "تحميل ملفات " : "Download SNAP Documents"}</p>
         </div>
       </div>
-      <div className={classes.sectionTwo}  style={{marginRight: rtl? "0px": ""}}>
+      <div className={classes.sectionTwo}  style={{marginRight: rtl? "0px": ""}} >
         <Image
           src="/assets/imges/Brochure-landingpage.webp"
           width={700}
           height={520}
           className={classes.streetPlane}
            alt="Banner"
+           data-aos="fade-left"
         />
       </div>
       <div className={classes.btnDown} onClick={handleClick}>

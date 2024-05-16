@@ -138,7 +138,7 @@ const handleMenuClick = (event) => {
                         open={Boolean(anchorEl)}
                         onClose={handleCloseMenu}
                     >
-                        <MenuItem onClick={handleRtl}  ><div className={`${classes.languageRtl} ${rtl? classes.langArabic: ""}`}style={{borderLeft: rtl? "1px solid #fff": "none"}}  >
+                        <MenuItem onClick={handleRtl}  ><div className={`${classes.languageRtl} ${rtl? classes.langArabic: ""}`}  >
             
               <p>{rtl? "عربي" : "English"}</p>
              </div></MenuItem>

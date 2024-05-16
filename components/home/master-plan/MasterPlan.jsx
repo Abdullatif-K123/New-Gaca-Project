@@ -44,6 +44,7 @@ const Element = ({
               : null,
             opacity: nowHovering ? (isHovered ? "1" : "0") : null,
           }}
+          data-aos="fade-right"
         >
           <p style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}} >{text}</p>
           {isHovered && (
@@ -75,6 +76,7 @@ const Element = ({
             : null,
         }}
         alt="master plan"
+        
       />
       {id % 2 ? (
         <div
@@ -87,6 +89,7 @@ const Element = ({
               : null,
             opacity: nowHovering ? (isHovered ? "1" : "0") : null,
           }}
+          data-aos="fade-left"
         >
           <p style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}}  >{text}</p>
           {isHovered && (

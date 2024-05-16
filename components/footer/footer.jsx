@@ -38,14 +38,14 @@ const Footer = ({ conVersion, rtl }) => {
           </p>
           <div className={classes.footerCopyRight}>
             <p>
-              © {currentYear}  
+              © {currentYear} All Rights Reserved,
             </p>
           </div>
         </div>
 
         <div className={classes.visionFooter}>
           <div className={classes.linksSlogans}>
-            {links?.map((link) => {
+            {links?.map((link, index) => {
               return (
                 <div
                   style={{ cursor: "pointer", fontSize: "12px", }}
@@ -53,7 +53,7 @@ const Footer = ({ conVersion, rtl }) => {
                     handleOpen();
                     setLinkProvide(link.linkAddress);
                   }}
-                  key={link.id}
+                  key={index}
                 >
                   <p style={{fontFamily: rtl? "DINNext-Arabic-meduim " : "", width: "100%", margin: 0,  }}>{link.title}</p>
                 </div>
