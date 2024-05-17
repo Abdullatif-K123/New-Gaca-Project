@@ -7,6 +7,7 @@ import { API_ROUTES } from "@/utils/apiConfig";
 import AOS from 'aos';
 import 'aos/dist/aos.css'; // Import AOS CSS
 import WelcomeDialog from "@/components/ui/WelcomeToGaca";
+import { FontSizeProvider } from "@/store/FontSizeContext";
 export default function App({ Component, pageProps }) {
   const [isFeedbackVisible, setIsFeedbackVisible] = useState(false);
   const [data, setData] = useState({}); 
@@ -73,6 +74,7 @@ export default function App({ Component, pageProps }) {
       </Head>
        <div style={{ filter: accessiblity?   "grayscale(100%)" : "", textTransform: captilize? "uppercase" : "",  }}>
       {showWelcomeDialog && <WelcomeDialog onClose={handleWelcomeDialogClose} videoUrl={data?.globalSettings?.globalVideo}  />}
+       <FontSizeProvider>
       <Layout
         isFeedbackVisible={isFeedbackVisible}
         handleToggleFeedback={handleToggleFeedback}
@@ -93,6 +95,7 @@ export default function App({ Component, pageProps }) {
           conVersion={data}
         />
       </Layout>
+      </FontSizeProvider> 
     </div>
     </>
 

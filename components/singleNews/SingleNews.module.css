@@ -27,8 +27,7 @@
 }
 .choosen > p {
   color: #fff;
-  font-family: Montserrat;
-  font-size: 14px;
+  font-family: Montserrat; 
   font-style: normal;
   font-weight: 500;
   line-height: 16px; /* 114.286% */

@@ -9,6 +9,7 @@ import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 import LoadingSpinner from "../ui/LoadingSpinner";
 import Subscribe from "../ui/Subscribe";
+import { useFontSize } from "@/store/FontSizeContext";
 const SingleNews = ({ id, rtl }) => {
   const [data, setData] = useState({});
   const [relateData, setRelatedData] = useState([]);
@@ -21,7 +22,7 @@ const SingleNews = ({ id, rtl }) => {
   const src = data.imageUrl?  data.imageUrl : "/assets/imges/img3.jpg"
   const humanReadableDate = `${year}-${month}-${day}`;
   const router = useRouter();
-  
+  const {fontSizeGeneral} = useFontSize();
   //Fetching data
   useEffect(() => {
    
@@ -52,7 +53,7 @@ const SingleNews = ({ id, rtl }) => {
   return (
     <>
     <div className={classes.newsMain} style={{direction: rtl? "rtl" : ""}}>
-      <div className={classes.choosen}>
+      <div className={classes.choosen} style={{fontSize: `${14 + fontSizeGeneral}px`}}>
         <p>
           <span
             onClick={() => {
@@ -73,7 +74,7 @@ const SingleNews = ({ id, rtl }) => {
           </span>
           <Image src="/assets/svg/Chevron.svg" width={16} height={16} style={{transform: rtl? "rotate(180deg)" : ""}} alt="chev" />
         </p>
-        <h1   style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}} >{rtl? data.title : data?.titleEN}</h1>
+        <h1   style={{fontFamily: rtl? "DINNext-Arabic-meduim " : "",fontSize: `${24 + fontSizeGeneral}px` }}>{rtl? data.title : data?.titleEN}</h1>
       </div>
       <div className={classes.newsDetails}>
         <img
@@ -84,7 +85,7 @@ const SingleNews = ({ id, rtl }) => {
         />
         <div className={classes.newsContent}>
           <div className={classes.contentHead}>
-            <p   style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}} >{rtl? data?.title: data.titleEN}</p>
+            <p   style={{fontFamily: rtl? "DINNext-Arabic-meduim " : "", fontSize: `${24 + fontSizeGeneral}px` }} >{rtl? data?.title: data.titleEN}</p>
           </div>
           <div className={classes.contentBody}>
             <div className={classes.contentDate}>
@@ -96,7 +97,7 @@ const SingleNews = ({ id, rtl }) => {
               />
               <p   style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}}  >{humanReadableDate}</p>
             </div>
-            <p style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}} >{parse(rtl? data.description  : data?.descriptionEN)}</p>
+            <p style={{fontFamily: rtl? "DINNext-Arabic-meduim " : "", fontSize: `${20 + fontSizeGeneral}px` }} >{parse(rtl? data.description  : data?.descriptionEN)}</p>
             <button className={classes.newsShare} onClick={handleClickShare}>
               <Image
                 src="/assets/svg/share.svg"

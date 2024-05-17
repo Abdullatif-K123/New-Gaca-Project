@@ -28,8 +28,7 @@
 }
 .choosen > p {
   color: #000;
-  font-family: "DINNext-meduim", sans-serif;
-  font-size: 14px;
+  font-family: "DINNext-meduim", sans-serif; 
   font-style: normal;
   font-weight: 500;
   line-height: 16px; /* 114.286% */
@@ -70,7 +69,7 @@
  
 .freq {
   color: rgba(51, 48, 60, 0.87);
-  font-size: 15px;
+   
   display: flex;
   gap: 10px;
   align-items: center ;

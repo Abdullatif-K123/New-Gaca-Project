@@ -11,7 +11,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr; 
   
-  padding: 18px 100px;
+  padding: 18px 90px;
 }
 @media (max-width: 900px) {
  .navBottom{
@@ -127,8 +127,7 @@
   list-style-type: none;
   color: #fff;
   text-align: center;
-  font-family: "DINNext-Regular", sans-serif;
-  font-size: 17px;
+  font-family: "DINNext-Regular", sans-serif; 
   cursor: pointer;
   border-bottom: 2px solid transparent;
   border: none;

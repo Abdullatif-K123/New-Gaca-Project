@@ -4,7 +4,9 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import DialogModal from "../ui/DialogModal";
+import { useFontSize } from "@/store/FontSizeContext";
 const Footer = ({ conVersion, rtl }) => { 
+  const {fontSizeGeneral} = useFontSize();
   const [links, setLinks] = useState([]);
   const [linkProvide, setLinkProvide] = useState("");
   //setting up for the dialog modal
@@ -33,11 +35,11 @@ const Footer = ({ conVersion, rtl }) => {
       <div className={classes.footerContentMain}>
         <div className={classes.logoSec}>
           <Image src="/assets/svg/GacaFooter.svg" width={135} height={50}  alt="Gaca"/>
-          <p>
+          <p style={{fontSize: `${16 + fontSizeGeneral}px`}}> 
             {rtl ? conVersion.globalSettings.footerDescription : conVersion?.globalSettings?.footerDescriptionEN  }
           </p>
           <div className={classes.footerCopyRight}>
-            <p>
+            <p style={{fontSize: `${16 + fontSizeGeneral}px`}}>
               © {currentYear} All Rights Reserved,
             </p>
           </div>
@@ -55,7 +57,7 @@ const Footer = ({ conVersion, rtl }) => {
                   }}
                   key={index}
                 >
-                  <p style={{fontFamily: rtl? "DINNext-Arabic-meduim " : "", width: "100%", margin: 0,  }}>{link.title}</p>
+                  <p style={{fontFamily: rtl? "DINNext-Arabic-meduim " : "", width: "100%", margin: 0, fontSize: `${12 + fontSizeGeneral}px` }}>{link.title}</p>
                 </div>
               );
             })}

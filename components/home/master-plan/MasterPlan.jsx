@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import classes from "./master-plan.module.css";
 import Image from "next/image";
 import { useRouter } from "next/router";
-
+import { useFontSize } from "@/store/FontSizeContext";
 const Element = ({
   id,
   handleHover,
@@ -27,6 +27,8 @@ const Element = ({
       ? classes.pyramid4
       : classes.pyramid5;
   const router = useRouter();
+  const {fontSizeGeneral} = useFontSize();
+ 
   return (
     <div
       className={`${classes.masterPlanInfoImg} ${
@@ -46,11 +48,11 @@ const Element = ({
           }}
           data-aos="fade-right"
         >
-          <p style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}} >{text}</p>
+          <p style={{fontFamily: rtl? "DINNext-Arabic-meduim " : "", fontSize: `${18 + fontSizeGeneral}px`}} >{text}</p>
           {isHovered && (
             <p
               className={`${classes.masterPlanInfoDesc} ${classes.masterPlanInfoDescLeft}`}
-              style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}} 
+              style={{fontFamily: rtl? "DINNext-Arabic-meduim " : "",fontSize: `${13 + fontSizeGeneral}px`}} 
             >
               {desc?.slice(0, 200)}...
             </p>
@@ -91,13 +93,13 @@ const Element = ({
           }}
           data-aos="fade-left"
         >
-          <p style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}}  >{text}</p>
+          <p style={{fontFamily: rtl? "DINNext-Arabic-meduim " : "", fontSize: `${18 + fontSizeGeneral}px`}}  >{text}</p>
           {isHovered && (
             <p
               className={`${classes.masterPlanInfoDesc} ${
                 id == 5 ? classes.masterPlanInfoDescUp : null
               }`}
-              style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}} 
+              style={{fontFamily: rtl? "DINNext-Arabic-meduim " : "", fontSize: `${14 + fontSizeGeneral}px`}} 
             >
               {desc.slice(0, 200)}...
             </p>
@@ -110,6 +112,8 @@ const Element = ({
 const MasterPlan = ({ layers, rtl }) => {
   const [hoverElement, setHoverElement] = useState(null);
   const [isNowhovering, setIsNowHovering] = useState(false);
+  
+  const {fontSizeGeneral} = useFontSize();
   const handleHover = (id) => {
     setHoverElement(id);
     setIsNowHovering(true);
@@ -124,7 +128,7 @@ const MasterPlan = ({ layers, rtl }) => {
     <div id={"masterplan"} className={classes.masterPlanMain}   >
    
       <div style={{zIndex: "99"}} className={classes.masterPlanMainH}>
-      <h1 style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}} >{rtl? "الخطة الوطنية السعودية للملاحة الجوية": "Saudi National Air Navigation Plan" }</h1>
+      <h1 style={{fontFamily: rtl? "DINNext-Arabic-meduim " : "", fontSize: `${37 + fontSizeGeneral}px`}}  >{rtl? "الخطة الوطنية السعودية للملاحة الجوية": "Saudi National Air Navigation Plan" }</h1>
        {/* Video background */}
     
 

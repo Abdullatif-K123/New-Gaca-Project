@@ -6,7 +6,7 @@ import DialogModal from "../ui/DialogModal";
 import FeedBack from "./FeedBack";
 import Link from "next/link";
 import { Hidden, IconButton, Menu, MenuItem } from "@mui/material";
-
+import { useFontSize } from "@/store/FontSizeContext";
 const Navbar = ({
   handleSubmitFeedback,
   isFeedbackVisible,
@@ -15,16 +15,14 @@ const Navbar = ({
   rtl,
   handleRtl,
   handleAccessibility,
-  handleCaptilizling,
-  changeFontSize
+  handleCaptilizling, 
 }) => {
+  const { fontSizeGeneral, increaseFontSize, decreaseFontSize, fontSize, fontSizeSmall, fontSizeNormal} = useFontSize();
+
   // creating function menu hamburger
   const [addClass, setAddClass] = useState(false);
   const [open, setOpen] = React.useState(false); 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
+ 
   const handleClose = () => {
     setOpen(false);
   };
@@ -86,26 +84,26 @@ const handleMenuClick = (event) => {
         <div className={classes.langAcess}  >
           <div className={`${classes.languageRtl} ${!rtl? classes.langArabic: ""}`}onClick={handleRtl} style={{borderLeft: !rtl? "1px solid #fff": "none"}}  >
              <Image src="/assets/svg/icon-language.svg" width={30} height={30} alt="lang"/>
-              <p style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}}>{rtl? "عربي" : "English"}</p>
+              <p style={{fontFamily: rtl? "DINNext-Arabic-meduim " : "", fontSize: `${fontSizeSmall}px`  }}>{rtl? "عربي" : "English"}</p>
              </div>
               <Image onClick={handleAccessibility} src="/assets/svg/accessability.svg" width={20} height={20} alt="accessability" style={{cursor: "pointer"}}/>
             <div className={classes.fonts} >
-                <p onClick={changeFontSize}>A+</p>
+                <p onClick={increaseFontSize}>A+</p>
                 <p onClick={handleCaptilizling}>AA</p>
-                <p onClick={changeFontSize}>A-</p> 
+                <p onClick={decreaseFontSize}>A-</p> 
             </div>
         </div>
         <div className={classes.contactDate} style={{alignItems : rtl? "flex-start":"flex-end"}}  >
-          <div className={classes.emailSec}  >
+          <div className={classes.emailSec} style={{fontSize: `${15 + fontSizeGeneral}px`}} >
              <Link href={`mailto:${conVersion?.globalSettings?.email}?subject=Inquire%20About%20something`}><p>{conVersion.globalSettings?.email}</p></Link>
              <Image src="/assets/svg/mail.svg" width={15} height={15} alt="mail"/>
           </div>
-            <div className={classes.phoneSec} >
+            <div className={classes.phoneSec} style={{fontSize: `${15 + fontSizeGeneral}px`}}  >
               <Link href={`tel:+${conVersion?.globalSettings?.phone}`}><p>{conVersion?.globalSettings?.phone}</p></Link> 
                <Image src="/assets/svg/phone.svg" width={15} height={15} alt="phone"/>
                <p  style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}}>{rtl? "الاتصال": "Phone"}</p>
             </div>
-              <div className={classes.dateSaudi}>
+              <div className={classes.dateSaudi} style={{fontSize: `${15 + fontSizeGeneral}px`}} >
                  <p  style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}}>{formatArabicDate()}</p>
               </div>
         </div>
@@ -140,7 +138,7 @@ const handleMenuClick = (event) => {
                     >
                         <MenuItem onClick={handleRtl}  ><div className={`${classes.languageRtl} ${rtl? classes.langArabic: ""}`}  >
             
-              <p>{rtl? "عربي" : "English"}</p>
+              <p >{rtl? "عربي" : "English"}</p>
              </div></MenuItem>
                         <MenuItem onClick={handleAccessibility} >Accessibility</MenuItem>
                         <MenuItem  onClick={handleCaptilizling}>Captilizling</MenuItem>
@@ -164,14 +162,14 @@ const handleMenuClick = (event) => {
               addClass ? classes.navContentHam : null
             }`}
           >
-            <ul className={`${classes.section}  `} >
+            <ul className={`${classes.section} `} style={{ fontSize: `${17 + fontSizeGeneral}px`}} >
               <li
                 onClick={() => {
                   mobileMenu();
                   router.push("/");
                 }}
                 className={`${path.length ? null : classes.activeHome}`}
-                style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}}
+                style={{fontFamily: rtl? "DINNext-Arabic-meduim " : "",  }}
               >
                 {rtl? "الرئيسية" :"Home"}
               </li>
@@ -183,7 +181,7 @@ const handleMenuClick = (event) => {
                 className={`${path === "about" ? classes.active : null}`}
                 style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}}
               >
-                {rtl? "حول":"About SNAP"}
+                {rtl? "من نحن":"About SNAP"}
               </li>
               <li
                 onClick={() => {
@@ -246,7 +244,7 @@ const handleMenuClick = (event) => {
                 height={23}
                 alt="review"
               />
-              <p   style={{fontSize: rtl? "18px": "none",fontFamily: rtl? "DINNext-Arabic-meduim " : "" }}>{rtl? "شكاوي":"Feedback"}</p>
+              <p style={{fontSize: rtl? "18px": "none",fontFamily: rtl? "DINNext-Arabic-meduim " : "", }}>{rtl? "شكاوي":"Feedback"}</p>
             </div>
           </div>
           <div className="hamburger" onClick={mobileMenu}>

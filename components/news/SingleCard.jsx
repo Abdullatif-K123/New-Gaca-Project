@@ -6,6 +6,7 @@ import { useSpring, animated } from "react-spring";
 import parse from "html-react-parser";
 import { API_ROUTES } from "@/utils/apiConfig";
 import Link from "next/link";
+import { useFontSize } from "@/store/FontSizeContext";
 const SingleCard = ({
   title, 
   summary,
@@ -26,6 +27,7 @@ const SingleCard = ({
   const day = date.getDate().toString().padStart(2, "0"); 
   const humanReadableDate = `${year}-${month}-${day}`;
   const router = useRouter();
+  const {fontSizeGeneral} = useFontSize();
   const cardProps = useSpring({
     from: {
       opacity: 0,
@@ -49,7 +51,7 @@ const SingleCard = ({
           height={180}
           alt={titleEN?.slice(0, 20)}
         />
-        <p style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}} >{rtl? title:titleEN}</p>
+        <p style={{fontFamily: rtl? "DINNext-Arabic-meduim " : "", fontSize: `${16 + fontSizeGeneral}px`}} >{rtl? title:titleEN}</p>
       </div>
       <div className={classes.newsCardBody}>
         <div className={classes.newsDate}  > 
@@ -61,7 +63,7 @@ const SingleCard = ({
           />
           <p style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}} >{humanReadableDate}</p>
         </div>
-        <p style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}} >{parse(rtl? description?.slice(0,170):descriptionEN?.slice(0, 170))}...</p>
+        <p style={{fontFamily: rtl? "DINNext-Arabic-meduim " : "", fontSize: `${14 + fontSizeGeneral}px`}} >{parse(rtl? description?.slice(0,170):descriptionEN?.slice(0, 170))}...</p>
       </div>
     </animated.div>
     </Link>

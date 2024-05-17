@@ -3,7 +3,9 @@ import classes from "./home-one.module.css";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import parse from "html-react-parser";
+import { useFontSize } from "@/store/FontSizeContext";
 const SectionOne = ({ isFeedbackVisible, title, desc,rtl }) => {
+  const {fontSize, fontSizeSmall, fontSizeNormal, fontSizeGeneral} = useFontSize();
   const router = useRouter();
   const handleClick = () => {
     const targetElement = document.getElementById("masterplan");
@@ -25,15 +27,15 @@ const SectionOne = ({ isFeedbackVisible, title, desc,rtl }) => {
 
         {/* Content */}
       <div className={classes.secOneContect} data-aos="fade-right">
-        <h1 style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}} >{title}</h1>
-        <p style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}} >{parse(desc)}</p>
+        <h1 style={{fontFamily: rtl? "DINNext-Arabic-meduim " : "", fontSize: `${55 + fontSizeGeneral}px`}} >{title}</h1>
+        <p style={{fontFamily: rtl? "DINNext-Arabic-meduim " : "",  fontSize: `${16 + fontSizeGeneral}px`}} >{parse(desc)}</p>
         <div
           className={classes.secOneButton}
           onClick={() => {
             router.push("/download");
           }}
         >
-          <p style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}} >  {rtl? "تحميل ملفات " : "Download SNAP Documents"}</p>
+          <p style={{fontFamily: rtl? "DINNext-Arabic-meduim " : "", fontSize: `${20 + fontSizeGeneral}px` }}  >  {rtl? "تحميل ملفات " : "Download SNAP Documents"}</p>
         </div>
       </div>
       <div className={classes.sectionTwo}  style={{marginRight: rtl? "0px": ""}} >

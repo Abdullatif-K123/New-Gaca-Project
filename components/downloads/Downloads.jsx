@@ -15,12 +15,12 @@ import {
   FormLabel,
   Select,
   MenuItem,
-} from "@mui/material";
-import { API_ROUTES } from "@/utils/apiConfig";
+} from "@mui/material"; 
 import ReactPaginate from "react-paginate";
 import Subscribe from "../ui/Subscribe";
+import { useFontSize } from "@/store/FontSizeContext";
 const Downloads = ({ data, conversion,rtl }) => { 
-  
+  const {fontSizeGeneral} = useFontSize();
   const [filterTerm, setFilterTerm] = useState(data);
   const [currentPage, setCurrentPage] = useState(0);
   //Filter but selecting options
@@ -102,7 +102,7 @@ const Downloads = ({ data, conversion,rtl }) => {
         <h1 style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}} >{rtl? "التنزيلات" : "Downloads"}</h1>
       </div>
       <div className={classes.downloadContent}>
-        <p>
+        <p style={{fontSize: `${14 + fontSizeGeneral}px`}}>
          {rtl? conversion.globalSettings?.downloadPageDescription:  conversion.globalSettings?.downloadPageDescriptionEN}
         </p>
       </div>
