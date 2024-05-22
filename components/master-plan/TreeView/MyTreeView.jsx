@@ -8,15 +8,56 @@ const MyTreeView = ({ singleSelectHandling, data }) => {
   const [selected, setSelected] = useState("");
   const [expanded, setExpanded] = useState([]);
 
-  const renderTree = (nodes) => {
+  const renderTree = (nodes) => { 
     if (!nodes) {
       return null;
     }
 
     const hasChildren = Array.isArray(nodes.children) && nodes.children.length > 0;
     const hasDataMenus = Array.isArray(nodes.dataMenus) && nodes.dataMenus.length > 0;
-    console.log(hasChildren )
-    return (
+
+    const renderDataMenus = (dataMenus) => {
+      return dataMenus.map((menu) => {
+        const hasMenuChildren = Array.isArray(menu.children) && menu.children.length > 0;
+        const hasMenuDataMenus = Array.isArray(menu.dataMenus) && menu.dataMenus.length > 0;
+
+        return (
+          <TreeItem
+            key={menu.id}
+            nodeId={menu.id}
+            label={
+              <div className={classes.parentIcon}> 
+                <p
+                className={`${classes.childrens} ${
+                  selected === menu.id ? classes.childSelected : null
+                }`}
+                style={{ direction: "ltr" }}
+                onClick={() => {
+                  setSelected(menu.id);
+                  singleSelectHandling(menu);
+                }}
+              >
+                {menu.titleEN}
+              </p>
+              <Image
+              src={`/assets/svg/${selected === menu.id? "pointWhite.svg": "pointBlack.svg"}`}
+              width={25}
+              height={25}
+              alt="shape"
+            />
+              </div>
+            }
+            endIcon={null} // Remove endIcon to avoid showing any icon
+            collapseIcon={hasMenuChildren || hasMenuDataMenus ? undefined : null} // Only show collapse icon if there are children or dataMenus
+            expandIcon={hasMenuChildren || hasMenuDataMenus ? undefined : null} // Only show expand icon if there are children or dataMenus
+          > 
+            {hasMenuDataMenus && renderDataMenus(menu.dataMenus)}
+          </TreeItem>
+        );
+      });
+    };
+
+    return hasChildren || hasDataMenus ? (
       <TreeItem
         key={nodes.id}
         nodeId={nodes.id}
@@ -31,30 +72,39 @@ const MyTreeView = ({ singleSelectHandling, data }) => {
             />
           </div>
         }
-        endIcon={hasChildren || hasDataMenus ? undefined : null} // Show end icon only if there are children or dataMenus
+        endIcon={null} // Remove endIcon to avoid showing any icon
+        collapseIcon={hasChildren || hasDataMenus ? undefined : null} // Only show collapse icon if there are children or dataMenus
+        expandIcon={hasChildren || hasDataMenus ? undefined : null} // Only show expand icon if there are children or dataMenus
       >
         {hasChildren && nodes.children.map((node) => renderTree(node))}
-        {hasDataMenus && nodes.dataMenus.map((menu) => (
-          <TreeItem
-            key={menu.id}
-            nodeId={menu.id}
-            label={
-              <p
-                className={`${classes.childrens} ${
-                  selected === menu.titleEN ? classes.childSelected : null
+        {hasDataMenus && renderDataMenus(nodes.dataMenus)}
+      </TreeItem>
+    ) : (
+      <TreeItem
+        key={nodes.id}  
+        nodeId={nodes.id} 
+        label={
+          <div className={classes.parentIcon}>
+            <p className={`${classes.childrens} ${
+                  selected === nodes.id ? classes.childSelected : null
                 }`}
                 style={{ direction: "ltr" }}
                 onClick={() => {
-                  setSelected(menu.title);
-                  singleSelectHandling(menu);
-                }}
-              >
-                {menu.titleEN}
-              </p>
-            }
-          />
-        ))}
-      </TreeItem>
+                  setSelected(nodes.id);
+                  singleSelectHandling(nodes);
+                }}>{nodes.titleEN}</p>
+            <Image
+              src={`/assets/svg/${selected === nodes.id? "pointWhite.svg": "pointBlack.svg"}`}
+              width={25}
+              height={25}
+              alt="shape"
+            />
+          </div>
+        }
+        endIcon={null} // Remove endIcon to avoid showing any icon
+        collapseIcon={null} // No collapse icon for nodes without children or dataMenus
+        expandIcon={null} // No expand icon for nodes without children or dataMenus
+      />
     );
   };
 

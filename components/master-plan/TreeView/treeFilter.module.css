@@ -10,6 +10,7 @@
   align-items: center;
   column-gap: 5px; 
   align-items: flex-start;
+  justify-content: flex-end;
 }
 .children {
   color: #4B465C;

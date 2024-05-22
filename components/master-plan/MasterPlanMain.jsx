@@ -8,7 +8,8 @@ import findNodeAndParentsByName from "@/utils/findNodeAndParent";
 import { findNodeAndParentsById } from "@/utils/findNodeAndParent";
 import { useRouter } from "next/router";
 import Subscribe from "../ui/Subscribe";
-const MasterPlanMain = ({ plan, data, elementSelect, conVersion, pptUrl, videourl }) => {
+import {t} from "i18next";
+const MasterPlanMain = ({ plan,rtl, data, elementSelect, conVersion, pptUrl, videourl }) => {
   const router = useRouter();
   const pin = router.query.plan;
   const [selectingElem, setSelectingElem] = useState([elementSelect]);
@@ -17,11 +18,10 @@ const MasterPlanMain = ({ plan, data, elementSelect, conVersion, pptUrl, videour
   const [singleSelectingDesc, setSignelDesc] = useState("");
   const [expanded, setExpanded] = useState([`root${1}`]);
   const handleSelectSingleElem = (elem, idSelect) => {
-    setSingleElemSelecting(elem.title);
+    setSingleElemSelecting(elem.titleEN);
+
     setSignelDesc(elem.description);
-  };
-  console.log(pptUrl, videourl)
-  const { select } = router.query;
+  }; 
 
   // useEffect(() => {
   //   if (select && select.length > 0) {
@@ -71,7 +71,7 @@ const MasterPlanMain = ({ plan, data, elementSelect, conVersion, pptUrl, videour
                 router.push("/");
               }}
             >
-              Home
+              {t("HomeRoute")}
             </span>
             <Image
               src="/assets/svg/Chevron.svg"
@@ -95,14 +95,14 @@ const MasterPlanMain = ({ plan, data, elementSelect, conVersion, pptUrl, videour
                   height={16}
                   alt="chevron"
                 />
-                <span>{selectingElem[0]}</span>{" "}
+                <span>{data[0].titleEN}</span>{" "}
                 <Image
                   src="/assets/svg/Chevron.svg"
                   width={16}
                   height={16}
                   alt="chevron"
                 />
-                <span>{selectingElem[1]}</span>
+                <span>{singleElemSelecting}</span>
               </>
             ) : null}
           </p>

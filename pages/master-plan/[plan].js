@@ -5,7 +5,7 @@ import MasterPlanMain from "@/components/master-plan/MasterPlanMain";
 import LoadingSpinner from "@/components/ui/LoadingSpinner";
 import axios from "axios";
 import { API_ROUTES } from "@/utils/apiConfig";
-const index = ({ normalData, isFeedbackVisible, handleToggleFeedback, conVersion,dataInfo }) => {
+const index = ({ rtl, isFeedbackVisible, handleToggleFeedback, conVersion,dataInfo }) => {
  
   const router = useRouter();
   const plan = router.query.plan; 
@@ -13,29 +13,29 @@ const index = ({ normalData, isFeedbackVisible, handleToggleFeedback, conVersion
   console.log(dataInfo?.returnData);
   const [dataChanged, setDataChanged] = useState([]);
   const [loading, setLoading] = useState(true);
-  useEffect(() => {
-  setData(dataInfo?.returnData);
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(API_ROUTES.masterPlan.get);
-        setData(response.data);
-        setLoading(false);
+  // useEffect(() => {
+  // setData(dataInfo?.returnData);
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await axios.get(API_ROUTES.masterPlan.get);
+  //       setData(response.data);
+  //       setLoading(false);
 
-        response.data[0].id = "root1"; 
-        const newArray = [{children: dataInfo?.returnData.dataMasterPlanMenus, title: dataInfo?.returnData.title}]
+  //       response.data[0].id = "root1"; 
+  //       const newArray = [{children: dataInfo?.returnData.dataMasterPlanMenus, title: dataInfo?.returnData.title}]
           
-        setDataChanged(newArray);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
+  //       setDataChanged(newArray);
+  //     } catch (error) {
+  //       console.error("Error fetching data:", error);
+  //     }
+  //   };
 
-    fetchData();
-  }, []);
+  //   fetchData();
+  // }, []);
 
-  if (loading) {
-    return <LoadingSpinner />;
-  }
+  // if (loading) {
+  //   return <LoadingSpinner />;
+  // }
   return (
     <div
       onClick={() => {
@@ -46,13 +46,16 @@ const index = ({ normalData, isFeedbackVisible, handleToggleFeedback, conVersion
         transition: "all 0.6s ease-in-out",
         height: isFeedbackVisible ? "Calc(100vh - 111px)" : "",
         overflow: isFeedbackVisible ? "hidden" : "",
+        direction: rtl? "rtl": "ltr"
       }}
+
     >
       <MasterPlanMain
         plan={plan}
         elementSelect={dataChanged[plan - 1] ? dataChanged[plan - 1].title : ""}
         data={[{children: dataInfo?.returnData.dataMasterPlanMenus, title: dataInfo?.returnData.title, titleEN: dataInfo?.returnData.titleEN, id: dataInfo?.returnData.id}]}
         conVersion={conVersion}
+        rtl={rtl}
         pptUrl={dataInfo?.returnData.fileURL}
         videourl={dataInfo?.returnData.videoURL}
       />
@@ -75,8 +78,7 @@ export async function getServerSideProps(context) {
 
     return {
       props: {
-        dataInfo: response.data.returnData,
-        normalData: response.data,
+        dataInfo: response.data.returnData, 
       },
     };
   } catch (error) {
