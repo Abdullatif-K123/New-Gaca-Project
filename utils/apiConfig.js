@@ -21,6 +21,9 @@ export const API_ROUTES = {
   masterPlan: {
     get: "https://gaca.somee.com/api/landingpage/masterplan",
   },
+  masterPlanInfo: {
+     get: "https://snap.somee.com/api/master-plan"
+  },
   FAQ:{
      get: "https://snap.somee.com/api/faqs",
   },

@@ -14,7 +14,8 @@ const Element = ({
   nowHovering,
   text,
   desc,
-  rtl
+  rtl,
+  _id
 }) => {
   const classPyramid =
     id === 1
@@ -60,10 +61,10 @@ const Element = ({
         </div>
       )}
       <Image
-        id={id}
+        id={_id}
         src={imgsrc}
         onClick={() => {
-          router.push(`/master-plan?plan=${id}`);
+          router.push(`/master-plan/${_id}`);
         }}
         onMouseOver={() => handleHover(id)}
         onMouseOut={handleMouseOut}
@@ -121,7 +122,7 @@ const MasterPlan = ({ layers, rtl }) => {
   const handleMouseOut = () => {
     setHoverElement(null);
     setIsNowHovering(false);
-  };
+  }; 
   return (
     <>
      
@@ -134,7 +135,8 @@ const MasterPlan = ({ layers, rtl }) => {
 
       <div className={classes.masterpyrmaid} >
         {[
-          {
+          { 
+            real_id: layers[0].id,
             idnum: 1,
             imgsrc: "/assets/svg/light-green1.svg",
             width: 140,
@@ -174,11 +176,12 @@ const MasterPlan = ({ layers, rtl }) => {
             text: rtl? layers[4].title : layers[4].titleEN,
             desc: rtl? layers[4].description : layers[4].descriptionEN,
           },
-        ].map((id) => {
+        ].map((id) => { 
           return (
             <Element
               key={id.idnum}
               id={id.idnum}
+              _id={id.real_id}
               handleHover={handleHover}
               handleMouseOut={handleMouseOut}
               isHovered={hoverElement === id.idnum}

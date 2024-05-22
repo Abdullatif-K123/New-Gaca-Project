@@ -7,49 +7,48 @@ import Image from "next/image";
 import findNodeAndParentsByName from "@/utils/findNodeAndParent";
 import { findNodeAndParentsById } from "@/utils/findNodeAndParent";
 import { useRouter } from "next/router";
-const MasterPlanMain = ({ plan, data, elementSelect, conVersion }) => {
+import Subscribe from "../ui/Subscribe";
+const MasterPlanMain = ({ plan, data, elementSelect, conVersion, pptUrl, videourl }) => {
   const router = useRouter();
   const pin = router.query.plan;
   const [selectingElem, setSelectingElem] = useState([elementSelect]);
   const [singleElemSelecting, setSingleElemSelecting] = useState(elementSelect);
   const [selected, setSelected] = useState([]);
   const [singleSelectingDesc, setSignelDesc] = useState("");
-  const [expanded, setExpanded] = useState([`root${pin ? pin : 1}`]);
+  const [expanded, setExpanded] = useState([`root${1}`]);
   const handleSelectSingleElem = (elem, idSelect) => {
     setSingleElemSelecting(elem.title);
     setSignelDesc(elem.description);
   };
+  console.log(pptUrl, videourl)
   const { select } = router.query;
 
-  useEffect(() => {
-    if (select && select.length > 0) {
-      const result = findNodeAndParentsByName(data, select);
+  // useEffect(() => {
+  //   if (select && select.length > 0) {
+  //     const result = findNodeAndParentsByName(data, select);
 
-      if (result.length > 0 && result[0].description) {
-        setSelectingElem(() => [result[0].path[0], result[0].title]);
-        handleSelectSingleElem(result[0], result[0].id);
-      }
-    }
-  }, []);
-  useEffect(() => {
-    const result = findNodeAndParentsByName(data, singleElemSelecting);
+  //     if (result.length > 0 && result[0].description) {
+  //       setSelectingElem(() => [result[0].path[0], result[0].title]);
+  //       handleSelectSingleElem(result[0], result[0].id);
+  //     }
+  //   }
+  // }, []);
+  // useEffect(() => {
+  //   const result = findNodeAndParentsByName(data, singleElemSelecting);
 
-    if (result.length > 0) {
-      setSelectingElem(() => [result[0].path[0], result[0].title]);
-      router.push(
-        {
-          pathname: router.pathname,
-          query: { plan: result[0].masterPlanId, select: result[0].title },
-        },
-        undefined,
-        { shallow: true }
-      );
-    }
-  }, [singleElemSelecting]);
-  useEffect(() => {
-    setSelectingElem(data ? [data[pin ? pin - 1 : 0].title] : []);
-    setSignelDesc(data ? data[pin ? pin - 1 : 0].descripton : "");
-  }, []);
+  //   if (result.length > 0) {
+  //     setSelectingElem(() => [result[0].path[0], result[0].title]);
+  //     router.push(
+  //       {
+  //         pathname: router.pathname,
+  //         query: { plan: result[0].masterPlanId, select: result[0].title },
+  //       },
+  //       undefined,
+  //       { shallow: true }
+  //     );
+  //   }
+  // }, [singleElemSelecting]);
+ 
   //  Toggling to specifc plan
 
   const handleToggle = (event, nodeIds) => {
@@ -120,9 +119,12 @@ const MasterPlanMain = ({ plan, data, elementSelect, conVersion }) => {
           <MasterPlan
             singleDesc={singleSelectingDesc}
             singleElem={singleElemSelecting}
+            pptFile = {pptUrl}
+            videoUrl={videourl}
           />
         </div>
       </div>
+      <Subscribe/>
       <Footer conVersion={conVersion} />
     </>
   );

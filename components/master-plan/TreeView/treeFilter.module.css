@@ -8,38 +8,35 @@
 .parentIcon {
   display: flex;
   align-items: center;
-  column-gap: 5px;
+  column-gap: 5px; 
+  align-items: flex-start;
 }
 .children {
-  color: var(--black-100, #1c1c1c);
+  color: #4B465C;
   font-family: Montserrat;
-  font-size: 16px;
+  font-size: 13px;
   font-style: normal;
   font-weight: 700;
   line-height: 20px; /* 125% */
+  text-align: left; 
 }
 .childrens {
   color: #8b8f92;
   font-family: Montserrat;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 20px; /* 142.857% */
-  cursor: pointer;
-  padding: 10px 13px;
+  font-size: 13px; 
+  cursor: pointer; 
+  text-align: left;
+
 }
 .childSelected {
-  background-color: #fdfdfd;
-  color: var(--black-100, #1c1c1c);
+  
+  color: #fff;
   font-family: Montserrat;
-  font-size: 14px;
+  font-size: 13x;
+  border-radius: 10px;
   font-style: normal;
-  font-weight: 600;
-  line-height: 20px; /* 142.857% */
-  border: 1px solid #e5e5e5;
-  border-left: 5px solid #1993e7;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
+  font-weight: 500;
+  padding: 5px;
 }
 @media (max-width: 700px) {
   .treeviewMain {

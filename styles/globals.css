@@ -1,3 +1,4 @@
+ 
 :root {
   --max-width: 1100px;
   --border-radius: 12px;
@@ -103,6 +104,14 @@ body::-webkit-scrollbar-track {
 body::-webkit-scrollbar-thumb {
   background-color: transparent;
 }
+.BasicSlideBorder{
+  background-color: #fff !important;
+}
+.my-doc-viewer-style > .FishBowlPanel  {
+  background-color: #fff !important;
+ 
+}
+
 /* setting up the new fonts */
 @font-face {
   font-family: "DINNext-Medium";
@@ -133,19 +142,31 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
-.Mui-selected {
-  background-color: #1c7a54 !important;
+
+.Mui-selected   {
+  color: #fff !important; 
+  background: linear-gradient(to right, #1C7A54, #63C69A) !important;
+  border-radius: 10px;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
+}
+.Mui-expanded  {
+  background-color: #f6f2f2 !important;
+  border-radius: 10px;
+  padding: 5px;
   color: #fff !important;
 }
-.MuiMenuItem-root:hover {
-  background-color: #63c69a !important;
-  color: #fff !important;
+
+.Mui-expanded.Mui-selected  {
+  background-color: #f6f2f2 !important; /* Ensuring the expanded background color is applied */
+  }
+.css-g0jugy-MuiCollapse-root-MuiTreeItem-group{
+   margin-left: 0 !important;
 }
-.MuiMenuItem-root {
-  padding: 8px 15px !important;
-  border-radius: 6px !important;
-  margin: 5px 8px !important;
+.Mui-selected.Mui-focused{
+  background-color: #f6f2f2 !important; /* Ensuring the expanded background color is applied */
+ 
 }
+
 a {
   color: inherit;
   text-decoration: none;
@@ -198,11 +219,12 @@ a {
 }
 
 .css-1bcfi89-MuiTreeItem-content:hover {
-  background: transparent !important;
+  background: transparent ;
 }
-.Mui-focused {
-  background-color: transparent !important;
+.Mui-selected:hover{
+   background-color: #efebeb !important;
 }
+ 
 /* Media screen for less than 430px */
 @media (max-width: 430px) {
   .MuiTreeItem-content {
@@ -334,21 +356,7 @@ a {
     margin-right: 10px; /* Add margin between items */
   }
 }
-.MuiAccordion-root::before {
-  background-color: transparent !important;
-}
-.MuiAccordion-rounded::before {
-  background-color: transparent !important;
-}
-.MuiAccordion-root {
-  background-color: transparent !important;
-}
-.MuiAccordion-rounded {
-  background-color: transparent !important;
-}
-.css-p3qvma-MuiPaper-root-MuiAccordion-root::before {
+ 
+.FishBowlPanel {
   background-color: #fff !important;
-}
-.css-p3qvma-MuiPaper-root-MuiAccordion-root {
-  border-radius: 10px !important;
 }

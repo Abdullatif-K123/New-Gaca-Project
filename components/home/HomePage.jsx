@@ -36,7 +36,7 @@ const HomePage = ({ dataHome,  isFeedbackVisible, handleToggleFeedback, conVersi
   //constract the title and description from data api hero section 
   const title = !rtl? dataHome.hero.titleEN : dataHome.hero.title; 
   const desc = !rtl? dataHome.hero.descriptionEN : dataHome.hero.description;
- 
+   
   return (
     <div
       onClick={() => {

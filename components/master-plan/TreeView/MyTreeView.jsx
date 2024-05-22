@@ -3,82 +3,94 @@ import { TreeView } from "@mui/x-tree-view/TreeView";
 import { TreeItem } from "@mui/x-tree-view/TreeItem";
 import Image from "next/image";
 import classes from "./treeFilter.module.css";
-const MyTreeView = ({
-  singleSelectHandling,
-  data,
-  expanded,
-  handleToggle,
-  handleSelect,
-  selectedTree,
-}) => {
-  console.log(data);
+
+const MyTreeView = ({ singleSelectHandling, data }) => {
   const [selected, setSelected] = useState("");
-  const renderTree = (nodes, index) => {
-    const isParent = Array.isArray(nodes.children);
-    if (!nodes || nodes.length === 0) {
+  const [expanded, setExpanded] = useState([]);
+
+  const renderTree = (nodes) => {
+    if (!nodes) {
       return null;
     }
 
+    const hasChildren = Array.isArray(nodes.children) && nodes.children.length > 0;
+    const hasDataMenus = Array.isArray(nodes.dataMenus) && nodes.dataMenus.length > 0;
+    console.log(hasChildren )
     return (
       <TreeItem
         key={nodes.id}
         nodeId={nodes.id}
         label={
-          isParent ? (
-            <div className={classes.parentIcon}>
-              <Image
-                src={`/assets/svg/${imgs[index]}.svg`}
-                width={18}
-                height={18}
-                alt="shape"
-              />{" "}
-              <p className={classes.children}>{nodes.title}</p>
-            </div>
-          ) : (
-            <p
-              className={`${classes.childrens} ${
-                selected === nodes.title ? classes.childSelected : null
-              }`}
-              onClick={() => {
-                setSelected(nodes.title);
-                singleSelectHandling(nodes);
-              }}
-            >
-              {nodes.title}
-            </p>
-          )
+          <div className={classes.parentIcon}>
+            <p className={classes.children}>{nodes.titleEN}</p>
+            <Image
+              src={`/assets/svg/masterPlanHome.svg`}
+              width={25}
+              height={25}
+              alt="shape"
+            />
+          </div>
         }
+        endIcon={hasChildren || hasDataMenus ? undefined : null} // Show end icon only if there are children or dataMenus
       >
-        {isParent ? nodes.children.map((node) => renderTree(node)) : null}
+        {hasChildren && nodes.children.map((node) => renderTree(node))}
+        {hasDataMenus && nodes.dataMenus.map((menu) => (
+          <TreeItem
+            key={menu.id}
+            nodeId={menu.id}
+            label={
+              <p
+                className={`${classes.childrens} ${
+                  selected === menu.titleEN ? classes.childSelected : null
+                }`}
+                style={{ direction: "ltr" }}
+                onClick={() => {
+                  setSelected(menu.title);
+                  singleSelectHandling(menu);
+                }}
+              >
+                {menu.titleEN}
+              </p>
+            }
+          />
+        ))}
       </TreeItem>
     );
   };
-  const imgs = ["triangle", "briefcase", "folder-cloud", "folder-open", "book"];
+
+  const handleNodeToggle = (event, nodeIds) => {
+    setExpanded(nodeIds);
+
+    // Clear selected if the parent is collapsed
+    if (!nodeIds.includes(selected)) {
+      setSelected("");
+    }
+  };
+
   return (
     <TreeView
       expanded={expanded}
-      onNodeToggle={handleToggle}
+      onNodeToggle={handleNodeToggle}
+      style={{ direction: "rtl" }}
       defaultCollapseIcon={
         <Image
           src="/assets/svg/ArrowDown.svg"
-          width={16}
-          height={16}
+          width={20}
+          height={20}
           alt="arrowDown"
         />
       }
       defaultExpandIcon={
         <Image
           src="/assets/svg/Chevron.svg"
-          width={16}
-          height={16}
+          width={20}
+          height={20}
           alt="chevron"
         />
       }
       className={classes.treeviewMain}
     >
-      {data?.map((nodes, index) => {
-        return renderTree(nodes, index);
-      })}
+      {data?.map((nodes) => renderTree(nodes))}
     </TreeView>
   );
 };

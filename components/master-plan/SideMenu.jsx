@@ -27,7 +27,7 @@ const SideMenu = ({
       handleToggle("b", []);
       return;
     }
-    let filtred = data.map((data) => {
+    let filtred = data?.map((data) => {
       const pathed = filterTree(data, filter);
       return pathed.children?.length ? pathed : {};
     });
@@ -38,7 +38,7 @@ const SideMenu = ({
 
   return (
     <div className={classes.sideMenuMP}>
-      <div className={classes.searchSideMenu}>
+      {/* <div className={classes.searchSideMenu}>
         <Image
           src="/assets/svg/search-normal.svg"
           width={24}
@@ -46,7 +46,7 @@ const SideMenu = ({
           alt="search"
         />
         <input type="text" placeholder="Search..." onKeyUp={onFilterMouseUp} />
-      </div>
+      </div> */}
       <div className={classes.sideMenuTreeView}>
         <p>Master Plan</p>
         <div className={classes.treeViewSideMenu}>
