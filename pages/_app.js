@@ -8,8 +8,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css'; // Import AOS CSS
 import WelcomeDialog from "@/components/ui/WelcomeToGaca";
 import { FontSizeProvider } from "@/store/FontSizeContext";
-import { appWithTranslation } from "next-i18next";
-import { i18n } from "@/next-i18next.config";
+import { appWithTranslation } from "next-i18next"; 
  function App({ Component, pageProps }) {
   const [isFeedbackVisible, setIsFeedbackVisible] = useState(false);
   const [data, setData] = useState({}); 
@@ -23,8 +22,7 @@ import { i18n } from "@/next-i18next.config";
 };
 
   //handling language rtl i18l localization
-  const handleRtl = ()=>{
-    rtl? i18n.changeLanguage('ar'): i18n.changeLanguage('en');
+  const handleRtl = ()=>{ 
       setRtl(!rtl); 
   }
   // Handling the accessiblity for all people

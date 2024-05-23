@@ -33,9 +33,7 @@ const index = ({ rtl, isFeedbackVisible, handleToggleFeedback, conVersion,dataIn
   //   fetchData();
   // }, []);
 
-  // if (loading) {
-  //   return <LoadingSpinner />;
-  // }
+  
   return (
     <div
       onClick={() => {

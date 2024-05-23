@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import parse from "html-react-parser";
 import { useFontSize } from "@/store/FontSizeContext";
 const SectionOne = ({ isFeedbackVisible, title, desc,rtl }) => {
-  const {fontSize, fontSizeSmall, fontSizeNormal, fontSizeGeneral} = useFontSize();
+  const { fontSizeGeneral} = useFontSize();
   const router = useRouter();
   const handleClick = () => {
     const targetElement = document.getElementById("masterplan");

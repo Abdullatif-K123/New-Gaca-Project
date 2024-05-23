@@ -15,6 +15,7 @@ const SideMenu = ({
   handleToggle,
   handleSelect,
   data,
+  rtl
 }) => {
   const [subjectData, setSubjectData] = useState(data);
 
@@ -45,10 +46,10 @@ const SideMenu = ({
           height={24}
           alt="search"
         />
-        <input type="text" placeholder="Search..." onKeyUp={onFilterMouseUp} />
+        <input type="text" placeholder={rtl? "البحث..." : "Search..."} onKeyUp={onFilterMouseUp} />
       </div>
       <div className={classes.sideMenuTreeView}>
-        <p>Master Plan</p>
+        <p>{rtl? "الخطة":"Master Plan"}</p>
         <div className={classes.treeViewSideMenu}>
           <MyTreeView
             singleSelectHandling={singleSelectHandling}
@@ -57,6 +58,7 @@ const SideMenu = ({
             handleToggle={handleToggle}
             handleSelect={handleSelect}
             selectedTree={selected}
+            rtl={rtl}
           />
         </div>
       </div>

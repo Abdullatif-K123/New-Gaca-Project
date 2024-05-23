@@ -4,7 +4,7 @@ import { TreeItem } from "@mui/x-tree-view/TreeItem";
 import Image from "next/image";
 import classes from "./treeFilter.module.css";
 
-const MyTreeView = ({ singleSelectHandling, data }) => {
+const MyTreeView = ({ singleSelectHandling, data, rtl }) => {
   const [selected, setSelected] = useState("");
   const [expanded, setExpanded] = useState([]);
 
@@ -31,13 +31,13 @@ const MyTreeView = ({ singleSelectHandling, data }) => {
                 className={`${classes.childrens} ${
                   selected === menu.id ? classes.childSelected : null
                 }`}
-                style={{ direction: "ltr" }}
+                style={{ direction: "ltr", fontFamily: rtl? "DINNext-Arabic-meduim " : "", }}
                 onClick={() => {
                   setSelected(menu.id);
                   singleSelectHandling(menu);
                 }}
               >
-                {menu.titleEN}
+                {rtl? menu.title: menu.titleEN}
               </p>
               <Image
               src={`/assets/svg/${selected === menu.id? "pointWhite.svg": "pointBlack.svg"}`}
@@ -63,7 +63,7 @@ const MyTreeView = ({ singleSelectHandling, data }) => {
         nodeId={nodes.id}
         label={
           <div className={classes.parentIcon}>
-            <p className={classes.children}>{nodes.titleEN}</p>
+            <p className={classes.children} style={{fontFamily: rtl? "DINNext-Arabic-meduim " : "",}}>{rtl? nodes.title: nodes.titleEN}</p>
             <Image
               src={`/assets/svg/masterPlanHome.svg`}
               width={25}
@@ -88,11 +88,11 @@ const MyTreeView = ({ singleSelectHandling, data }) => {
             <p className={`${classes.childrens} ${
                   selected === nodes.id ? classes.childSelected : null
                 }`}
-                style={{ direction: "ltr" }}
+                style={{ direction: "ltr", fontFamily: rtl? "DINNext-Arabic-meduim " : "", }}
                 onClick={() => {
                   setSelected(nodes.id);
                   singleSelectHandling(nodes);
-                }}>{nodes.titleEN}</p>
+                }}>{rtl? nodes.title: nodes.titleEN}</p>
             <Image
               src={`/assets/svg/${selected === nodes.id? "pointWhite.svg": "pointBlack.svg"}`}
               width={25}
@@ -120,8 +120,8 @@ const MyTreeView = ({ singleSelectHandling, data }) => {
   return (
     <TreeView
       expanded={expanded}
-      onNodeToggle={handleNodeToggle}
-      style={{ direction: "rtl" }}
+      onNodeToggle={handleNodeToggle} 
+      style={{direction: rtl? "ltr": "rtl",}}
       defaultCollapseIcon={
         <Image
           src="/assets/svg/ArrowDown.svg"
@@ -138,7 +138,7 @@ const MyTreeView = ({ singleSelectHandling, data }) => {
           alt="chevron"
         />
       }
-      className={classes.treeviewMain}
+      className={classes.treeviewMain} 
     >
       {data?.map((nodes) => renderTree(nodes))}
     </TreeView>

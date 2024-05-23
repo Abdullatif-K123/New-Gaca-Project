@@ -27,10 +27,10 @@ const Subscribe = ({rtl})=>{
         <h3 style={{fontFamily: rtl? "DINNext-Arabic-meduim " : "", fontSize: `${19 + fontSizeGeneral}px`}}>{rtl? "القائمة البريدية" : "Mailing List"}</h3>
         <p style={{fontFamily: rtl? "DINNext-Arabic-meduim " : "", fontSize: `${11 + fontSizeGeneral}px`}} >{rtl? "لتبقى على اطلاع بأخبار وزارة النقل يرجى الاشتراك في القائمة البريدية" : <>To keep up-to-date with the news of the Ministry <br/> of Transport, Please subscribe to the mailing list</>}</p>
         <div className={classes.emaillist}>
-          <input type="email" placeholder={rtl? "يرجى كتابة الإيميل الخاص بك" : "Email"} 
+          <input style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}} type="email" placeholder={rtl? "يرجى كتابة الإيميل الخاص بك" : "Email"} 
           value={email} onChange={(e)=>{setEmail(e.target.value)}}
           />
-           <button style={{left: rtl? "40px": "", right: rtl? "" : "0"}} onClick={handleSubscribe}>{rtl? "اشتراك" : "Subscribe"}</button>
+           <button style={{left: rtl? "40px": "", right: rtl? "" : "0", fontFamily: rtl? "DINNext-Arabic-meduim " : ""}} onClick={handleSubscribe}>{rtl? "اشتراك" : "Subscribe"}</button>
         </div>
         <Toaster />
      </div>

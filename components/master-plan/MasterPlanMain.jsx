@@ -4,11 +4,11 @@ import MasterPlan from "./MasterPlan";
 import classes from "./masterPlan.module.css";
 import Footer from "../footer/footer";
 import Image from "next/image";
+import { useTranslation } from 'next-i18next';
 import findNodeAndParentsByName from "@/utils/findNodeAndParent";
 import { findNodeAndParentsById } from "@/utils/findNodeAndParent";
 import { useRouter } from "next/router";
-import Subscribe from "../ui/Subscribe";
-import {t} from "i18next";
+import Subscribe from "../ui/Subscribe"; 
 const MasterPlanMain = ({ plan,rtl, data, elementSelect, conVersion, pptUrl, videourl }) => {
   const router = useRouter();
   const pin = router.query.plan;
@@ -17,8 +17,9 @@ const MasterPlanMain = ({ plan,rtl, data, elementSelect, conVersion, pptUrl, vid
   const [selected, setSelected] = useState([]);
   const [singleSelectingDesc, setSignelDesc] = useState("");
   const [expanded, setExpanded] = useState([`root${1}`]);
+  const {t} = useTranslation("common")
   const handleSelectSingleElem = (elem, idSelect) => {
-    setSingleElemSelecting(elem.titleEN);
+    setSingleElemSelecting(elem);
 
     setSignelDesc(elem.description);
   }; 
@@ -71,20 +72,21 @@ const MasterPlanMain = ({ plan,rtl, data, elementSelect, conVersion, pptUrl, vid
                 router.push("/");
               }}
             >
-              {t("HomeRoute")}
+               {rtl? "الصفحة الرئيسية": "Home"}
             </span>
             <Image
               src="/assets/svg/Chevron.svg"
               width={16}
               height={16}
               alt="chevron"
+              style={{transform: rtl? "rotate(180deg)": ""}}
             />
             <span
               onClick={() => {
                 router.push("/#masterplan");
               }}
             >
-              Master Plan
+             {rtl? "ماستر بلان" : "Master Plan"}
             </span>
             {selectingElem.length ? (
               <>
@@ -94,15 +96,17 @@ const MasterPlanMain = ({ plan,rtl, data, elementSelect, conVersion, pptUrl, vid
                   width={16}
                   height={16}
                   alt="chevron"
+                  style={{transform: rtl? "rotate(180deg)": ""}}
                 />
-                <span>{data[0].titleEN}</span>{" "}
+                <span>{rtl? data[0].title: data[0].titleEN}</span>{" "}
                 <Image
                   src="/assets/svg/Chevron.svg"
                   width={16}
                   height={16}
                   alt="chevron"
+                  style={{transform: rtl? "rotate(180deg)": ""}}
                 />
-                <span>{singleElemSelecting}</span>
+                <span>{rtl? singleElemSelecting.title: singleElemSelecting.titleEN}</span>
               </>
             ) : null}
           </p>
@@ -115,16 +119,18 @@ const MasterPlanMain = ({ plan,rtl, data, elementSelect, conVersion, pptUrl, vid
             handleToggle={handleToggle}
             handleSelect={handleSelect}
             data={data}
+            rtl={rtl}
           />
           <MasterPlan
             singleDesc={singleSelectingDesc}
             singleElem={singleElemSelecting}
             pptFile = {pptUrl}
             videoUrl={videourl}
+            rtl={rtl}
           />
         </div>
       </div>
-      <Subscribe/>
+      <Subscribe rtl={rtl}/>
       <Footer conVersion={conVersion} />
     </>
   );

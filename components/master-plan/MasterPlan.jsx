@@ -1,72 +1,33 @@
 import React, { useState } from "react";
 import classes from "./masterPlan.module.css";
-import DocViewer, { DocViewerRenderers } from "@cyntler/react-doc-viewer";
 import WelcomeDialog from "../ui/WelcomeToGaca";
-const MasterPlan = ({ singleDesc, pptFile, videoUrl}) => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(0);
+
+const MasterPlan = ({ singleDesc, pptFile, videoUrl, rtl }) => {
   const [openVid, setOpenVid] = useState(false);
-  const handleClose = ()=>{
-     setOpenVid(false);
-  }
-  const handleOpenVideo = ()=>{
-     setOpenVid(true)
-  }
-  const handlePageChange = (pageNumber) => {
-    setCurrentPage(pageNumber);
-  };
 
-  const handleDocumentLoad = (doc) => {
-    setTotalPages(doc.numPages);
-  };
+  const handleClose = () => {
+    setOpenVid(false);
+  }
 
-  const renderNavigation = () => {
-    const navItems = [];
-    for (let i = 1; i <= totalPages; i++) {
-      navItems.push(
-        <li key={i}>
-          <button onClick={() => handlePageChange(i)}>Page {i}</button>
-        </li>
-      );
-    }
-    return navItems;
-  };
+  const handleOpenVideo = () => {
+    setOpenVid(true);
+  }
 
   return (
     <div className={classes.sideContent}>
-      <div className={classes.contentPlan}
-      >
-     {openVid && <WelcomeDialog videoUrl={videoUrl} onClose={handleClose} />}
-         <button className={classes.videoShow} onClick={handleOpenVideo}>Video tutorial</button>
-        <DocViewer
-          documents={[
-            {
-              uri:  pptFile,
-              fileType: "pptx",  
-              fileName: "Dialgo.ppt",
-            },
-          ]}
-          initialActiveDocumentIndex={1}
-          pluginRenderers={DocViewerRenderers}
-          theme={{
-            primary: "#fff",
-            secondary: "#ffffff",
-            tertiary: "#fff",
-            textPrimary: "#ffffff",
-            textSecondary: "#fff",
-            textTertiary: "#fff",
-            background: "#fff",
-    
-            disableThemeScrollbar: false,
-          }}
-          style={{ height: "80%", width: "80%", backgroundColor: "#fff", background: "#fff" }}
-     
-          onPageChange={(pageNumber) => setCurrentPage(pageNumber)}
-          onDocumentLoad={handleDocumentLoad}
-        />
-      </div>
-      <div className={classes.navigation}>
-        <ul>{renderNavigation()}</ul>
+      <div className={classes.contentPlan}>
+        <div>
+        {openVid && <WelcomeDialog videoUrl={videoUrl} onClose={handleClose} />}
+        <button className={classes.videoShow} onClick={handleOpenVideo} style={{float: rtl? "left": "right", fontFamily: rtl? "DINNext-Arabic-meduim " : "",}} >{rtl? "فيديو توضيحي" : " Video tutorial"}</button>
+        </div>
+        <div style={{ height: "80%", width: "80%", backgroundColor: "#fff", }}>
+          <iframe
+            src={`https://onedrive.live.com/edit?id=E4E6945192B5915F!sbba5da75d76d49c1bfc63645f3c31dff&resid=E4E6945192B5915F!sbba5da75d76d49c1bfc63645f3c31dff&cid=e4e6945192b5915f&ithint=file%2cpptx&redeem=aHR0cHM6Ly8xZHJ2Lm1zL3AvYy9lNGU2OTQ1MTkyYjU5MTVmL0VYWGFwYnR0MThGSnY4WTJSZlBESGY4QjhTZG9IbWg4VldEc3ZFZWtGR0Z5T1E_ZT1kYzh5aDA&migratedtospo=true&wdo=2`}
+            width="100%"
+            height="100%"
+            frameBorder="0"
+          ></iframe>
+        </div>
       </div>
     </div>
   );
