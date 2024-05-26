@@ -145,6 +145,7 @@ const MasterPlan = ({ layers, rtl }) => {
             desc: rtl? layers[0].description : layers[0].descriptionEN,
           },
           {
+            real_id: layers[1].id,
             idnum: 2,
             imgsrc: "/assets/svg/light-green2.svg",
             width: 262,
@@ -153,6 +154,7 @@ const MasterPlan = ({ layers, rtl }) => {
             desc: rtl? layers[1].description : layers[1].descriptionEN,
           },
           {
+            real_id: layers[2].id,
             idnum: 3,
             imgsrc: "/assets/svg/light-green3.svg",
             width: 390,
@@ -161,6 +163,7 @@ const MasterPlan = ({ layers, rtl }) => {
             desc: rtl? layers[2].description : layers[2].descriptionEN,
           },
           {
+            real_id: layers[3].id,
             idnum: 4,
             imgsrc: "/assets/svg/light-green4.svg",
             width: 525,
@@ -169,6 +172,7 @@ const MasterPlan = ({ layers, rtl }) => {
             desc: rtl? layers[3].description : layers[3].descriptionEN,
           },
           {
+            real_id: layers[4].id,
             idnum: 5,
             imgsrc: "/assets/svg/light-green5.svg",
             width: 650,

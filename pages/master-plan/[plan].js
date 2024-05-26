@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import MasterPlanMain from "@/components/master-plan/MasterPlanMain";
-
-import LoadingSpinner from "@/components/ui/LoadingSpinner";
+ 
 import axios from "axios";
 import { API_ROUTES } from "@/utils/apiConfig";
 const index = ({ rtl, isFeedbackVisible, handleToggleFeedback, conVersion,dataInfo }) => {
  
   const router = useRouter();
   const plan = router.query.plan; 
-  const [data, setData] = useState(dataInfo?.returnData);
-  console.log(dataInfo?.returnData);
+  const [data, setData] = useState(dataInfo?.returnData); 
   const [dataChanged, setDataChanged] = useState([]);
   const [loading, setLoading] = useState(true);
   // useEffect(() => {

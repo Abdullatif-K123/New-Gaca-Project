@@ -3,12 +3,13 @@ import SideMenu from "./SideMenu";
 import MasterPlan from "./MasterPlan";
 import classes from "./masterPlan.module.css";
 import Footer from "../footer/footer";
-import Image from "next/image";
-import { useTranslation } from 'next-i18next';
+import Image from "next/image"; 
+import { useTranslation } from "react-i18next";
 import findNodeAndParentsByName from "@/utils/findNodeAndParent";
 import { findNodeAndParentsById } from "@/utils/findNodeAndParent";
 import { useRouter } from "next/router";
 import Subscribe from "../ui/Subscribe"; 
+ 
 const MasterPlanMain = ({ plan,rtl, data, elementSelect, conVersion, pptUrl, videourl }) => {
   const router = useRouter();
   const pin = router.query.plan;
@@ -17,12 +18,13 @@ const MasterPlanMain = ({ plan,rtl, data, elementSelect, conVersion, pptUrl, vid
   const [selected, setSelected] = useState([]);
   const [singleSelectingDesc, setSignelDesc] = useState("");
   const [expanded, setExpanded] = useState([`root${1}`]);
-  const {t} = useTranslation("common")
+  const { t } = useTranslation('common.json'); 
   const handleSelectSingleElem = (elem, idSelect) => {
     setSingleElemSelecting(elem);
-
+     
     setSignelDesc(elem.description);
   }; 
+ 
 
   // useEffect(() => {
   //   if (select && select.length > 0) {
@@ -72,7 +74,7 @@ const MasterPlanMain = ({ plan,rtl, data, elementSelect, conVersion, pptUrl, vid
                 router.push("/");
               }}
             >
-               {rtl? "الصفحة الرئيسية": "Home"}
+               {rtl? "الرئيسية" : "Home"}
             </span>
             <Image
               src="/assets/svg/Chevron.svg"
