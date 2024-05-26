@@ -80,7 +80,7 @@ const MasterPlan = ({ singleElem, pptFile, videoUrl, rtl }) => {
           }}
         >
           <Document file={pptFile} onLoadSuccess={onDocumentLoadSuccess} loading={<div>loading pptx file</div>}  error={<div>Failed to load PPTX. Please try again later.</div>}>
-            <Page pageNumber={pageNumber} />
+            <Page pageNumber={pageNumber} loading={""} />
           </Document>
         </div>
       </div>
