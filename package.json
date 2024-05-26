@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@cyntler/react-doc-viewer": "^1.15.0",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
     "@mui/material": "^5.15.10",
@@ -25,7 +24,6 @@
     "next": "14.0.3",
     "next-i18next": "^15.3.0",
     "next-images": "^1.8.5",
-    "pptxgenjs": "^3.12.0",
     "react": "^18",
     "react-dom": "^18",
     "react-hot-toast": "^2.4.1",
