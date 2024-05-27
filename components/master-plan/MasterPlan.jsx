@@ -2,9 +2,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import classes from "./masterPlan.module.css";
 import WelcomeDialog from "../ui/WelcomeToGaca";
-import { Document, Page, pdfjs } from "react-pdf";
-import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
-import 'react-pdf/dist/esm/Page/TextLayer.css';
+import { Document, Page, pdfjs } from "react-pdf"; 
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
@@ -13,7 +11,7 @@ const MasterPlan = ({ singleElem, pptFile, videoUrl, rtl }) => {
   const [pageNumber, setPageNumber] = useState(1);
   const [numPages, setNumPages] = useState(null);
   const pdfWrapperRef = useRef(null);
-
+  console.log(pptFile)
   const handleClose = () => {
     setOpenVid(false);
   };

@@ -26,16 +26,18 @@ const MyTreeView = ({ singleSelectHandling, data, rtl }) => {
             key={menu.id}
             nodeId={menu.id}
             label={
-              <div className={classes.parentIcon}> 
+              <div className={`${classes.parentIcon} ${
+                selected === menu.id ? classes.childSelected : null
+              }`} onClick={() => {
+                setSelected(menu.id);
+                singleSelectHandling(menu);
+              }}> 
                 <p
                 className={`${classes.childrens} ${
                   selected === menu.id ? classes.childSelected : null
                 }`}
                 style={{ direction: "ltr", fontFamily: rtl? "DINNext-Arabic-meduim " : "", }}
-                onClick={() => {
-                  setSelected(menu.id);
-                  singleSelectHandling(menu);
-                }}
+                
               >
                 {rtl? menu.title: menu.titleEN}
               </p>
@@ -62,8 +64,11 @@ const MyTreeView = ({ singleSelectHandling, data, rtl }) => {
         key={nodes.id}
         nodeId={nodes.id}
         label={
-          <div className={classes.parentIcon}>
-            <p className={classes.children} style={{fontFamily: rtl? "DINNext-Arabic-meduim " : "",}}>{rtl? nodes.title: nodes.titleEN}</p>
+          <div className={classes.parentIcon} 
+          onClick={() => {
+            setSelected(nodes.id); 
+          }}>
+            <p className={`${classes.children}`} style={{fontFamily: rtl? "DINNext-Arabic-meduim " : "" }}>{rtl? nodes.title: nodes.titleEN}</p>
             <Image
               src={`/assets/svg/masterPlanHome.svg`}
               width={25}
@@ -84,15 +89,15 @@ const MyTreeView = ({ singleSelectHandling, data, rtl }) => {
         key={nodes.id}  
         nodeId={nodes.id} 
         label={
-          <div className={classes.parentIcon}>
+          <div className={`${classes.parentIcon} `}  onClick={() => {
+            setSelected(nodes.id);
+            singleSelectHandling(nodes);
+          }}>
             <p className={`${classes.childrens} ${
-                  selected === nodes.id ? classes.childSelected : null
-                }`}
+            selected === nodes.id ? classes.childSelected : null
+          } `}
                 style={{ direction: "ltr", fontFamily: rtl? "DINNext-Arabic-meduim " : "", }}
-                onClick={() => {
-                  setSelected(nodes.id);
-                  singleSelectHandling(nodes);
-                }}>{rtl? nodes.title: nodes.titleEN}</p>
+               >{rtl? nodes.title: nodes.titleEN}</p>
             <Image
               src={`/assets/svg/${selected === nodes.id? "pointWhite.svg": "pointBlack.svg"}`}
               width={25}
