@@ -20,7 +20,7 @@ const options = {
   animateIn: "flipInX", 
   items: 3,
   margin: 40,
-  stagePadding: 30,
+  stagePadding: 18,
   smartSpeed: 450,
   loop: true,
   autoplayTimeout: 3000,

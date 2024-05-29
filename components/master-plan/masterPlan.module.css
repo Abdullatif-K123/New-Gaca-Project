@@ -71,7 +71,6 @@
   width: 0;
 }
 /* Sytling for selecting elemtns */
-
 .choosen > p {
   color: #63C69A;
   font-family: "DINNext-meduim", sans-serif;
@@ -157,10 +156,12 @@
 }
 /* Responsive for less than 600px */
 @media (max-width: 600px) {
+   
   .masterPlanContent {
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr 1fr;
     column-gap: 5px;
   }
+ 
 }
 /* 430px */
 @media (max-width: 435px) {

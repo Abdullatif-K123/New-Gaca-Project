@@ -7,7 +7,7 @@ import classes from "./treeFilter.module.css";
 const MyTreeView = ({ singleSelectHandling, data, rtl }) => {
   const [selected, setSelected] = useState("");
   const [expanded, setExpanded] = useState([]);
-
+  
   const renderTree = (nodes) => { 
     if (!nodes) {
       return null;
@@ -63,14 +63,15 @@ const MyTreeView = ({ singleSelectHandling, data, rtl }) => {
       <TreeItem
         key={nodes.id}
         nodeId={nodes.id}
+        onClick={() => {
+          setSelected(nodes.id); 
+        }}
         label={
           <div className={classes.parentIcon} 
-          onClick={() => {
-            setSelected(nodes.id); 
-          }}>
-            <p className={`${classes.children}`} style={{fontFamily: rtl? "DINNext-Arabic-meduim " : "" }}>{rtl? nodes.title: nodes.titleEN}</p>
+          >
+            <p className={`${classes.children}`} style={{fontFamily: rtl? "DINNext-Arabic-meduim " : "", color: selected===nodes.id? "#fff": ""}}>{rtl? nodes.title: nodes.titleEN}</p>
             <Image
-              src={`/assets/svg/masterPlanHome.svg`}
+              src={`/assets/svg/${selected === nodes.id? "masterPlanHomeWhite.svg":"masterPlanHome.svg"}`}
               width={25}
               height={25}
               alt="shape"

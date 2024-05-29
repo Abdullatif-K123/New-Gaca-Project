@@ -12,6 +12,7 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import Subscribe from "../ui/Subscribe";
 import { useFontSize } from "@/store/FontSizeContext";
 const FAQs = ({data, conVersion, rtl}) => {
+  
   const theme = createTheme({
     palette: {
       primary: {
@@ -33,7 +34,6 @@ const FAQs = ({data, conVersion, rtl}) => {
           },
         },
       },
-
       MuiAccordionDetails: {
         styleOverrides: {
           root: {
@@ -43,7 +43,6 @@ const FAQs = ({data, conVersion, rtl}) => {
       },
     },
   });
-
   const router = useRouter(); 
   const [expandedIndices, setExpandedIndices] = useState([]);
  
@@ -84,7 +83,7 @@ const FAQs = ({data, conVersion, rtl}) => {
       {data.map((item, index) => (
         <Accordion key={index} style={{ boxShadow: "none", padding:"0"   }}  expanded={expandedIndices.includes(index)} onChange={() => handleAccordionChange(index)}>
           <AccordionSummary
-            expandIcon={expandedIndices.includes(index) ? "_" : "+"} 
+            expandIcon={expandedIndices.includes(index) ? "-" : "+"} 
               // Set background color dynamically
               style={{background: expandedIndices.includes(index)? "#f1f0f2" : "#fff",  borderLeft:expandedIndices.includes(index)? "2px solid #1C7A54": "none" }}
           >

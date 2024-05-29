@@ -102,19 +102,16 @@
 }
 @media (max-width: 750px) {
  .emailing{
-  padding: 30px 10px;
+  flex-direction: column;
+  padding: 30px 5px;
    gap: 20px;
- }
- .emailing>h3{
-  font-weight: 600;
-  font-size: 1rem;
- }
+ } 
 
  .emailing > p{
   text-align: center;
  }
  .emaillist{
-  width: 60%; 
+  width: 70%; 
 }
 .emaillist > input{ 
   padding: 10px 20px;

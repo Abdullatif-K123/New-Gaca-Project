@@ -1,5 +1,4 @@
 /* Styling the bottom section of the home page */
-
 .homeBottomMain {
   display: flex;
   flex-direction: column;
@@ -14,7 +13,6 @@
   position: relative;
 }
 .stakholderArrows {
-
   width: 100%;
   display: flex;
   align-items: center;
@@ -71,7 +69,6 @@
 .partnerItem::selection {
   user-select: none;
 }
- 
 /* Styling footer */
 .footerMain {
   width: 100%;
@@ -283,7 +280,9 @@
     width: 50px;
     height: 50px;
   }
-
+.bottomLogo{
+   align-items: center;
+}
   .homeBottomMain {
     row-gap: 120px;
   }

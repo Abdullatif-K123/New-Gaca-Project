@@ -1,31 +1,26 @@
 import React, { useEffect, useState } from "react";
 import SectionOne from "./Home-main/SectionOne";
 import MasterPlan from "./master-plan/MasterPlan";
-import HomeBottom from "../footer/HomeBottom";
-import LoadingSpinner from "../ui/LoadingSpinner";
-import { API_ROUTES } from "@/utils/apiConfig";
-import classes from "./Home-main/home-one.module.css";
-import axios from "axios";
+import HomeBottom from "../footer/HomeBottom"; 
+import classes from "./Home-main/home-one.module.css"; 
 import Image from "next/image";
 const HomePage = ({ dataHome,  isFeedbackVisible, handleToggleFeedback, conVersion, lang, rtl }) => {
   
   const [showBtn, setShowBtn] = useState(false);
-   
+  
+  //side effect for showing arrow up Bottom when the window be in the second section or down
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
       const threshold = 300; // Adjust this value based on when you want the button to appear
-
       setShowBtn(scrollTop > threshold);
     };
-
     window.addEventListener("scroll", handleScroll);
-
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-  //Handling clicking button up
+  //Handling clicking button up to the top of the page
   const handleClick = () => {
     const targetElement = document.getElementById("home");
     if (targetElement) {

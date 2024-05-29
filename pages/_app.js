@@ -16,12 +16,6 @@ import { appWithTranslation } from "next-i18next";
   const [rtl, setRtl] = useState(false); 
   const [accessiblity, setAccessiblity] = useState(false); 
   const [captilize, setCaptilize] = useState(false); 
-  
-  const changeFontSize = (size) => {
-    // document.body.classList.remove('small-text', 'medium-text', 'large-text');
-    // document.body.classList.add(size + '-text'); 
-};
-
   //handling language rtl i18l localization
   const handleRtl = ()=>{ 
       setRtl(!rtl); 
@@ -84,8 +78,7 @@ import { appWithTranslation } from "next-i18next";
         rtl={rtl}
         handleRtl={handleRtl} 
         handleAccessibility={handleAccessibility}
-        handleCaptilizling={handleCaptilizling}
-        changeFontSize={changeFontSize}
+        handleCaptilizling={handleCaptilizling} 
         fontStyles={fontStyles}
       >
         <Component

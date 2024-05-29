@@ -17,8 +17,7 @@ const SideMenu = ({
   data,
   rtl
 }) => {
-  const [subjectData, setSubjectData] = useState(data);
-
+  const [subjectData, setSubjectData] = useState(data); 
   // Filter input function
   const onFilterMouseUp = (e) => {
     const value = e.target.value;

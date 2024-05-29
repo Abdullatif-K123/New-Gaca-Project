@@ -66,11 +66,18 @@
 
   margin: auto;
 }
- 
 .freq {
   color: rgba(51, 48, 60, 0.87);
-   
   display: flex;
   gap: 10px;
   align-items: center ;
+}
+/* Responsive for screen less than 600px */
+@media (max-width: 600px){
+   .choosen{
+     padding: 38px 15px;
+   }  
+   .faqContent{
+     padding: 50px 10px;
+   }
 }

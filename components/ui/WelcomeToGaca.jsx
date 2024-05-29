@@ -9,8 +9,7 @@ const WelcomeDialog = ({ onClose, videoUrl }) => {
   };
  useEffect(()=>{
   var regex = /[?&]v=([^&]+)/;
-  var match = videoUrl?.match(regex);
-  console.log(match)
+  var match = videoUrl?.match(regex); 
   if(videoUrl){
   const newUrl = "https://www.youtube.com/embed/"+match[1];
       setVideoSrc(newUrl)

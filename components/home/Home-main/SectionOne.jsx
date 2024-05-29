@@ -25,7 +25,7 @@ const SectionOne = ({ isFeedbackVisible, title, desc,rtl }) => {
          <div className={classes.overlay}></div>
       </div>
 
-        {/* Content */}
+        {/* Content  section in the home page section*/}
       <div className={classes.secOneContect} data-aos="fade-right">
         <h1 style={{fontFamily: rtl? "DINNext-Arabic-meduim " : "", fontSize: `${55 + fontSizeGeneral}px`}} >{title}</h1>
         <p style={{fontFamily: rtl? "DINNext-Arabic-meduim " : "",  fontSize: `${16 + fontSizeGeneral}px`}} >{parse(desc)}</p>
@@ -44,8 +44,8 @@ const SectionOne = ({ isFeedbackVisible, title, desc,rtl }) => {
           width={700}
           height={520}
           className={classes.streetPlane}
-           alt="Banner"
-           data-aos="fade-left"
+          alt="Banner"
+          data-aos="fade-left"
         />
       </div>
       <div className={classes.btnDown} onClick={handleClick}>
