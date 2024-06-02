@@ -15,12 +15,14 @@ import {
   FormLabel,
   Select,
   MenuItem,
-} from "@mui/material"; 
+} from "@mui/material";
 import ReactPaginate from "react-paginate";
 import Subscribe from "../ui/Subscribe";
 import { useFontSize } from "@/store/FontSizeContext";
-const Downloads = ({ data, conversion,rtl }) => { 
-  const {fontSizeGeneral} = useFontSize();
+import { useTranslation } from "react-i18next";
+const Downloads = ({ data, conversion, rtl }) => {
+  const { t } = useTranslation();
+  const { fontSizeGeneral } = useFontSize();
   const [filterTerm, setFilterTerm] = useState(data);
   const [currentPage, setCurrentPage] = useState(0);
   //Filter but selecting options
@@ -34,7 +36,7 @@ const Downloads = ({ data, conversion,rtl }) => {
   };
 
   useEffect(() => {
-    setFilterTerm((prevData) => { 
+    setFilterTerm((prevData) => {
       return data.filter((item, index) => {
         return (
           index >= currentPage * selectedOption &&
@@ -51,7 +53,9 @@ const Downloads = ({ data, conversion,rtl }) => {
 
     // Filter the array to get objects that match the search term in their title
     const searchResults = data.filter((item) =>
-     rtl? item.title.includes(searchTermLower) : item.titleEN.toLowerCase().includes(searchTermLower)
+      rtl
+        ? item.title.includes(searchTermLower)
+        : item.titleEN.toLowerCase().includes(searchTermLower)
     );
     setFilterTerm(searchResults);
   }
@@ -76,7 +80,7 @@ const Downloads = ({ data, conversion,rtl }) => {
   const router = useRouter();
   //function to do the download for each document
 
-  function downloadPdfFile(url, fileName) { 
+  function downloadPdfFile(url, fileName) {
     const link = document.createElement("a");
     link.href = url;
     link.download = fileName;
@@ -86,30 +90,47 @@ const Downloads = ({ data, conversion,rtl }) => {
   }
 
   return (
-    <div className={classes.downloadPage}  >
-      <div className={classes.choosen} style={{direction: rtl? "rtl":"ltr"}}>
+    <div className={classes.downloadPage}>
+      <div
+        className={classes.choosen}
+        style={{ direction: rtl ? "rtl" : "ltr" }}
+      >
         <p>
           <span
             onClick={() => {
               router.push("/");
             }}
-            style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}} 
+            style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}
           >
-            {rtl? "الرئيسية" : "Home"}
+            {t("home-route")}
           </span>
-          <Image src="/assets/svg/Chevron.svg" width={16} height={16} style={{transform: rtl? "rotate(180deg)": ""}} alt="chevron"/>
+          <Image
+            src="/assets/svg/Chevron.svg"
+            width={16}
+            height={16}
+            style={{ transform: rtl ? "rotate(180deg)" : "" }}
+            alt="chevron"
+          />
         </p>
-        <h1 style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}} >{rtl? "التنزيلات" : "Downloads"}</h1>
+        <h1 style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}>
+          {t("download")}
+        </h1>
       </div>
       <div className={classes.downloadContent}>
-        <p style={{fontSize: `${14 + fontSizeGeneral}px`}}>
-         {rtl? conversion.globalSettings?.downloadPageDescription:  conversion.globalSettings?.downloadPageDescriptionEN}
+        <p style={{ fontSize: `${14 + fontSizeGeneral}px` }}>
+          {rtl
+            ? conversion.globalSettings?.downloadPageDescription
+            : conversion.globalSettings?.downloadPageDescriptionEN}
         </p>
       </div>
       <div className={classes.downloadTables}>
         <div className={classes.filteringDocument}>
           <div className={classes.filterByNumber}>
-            <FormLabel style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}} >{rtl?"العرض" :  "Show"}</FormLabel>
+            <FormLabel
+              style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}
+            >
+              {t("show")}
+            </FormLabel>
             <Select
               size="small"
               value={selectedOption}
@@ -122,31 +143,49 @@ const Downloads = ({ data, conversion,rtl }) => {
               <MenuItem value={15}>15</MenuItem>
               <MenuItem value={20}>20</MenuItem>
             </Select>
-            <FormLabel style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}} >{rtl? "المدخلات" : "Entries"}</FormLabel>
+            <FormLabel
+              style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}
+            >
+              {t("entries")}
+            </FormLabel>
           </div>
-          <Grid   alignItems="center">
+          <Grid alignItems="center">
             <Grid
               item
               style={{ display: "flex", alignItems: "center", gap: "10px" }}
             >
-              <FormLabel htmlFor="search" style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}} >{rtl? "البحث" : "Search:"}</FormLabel>
+              <FormLabel
+                htmlFor="search"
+                style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}
+              >
+                {t("search")}
+              </FormLabel>
               <TextField
                 size="small"
                 variant="outlined"
-                placeholder={rtl? "العنوان" : "Title"}
+                placeholder={t("title")}
                 onChange={(e) => searchByTitle(e.target.value)}
                 id="search"
               />
             </Grid>
           </Grid>
         </div>
-        <TableContainer component={Paper} >
+        <TableContainer component={Paper}>
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}}>{rtl? "العنوان" : "TITLE"}</TableCell>
                 <TableCell
-                  style={{ display: "flex", alignItems: "center", gap: "10px",fontFamily: rtl? "DINNext-Arabic-meduim " : "" }}
+                  style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}
+                >
+                  {t("title")}
+                </TableCell>
+                <TableCell
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "10px",
+                    fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
+                  }}
                 >
                   {" "}
                   <div
@@ -173,16 +212,24 @@ const Downloads = ({ data, conversion,rtl }) => {
                       style={{ transform: "rotate(180deg)" }}
                     />{" "}
                   </div>
-                  {rtl? "التاريخ" : "DATE"}
+                  {t("date")}
                 </TableCell>
-                <TableCell style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}} >{rtl? "التعديل" : "UPDATE"}</TableCell>
-                <TableCell style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}} >{rtl? "العملية" : "ACTION"}</TableCell>
+                <TableCell
+                  style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}
+                >
+                  {t("update")}
+                </TableCell>
+                <TableCell
+                  style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}
+                >
+                  {t("action")}
+                </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {filterTerm.map((document) => {
                 const dateCreated = new Date(document.createdAt);
-                const dateUpdated = new Date(document.updatedAt)
+                const dateUpdated = new Date(document.updatedAt);
                 const options = {
                   year: "numeric",
                   month: "long",
@@ -193,23 +240,38 @@ const Downloads = ({ data, conversion,rtl }) => {
                   options
                 );
                 const formatteUpdate = dateUpdated.toLocaleDateString(
-                   undefined,
-                   options
-                ) 
+                  undefined,
+                  options
+                );
                 const pdfUrl = `${document.fileUrl}`;
                 return (
-                  <TableRow key={document.id} >
-                    <TableCell style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}}>{rtl? document.title.slice(0,29) : document.titleEN.slice(0,29)}...</TableCell>
+                  <TableRow key={document.id}>
+                    <TableCell
+                      style={{
+                        fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
+                      }}
+                    >
+                      {rtl
+                        ? document.title.slice(0, 29)
+                        : document.titleEN.slice(0, 29)}
+                      ...
+                    </TableCell>
                     <TableCell>{formattedDate}</TableCell>
                     <TableCell>{formatteUpdate}</TableCell>
-                    <TableCell  >
+                    <TableCell>
                       <button
                         className={classes.submitBtn}
                         onClick={() => {
                           downloadPdfFile(pdfUrl, document.title);
                         }}
                       >
-                        <p style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}}>{rtl? "التحميل": "Submit"}</p>
+                        <p
+                          style={{
+                            fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
+                          }}
+                        >
+                          {t("submit")}
+                        </p>
                       </button>
                     </TableCell>
                   </TableRow>
@@ -229,14 +291,16 @@ const Downloads = ({ data, conversion,rtl }) => {
             onPageActive={currentPage}
             breakLabel="..."
             previousLabel={
-              <div className={classes.paginationTerm}>Previous</div>
+              <div className={classes.paginationTerm}>{t("previous")}</div>
             }
-            nextLabel={<div className={classes.paginationTerm}>Next</div>}
+            nextLabel={
+              <div className={classes.paginationTerm}>{t("next")}</div>
+            }
           />
         </div>
       </div>
-      
-      <Subscribe rtl={rtl}/>
+
+      <Subscribe rtl={rtl} />
     </div>
   );
 };

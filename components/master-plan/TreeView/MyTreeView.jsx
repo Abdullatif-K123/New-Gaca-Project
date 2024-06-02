@@ -4,55 +4,74 @@ import { TreeItem } from "@mui/x-tree-view/TreeItem";
 import Image from "next/image";
 import classes from "./treeFilter.module.css";
 
-const MyTreeView = ({ singleSelectHandling, data, rtl }) => {
+const MyTreeView = ({
+  singleSelectHandling,
+  data,
+  rtl,
+  monitor,
+  handleSwitching,
+}) => {
   const [selected, setSelected] = useState("");
   const [expanded, setExpanded] = useState([]);
-  
-  const renderTree = (nodes) => { 
+
+  const renderTree = (nodes) => {
     if (!nodes) {
       return null;
     }
 
-    const hasChildren = Array.isArray(nodes.children) && nodes.children.length > 0;
-    const hasDataMenus = Array.isArray(nodes.dataMenus) && nodes.dataMenus.length > 0;
+    const hasChildren =
+      Array.isArray(nodes.children) && nodes.children.length > 0;
+    const hasDataMenus =
+      Array.isArray(nodes.dataMenus) && nodes.dataMenus.length > 0;
 
     const renderDataMenus = (dataMenus) => {
       return dataMenus.map((menu) => {
-        const hasMenuChildren = Array.isArray(menu.children) && menu.children.length > 0;
-        const hasMenuDataMenus = Array.isArray(menu.dataMenus) && menu.dataMenus.length > 0;
+        const hasMenuChildren =
+          Array.isArray(menu.children) && menu.children.length > 0;
+        const hasMenuDataMenus =
+          Array.isArray(menu.dataMenus) && menu.dataMenus.length > 0;
 
         return (
           <TreeItem
             key={menu.id}
             nodeId={menu.id}
             label={
-              <div className={`${classes.parentIcon} ${
-                selected === menu.id ? classes.childSelected : null
-              }`} onClick={() => {
-                setSelected(menu.id);
-                singleSelectHandling(menu);
-              }}> 
-                <p
-                className={`${classes.childrens} ${
+              <div
+                className={`${classes.parentIcon} ${
                   selected === menu.id ? classes.childSelected : null
                 }`}
-                style={{ direction: "ltr", fontFamily: rtl? "DINNext-Arabic-meduim " : "", }}
-                
+                onClick={() => {
+                  setSelected(menu.id);
+                  singleSelectHandling(menu);
+                }}
               >
-                {rtl? menu.title: menu.titleEN}
-              </p>
-              <Image
-              src={`/assets/svg/${selected === menu.id? "pointWhite.svg": "pointBlack.svg"}`}
-              width={25}
-              height={25}
-              alt="shape"
-            />
+                <p
+                  className={`${classes.childrens} ${
+                    selected === menu.id ? classes.childSelected : null
+                  }`}
+                  style={{
+                    direction: "ltr",
+                    fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
+                  }}
+                >
+                  {rtl ? menu.title : menu.titleEN}
+                </p>
+                <Image
+                  src={`/assets/svg/${
+                    selected === menu.id ? "pointWhite.svg" : "pointBlack.svg"
+                  }`}
+                  width={25}
+                  height={25}
+                  alt="shape"
+                />
               </div>
             }
             endIcon={null} // Remove endIcon to avoid showing any icon
-            collapseIcon={hasMenuChildren || hasMenuDataMenus ? undefined : null} // Only show collapse icon if there are children or dataMenus
+            collapseIcon={
+              hasMenuChildren || hasMenuDataMenus ? undefined : null
+            } // Only show collapse icon if there are children or dataMenus
             expandIcon={hasMenuChildren || hasMenuDataMenus ? undefined : null} // Only show expand icon if there are children or dataMenus
-          > 
+          >
             {hasMenuDataMenus && renderDataMenus(menu.dataMenus)}
           </TreeItem>
         );
@@ -64,14 +83,25 @@ const MyTreeView = ({ singleSelectHandling, data, rtl }) => {
         key={nodes.id}
         nodeId={nodes.id}
         onClick={() => {
-          setSelected(nodes.id); 
+          setSelected(nodes.id);
         }}
         label={
-          <div className={classes.parentIcon} 
-          >
-            <p className={`${classes.children}`} style={{fontFamily: rtl? "DINNext-Arabic-meduim " : "", color: selected===nodes.id? "#fff": ""}}>{rtl? nodes.title: nodes.titleEN}</p>
+          <div className={classes.parentIcon}>
+            <p
+              className={`${classes.children}`}
+              style={{
+                fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
+                color: selected === nodes.id ? "#fff" : "",
+              }}
+            >
+              {rtl ? nodes.title : nodes.titleEN}
+            </p>
             <Image
-              src={`/assets/svg/${selected === nodes.id? "masterPlanHomeWhite.svg":"masterPlanHome.svg"}`}
+              src={`/assets/svg/${
+                selected === nodes.id
+                  ? "masterPlanHomeWhite.svg"
+                  : "masterPlanHome.svg"
+              }`}
               width={25}
               height={25}
               alt="shape"
@@ -87,20 +117,31 @@ const MyTreeView = ({ singleSelectHandling, data, rtl }) => {
       </TreeItem>
     ) : (
       <TreeItem
-        key={nodes.id}  
-        nodeId={nodes.id} 
+        key={nodes.id}
+        nodeId={nodes.id}
         label={
-          <div className={`${classes.parentIcon} `}  onClick={() => {
-            setSelected(nodes.id);
-            singleSelectHandling(nodes);
-          }}>
-            <p className={`${classes.childrens} ${
-            selected === nodes.id ? classes.childSelected : null
-          } `}
-                style={{ direction: "ltr", fontFamily: rtl? "DINNext-Arabic-meduim " : "", }}
-               >{rtl? nodes.title: nodes.titleEN}</p>
+          <div
+            className={`${classes.parentIcon} `}
+            onClick={() => {
+              setSelected(nodes.id);
+              singleSelectHandling(nodes);
+            }}
+          >
+            <p
+              className={`${classes.childrens} ${
+                selected === nodes.id ? classes.childSelected : null
+              } `}
+              style={{
+                direction: "ltr",
+                fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
+              }}
+            >
+              {rtl ? nodes.title : nodes.titleEN}
+            </p>
             <Image
-              src={`/assets/svg/${selected === nodes.id? "pointWhite.svg": "pointBlack.svg"}`}
+              src={`/assets/svg/${
+                selected === nodes.id ? "pointWhite.svg" : "pointBlack.svg"
+              }`}
               width={25}
               height={25}
               alt="shape"
@@ -124,30 +165,61 @@ const MyTreeView = ({ singleSelectHandling, data, rtl }) => {
   };
 
   return (
-    <TreeView
-      expanded={expanded}
-      onNodeToggle={handleNodeToggle} 
-      style={{direction: rtl? "ltr": "rtl",}}
-      defaultCollapseIcon={
-        <Image
-          src="/assets/svg/ArrowDown.svg"
-          width={20}
-          height={20}
-          alt="arrowDown"
-        />
-      }
-      defaultExpandIcon={
-        <Image
-          src="/assets/svg/Chevron.svg"
-          width={20}
-          height={20}
-          alt="chevron"
-        />
-      }
-      className={classes.treeviewMain} 
-    >
-      {data?.map((nodes) => renderTree(nodes))}
-    </TreeView>
+    <>
+      <TreeView
+        expanded={expanded}
+        onNodeToggle={handleNodeToggle}
+        style={{ direction: rtl ? "ltr" : "rtl" }}
+        defaultCollapseIcon={
+          <Image
+            src="/assets/svg/ArrowDown.svg"
+            width={20}
+            height={20}
+            alt="arrowDown"
+          />
+        }
+        defaultExpandIcon={
+          <Image
+            src="/assets/svg/Chevron.svg"
+            width={20}
+            height={20}
+            alt="chevron"
+          />
+        }
+        className={classes.treeviewMain}
+      >
+        {data?.map((nodes) => renderTree(nodes))}
+      </TreeView>
+      {monitor ? (
+        <div
+          className={`${classes.parentIcon} `}
+          style={{
+            direction: rtl ? "ltr" : "rtl",
+            marginTop: "10px",
+            marginLeft: "10px",
+          }}
+          onClick={handleSwitching}
+        >
+          <p
+            className={`${classes.childrens} ${classes.childSelected} `}
+            style={{
+              fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
+              color: "black",
+            }}
+          >
+            Implementation Objectives (Monitoring)
+          </p>
+          <Image
+            src={`/assets/svg/${"pointBlack.svg"}`}
+            width={25}
+            height={25}
+            alt="shape"
+          />
+        </div>
+      ) : (
+        ""
+      )}
+    </>
   );
 };
 

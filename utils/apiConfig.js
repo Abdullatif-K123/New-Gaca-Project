@@ -29,5 +29,8 @@ export const API_ROUTES = {
   },
   subscribe:{
      post: "https://snap.somee.com/api/subscribe"
+  },
+  monitoring: {
+     get: "https://snap.somee.com/api/monitoring", 
   }
 };

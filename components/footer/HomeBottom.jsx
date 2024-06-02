@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import classes from "./home-bottom.module.css";
 import Footer from "./footer";
-import Slider from "react-infinite-logo-slider"; 
+import Slider from "react-infinite-logo-slider";
 import NewsLandingpage from "./NewsLandingpage";
 import DialogModal from "../ui/DialogModal";
-import Image from "next/image"; 
+import Image from "next/image";
 import Subscribe from "../ui/Subscribe";
-const HomeBottom = ({ imgs, conVersion, desc, news, rtl }) => { 
+const HomeBottom = ({ imgs, conVersion, desc, news, rtl }) => {
   const [sliderWidth, setSliderWidth] = useState("180px");
   const [leftRight, setLeftRight] = useState(false);
   const [linkProvide, setLinkProvide] = useState("");
@@ -39,14 +39,17 @@ const HomeBottom = ({ imgs, conVersion, desc, news, rtl }) => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-   const src = imgs.avatar? imgs.avatar : "/assets/svg/SANS.svg"
+  const src = imgs.avatar ? imgs.avatar : "/assets/svg/SANS.svg";
   return (
     <>
       <div className={classes.homeBottomMain} id="stakeholder">
         <div className={classes.bottomLogo}>
-          <NewsLandingpage news={news} rtl={rtl}/> 
-          <h2 style={{direction: rtl? "rtl": ""}}>
-            <span style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}} >{rtl? "أصحاب":"Our"}</span> {rtl? "المصلحة":"Stackholders"}
+          <NewsLandingpage news={news} rtl={rtl} />
+          <h2 style={{ direction: rtl ? "rtl" : "" }}>
+            <span style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}>
+              {rtl ? "أصحاب" : "Our"}
+            </span>{" "}
+            {rtl ? "المصلحة" : "Stackholders"}
           </h2>
         </div>
         <div className={classes.stakholderArrows}>
@@ -79,20 +82,32 @@ const HomeBottom = ({ imgs, conVersion, desc, news, rtl }) => {
           >
             {imgs.map((stakholder, index) => {
               return (
-                <Slider.Slide key={`${index}${stakholder.name}`}   onClick={() => {
-                  handleOpen();
-                  setLinkProvide(stakholder.url);
-                }}>
-                   
+                <Slider.Slide
+                  key={`${index}${stakholder.name}`}
+                  onClick={() => {
+                    handleOpen();
+                    setLinkProvide(stakholder.url);
+                  }}
+                >
                   <div className={classes.partnerItem}>
-                   {stakholder.avatar?<img
-                      src={`${stakholder.avatar}`}
-                      width={140}
-                      height={140}
-                      alt={stakholder.title}
-                    />: <div style={{background: "yellow", width: 140, height: 140, borderRadius: "80px" }}></div> } 
+                    {stakholder.avatar ? (
+                      <img
+                        src={`${stakholder.avatar}`}
+                        width={140}
+                        height={140}
+                        alt={stakholder.title}
+                      />
+                    ) : (
+                      <div
+                        style={{
+                          background: "yellow",
+                          width: 140,
+                          height: 140,
+                          borderRadius: "80px",
+                        }}
+                      ></div>
+                    )}
                   </div>
-                  
                 </Slider.Slide>
               );
             })}
@@ -105,7 +120,7 @@ const HomeBottom = ({ imgs, conVersion, desc, news, rtl }) => {
           link={linkProvide}
         />
       </div>
-        <Subscribe rtl={rtl}/>
+      <Subscribe rtl={rtl} />
       <Footer conVersion={conVersion} desc={desc} rtl={rtl} />
     </>
   );

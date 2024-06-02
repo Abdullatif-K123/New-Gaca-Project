@@ -4,8 +4,8 @@ import MasterPlanMain from "@/components/master-plan/MasterPlanMain";
  
 import axios from "axios";
 import { API_ROUTES } from "@/utils/apiConfig";
-const index = ({ rtl, isFeedbackVisible, handleToggleFeedback, conVersion,dataInfo }) => {
- 
+const index = ({ rtl, isFeedbackVisible, handleToggleFeedback, conVersion,dataInfo, dataMonitoring }) => {
+
   const router = useRouter();
   const plan = router.query.plan; 
   const [data, setData] = useState(dataInfo?.returnData); 
@@ -54,17 +54,17 @@ const index = ({ rtl, isFeedbackVisible, handleToggleFeedback, conVersion,dataIn
         rtl={rtl}
         pptUrl={dataInfo?.returnData.fileURL}
         videourl={dataInfo?.returnData.videoURL}
+        monitor={dataMonitoring}
       />
     </div>
   );
 };
 export async function getServerSideProps(context) {
-  const { params } = context;
-  const { plan } = params;
- 
+  const { params,query } = context;
+  const { plan } = params;  
   try {
     const response = await axios.get(`${API_ROUTES.masterPlanInfo.get}/${plan}`);
-    
+    const monitorRes = query.id === '4'? await axios.get(`${API_ROUTES.monitoring.get}`) : ""
     // Check if the data exists
     if (!response.data.returnData) {
       return {
@@ -75,6 +75,7 @@ export async function getServerSideProps(context) {
     return {
       props: {
         dataInfo: response.data.returnData, 
+        dataMonitoring: monitorRes? monitorRes.data.returnData:""
       },
     };
   } catch (error) {

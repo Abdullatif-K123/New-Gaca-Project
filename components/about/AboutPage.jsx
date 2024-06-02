@@ -5,31 +5,42 @@ import parse from "html-react-parser";
 import { useRouter } from "next/router";
 import Subscribe from "../ui/Subscribe";
 import { useFontSize } from "@/store/FontSizeContext";
+import { useTranslation } from "react-i18next";
 const AboutPage = ({ data, rtl }) => {
+  const { t } = useTranslation();
   const router = useRouter();
-  const {fontSizeGeneral} = useFontSize();
+  const { fontSizeGeneral } = useFontSize();
   return (
-    <div className={classes.aboutPageMain} style={{direction:rtl? "rtl":""}}>
+    <div
+      className={classes.aboutPageMain}
+      style={{ direction: rtl ? "rtl" : "" }}
+    >
       <div className={classes.choosen}>
-        <p style={{fontSize: `${14 + fontSizeGeneral}px`}}>
+        <p style={{ fontSize: `${14 + fontSizeGeneral}px` }}>
           <span
             onClick={() => {
               router.push("/");
             }}
-            style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}}
+            style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}
           >
-            {rtl? "الصفحة الرئيسية":"Home"}
+            {t("home-route")}
           </span>
           <Image
             src="/assets/svg/Chevron.svg"
             width={16}
             height={16}
             alt="chev"
-            style={{transform: rtl?"rotate(180deg)": ""}}
+            style={{ transform: rtl ? "rotate(180deg)" : "" }}
           />
         </p>
         <h1
-        style={{fontFamily: rtl? "DINNext-Arabic-meduim " : "", fontSize: `${48 + fontSizeGeneral}px`}}>{rtl? "حول": "About SNAP"}</h1>
+          style={{
+            fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
+            fontSize: `${48 + fontSizeGeneral}px`,
+          }}
+        >
+          {t("about")}
+        </h1>
       </div>
       <div className={classes.aboutSection}>
         <Image
@@ -40,8 +51,22 @@ const AboutPage = ({ data, rtl }) => {
           data-aos="fade-left"
         />
         <div className={classes.content} data-aos="fade-right">
-          <h1 style={{fontFamily: rtl? "DINNext-Arabic-meduim " : "", fontSize: `${28 +  fontSizeGeneral}px`}}>{rtl? "سناب": "SNAP"}</h1>
-         <p style={{fontFamily: rtl? "DINNext-Arabic-meduim " : "", fontSize: `${15 +  fontSizeGeneral}px`}}>{parse(rtl? data.information.content:data.information.contentEN)}</p>  
+          <h1
+            style={{
+              fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
+              fontSize: `${28 + fontSizeGeneral}px`,
+            }}
+          >
+            {t("snap")}
+          </h1>
+          <p
+            style={{
+              fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
+              fontSize: `${15 + fontSizeGeneral}px`,
+            }}
+          >
+            {parse(rtl ? data.information.content : data.information.contentEN)}
+          </p>
         </div>
       </div>
       <div className={classes.visionMission}>
@@ -52,35 +77,81 @@ const AboutPage = ({ data, rtl }) => {
             height={64}
             alt="vision"
           />
-          <h1 style={{fontFamily: rtl? "DINNext-Arabic-meduim " : "", fontSize: `${24 + fontSizeGeneral}px`}}>{rtl? "الرؤية": "Vision"}</h1>
-          <p  style={{fontFamily: rtl? "DINNext-Arabic-meduim " : "",fontSize: `${14 + fontSizeGeneral}px`}} > {parse(rtl? data.information.vision:data.information.visionEN)}</p>
+          <h1
+            style={{
+              fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
+              fontSize: `${24 + fontSizeGeneral}px`,
+            }}
+          >
+            {t("vision")}
+          </h1>
+          <p
+            style={{
+              fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
+              fontSize: `${14 + fontSizeGeneral}px`,
+            }}
+          >
+            {" "}
+            {parse(rtl ? data.information.vision : data.information.visionEN)}
+          </p>
         </div>
-        <div className={classes.vision} data-aos="fade-down" >
+        <div className={classes.vision} data-aos="fade-down">
           <Image
             src={"/assets/svg/about-mission.svg"}
             width={64}
             height={64}
             alt="mission"
           />
-          <h1 style={{fontFamily: rtl? "DINNext-Arabic-meduim " : "", fontSize: `${24 + fontSizeGeneral}px`}}>{rtl? "المهام":"Mission"}</h1>
-           <p  style={{fontFamily: rtl? "DINNext-Arabic-meduim " : "", fontSize: `${14 + fontSizeGeneral}px`}}>{parse(rtl?data.information.mission:data.information.missionEN)}</p>
+          <h1
+            style={{
+              fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
+              fontSize: `${24 + fontSizeGeneral}px`,
+            }}
+          >
+            {t("mission")}
+          </h1>
+          <p
+            style={{
+              fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
+              fontSize: `${14 + fontSizeGeneral}px`,
+            }}
+          >
+            {parse(rtl ? data.information.mission : data.information.missionEN)}
+          </p>
         </div>
       </div>
       <div className={classes.strategic}>
         <div className={classes.strategiContent}>
-          <h1 style={{fontFamily: rtl? "DINNext-Arabic-meduim " : "",  fontSize: `${26 + fontSizeGeneral}px`}}>{rtl? "أهدافنا الاستراتيجية:" :"SNAP’s strategic objectives:"}</h1>
-          {data.objectives.map((content,index) => {
+          <h1
+            style={{
+              fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
+              fontSize: `${26 + fontSizeGeneral}px`,
+            }}
+          >
+            {t("strategic")}
+          </h1>
+          {data.objectives.map((content, index) => {
             return (
-              <div key={index} className={classes.singleStrategic} data-aos="fade-right" >
+              <div
+                key={index}
+                className={classes.singleStrategic}
+                data-aos="fade-right"
+              >
                 <Image
                   src="/assets/svg/leftIconStrategic.svg"
                   width={20}
                   height={20}
                   alt="left-icon"
-                  
-            style={{transform: rtl?"rotate(180deg)": ""}}
+                  style={{ transform: rtl ? "rotate(180deg)" : "" }}
                 />
-                <p style={{fontFamily: rtl? "DINNext-Arabic-meduim " : "", fontSize: `${14 + fontSizeGeneral}px`}}>{rtl? content.title: content.titleEN}</p>
+                <p
+                  style={{
+                    fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
+                    fontSize: `${14 + fontSizeGeneral}px`,
+                  }}
+                >
+                  {rtl ? content.title : content.titleEN}
+                </p>
               </div>
             );
           })}
@@ -93,10 +164,9 @@ const AboutPage = ({ data, rtl }) => {
           layout="responsive"
           className={classes.strategicImg}
           data-aos="fade-left"
-          
         />
       </div>
-      <Subscribe rtl={rtl}/>
+      <Subscribe rtl={rtl} />
     </div>
   );
 };

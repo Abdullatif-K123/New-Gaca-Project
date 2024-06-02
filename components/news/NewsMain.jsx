@@ -4,15 +4,16 @@ import Subscribe from "../ui/Subscribe";
 import SingleCard from "./SingleCard";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import ReactPaginate from "react-paginate"; 
+import ReactPaginate from "react-paginate";
+import { useTranslation } from "react-i18next";
 const NewsMain = ({ dataNews, rtl }) => {
   const [currentPage, setCurrentPage] = useState(0);
   const [leftRight, setLeftRight] = useState("left");
   const [filterData, setFilterData] = useState([]);
   const [news, setNewsData] = useState(dataNews.data);
   const router = useRouter();
-
-  const itemsPerPage = 15; 
+  const { t } = useTranslation();
+  const itemsPerPage = 15;
   useEffect(() => {
     setFilterData(
       news.filter((item, index) => {
@@ -22,9 +23,12 @@ const NewsMain = ({ dataNews, rtl }) => {
         );
       })
     );
-  }, [currentPage, dataNews]); 
+  }, [currentPage, dataNews]);
   return (
-    <div className={classes.newsMain} style={{direction: rtl? "rtl": "ltr"}}>
+    <div
+      className={classes.newsMain}
+      style={{ direction: rtl ? "rtl" : "ltr" }}
+    >
       <div className={classes.newsSection}>
         <div className={classes.choosen}>
           <p>
@@ -32,28 +36,35 @@ const NewsMain = ({ dataNews, rtl }) => {
               onClick={() => {
                 router.push("/");
               }}
-              style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}} 
+              style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}
             >
-              {rtl? "الرئيسية": "Home"}
+              {t("home-route")}
             </span>
             <Image
               src="/assets/svg/Chevron.svg"
-              width={16}
-              height={16}
+              width={14}
+              height={14}
               alt="chevron"
               layout="responsive"
-              style={{transform: rtl? "rotate(180deg)":""}}
+              style={{ transform: rtl ? "rotate(180deg)" : "" }}
             />
           </p>
-          <h1 style={{fontFamily: rtl? "DINNext-Arabic-meduim " : ""}} >{rtl? "الاخبار" : "News"}</h1>
+          <h1 style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}>
+            {t("news")}
+          </h1>
         </div>
         <div className={classes.newsCardMain2}>
           {filterData &&
             filterData.map((nws, index) => (
-              <SingleCard key={nws.id} {...nws} rtl={rtl} leftRight={leftRight} />
+              <SingleCard
+                key={nws.id}
+                {...nws}
+                rtl={rtl}
+                leftRight={leftRight}
+              />
             ))}
         </div>
-        <div className={classes.paginationContainer} >
+        <div className={classes.paginationContainer}>
           {/* Render pagination links with updated styles */}
           <ReactPaginate
             containerClassName={classes.pagination}
@@ -86,7 +97,7 @@ const NewsMain = ({ dataNews, rtl }) => {
           />
         </div>
       </div>
-     <Subscribe rtl={rtl}/>
+      <Subscribe rtl={rtl} />
     </div>
   );
 };

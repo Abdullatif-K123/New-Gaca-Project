@@ -3,29 +3,40 @@ import SideMenu from "./SideMenu";
 import MasterPlan from "./MasterPlan";
 import classes from "./masterPlan.module.css";
 import Footer from "../footer/footer";
-import Image from "next/image"; 
+import Image from "next/image";
 import { useTranslation } from "react-i18next";
 import findNodeAndParentsByName from "@/utils/findNodeAndParent";
 import { findNodeAndParentsById } from "@/utils/findNodeAndParent";
 import { useRouter } from "next/router";
-import Subscribe from "../ui/Subscribe"; 
- 
-const MasterPlanMain = ({ plan,rtl, data, elementSelect, conVersion, pptUrl, videourl }) => {
+import Subscribe from "../ui/Subscribe";
+
+const MasterPlanMain = ({
+  plan,
+  rtl,
+  data,
+  elementSelect,
+  conVersion,
+  pptUrl,
+  videourl,
+  monitor,
+}) => {
   const router = useRouter();
-  const pin = router.query.plan;
+  console.log(monitor);
   const [selectingElem, setSelectingElem] = useState([elementSelect]);
+  const [switching, setSwitching] = useState(false);
   const [singleElemSelecting, setSingleElemSelecting] = useState(elementSelect);
   const [selected, setSelected] = useState([]);
   const [singleSelectingDesc, setSignelDesc] = useState("");
   const [expanded, setExpanded] = useState([`root${1}`]);
-  const { t } = useTranslation('common.json'); 
+  const { t } = useTranslation();
   const handleSelectSingleElem = (elem, idSelect) => {
     setSingleElemSelecting(elem);
-     
     setSignelDesc(elem.description);
-  }; 
- 
-
+  };
+  //handling switching between table and pdf
+  const handleSwitching = () => {
+    setSwitching(!switching);
+  };
   // useEffect(() => {
   //   if (select && select.length > 0) {
   //     const result = findNodeAndParentsByName(data, select);
@@ -51,7 +62,7 @@ const MasterPlanMain = ({ plan,rtl, data, elementSelect, conVersion, pptUrl, vid
   //     );
   //   }
   // }, [singleElemSelecting]);
- 
+
   //  Toggling to specifc plan
 
   const handleToggle = (event, nodeIds) => {
@@ -74,21 +85,21 @@ const MasterPlanMain = ({ plan,rtl, data, elementSelect, conVersion, pptUrl, vid
                 router.push("/");
               }}
             >
-               {rtl? "الرئيسية" : "Home"}
+              {t("home-route")}
             </span>
             <Image
               src="/assets/svg/Chevron.svg"
               width={16}
               height={16}
               alt="chevron"
-              style={{transform: rtl? "rotate(180deg)": ""}}
+              style={{ transform: rtl ? "rotate(180deg)" : "" }}
             />
             <span
               onClick={() => {
                 router.push("/#masterplan");
               }}
             >
-             {rtl? "ماستر بلان" : "Master Plan"}
+              {t("masterplan")}
             </span>
             {selectingElem.length ? (
               <>
@@ -98,17 +109,21 @@ const MasterPlanMain = ({ plan,rtl, data, elementSelect, conVersion, pptUrl, vid
                   width={16}
                   height={16}
                   alt="chevron"
-                  style={{transform: rtl? "rotate(180deg)": ""}}
+                  style={{ transform: rtl ? "rotate(180deg)" : "" }}
                 />
-                <span>{rtl? data[0].title: data[0].titleEN}</span>{" "}
+                <span>{rtl ? data[0].title : data[0].titleEN}</span>{" "}
                 <Image
                   src="/assets/svg/Chevron.svg"
                   width={16}
                   height={16}
                   alt="chevron"
-                  style={{transform: rtl? "rotate(180deg)": ""}}
+                  style={{ transform: rtl ? "rotate(180deg)" : "" }}
                 />
-                <span>{rtl? singleElemSelecting.title: singleElemSelecting.titleEN}</span>
+                <span>
+                  {rtl
+                    ? singleElemSelecting.title
+                    : singleElemSelecting.titleEN}
+                </span>
               </>
             ) : null}
           </p>
@@ -122,17 +137,21 @@ const MasterPlanMain = ({ plan,rtl, data, elementSelect, conVersion, pptUrl, vid
             handleSelect={handleSelect}
             data={data}
             rtl={rtl}
+            monitor={monitor}
+            handleSwitching={handleSwitching}
           />
           <MasterPlan
             singleDesc={singleSelectingDesc}
             singleElem={singleElemSelecting}
-            pptFile = {pptUrl}
+            pptFile={pptUrl}
             videoUrl={videourl}
             rtl={rtl}
+            switching={switching}
+            monitor={monitor}
           />
         </div>
       </div>
-      <Subscribe rtl={rtl}/>
+      <Subscribe rtl={rtl} />
       <Footer conVersion={conVersion} />
     </>
   );

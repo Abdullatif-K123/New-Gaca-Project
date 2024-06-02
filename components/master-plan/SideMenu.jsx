@@ -2,12 +2,8 @@ import React, { useState, useEffect } from "react";
 import classes from "./masterPlan.module.css";
 import Image from "next/image";
 import MyTreeView from "./TreeView/MyTreeView";
-import sampleData from "./simpleData";
-import {
-  filterTree,
-  expandFilteredNodes,
-  getIDsExpandFilter,
-} from "../../utils/filterTreeUitls";
+import { filterTree } from "../../utils/filterTreeUitls";
+import { useTranslation } from "react-i18next";
 const SideMenu = ({
   singleSelectHandling,
   expanded,
@@ -15,9 +11,12 @@ const SideMenu = ({
   handleToggle,
   handleSelect,
   data,
-  rtl
+  rtl,
+  monitor,
+  handleSwitching,
 }) => {
-  const [subjectData, setSubjectData] = useState(data); 
+  const { t } = useTranslation();
+  const [subjectData, setSubjectData] = useState(data);
   // Filter input function
   const onFilterMouseUp = (e) => {
     const value = e.target.value;
@@ -45,10 +44,14 @@ const SideMenu = ({
           height={24}
           alt="search"
         />
-        <input type="text" placeholder={rtl? "البحث..." : "Search..."} onKeyUp={onFilterMouseUp} />
+        <input
+          type="text"
+          placeholder={t("search")}
+          onKeyUp={onFilterMouseUp}
+        />
       </div>
-      <div className={classes.sideMenuTreeView}>
-        <p>{rtl? "الخطة":"Master Plan"}</p>
+      <div className={classes.sideMenuTreeView} data-aos="fade-right">
+        <p>{t("masterplan")}</p>
         <div className={classes.treeViewSideMenu}>
           <MyTreeView
             singleSelectHandling={singleSelectHandling}
@@ -58,6 +61,8 @@ const SideMenu = ({
             handleSelect={handleSelect}
             selectedTree={selected}
             rtl={rtl}
+            monitor={monitor}
+            handleSwitching={handleSwitching}
           />
         </div>
       </div>

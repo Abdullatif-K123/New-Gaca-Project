@@ -4,8 +4,10 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import parse from "html-react-parser";
 import { useFontSize } from "@/store/FontSizeContext";
-const SectionOne = ({ isFeedbackVisible, title, desc,rtl }) => {
-  const { fontSizeGeneral} = useFontSize();
+import { useTranslation } from "react-i18next";
+const SectionOne = ({ title, desc, rtl }) => {
+  const { t } = useTranslation();
+  const { fontSizeGeneral } = useFontSize();
   const router = useRouter();
   const handleClick = () => {
     const targetElement = document.getElementById("masterplan");
@@ -14,7 +16,7 @@ const SectionOne = ({ isFeedbackVisible, title, desc,rtl }) => {
     }
   };
   return (
-    <div className={classes.sectionOne} style={{direction: rtl? "rtl": ""}}>
+    <div className={classes.sectionOne} style={{ direction: rtl ? "rtl" : "" }}>
       {/* Video background */}
       <div className={classes.videoContainer}>
         <video autoPlay muted loop className={classes.video}>
@@ -22,23 +24,48 @@ const SectionOne = ({ isFeedbackVisible, title, desc,rtl }) => {
           {/* Add additional source elements for different video formats if needed */}
           Your browser does not support the video tag.
         </video>
-         <div className={classes.overlay}></div>
+        <div className={classes.overlay}></div>
       </div>
 
-        {/* Content  section in the home page section*/}
+      {/* Content  section in the home page section*/}
       <div className={classes.secOneContect} data-aos="fade-right">
-        <h1 style={{fontFamily: rtl? "DINNext-Arabic-meduim " : "", fontSize: `${55 + fontSizeGeneral}px`}} >{title}</h1>
-        <p style={{fontFamily: rtl? "DINNext-Arabic-meduim " : "",  fontSize: `${16 + fontSizeGeneral}px`}} >{parse(desc)}</p>
+        <h1
+          style={{
+            fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
+            fontSize: `${55 + fontSizeGeneral}px`,
+          }}
+        >
+          {title}
+        </h1>
+        <p
+          style={{
+            fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
+            fontSize: `${16 + fontSizeGeneral}px`,
+          }}
+        >
+          {parse(desc)}
+        </p>
         <div
           className={classes.secOneButton}
           onClick={() => {
             router.push("/download");
           }}
         >
-          <p style={{fontFamily: rtl? "DINNext-Arabic-meduim " : "", fontSize: `${20 + fontSizeGeneral}px` }}  >  {rtl? "تحميل ملفات " : "Download SNAP Documents"}</p>
+          <p
+            style={{
+              fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
+              fontSize: `${20 + fontSizeGeneral}px`,
+            }}
+          >
+            {" "}
+            {t("downloadDoc")}
+          </p>
         </div>
       </div>
-      <div className={classes.sectionTwo}  style={{marginRight: rtl? "0px": ""}} >
+      <div
+        className={classes.sectionTwo}
+        style={{ marginRight: rtl ? "0px" : "" }}
+      >
         <Image
           src="/assets/imges/Brochure-landingpage.webp"
           width={700}

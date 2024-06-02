@@ -3,6 +3,7 @@ import classes from "./master-plan.module.css";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useFontSize } from "@/store/FontSizeContext";
+import { useTranslation } from "react-i18next";
 const Element = ({
   id,
   handleHover,
@@ -15,7 +16,7 @@ const Element = ({
   text,
   desc,
   rtl,
-  _id
+  _id,
 }) => {
   const classPyramid =
     id === 1
@@ -28,8 +29,8 @@ const Element = ({
       ? classes.pyramid4
       : classes.pyramid5;
   const router = useRouter();
-  const {fontSizeGeneral} = useFontSize();
- 
+  const { fontSizeGeneral } = useFontSize();
+
   return (
     <div
       className={`${classes.masterPlanInfoImg} ${
@@ -49,11 +50,21 @@ const Element = ({
           }}
           data-aos="fade-right"
         >
-          <p style={{fontFamily: rtl? "DINNext-Arabic-meduim " : "", fontSize: `${18 + fontSizeGeneral}px`}} >{text}</p>
+          <p
+            style={{
+              fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
+              fontSize: `${18 + fontSizeGeneral}px`,
+            }}
+          >
+            {text}
+          </p>
           {isHovered && (
             <p
               className={`${classes.masterPlanInfoDesc} ${classes.masterPlanInfoDescLeft}`}
-              style={{fontFamily: rtl? "DINNext-Arabic-meduim " : "",fontSize: `${13 + fontSizeGeneral}px`}} 
+              style={{
+                fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
+                fontSize: `${13 + fontSizeGeneral}px`,
+              }}
             >
               {desc?.slice(0, 200)}...
             </p>
@@ -64,7 +75,7 @@ const Element = ({
         id={_id}
         src={imgsrc}
         onClick={() => {
-          router.push(`/master-plan/${_id}`);
+          router.push(`/master-plan/${_id}/?id=${id}`);
         }}
         onMouseOver={() => handleHover(id)}
         onMouseOut={handleMouseOut}
@@ -79,7 +90,6 @@ const Element = ({
             : null,
         }}
         alt="master plan"
-        
       />
       {id % 2 ? (
         <div
@@ -94,13 +104,23 @@ const Element = ({
           }}
           data-aos="fade-left"
         >
-          <p style={{fontFamily: rtl? "DINNext-Arabic-meduim " : "", fontSize: `${18 + fontSizeGeneral}px`}}  >{text}</p>
+          <p
+            style={{
+              fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
+              fontSize: `${18 + fontSizeGeneral}px`,
+            }}
+          >
+            {text}
+          </p>
           {isHovered && (
             <p
               className={`${classes.masterPlanInfoDesc} ${
                 id == 5 ? classes.masterPlanInfoDescUp : null
               }`}
-              style={{fontFamily: rtl? "DINNext-Arabic-meduim " : "", fontSize: `${14 + fontSizeGeneral}px`}} 
+              style={{
+                fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
+                fontSize: `${14 + fontSizeGeneral}px`,
+              }}
             >
               {desc.slice(0, 200)}...
             </p>
@@ -111,10 +131,11 @@ const Element = ({
   );
 };
 const MasterPlan = ({ layers, rtl }) => {
+  const { t } = useTranslation();
   const [hoverElement, setHoverElement] = useState(null);
   const [isNowhovering, setIsNowHovering] = useState(false);
-  
-  const {fontSizeGeneral} = useFontSize();
+
+  const { fontSizeGeneral } = useFontSize();
   const handleHover = (id) => {
     setHoverElement(id);
     setIsNowHovering(true);
@@ -122,86 +143,90 @@ const MasterPlan = ({ layers, rtl }) => {
   const handleMouseOut = () => {
     setHoverElement(null);
     setIsNowHovering(false);
-  }; 
+  };
   return (
     <>
-     
-    <div id={"masterplan"} className={classes.masterPlanMain}   >
-   
-      <div style={{zIndex: "99"}} className={classes.masterPlanMainH}>
-      <h1 style={{fontFamily: rtl? "DINNext-Arabic-meduim " : "", fontSize: `${37 + fontSizeGeneral}px`}}  >{rtl? "الخطة الوطنية السعودية للملاحة الجوية": "Saudi National Air Navigation Plan" }</h1>
-       {/* Video background */}
-    
+      <div id={"masterplan"} className={classes.masterPlanMain}>
+        <div style={{ zIndex: "99" }} className={classes.masterPlanMainH}>
+          <h1
+            style={{
+              fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
+              fontSize: `${37 + fontSizeGeneral}px`,
+            }}
+          >
+            {t("masterplan-title")}
+          </h1>
+          {/* Video background */}
 
-      <div className={classes.masterpyrmaid} >
-        {[
-          { 
-            real_id: layers[0].id,
-            idnum: 1,
-            imgsrc: "/assets/svg/light-green1.svg",
-            width: 140,
-            height: 130,
-            text: rtl? layers[0].title : layers[0].titleEN,
-            desc: rtl? layers[0].description : layers[0].descriptionEN,
-          },
-          {
-            real_id: layers[1].id,
-            idnum: 2,
-            imgsrc: "/assets/svg/light-green2.svg",
-            width: 262,
-            height: 110,
-            text: rtl? layers[1].title : layers[1].titleEN,
-            desc: rtl? layers[1].description : layers[1].descriptionEN,
-          },
-          {
-            real_id: layers[2].id,
-            idnum: 3,
-            imgsrc: "/assets/svg/light-green3.svg",
-            width: 390,
-            height: 110,
-            text: rtl? layers[2].title : layers[2].titleEN,
-            desc: rtl? layers[2].description : layers[2].descriptionEN,
-          },
-          {
-            real_id: layers[3].id,
-            idnum: 4,
-            imgsrc: "/assets/svg/light-green4.svg",
-            width: 525,
-            height: 110,
-            text: rtl? layers[3].title : layers[3].titleEN,
-            desc: rtl? layers[3].description : layers[3].descriptionEN,
-          },
-          {
-            real_id: layers[4].id,
-            idnum: 5,
-            imgsrc: "/assets/svg/light-green5.svg",
-            width: 650,
-            height: 110,
-            text: rtl? layers[4].title : layers[4].titleEN,
-            desc: rtl? layers[4].description : layers[4].descriptionEN,
-          },
-        ].map((id) => { 
-          return (
-            <Element
-              key={id.idnum}
-              id={id.idnum}
-              _id={id.real_id}
-              handleHover={handleHover}
-              handleMouseOut={handleMouseOut}
-              isHovered={hoverElement === id.idnum}
-              imgsrc={id.imgsrc}
-              width={id.width}
-              height={id.height}
-              nowHovering={isNowhovering}
-              text={id.text}
-              desc={id.desc}
-              rtl={rtl}
-            />
-          );
-        })}
+          <div className={classes.masterpyrmaid}>
+            {[
+              {
+                real_id: layers[0].id,
+                idnum: 1,
+                imgsrc: "/assets/svg/light-green1.svg",
+                width: 140,
+                height: 130,
+                text: rtl ? layers[0].title : layers[0].titleEN,
+                desc: rtl ? layers[0].description : layers[0].descriptionEN,
+              },
+              {
+                real_id: layers[1].id,
+                idnum: 2,
+                imgsrc: "/assets/svg/light-green2.svg",
+                width: 262,
+                height: 110,
+                text: rtl ? layers[1].title : layers[1].titleEN,
+                desc: rtl ? layers[1].description : layers[1].descriptionEN,
+              },
+              {
+                real_id: layers[2].id,
+                idnum: 3,
+                imgsrc: "/assets/svg/light-green3.svg",
+                width: 390,
+                height: 110,
+                text: rtl ? layers[2].title : layers[2].titleEN,
+                desc: rtl ? layers[2].description : layers[2].descriptionEN,
+              },
+              {
+                real_id: layers[3].id,
+                idnum: 4,
+                imgsrc: "/assets/svg/light-green4.svg",
+                width: 525,
+                height: 110,
+                text: rtl ? layers[3].title : layers[3].titleEN,
+                desc: rtl ? layers[3].description : layers[3].descriptionEN,
+              },
+              {
+                real_id: layers[4].id,
+                idnum: 5,
+                imgsrc: "/assets/svg/light-green5.svg",
+                width: 650,
+                height: 110,
+                text: rtl ? layers[4].title : layers[4].titleEN,
+                desc: rtl ? layers[4].description : layers[4].descriptionEN,
+              },
+            ].map((id) => {
+              return (
+                <Element
+                  key={id.idnum}
+                  id={id.idnum}
+                  _id={id.real_id}
+                  handleHover={handleHover}
+                  handleMouseOut={handleMouseOut}
+                  isHovered={hoverElement === id.idnum}
+                  imgsrc={id.imgsrc}
+                  width={id.width}
+                  height={id.height}
+                  nowHovering={isNowhovering}
+                  text={id.text}
+                  desc={id.desc}
+                  rtl={rtl}
+                />
+              );
+            })}
+          </div>
         </div>
       </div>
-    </div>
     </>
   );
 };
