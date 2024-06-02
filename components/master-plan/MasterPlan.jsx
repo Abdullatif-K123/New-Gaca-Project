@@ -4,6 +4,7 @@ import classes from "./masterPlan.module.css";
 import WelcomeDialog from "../ui/WelcomeToGaca";
 import { Document, Page, pdfjs } from "react-pdf";
 import { useTranslation } from "react-i18next";
+import { useRouter } from "next/router";
 import parse from "html-react-parser";
 import {
   Table,
@@ -29,6 +30,8 @@ const MasterPlan = ({
   switching,
   monitor,
 }) => {
+  const router = useRouter();
+
   console.log(monitor);
   const { t } = useTranslation();
   const [openVid, setOpenVid] = useState(false);
@@ -36,6 +39,7 @@ const MasterPlan = ({
   const [numPages, setNumPages] = useState(null);
   const pdfWrapperRef = useRef(null);
   console.log(pptFile);
+
   const handleClose = () => {
     setOpenVid(false);
   };
@@ -104,7 +108,7 @@ const MasterPlan = ({
             }}
           >
             <Document
-              file={pptFile}
+              file={`/assets/pdf/LAYER${router.query.id}.pdf`}
               onLoadSuccess={onDocumentLoadSuccess}
               loading={<div>loading pptx file</div>}
               error={<div>Failed to load PPTX. Please try again later.</div>}
