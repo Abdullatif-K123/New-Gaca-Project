@@ -222,7 +222,7 @@ const Navbar = ({
         <nav className={`${classes.navMain}  `}>
           <div className={classes.logo}>
             <Image
-              src={"/assets/svg/whiteLogo.svg"}
+              src={"/assets/svg/SNAP_LOGO.svg"}
               width={140}
               height={47}
               alt="logo"

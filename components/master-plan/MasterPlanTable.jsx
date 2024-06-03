@@ -147,7 +147,7 @@ const MasterPlanTable = ({ data, rtl }) => {
               sx={{
                 position: "absolute",
                 top: "50%",
-                left: "35%",
+                left: rtl ? "60%" : "35%",
                 transform: "translate(-50%, -50%)",
                 zIndex: 99,
                 color: "#000",
@@ -190,16 +190,23 @@ const MasterPlanTable = ({ data, rtl }) => {
           );
 
           return (
-            <TableRow key={codeData.projectId} style={{ marginLeft: "50px" }}>
-              <TableCell> {data.code}</TableCell>
-              <TableCell>
+            <TableRow key={codeData.projectId}>
+              <TableCell style={{ paddingLeft: rtl ? "0px" : "40px" }}>
+                {" "}
+                {data.code}
+              </TableCell>
+              <TableCell style={{ paddingLeft: rtl ? "0px" : "40px" }}>
                 {" "}
                 <Typography>
                   {rtl ? codeData.title : codeData.titleEN}
                 </Typography>
               </TableCell>
-              <TableCell>{formattedDateStart}</TableCell>
-              <TableCell>{formattedDateEnd}</TableCell>
+              <TableCell style={{ paddingLeft: rtl ? "0px" : "40px" }}>
+                {formattedDateStart}
+              </TableCell>
+              <TableCell style={{ paddingLeft: rtl ? "0px" : "40px" }}>
+                {formattedDateEnd}
+              </TableCell>
               <TableCell>
                 <div
                   style={{
@@ -207,7 +214,9 @@ const MasterPlanTable = ({ data, rtl }) => {
                     position: "relative",
                   }}
                 >
-                  <Box sx={{ width: "70%", color: "#63c69a" }}>
+                  <Box
+                    sx={{ width: "70%", color: "#63c69a", marginLeft: "30px" }}
+                  >
                     <LinearProgress
                       color="inherit"
                       variant="determinate"
@@ -224,7 +233,7 @@ const MasterPlanTable = ({ data, rtl }) => {
                     sx={{
                       position: "absolute",
                       top: "50%",
-                      left: "35%",
+                      left: rtl ? "60%" : "60%",
                       transform: "translate(-50%, -50%)",
                       zIndex: 99,
                       color: "#000",
