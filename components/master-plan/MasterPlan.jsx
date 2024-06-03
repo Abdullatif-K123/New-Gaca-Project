@@ -5,6 +5,7 @@ import WelcomeDialog from "../ui/WelcomeToGaca";
 import { Document, Page, pdfjs } from "react-pdf";
 import { useTranslation } from "react-i18next";
 import { useRouter } from "next/router";
+import MasterPlanTable from "./MasterPlanTable";
 import parse from "html-react-parser";
 import {
   Table,
@@ -143,78 +144,7 @@ const MasterPlan = ({
               </TableHead>
               <TableBody>
                 {monitor.map((data) => {
-                  const dateStart = new Date(data.projectStartDate);
-                  const dateEnd = new Date(data.projectEndDate);
-                  const options = {
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                  };
-                  const formattedDateStart = dateStart.toLocaleDateString(
-                    rtl ? "ar-EG" : "en-US",
-                    options
-                  );
-                  const formattedDateEnd = dateEnd.toLocaleDateString(
-                    rtl ? "ar-EG" : "en-US",
-                    options
-                  );
-                  return (
-                    <TableRow key={data.id}>
-                      <TableCell>{data.code}</TableCell>
-                      <TableCell>
-                        {parse(rtl ? data.title : data.titleEN)}
-                      </TableCell>
-                      <TableCell>{formattedDateStart}</TableCell>
-                      <TableCell>{formattedDateEnd}</TableCell>
-                      <TableCell>
-                        <div
-                          style={{
-                            width: "100%",
-                            position: "relative",
-                          }}
-                        >
-                          <Box sx={{ width: "70%", color: "#63c69a" }}>
-                            <LinearProgress
-                              color="inherit"
-                              variant="determinate"
-                              value={20}
-                              sx={{
-                                height: 20,
-                                borderRadius: "3px",
-                              }}
-                            />
-                          </Box>
-                          <Typography
-                            variant="body1"
-                            align="center"
-                            sx={{
-                              position: "absolute",
-                              top: "50%",
-                              left: "35%",
-                              transform: "translate(-50%, -50%)",
-                              zIndex: 99,
-                              color: "#000",
-                            }}
-                          >
-                            20%
-                          </Typography>
-                        </div>
-                      </TableCell>
-                      <TableCell>
-                        {" "}
-                        <Button
-                          variant="contained"
-                          style={{
-                            backgroundColor: "#63c69a",
-                            width: "50%",
-                            fontSize: "12px",
-                          }}
-                        >
-                          Show
-                        </Button>
-                      </TableCell>
-                    </TableRow>
-                  );
+                  return <MasterPlanTable data={data} rtl={rtl} />;
                 })}
               </TableBody>
             </Table>

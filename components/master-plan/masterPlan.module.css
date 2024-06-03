@@ -142,9 +142,14 @@
 }
 .videoShow:hover{
   box-shadow: 0 3px 2px rgba(0, 0, 0, 0.2);
- 
 }
-
+/* Table Elements */
+ .tableHover{
+   cursor: pointer;
+ }
+ .tableHover:hover{
+   color: #63C69A
+ }
 /* Responsive design for less than 1000px */
 @media (max-width: 1000px) {
   .masterPlanMain {
