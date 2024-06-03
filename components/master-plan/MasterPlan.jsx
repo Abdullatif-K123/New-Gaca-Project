@@ -110,7 +110,12 @@ const MasterPlan = ({
             <Document
               file={`/assets/pdf/LAYER${router.query.id}.pdf`}
               onLoadSuccess={onDocumentLoadSuccess}
-              loading={<div>loading pptx file</div>}
+              loading={
+                <div style={{ position: "fixed", left: "50%", top: "60%" }}>
+                  <span class="loaderPdf"></span>
+                  <p style={{ color: "#000", fontSize: "15px" }}>Loading...</p>
+                </div>
+              }
               error={<div>Failed to load PPTX. Please try again later.</div>}
             >
               <Page pageNumber={pageNumber} loading={""} />
