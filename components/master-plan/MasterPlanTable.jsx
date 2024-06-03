@@ -234,19 +234,7 @@ const MasterPlanTable = ({ data, rtl }) => {
                   </Typography>
                 </div>
               </TableCell>
-              <TableCell>
-                {" "}
-                <Button
-                  variant="contained"
-                  style={{
-                    backgroundColor: "#63c69a",
-                    width: "50%",
-                    fontSize: "12px",
-                  }}
-                >
-                  Show
-                </Button>
-              </TableCell>
+              <TableCell></TableCell>
             </TableRow>
           );
         })}
