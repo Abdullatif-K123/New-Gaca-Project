@@ -12,6 +12,8 @@ import {
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import Subscribe from "../ui/Subscribe";
 import { useFontSize } from "@/store/FontSizeContext";
+import { FiMinus } from "react-icons/fi";
+import { GoPlus } from "react-icons/go";
 const FAQs = ({ data, conVersion, rtl }) => {
   const { t } = useTranslation();
   const theme = createTheme({
@@ -51,10 +53,10 @@ const FAQs = ({ data, conVersion, rtl }) => {
   const handleAccordionChange = (index) => {
     if (expandedIndices.includes(index)) {
       // If the accordion is already expanded, collapse it
-      setExpandedIndices(expandedIndices.filter((i) => i !== index));
+      setExpandedIndices([]);
     } else {
       // If the accordion is not expanded, expand it
-      setExpandedIndices([...expandedIndices, index]);
+      setExpandedIndices([index]);
     }
   };
   // Extracting the fontsize context from store
@@ -105,7 +107,13 @@ const FAQs = ({ data, conVersion, rtl }) => {
                 onChange={() => handleAccordionChange(index)}
               >
                 <AccordionSummary
-                  expandIcon={expandedIndices.includes(index) ? "-" : "+"}
+                  expandIcon={
+                    expandedIndices.includes(index) ? (
+                      <FiMinus color="gray" />
+                    ) : (
+                      <GoPlus />
+                    )
+                  }
                   // Set background color dynamically
                   style={{
                     background: expandedIndices.includes(index)
