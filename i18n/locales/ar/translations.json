@@ -1,7 +1,10 @@
 {
   "lang": "العربية",
   "phone": "رقم الهاتف",
-  "welcome": "مرحباً",
+  "accessibility": "الوان للجميع",
+  "lang-version": "النسخة العربية | AR",
+  "phone-call": "إتصل بنا",
+  "message-menu": "ارسل لنا رسالة",
   "home-route": "الصفحة الرئيسية",
   "about": "من نحن",
   "download": "التنزيلات",

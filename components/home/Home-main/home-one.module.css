@@ -493,8 +493,8 @@
 /* Responsive style for less than 900px */
 @media (max-width: 900px) {
   .sectionOne {
-    padding: 110px 0 20px 10px;
-    height: 100vh;
+    padding: 80px 0 20px 10px;
+    height: 82vh;
     overflow: hidden;
   }
   .secOneContect {
@@ -526,7 +526,7 @@
     padding: 16px 12px;
   }
   .secOneButton > p {
-    font-size: 14px;
+    font-size: 15px !important;
   }
   .feedbackSection {
     width: 55%;

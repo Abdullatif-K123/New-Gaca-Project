@@ -20,7 +20,6 @@ const Navbar = ({
 }) => {
   const { fontSizeGeneral, increaseFontSize, decreaseFontSize, fontSizeSmall } =
     useFontSize();
-
   // creating function menu hamburger
   const [addClass, setAddClass] = useState(false);
   const [open, setOpen] = React.useState(false);
@@ -190,7 +189,13 @@ const Navbar = ({
       >
         {/* Responsive Menu */}
         <Hidden mdUp>
-          <div style={{ position: "absolute", bottom: "0", zIndex: "99" }}>
+          <div
+            style={{
+              position: "absolute",
+              bottom: "0",
+              zIndex: "99",
+            }}
+          >
             <IconButton onClick={handleMenuClick}>
               <Image
                 src="/assets/imges/more.png"
@@ -204,18 +209,74 @@ const Navbar = ({
               anchorEl={anchorEl}
               open={Boolean(anchorEl)}
               onClose={handleCloseMenu}
+              sx={{ direction: rtl ? "rtl" : "ltr" }}
             >
-              <MenuItem onClick={handleRtl}>
-                <div
-                  className={`${classes.languageRtl} ${
-                    rtl ? classes.langArabic : ""
-                  }`}
+              <MenuItem
+                onClick={handleCaptilizling}
+                className={classes.borderMenu}
+              >
+                <Link
+                  href={`tel:+${conVersion?.globalSettings?.phone}`}
+                  className={classes.menuBar}
                 >
-                  <p>{t("lang")}</p>
+                  <p
+                    style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}
+                  >
+                    {t("phone-call")}
+                  </p>
+                  <Image
+                    src="/assets/imges/phone-menu.png"
+                    width={23}
+                    height={23}
+                    alt="phone"
+                  />
+                </Link>
+              </MenuItem>
+              <MenuItem className={classes.borderMenu}>
+                <Link
+                  href={`mailto:${conVersion?.globalSettings?.email}?subject=Inquire%20About%20something`}
+                  className={classes.menuBar}
+                >
+                  <p
+                    style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}
+                  >
+                    {t("message-menu")}
+                  </p>
+                  <Image
+                    src="/assets/imges/email-menu.png"
+                    width={25}
+                    height={25}
+                    alt="email"
+                  />
+                </Link>
+              </MenuItem>
+              <MenuItem
+                onClick={handleAccessibility}
+                className={classes.borderMenu}
+              >
+                <div className={classes.menuBar}>
+                  <p
+                    style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}
+                  >
+                    {t("accessibility")}
+                  </p>
+                  <Image
+                    src="/assets/imges/eye-menu.png"
+                    width={18}
+                    height={18}
+                    alt="eye"
+                  />
                 </div>
               </MenuItem>
-              <MenuItem onClick={handleAccessibility}>Accessibility</MenuItem>
-              <MenuItem onClick={handleCaptilizling}>Captilizling</MenuItem>
+              <MenuItem onClick={handleRtl}>
+                <div className={classes.menuBar} style={{ border: "none" }}>
+                  <p
+                    style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}
+                  >
+                    {t("lang-version")}
+                  </p>
+                </div>
+              </MenuItem>
             </Menu>
           </div>
         </Hidden>
@@ -226,6 +287,7 @@ const Navbar = ({
               width={140}
               height={47}
               alt="logo"
+              className={classes.logoLayout}
               onClick={() => {
                 router.push("/");
               }}

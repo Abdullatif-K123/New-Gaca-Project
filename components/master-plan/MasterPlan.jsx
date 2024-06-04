@@ -6,7 +6,6 @@ import { Document, Page, pdfjs } from "react-pdf";
 import { useTranslation } from "react-i18next";
 import { useRouter } from "next/router";
 import MasterPlanTable from "./MasterPlanTable";
-import parse from "html-react-parser";
 import {
   Table,
   TableBody,
@@ -16,13 +15,8 @@ import {
   TableRow,
   Paper,
   TableSortLabel,
-  LinearProgress,
-  Typography,
-  Box,
-  Button,
 } from "@mui/material";
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
-
 const MasterPlan = ({
   singleElem,
   pptFile,
@@ -32,8 +26,6 @@ const MasterPlan = ({
   monitor,
 }) => {
   const router = useRouter();
-
-  console.log(monitor);
   const { t } = useTranslation();
   const [openVid, setOpenVid] = useState(false);
   const [pageNumber, setPageNumber] = useState(1);
@@ -135,11 +127,19 @@ const MasterPlan = ({
                     ></TableSortLabel>
                     Code
                   </TableCell>
-                  <TableCell>Title</TableCell>
-                  <TableCell>Start Date</TableCell>
-                  <TableCell>Finish Date</TableCell>
-                  <TableCell>Implementation Progress</TableCell>
-                  <TableCell>Download Progress Report</TableCell>
+                  <TableCell className={classes.tableHover}>Title</TableCell>
+                  <TableCell className={classes.tableHover}>
+                    Start Date
+                  </TableCell>
+                  <TableCell className={classes.tableHover}>
+                    Finish Date
+                  </TableCell>
+                  <TableCell className={classes.tableHover}>
+                    Implementation Progress
+                  </TableCell>
+                  <TableCell className={classes.tableHover}>
+                    Download Progress Report
+                  </TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
