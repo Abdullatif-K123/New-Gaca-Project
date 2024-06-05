@@ -7,10 +7,12 @@ import DialogTitle from "@mui/material/DialogTitle";
 import Slide from "@mui/material/Slide";
 import Image from "next/image";
 import classes from "./ui.module.css";
+import { useTranslation } from "react-i18next";
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 const DialogModal = ({ open, handleClose, openLink, link }) => {
+  const {t, i18n} = useTranslation();
   return (
     <Dialog
       TransitionComponent={Transition}
@@ -20,29 +22,30 @@ const DialogModal = ({ open, handleClose, openLink, link }) => {
         style: {
           overflowY: "unset",
           overflowX: "unset",
+          direction: i18n.language === 'ar'? "rtl":"ltr"
         },
       }}
+      
     >
       <div style={{ position: "relative" }}>
         <div className={classes.closeBtn} onClick={handleClose}>
           <Image src="/assets/svg/x.svg" width={17} height={17} alt="x" />
         </div>
         <div style={{ padding: 8 }}>
-          <DialogTitle style={{ color: "#4B465C" }}>{"Alert"}</DialogTitle>
+          <DialogTitle style={{ color: "#4B465C" }}>{t("alert-header")}</DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-slide-description">
-              Please note that you will go to an external link from the current
-              site!!
+               {t("alert-message")}
             </DialogContentText>
           </DialogContent>
-          <DialogActions>
+          <DialogActions sx={{display: "flex", gap: "10px"}}>
             <button
               variant="contained"
               color="inherit"
               onClick={handleClose}
               className={classes.btnCancel}
             >
-              Cancel
+              {t('cancel')}
             </button>
             <button
               variant="contained"
@@ -54,7 +57,7 @@ const DialogModal = ({ open, handleClose, openLink, link }) => {
               }}
               className={classes.btnSuccess}
             >
-              Confirm
+              {t('confirm')}
             </button>
           </DialogActions>
         </div>

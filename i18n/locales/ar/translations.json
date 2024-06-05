@@ -2,7 +2,7 @@
   "lang": "العربية",
   "phone": "رقم الهاتف",
   "accessibility": "الوان للجميع",
-  "lang-version": "النسخة العربية | AR",
+  "lang-version": "English Version | EN",
   "phone-call": "إتصل بنا",
   "message-menu": "ارسل لنا رسالة",
   "home-route": "الصفحة الرئيسية",
@@ -62,5 +62,8 @@
   "feedback-message-required": "رسالة التغذية المرتجعة مطلوبة",
   "cancel": "إلغاء",
   "feedback-submit": "إرسال",
-  "video-tutorial": "فيديو توضيحي"
+  "video-tutorial": "فيديو توضيحي",
+  "alert-header": " تنبيه !! ",
+  "alert-message": "يرجى ملاحظة أنك ستنتقل إلى رابط خارجي عن الموقع الحالي!!",
+  "confirm": "تأكيد"
 }

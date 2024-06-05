@@ -2,7 +2,7 @@
   "lang": "English",
   "phone": "Phone",
   "accessibility": "Accessibility",
-  "lang-version": "EN | English Version",
+  "lang-version": "AR | Arabic Version",
   "phone-call": "Call Us",
   "message-menu": "Message Us",
   "home-route": "Home",
@@ -62,5 +62,8 @@
   "feedback-message-required": "Feedback message is required",
   "cancel": "Cancel",
   "feedback-submit": "Submit",
-  "video-tutorial": "Video tutorial"
+  "video-tutorial": "Video tutorial",
+  "alert-header": "NICE ALART",
+  "alert-message": "Please note that you will go to an external link from the current site!!",
+  "confirm": "Confirm"
 }

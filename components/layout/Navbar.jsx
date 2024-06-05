@@ -399,7 +399,6 @@ const Navbar = ({
               />
               <p
                 style={{
-                  fontSize: rtl ? "18px" : "none",
                   fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
                 }}
               >
