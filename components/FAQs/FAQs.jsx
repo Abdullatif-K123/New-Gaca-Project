@@ -1,4 +1,4 @@
-import React, { useState, useTransition } from "react";
+import React, { useEffect, useState, useTransition } from "react";
 import { useRouter } from "next/router";
 import classes from "./faq.module.css";
 import Image from "next/image";
@@ -14,6 +14,7 @@ import Subscribe from "../ui/Subscribe";
 import { useFontSize } from "@/store/FontSizeContext";
 import { FiMinus } from "react-icons/fi";
 import { GoPlus } from "react-icons/go";
+import classestwo from "../home/Home-main/home-one.module.css";
 const FAQs = ({ data, conVersion, rtl }) => {
   const { t } = useTranslation();
   const theme = createTheme({
@@ -61,6 +62,27 @@ const FAQs = ({ data, conVersion, rtl }) => {
   };
   // Extracting the fontsize context from store
   const { fontSizeGeneral } = useFontSize();
+  const [showBtn, setShowBtn] = useState(false);
+
+  //side effect for showing arrow up Bottom when the window be in the second section or down
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      const threshold = 300; // Adjust this value based on when you want the button to appear
+      setShowBtn(scrollTop > threshold);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+  //Handling clicking button up to the top of the page
+  const handleClick = () => {
+    const targetElement = document.getElementById("home");
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   return (
     <ThemeProvider theme={theme}>
       <div className={classes.faqMain} style={{ direction: rtl ? "rtl" : "" }}>
@@ -176,6 +198,17 @@ const FAQs = ({ data, conVersion, rtl }) => {
         </div>
         <Subscribe rtl={rtl} />
       </div>
+      {showBtn && (
+        <div className={classestwo.btnUp} onClick={handleClick}>
+          <Image
+            src="/assets/svg/arrow-up.svg"
+            width={15}
+            height={15}
+            alt="arrow-down"
+            className={classestwo.arrowDown}
+          />
+        </div>
+      )}
     </ThemeProvider>
   );
 };

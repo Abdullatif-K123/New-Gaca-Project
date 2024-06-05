@@ -6,6 +6,8 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import ReactPaginate from "react-paginate";
 import { useTranslation } from "react-i18next";
+
+import classestwo from "../home/Home-main/home-one.module.css";
 const NewsMain = ({ dataNews, rtl }) => {
   const [currentPage, setCurrentPage] = useState(0);
   const [leftRight, setLeftRight] = useState("left");
@@ -24,6 +26,26 @@ const NewsMain = ({ dataNews, rtl }) => {
       })
     );
   }, [currentPage, dataNews]);
+  const [showBtn, setShowBtn] = useState(false);
+  //side effect for showing arrow up Bottom when the window be in the second section or down
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      const threshold = 300; // Adjust this value based on when you want the button to appear
+      setShowBtn(scrollTop > threshold);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+  //Handling clicking button up to the top of the page
+  const handleClick = () => {
+    const targetElement = document.getElementById("home");
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   return (
     <div
       className={classes.newsMain}
@@ -98,6 +120,17 @@ const NewsMain = ({ dataNews, rtl }) => {
         </div>
       </div>
       <Subscribe rtl={rtl} />
+      {showBtn && (
+        <div className={classestwo.btnUp} onClick={handleClick}>
+          <Image
+            src="/assets/svg/arrow-up.svg"
+            width={15}
+            height={15}
+            alt="arrow-down"
+            className={classestwo.arrowDown}
+          />
+        </div>
+      )}
     </div>
   );
 };

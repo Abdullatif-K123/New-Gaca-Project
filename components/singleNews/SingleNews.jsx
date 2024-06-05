@@ -10,6 +10,7 @@ import toast, { Toaster } from "react-hot-toast";
 import LoadingSpinner from "../ui/LoadingSpinner";
 import Subscribe from "../ui/Subscribe";
 import { useFontSize } from "@/store/FontSizeContext";
+import classestwo from "../home/Home-main/home-one.module.css";
 import { useTranslation } from "react-i18next";
 const SingleNews = ({ id, rtl }) => {
   const { t } = useTranslation();
@@ -25,6 +26,7 @@ const SingleNews = ({ id, rtl }) => {
   const humanReadableDate = `${year}-${month}-${day}`;
   const router = useRouter();
   const { fontSizeGeneral } = useFontSize();
+  const [showBtn, setShowBtn] = useState(false);
   //Fetching data
   useEffect(() => {
     const fetchData = async () => {
@@ -50,6 +52,14 @@ const SingleNews = ({ id, rtl }) => {
     console.log("Hello");
     notify();
     navigator.clipboard.writeText("https://e-snap.vercel.app" + router.asPath);
+  };
+
+  //Handling clicking button up to the top of the page
+  const handleClick = () => {
+    const targetElement = document.getElementById("home");
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: "smooth" });
+    }
   };
   return (
     <>
@@ -178,6 +188,16 @@ const SingleNews = ({ id, rtl }) => {
         <Toaster />
       </div>
       <Subscribe rtl={rtl} />
+
+      <div className={classestwo.btnUp} onClick={handleClick}>
+        <Image
+          src="/assets/svg/arrow-up.svg"
+          width={15}
+          height={15}
+          alt="arrow-down"
+          className={classestwo.arrowDown}
+        />
+      </div>
     </>
   );
 };

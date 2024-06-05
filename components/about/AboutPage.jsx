@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import classes from "./about.module.css";
 import Image from "next/image";
 import parse from "html-react-parser";
@@ -6,10 +6,32 @@ import { useRouter } from "next/router";
 import Subscribe from "../ui/Subscribe";
 import { useFontSize } from "@/store/FontSizeContext";
 import { useTranslation } from "react-i18next";
+import classestwo from "../home/Home-main/home-one.module.css";
 const AboutPage = ({ data, rtl }) => {
   const { t } = useTranslation();
   const router = useRouter();
   const { fontSizeGeneral } = useFontSize();
+  const [showBtn, setShowBtn] = useState(false);
+
+  //side effect for showing arrow up Bottom when the window be in the second section or down
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      const threshold = 300; // Adjust this value based on when you want the button to appear
+      setShowBtn(scrollTop > threshold);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+  //Handling clicking button up to the top of the page
+  const handleClick = () => {
+    const targetElement = document.getElementById("home");
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   return (
     <div
       className={classes.aboutPageMain}
@@ -167,6 +189,17 @@ const AboutPage = ({ data, rtl }) => {
         />
       </div>
       <Subscribe rtl={rtl} />
+      {showBtn && (
+        <div className={classestwo.btnUp} onClick={handleClick}>
+          <Image
+            src="/assets/svg/arrow-up.svg"
+            width={15}
+            height={15}
+            alt="arrow-down"
+            className={classestwo.arrowDown}
+          />
+        </div>
+      )}
     </div>
   );
 };
