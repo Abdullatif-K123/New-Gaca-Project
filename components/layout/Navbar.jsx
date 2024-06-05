@@ -341,9 +341,9 @@ const Navbar = ({
               <li
                 onClick={() => {
                   mobileMenu();
-                  router.push("/download");
+                  router.push("/documents");
                 }}
-                className={`${path === "download" ? classes.active : null}`}
+                className={`${path === "documents" ? classes.active : null}`}
                 style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}
               >
                 {t("download")}

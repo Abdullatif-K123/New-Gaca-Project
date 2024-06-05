@@ -200,7 +200,7 @@ const Footer = ({ conVersion, rtl }) => {
             </li>
             <li
               onClick={() => {
-                router.push("/download");
+                router.push("/documents");
               }}
               style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}
             >
