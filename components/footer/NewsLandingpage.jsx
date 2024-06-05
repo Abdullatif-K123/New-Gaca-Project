@@ -14,32 +14,32 @@ import dynamic from "next/dynamic";
 const OwlCarousel = dynamic(() => import("react-owl-carousel"), {
   ssr: false,
 });
-
 const options = {
   animateOut: "slideOutDown",
-  animateIn: "flipInX",
-  items: 3,
-  margin: 40,
-  stagePadding: 18,
-  smartSpeed: 450,
+  margin: 50,
+  padding: 60,
+  smartSpeed: 650,
   loop: true,
+  center: true,
   autoplayTimeout: 3000,
   autoplayHoverPause: true,
   autoplay: true,
-
   responsive: {
     0: {
       items: 1,
+      margin: 20,
+      padding: 0,
     },
     600: {
       items: 2,
+      margin: 50,
+      padding: 10,
     },
     1000: {
       items: 3,
     },
   },
 };
-
 const NewsLandingpage = React.memo(({ news, rtl }) => {
   const [currentSlide, setCurrentSlide] = useState(1);
   useEffect(() => {
@@ -81,7 +81,6 @@ const NewsLandingpage = React.memo(({ news, rtl }) => {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            display: "inline-block",
           }}
         >
           <OwlCarousel
@@ -89,11 +88,15 @@ const NewsLandingpage = React.memo(({ news, rtl }) => {
             animateIn={true}
             className="owl-carousel owl-theme"
             {...options}
-            center={true}
             dots={false}
           >
             {news.map((newsData) => (
-              <SingleCard key={newsData.id} {...newsData} rtl={rtl} />
+              <div
+                key={newsData.id}
+                style={{ display: "flex", justifyContent: "center" }}
+              >
+                <SingleCard {...newsData} rtl={rtl} />
+              </div>
             ))}
           </OwlCarousel>
         </div>
