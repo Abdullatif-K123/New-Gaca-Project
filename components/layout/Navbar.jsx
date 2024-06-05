@@ -158,9 +158,6 @@ const Navbar = ({
               height={15}
               alt="phone"
             />
-            <p style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}>
-              {t("phone")}
-            </p>
           </div>
           <div
             className={classes.dateSaudi}
@@ -217,7 +214,10 @@ const Navbar = ({
                 <Link
                   href={`tel:+${conVersion?.globalSettings?.phone}`}
                   className={classes.menuBar}
-                  style={{ justifyContent: rtl ? "flex-end" : "flex-start" }}
+                  style={{
+                    justifyContent: rtl ? "flex-end" : "flex-end",
+                    direction: rtl ? "ltr" : "rtl",
+                  }}
                 >
                   <p
                     style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}
@@ -236,7 +236,10 @@ const Navbar = ({
                 <Link
                   href={`mailto:${conVersion?.globalSettings?.email}?subject=Inquire%20About%20something`}
                   className={classes.menuBar}
-                  style={{ justifyContent: rtl ? "flex-end" : "flex-start" }}
+                  style={{
+                    justifyContent: rtl ? "flex-end" : "flex-end",
+                    direction: rtl ? "ltr" : "rtl",
+                  }}
                 >
                   <p
                     style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}
@@ -257,7 +260,10 @@ const Navbar = ({
               >
                 <div
                   className={classes.menuBar}
-                  style={{ justifyContent: rtl ? "flex-end" : "flex-start" }}
+                  style={{
+                    justifyContent: rtl ? "flex-end" : "flex-end",
+                    direction: rtl ? "ltr" : "rtl",
+                  }}
                 >
                   <p
                     style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}
@@ -277,7 +283,7 @@ const Navbar = ({
                   className={classes.menuBar}
                   style={{
                     border: "none",
-                    justifyContent: rtl ? "flex-end" : "flex-start",
+                    justifyContent: rtl ? "flex-end" : "flex-end",
                   }}
                 >
                   <p

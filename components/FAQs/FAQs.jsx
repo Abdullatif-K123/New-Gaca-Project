@@ -124,7 +124,6 @@ const FAQs = ({ data, conVersion, rtl }) => {
                       ? "2px solid #1C7A54"
                       : "none",
                   }}
-                  data-aos="fade-right"
                 >
                   <Typography
                     className={classes.freq}
@@ -135,6 +134,7 @@ const FAQs = ({ data, conVersion, rtl }) => {
                       fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
                       fontSize: `${15 + fontSizeGeneral}px`,
                     }}
+                    data-aos="fade-left"
                   >
                     <Image
                       src={`/assets/svg/${

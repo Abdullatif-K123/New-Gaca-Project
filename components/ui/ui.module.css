@@ -73,7 +73,6 @@
 }
 
 .emaillist{
-  
  display: flex;
  align-items: center;
  width: 30%;
@@ -99,6 +98,50 @@
 }
 .emaillist > button:hover{
  box-shadow: 0px 2px 3px  #e48d4e;
+}
+.errorMessage {
+  width: fit-content;
+  font-family: "DINNext-meduim", sans-serif;
+  font-size: 14px;
+  background: #c51218 !important;
+  padding: 10px !important;
+  border-radius: 0 !important;
+  position: absolute;
+  bottom: -45px;
+  z-index: 20;
+  color: #fff; 
+  border-radius: 10px !important;
+}
+.errorMessage:before {
+  content: "";
+  width: 0;
+  height: 0; 
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid #c51218;
+  position: absolute;
+  top: -10px;
+}
+.errorMessage:after {
+  color: #c51218 !important;
+}
+.errorMailing{
+  box-shadow: 0px 5px 10px 0px rgba(251, 12, 12, 0.5) !important; 
+}
+.errorButton{
+   background-color: #a8aaae !important;
+   cursor: not-allowed !important;
+}
+.errorButton:hover{
+   box-shadow:  none !important;
+}
+.inputLabel > label {
+  color: gray;
+  font-family: "DINNext-Regular", sans-serif;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 @media (max-width: 750px) {
  .emailing{
