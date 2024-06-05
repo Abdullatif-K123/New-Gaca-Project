@@ -93,6 +93,7 @@ const FAQs = ({ data, conVersion, rtl }) => {
               fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
               fontSize: `${16 + fontSizeGeneral}px`,
             }}
+            data-aos="zoom-in-up"
           >
             {rtl
               ? conVersion?.faqPageDescription
@@ -123,6 +124,7 @@ const FAQs = ({ data, conVersion, rtl }) => {
                       ? "2px solid #1C7A54"
                       : "none",
                   }}
+                  data-aos="fade-right"
                 >
                   <Typography
                     className={classes.freq}

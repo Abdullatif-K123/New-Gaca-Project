@@ -15,7 +15,7 @@
   background-repeat: no-repeat;
   background-position: bottom;
   padding: 38px 91px;
-  height: 390px;
+  height: 280px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -311,9 +311,12 @@
     max-width: 550px;
   }
   .choosen {
-    height: 250px;
-    padding: 25px;
     gap: 10px;
+    padding: 22px 31px;
+    height: 170px;
+  }
+  .choosen > h1{
+     font-size: 30px !important;
   }
   .newsCard {
     width: 340px;

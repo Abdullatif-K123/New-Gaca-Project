@@ -216,12 +216,11 @@ const Footer = ({ conVersion, rtl }) => {
             </li>
             <li
               onClick={() => {
-                handleOpen();
-                setLinkProvide(conVersion?.globalSettings.constructorUrl);
+                router.push("/faq");
               }}
               style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}
             >
-              {t("constructor")}
+              {t("faq")}
             </li>
           </ul>
         </div>

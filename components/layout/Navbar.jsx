@@ -192,7 +192,7 @@ const Navbar = ({
           <div
             style={{
               position: "absolute",
-              bottom: "0",
+              top: "20px",
               zIndex: "99",
             }}
           >
@@ -209,7 +209,6 @@ const Navbar = ({
               anchorEl={anchorEl}
               open={Boolean(anchorEl)}
               onClose={handleCloseMenu}
-              sx={{ direction: rtl ? "rtl" : "ltr" }}
             >
               <MenuItem
                 onClick={handleCaptilizling}
@@ -218,6 +217,7 @@ const Navbar = ({
                 <Link
                   href={`tel:+${conVersion?.globalSettings?.phone}`}
                   className={classes.menuBar}
+                  style={{ justifyContent: rtl ? "flex-end" : "flex-start" }}
                 >
                   <p
                     style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}
@@ -236,6 +236,7 @@ const Navbar = ({
                 <Link
                   href={`mailto:${conVersion?.globalSettings?.email}?subject=Inquire%20About%20something`}
                   className={classes.menuBar}
+                  style={{ justifyContent: rtl ? "flex-end" : "flex-start" }}
                 >
                   <p
                     style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}
@@ -254,7 +255,10 @@ const Navbar = ({
                 onClick={handleAccessibility}
                 className={classes.borderMenu}
               >
-                <div className={classes.menuBar}>
+                <div
+                  className={classes.menuBar}
+                  style={{ justifyContent: rtl ? "flex-end" : "flex-start" }}
+                >
                   <p
                     style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}
                   >
@@ -269,7 +273,13 @@ const Navbar = ({
                 </div>
               </MenuItem>
               <MenuItem onClick={handleRtl}>
-                <div className={classes.menuBar} style={{ border: "none" }}>
+                <div
+                  className={classes.menuBar}
+                  style={{
+                    border: "none",
+                    justifyContent: rtl ? "flex-end" : "flex-start",
+                  }}
+                >
                   <p
                     style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}
                   >
