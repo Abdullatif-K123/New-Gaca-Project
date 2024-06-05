@@ -406,7 +406,12 @@ const Navbar = ({
               </p>
             </div>
           </div>
-          <div className="hamburger" onClick={mobileMenu}>
+          <div
+            className={`hamburger ${addClass ? "active" : ""} ${
+              addClass ? classes.hamburgerNav : "null"
+            } ${classes.hamburgerInitial}`}
+            onClick={mobileMenu}
+          >
             <span className={`bar`}></span>
             <span className={`bar`}></span>
             <span className={`bar`}></span>

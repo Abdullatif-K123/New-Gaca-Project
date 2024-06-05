@@ -174,11 +174,7 @@
   left: 0;
 }
 
-.section > li:last-child {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
+ 
 .feedBackSection {
   align-self: center;
   justify-self: flex-end;
@@ -485,6 +481,7 @@
    color: #128c5b;
    text-shadow: 0px 1px;
 }
+ 
 /* Responsive style for less than 1200px */
 @media (max-width: 1250px) {
   .sectionOne {
@@ -578,16 +575,16 @@
     padding: 25px 30px;
     height: 80px;
     gap: 10px;
+    
   }
 
   .navSections {
-    position: fixed;
-    padding-top: 0px;
-    left: -100%;
-    top: 6.4rem;
-    height: 320px;
+    position: fixed; 
+    right: -100%;
+    top: 0rem;
+    height: 700px;
     background-color: #fff;
-    width: 100%;
+    width: 80%;
     border-radius: 10px;
     text-align: center;
     transition: 0.3s;
@@ -601,17 +598,13 @@
   .feedBackSection {
     position: fixed;
     z-index: 999;
-    left: -100%;
+    right: -100%;
     top: 22.3rem;
-    padding-right: 0px;
-    align-items: center;
-    justify-content: center;
-    border-radius: 10px;
-    text-align: center;
+    border-radius: 10px; 
     transition: 0.3s;
   }
   .section > li:hover {
-    color: #016258;
+    color: #016258 !important;
   }
   .section > li::after {
     background-color: #016258;
@@ -619,17 +612,29 @@
   .section {
     position: relative;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding-right: 10px;
+    padding-top: 30px;
+    text-align: right;
     gap: 1.5rem;
     z-index: 99 !important;
   }
   .section > li {
     color: #63c69a;
+    width: 100%;
+    text-align: right;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #005149;
   }
+  .section > li:hover{
+     text-align: right;
+  }
+ 
   .navSection {
     display: block;
   }
+
   .navAuth {
     position: fixed;
     z-index: 1000;
@@ -645,17 +650,28 @@
     transition: 0.3s;
   }
   .navContentHam {
-    left: 0% !important;
+    right: 0% !important;
   }
   .navAuthHam {
-    left: 50%;
-    transform: translateX(-50%);
+    right: 34%;
+    transform: translateX(34%);
   }
   .hamburger {
     display: block;
     cursor: pointer;
-   
+    transition: 0.2s all ease-in-out;
   }
+  
+  .hamburgerInitial{
+    transition: 0.6s all ease-in-out ;
+    right: 10%;
+ }
+ .hamburgerNav{
+    position: absolute;
+    right: 80%;
+    padding: 7px;
+    background-color: #128c5b;
+ }
   .logo{
      position: absolute;
      top: 20px;
