@@ -241,8 +241,9 @@
 .newsHeader {
   display: flex;
   flex-direction: column;
-  row-gap: 30px;
+  row-gap: 10px;
   text-align: center;
+  padding: 50px; 
 }
 .newsTopHeading {
   display: flex;
@@ -277,10 +278,7 @@
   .newsCardMain {
     row-gap: 70px;
     column-gap: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
+   
   }
   .newsCardMain2 {
     row-gap: 70px;
@@ -310,6 +308,15 @@
 }
 /* Media screen for less than 650px */
 @media (max-width: 650px) {
+  .newsHeader{
+    padding: 15px;
+  }
+  .newsArrow{
+     left: 0;
+  }
+ .newsArrowRigt{
+   left: 90% !important;
+ }
   .newsCardMain {
     display: flex;
     align-items: center;

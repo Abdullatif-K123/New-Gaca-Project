@@ -1,16 +1,18 @@
 /* Styling the bottom section of the home page */
+.homeBottomSectoin{
+  background-color: #fff;
+  background-image: url("../../public/assets/svg/mapWorld.svg");
+  background-position: center;
+  background-size: cover;
+    
+}
 .homeBottomMain {
   display: flex;
   flex-direction: column;
   align-items: center;
   row-gap: 50px;
-  padding: 80px;
-  background-color: #fff;
-  background-image: url("../../public/assets/svg/mapWorld.svg");
-  background-position: center;
-  background-size: cover;
-  background-color: #fff;
-  position: relative;
+  padding: 80px;  
+   position: relative;
 }
 .stakholderArrows {
   width: 100%;
@@ -27,6 +29,8 @@
 .bottomLogo {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
   gap: 80px;
   
 }
@@ -228,6 +232,10 @@
   }
 }
 @media (max-width: 850px) {
+  .stakholderNewsArrow{
+    width: 25px;
+    height: 25px;
+ }
   .homeBottomMain {
     row-gap: 120px;
   }
@@ -273,6 +281,29 @@
     width: 130px;
     height: 50px;
   }
+  .stakholderArrows{
+     justify-content: flex-end;
+    gap: 25px;
+    position: absolute;
+    right: 10% !important;
+    top: 0;
+  } 
+  .bottomLogo{
+     position: absolute;
+     left: 10%;
+     top: 0;
+  }
+  .bottomLogo > h2  {
+     font-size: 18px !important;
+     text-align: left;
+  }
+  .bottomLogo > h2 span {
+    font-size: 18px !important;
+  }
+  .stakholderNewsArrow{
+     width: 15px;
+     height: 15px;
+  }
 }
 @media (max-width: 600px) {
   .btnDown {
@@ -280,9 +311,7 @@
     width: 50px;
     height: 50px;
   }
-.bottomLogo{
-   align-items: center;
-}
+ 
   .homeBottomMain {
     row-gap: 120px;
   }

@@ -77,6 +77,7 @@ const Element = ({
         onClick={() => {
           router.push(`/master-plan/${_id}/?id=${id}`);
         }}
+        loading="lazy"
         onMouseOver={() => handleHover(id)}
         onMouseOut={handleMouseOut}
         width={width}

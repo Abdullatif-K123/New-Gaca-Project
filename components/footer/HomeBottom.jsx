@@ -41,11 +41,16 @@ const HomeBottom = ({ imgs, conVersion, desc, news, rtl }) => {
   }, []);
   const src = imgs.avatar ? imgs.avatar : "/assets/svg/SANS.svg";
   return (
-    <>
+    <div className={classes.homeBottomSectoin}>
+      <NewsLandingpage news={news} rtl={rtl} />
       <div className={classes.homeBottomMain} id="stakeholder">
         <div className={classes.bottomLogo}>
-          <NewsLandingpage news={news} rtl={rtl} />
-          <h2 style={{ direction: rtl ? "rtl" : "" }}>
+          <h2
+            style={{
+              direction: rtl ? "rtl" : "",
+              fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
+            }}
+          >
             <span style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}>
               {rtl ? "أصحاب" : "Our"}
             </span>{" "}
@@ -61,6 +66,7 @@ const HomeBottom = ({ imgs, conVersion, desc, news, rtl }) => {
             onClick={() => {
               setLeftRight(false);
             }}
+            className={classes.stakholderNewsArrow}
           />
           <Image
             src="assets/svg/stackholderArrow.svg"
@@ -70,6 +76,7 @@ const HomeBottom = ({ imgs, conVersion, desc, news, rtl }) => {
             onClick={() => {
               setLeftRight(true);
             }}
+            className={classes.stakholderNewsArrow}
           />
         </div>
         <div className={classes.partners}>
@@ -91,11 +98,12 @@ const HomeBottom = ({ imgs, conVersion, desc, news, rtl }) => {
                 >
                   <div className={classes.partnerItem}>
                     {stakholder.avatar ? (
-                      <img
+                      <Image
                         src={`${stakholder.avatar}`}
                         width={140}
                         height={140}
                         alt={stakholder.title}
+                        loading="lazy"
                       />
                     ) : (
                       <div
@@ -122,7 +130,7 @@ const HomeBottom = ({ imgs, conVersion, desc, news, rtl }) => {
       </div>
       <Subscribe rtl={rtl} />
       <Footer conVersion={conVersion} desc={desc} rtl={rtl} />
-    </>
+    </div>
   );
 };
 

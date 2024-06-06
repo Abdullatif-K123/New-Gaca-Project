@@ -43,7 +43,13 @@ const SingleCard = ({
         style={{ ...cardProps, direction: rtl ? "rtl" : "" }}
       >
         <div className={classes.newsCardHead}>
-          <img src={src} width={385} height={180} alt={titleEN?.slice(0, 20)} />
+          <Image
+            src={src}
+            width={385}
+            height={180}
+            alt={titleEN?.slice(0, 20)}
+            loading="lazy"
+          />
           <p
             style={{
               fontFamily: rtl ? "DINNext-Arabic-meduim " : "",

@@ -1,5 +1,5 @@
 {
-  "lang": "English",
+  "lang": "Arabic Version | AR",
   "phone": "Phone",
   "accessibility": "Accessibility",
   "lang-version": "AR | Arabic Version",
@@ -63,7 +63,7 @@
   "cancel": "Cancel",
   "feedback-submit": "Submit",
   "video-tutorial": "Video tutorial",
-  "alert-header": "NICE ALART",
+  "alert-header": "ALART",
   "alert-message": "Please note that you will go to an external link from the current site!!",
   "confirm": "Confirm"
 }

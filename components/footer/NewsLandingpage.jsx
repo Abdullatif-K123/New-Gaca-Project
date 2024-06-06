@@ -16,8 +16,8 @@ const OwlCarousel = dynamic(() => import("react-owl-carousel"), {
 });
 const options = {
   animateOut: "slideOutDown",
-  margin: 50,
-  padding: 60,
+  margin: 10,
+  padding: 20,
   smartSpeed: 650,
   loop: true,
   center: true,
@@ -27,7 +27,7 @@ const options = {
   responsive: {
     0: {
       items: 1,
-      margin: 20,
+      margin: 30,
       padding: 0,
     },
     600: {
