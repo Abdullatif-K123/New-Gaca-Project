@@ -573,24 +573,21 @@
 @media (max-width: 900px) {
   .navMain {
     display: flex;
-    align-items: center;
-    justify-content: flex-end;
+    align-items: center;  
+    justify-content: space-between;
     padding: 25px 30px;
     height: 80px;
-    gap: 10px;
-    
+    gap: 10px; 
   }
  .imgMenu{ 
   display: block;
   margin: auto;
  }
   .navSections {
-    position: fixed; 
-    right: -100%;
+    position: fixed;  
     top:  -10px;
-    height: 700px;
+    height: 900px;
     background-color: #fff;
-    overflow-y: hidden;
     width: 80%; 
     text-align: center;
     transition: 0.3s;
@@ -598,8 +595,14 @@
     z-index: 100;
     padding: 20px 0;
   } 
-  .navSectionsAr{ 
-     right: 100% !important;
+  .navRight{
+     right: -100%; 
+  }
+  .navLeft{
+     left: -100%;
+  }
+  .navContentHamAr{ 
+     right: 0% !important;
     }
   .imgMini {
     display: none;
@@ -656,7 +659,7 @@
     transition: 0.3s;
   }
   .navContentHam {
-    right: 0% !important;
+    left: 0% !important;
   }
   .navContentRTL{
      right:20% !important
@@ -666,7 +669,7 @@
     transform: translateX(34%);
   }
   .navAuthHamRight{
-    right: 45% !important
+    right: 45%; 
  }
   .hamburger {
     display: block;
@@ -683,6 +686,15 @@
     right: 80%;
     padding: 7px;
     background-color: #128c5b;
+ }
+ .hamburgerNavEn{
+  position: absolute;
+  padding: 7px;
+  background-color: #128c5b;
+ }
+ .hamburgerInitialEn{
+  transition: 0.6s all ease-in-out ;
+  right: 11%;
  }
   .logo{
      position: absolute;

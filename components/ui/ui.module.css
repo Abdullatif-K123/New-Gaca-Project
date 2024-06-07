@@ -143,6 +143,14 @@
   font-weight: 400;
   line-height: normal;
 }
+.iframeResponsive{
+   width: 750px;
+   height: 500px;
+}
+.dialogFrame{ 
+   min-width: 800px;
+   min-height: 600px;
+ }
 @media (max-width: 750px) {
  .emailing{
   flex-direction: column;
@@ -161,5 +169,13 @@
 }
 .emaillist > button{
   padding: 10px 20px;
+}
+.iframeResponsive{
+   width: 630px;
+   height: 400px;
+}
+.dialogFrame{ 
+  min-width: 350px !important;
+  min-height: 300px !important;
 }
 }

@@ -180,128 +180,25 @@ const Navbar = ({
         style={{
           filter: isFeedbackVisible ? "brightness(0.5)" : "brightness(1)",
           transition: "all 0.6s ease-in-out",
-          direction: rtl ? "rtl" : "initial",
+          direction: rtl ? "rtl" : "ltr",
         }}
         id="home"
       >
-        {/* Responsive Menu */}
-        <Hidden mdUp>
+        <nav className={`${classes.navMain}`}>
           <div
-            style={{
-              position: "absolute",
-              top: "20px",
-              zIndex: "99",
-            }}
+            className={`hamburger ${addClass ? "active" : ""} ${
+              addClass
+                ? rtl
+                  ? classes.hamburgerNav
+                  : classes.hamburgerNavEn
+                : "null"
+            } ${rtl ? classes.hamburgerInitial : classes.hamburgerInitialEn}`}
+            onClick={mobileMenu}
           >
-            <IconButton onClick={handleMenuClick}>
-              <Image
-                src="/assets/imges/more.png"
-                width={25}
-                height={25}
-                alt="more"
-                style={{ transform: "rotate(90deg)" }}
-              />
-            </IconButton>
-            <Menu
-              anchorEl={anchorEl}
-              open={Boolean(anchorEl)}
-              onClose={handleCloseMenu}
-            >
-              <MenuItem
-                onClick={handleCaptilizling}
-                className={classes.borderMenu}
-              >
-                <Link
-                  href={`tel:+${conVersion?.globalSettings?.phone}`}
-                  className={classes.menuBar}
-                  style={{
-                    justifyContent: rtl ? "flex-end" : "flex-end",
-                    direction: rtl ? "ltr" : "rtl",
-                  }}
-                >
-                  <p
-                    style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}
-                  >
-                    {t("phone-call")}
-                  </p>
-                  <Image
-                    src="/assets/imges/phone-menu.png"
-                    width={23}
-                    height={23}
-                    alt="phone"
-                  />
-                </Link>
-              </MenuItem>
-              <MenuItem className={classes.borderMenu}>
-                <Link
-                  href={`mailto:${conVersion?.globalSettings?.email}?subject=Inquire%20About%20something`}
-                  className={classes.menuBar}
-                  style={{
-                    justifyContent: rtl ? "flex-end" : "flex-end",
-                    direction: rtl ? "ltr" : "rtl",
-                  }}
-                >
-                  <p
-                    style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}
-                  >
-                    {t("message-menu")}
-                  </p>
-                  <Image
-                    src="/assets/imges/email-menu.png"
-                    width={25}
-                    height={25}
-                    alt="email"
-                  />
-                </Link>
-              </MenuItem>
-              <MenuItem
-                onClick={handleAccessibility}
-                className={classes.borderMenu}
-              >
-                <div
-                  className={classes.menuBar}
-                  style={{
-                    justifyContent: rtl ? "flex-end" : "flex-end",
-                    direction: rtl ? "ltr" : "rtl",
-                  }}
-                >
-                  <p
-                    style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}
-                  >
-                    {t("accessibility")}
-                  </p>
-                  <Image
-                    src="/assets/imges/eye-menu.png"
-                    width={18}
-                    height={18}
-                    alt="eye"
-                  />
-                </div>
-              </MenuItem>
-              <MenuItem
-                onClick={() => {
-                  handleRtl();
-                  handleCloseMenu();
-                }}
-              >
-                <div
-                  className={classes.menuBar}
-                  style={{
-                    border: "none",
-                    justifyContent: rtl ? "flex-end" : "flex-end",
-                  }}
-                >
-                  <p
-                    style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}
-                  >
-                    {t("lang-version")}
-                  </p>
-                </div>
-              </MenuItem>
-            </Menu>
+            <span className={`bar`}></span>
+            <span className={`bar`}></span>
+            <span className={`bar`}></span>
           </div>
-        </Hidden>
-        <nav className={`${classes.navMain}  `}>
           <div className={classes.logo}>
             <Image
               src={"/assets/svg/whiteLogo.svg"}
@@ -318,10 +215,10 @@ const Navbar = ({
             className={`${classes.navSections} ${
               addClass
                 ? rtl
-                  ? classes.navContentHam
+                  ? classes.navContentHamAr
                   : classes.navContentHam
                 : null
-            } `}
+            } ${rtl ? classes.navRight : classes.navLeft} `}
           >
             <Image
               src="/assets/svg/LogoAbout.svg"
@@ -395,7 +292,11 @@ const Navbar = ({
 
           <div
             className={`${classes.feedBackSection} ${
-              addClass ? classes.navAuthHam : null
+              addClass
+                ? rtl
+                  ? classes.navAuthHam
+                  : classes.navAuthHamRight
+                : null
             }  `}
           >
             <div className={classes.vision}>
@@ -428,16 +329,131 @@ const Navbar = ({
               </p>
             </div>
           </div>
-          <div
-            className={`hamburger ${addClass ? "active" : ""} ${
-              addClass ? classes.hamburgerNav : "null"
-            } ${classes.hamburgerInitial}`}
-            onClick={mobileMenu}
-          >
-            <span className={`bar`}></span>
-            <span className={`bar`}></span>
-            <span className={`bar`}></span>
-          </div>
+
+          {/* Responsive Menu */}
+          <Hidden mdUp>
+            <div
+              style={{
+                top: "20px",
+                zIndex: "99",
+              }}
+            >
+              <IconButton onClick={handleMenuClick}>
+                <Image
+                  src="/assets/imges/more.png"
+                  width={25}
+                  height={25}
+                  alt="more"
+                  style={{ transform: "rotate(90deg)" }}
+                />
+              </IconButton>
+              <Menu
+                anchorEl={anchorEl}
+                open={Boolean(anchorEl)}
+                onClose={handleCloseMenu}
+              >
+                <MenuItem
+                  onClick={handleCaptilizling}
+                  className={classes.borderMenu}
+                >
+                  <Link
+                    href={`tel:+${conVersion?.globalSettings?.phone}`}
+                    className={classes.menuBar}
+                    style={{
+                      justifyContent: rtl ? "flex-end" : "flex-end",
+                      direction: rtl ? "ltr" : "rtl",
+                    }}
+                  >
+                    <p
+                      style={{
+                        fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
+                      }}
+                    >
+                      {t("phone-call")}
+                    </p>
+                    <Image
+                      src="/assets/imges/phone-menu.png"
+                      width={23}
+                      height={23}
+                      alt="phone"
+                    />
+                  </Link>
+                </MenuItem>
+                <MenuItem className={classes.borderMenu}>
+                  <Link
+                    href={`mailto:${conVersion?.globalSettings?.email}?subject=Inquire%20About%20something`}
+                    className={classes.menuBar}
+                    style={{
+                      justifyContent: rtl ? "flex-end" : "flex-end",
+                      direction: rtl ? "ltr" : "rtl",
+                    }}
+                  >
+                    <p
+                      style={{
+                        fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
+                      }}
+                    >
+                      {t("message-menu")}
+                    </p>
+                    <Image
+                      src="/assets/imges/email-menu.png"
+                      width={25}
+                      height={25}
+                      alt="email"
+                    />
+                  </Link>
+                </MenuItem>
+                <MenuItem
+                  onClick={handleAccessibility}
+                  className={classes.borderMenu}
+                >
+                  <div
+                    className={classes.menuBar}
+                    style={{
+                      justifyContent: rtl ? "flex-end" : "flex-end",
+                      direction: rtl ? "ltr" : "rtl",
+                    }}
+                  >
+                    <p
+                      style={{
+                        fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
+                      }}
+                    >
+                      {t("accessibility")}
+                    </p>
+                    <Image
+                      src="/assets/imges/eye-menu.png"
+                      width={18}
+                      height={18}
+                      alt="eye"
+                    />
+                  </div>
+                </MenuItem>
+                <MenuItem
+                  onClick={() => {
+                    handleRtl();
+                    handleCloseMenu();
+                  }}
+                >
+                  <div
+                    className={classes.menuBar}
+                    style={{
+                      border: "none",
+                      justifyContent: rtl ? "flex-end" : "flex-end",
+                    }}
+                  >
+                    <p
+                      style={{
+                        fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
+                      }}
+                    >
+                      {t("lang-version")}
+                    </p>
+                  </div>
+                </MenuItem>
+              </Menu>
+            </div>
+          </Hidden>
         </nav>
       </div>
       <DialogModal

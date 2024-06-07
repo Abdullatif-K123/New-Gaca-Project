@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Dialog, DialogContent, Button, Slide } from "@mui/material";
-
+import classes from "./ui.module.css";
 const WelcomeDialog = ({ onClose, videoUrl }) => {
   const [videSrc, setVideoSrc] = useState(
     "https://www.youtube.com/embed/qaTB_u1THVs"
@@ -35,9 +35,8 @@ const WelcomeDialog = ({ onClose, videoUrl }) => {
     >
       <DialogContent style={{ overflow: "hidden" }}>
         <iframe
-          width="750px"
-          height="500px"
           src={videSrc}
+          className={classes.iframeResponsive}
           title="YouTube video player"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           style={{
