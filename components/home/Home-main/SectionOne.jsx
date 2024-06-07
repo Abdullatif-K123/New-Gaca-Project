@@ -48,7 +48,7 @@ const SectionOne = ({ title, desc, rtl }) => {
         <div
           className={classes.secOneButton}
           onClick={() => {
-            router.push("/documents");
+            router.push("/download");
           }}
         >
           <p

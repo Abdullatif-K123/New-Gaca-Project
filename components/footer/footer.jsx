@@ -41,13 +41,23 @@ const Footer = ({ conVersion, rtl }) => {
             height={50}
             alt="Gaca"
           />
-          <p style={{ fontSize: `${16 + fontSizeGeneral}px` }}>
+          <p
+            style={{
+              fontSize: `${16 + fontSizeGeneral}px`,
+              fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
+            }}
+          >
             {rtl
               ? conVersion.globalSettings.footerDescription
               : conVersion?.globalSettings?.footerDescriptionEN}
           </p>
           <div className={classes.footerCopyRight}>
-            <p style={{ fontSize: `${16 + fontSizeGeneral}px` }}>
+            <p
+              style={{
+                fontSize: `${16 + fontSizeGeneral}px`,
+                fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
+              }}
+            >
               © {currentYear} {t("copy-right")}
             </p>
           </div>
