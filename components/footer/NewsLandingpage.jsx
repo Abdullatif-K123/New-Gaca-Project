@@ -61,10 +61,18 @@ const NewsLandingpage = React.memo(({ news, rtl }) => {
         style={{ direction: rtl ? "rtl" : "" }}
       >
         <h3 style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}>
-          {t("latest")} <span>{t("news")}</span>
+          {t("latest")}{" "}
+          <span style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}>
+            {t("news")}
+          </span>
         </h3>
 
-        <Link href={"/news"}>{t("show-all-news")}</Link>
+        <Link
+          href={"/news"}
+          style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}
+        >
+          {t("show-all-news")}
+        </Link>
       </div>
       <div className={classes.newsCardMain} style={{ padding: "32px 0px" }}>
         <button className={classes.newsArrow} onClick={handleLeft}>

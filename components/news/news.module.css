@@ -249,6 +249,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding-top: 20px;
   color: #1c7a54;
 }
 .newsTopHeading > h3 {
@@ -337,6 +338,11 @@
     width: 340px;
   }
   .newsTopHeading{
-     justify-content: space-around;
+     justify-content: space-between;
+     padding: 15px 20px;
+     padding-bottom: 0;
+  }
+  .newsTopHeading>h3{
+     font-size: 18px !important;
   }
 }

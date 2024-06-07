@@ -43,8 +43,15 @@ const HomeBottom = ({ imgs, conVersion, desc, news, rtl }) => {
   return (
     <div className={classes.homeBottomSectoin}>
       <NewsLandingpage news={news} rtl={rtl} />
-      <div className={classes.homeBottomMain} id="stakeholder">
-        <div className={classes.bottomLogo}>
+      <div
+        className={classes.homeBottomMain}
+        id="stakeholder"
+        style={{ direction: rtl ? "rtl" : "ltr" }}
+      >
+        <div
+          className={classes.bottomLogo}
+          style={{ left: rtl ? "-6%" : "10%" }}
+        >
           <h2
             style={{
               direction: rtl ? "rtl" : "",
@@ -57,7 +64,10 @@ const HomeBottom = ({ imgs, conVersion, desc, news, rtl }) => {
             {rtl ? "المصلحة" : "Stackholders"}
           </h2>
         </div>
-        <div className={classes.stakholderArrows}>
+        <div
+          className={classes.stakholderArrows}
+          style={{ direction: "ltr", right: rtl ? "80%" : "10%" }}
+        >
           <Image
             src="assets/svg/stackholderArrow.svg"
             width={25}

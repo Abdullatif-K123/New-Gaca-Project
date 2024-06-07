@@ -284,9 +284,8 @@
   .stakholderArrows{
      justify-content: flex-end;
     gap: 25px;
-    position: absolute;
-    right: 10% !important;
-    top: 0;
+    position: absolute; 
+    top: 5px;
   } 
   .bottomLogo{
      position: absolute;
