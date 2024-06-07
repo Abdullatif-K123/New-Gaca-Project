@@ -22,7 +22,7 @@ import { useFontSize } from "@/store/FontSizeContext";
 import { useTranslation } from "react-i18next";
 import classestwo from "../home/Home-main/home-one.module.css";
 const Downloads = ({ data, conversion, rtl }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { fontSizeGeneral } = useFontSize();
   const [filterTerm, setFilterTerm] = useState(data);
   const [currentPage, setCurrentPage] = useState(0);
@@ -137,7 +137,12 @@ const Downloads = ({ data, conversion, rtl }) => {
         </h1>
       </div>
       <div className={classes.downloadContent}>
-        <p style={{ fontSize: `${14 + fontSizeGeneral}px` }}>
+        <p
+          style={{
+            fontSize: `${14 + fontSizeGeneral}px`,
+            fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
+          }}
+        >
           {rtl
             ? conversion.globalSettings?.downloadPageDescription
             : conversion.globalSettings?.downloadPageDescriptionEN}
@@ -190,12 +195,18 @@ const Downloads = ({ data, conversion, rtl }) => {
             </Grid>
           </Grid>
         </div>
-        <TableContainer component={Paper}>
+        <TableContainer
+          component={Paper}
+          sx={{ direction: rtl ? "rtl" : "ltr" }}
+        >
           <Table>
             <TableHead>
               <TableRow>
                 <TableCell
-                  style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}
+                  style={{
+                    fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
+                    textAlign: rtl ? "right" : "left",
+                  }}
                 >
                   {t("title")}
                 </TableCell>
@@ -203,6 +214,8 @@ const Downloads = ({ data, conversion, rtl }) => {
                   style={{
                     display: "flex",
                     alignItems: "center",
+                    justifyContent: "flex-start",
+                    textAlign: "right",
                     gap: "10px",
                     fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
                   }}
@@ -235,12 +248,18 @@ const Downloads = ({ data, conversion, rtl }) => {
                   {t("date")}
                 </TableCell>
                 <TableCell
-                  style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}
+                  style={{
+                    fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
+                    textAlign: rtl ? "right" : "left",
+                  }}
                 >
                   {t("update")}
                 </TableCell>
                 <TableCell
-                  style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}
+                  style={{
+                    fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
+                    textAlign: rtl ? "right" : "left",
+                  }}
                 >
                   {t("action")}
                 </TableCell>
@@ -256,11 +275,11 @@ const Downloads = ({ data, conversion, rtl }) => {
                   day: "numeric",
                 };
                 const formattedDate = dateCreated.toLocaleDateString(
-                  undefined,
+                  i18n.language,
                   options
                 );
                 const formatteUpdate = dateUpdated.toLocaleDateString(
-                  undefined,
+                  i18n.language,
                   options
                 );
                 const pdfUrl = `${document.fileUrl}`;
@@ -269,16 +288,21 @@ const Downloads = ({ data, conversion, rtl }) => {
                     <TableCell
                       style={{
                         fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
+                        textAlign: rtl ? "right" : "left",
                       }}
                     >
                       {rtl
-                        ? document.title.slice(0, 29)
-                        : document.titleEN.slice(0, 29)}
+                        ? document.title.slice(0, 30)
+                        : document.titleEN.slice(0, 30)}
                       ...
                     </TableCell>
-                    <TableCell>{formattedDate}</TableCell>
-                    <TableCell>{formatteUpdate}</TableCell>
-                    <TableCell>
+                    <TableCell sx={{ textAlign: rtl ? "right" : "left" }}>
+                      {formattedDate}
+                    </TableCell>
+                    <TableCell sx={{ textAlign: rtl ? "right" : "left" }}>
+                      {formatteUpdate}
+                    </TableCell>
+                    <TableCell sx={{ textAlign: rtl ? "right" : "left" }}>
                       <button
                         className={classes.submitBtn}
                         onClick={() => {
