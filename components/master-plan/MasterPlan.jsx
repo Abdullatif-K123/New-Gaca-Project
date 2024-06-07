@@ -92,14 +92,7 @@ const MasterPlan = ({
           </button>
         </div>
         {!switching ? (
-          <div
-            ref={pdfWrapperRef}
-            style={{
-              height: "80%",
-              width: "80%",
-              backgroundColor: "#fff",
-            }}
-          >
+          <div ref={pdfWrapperRef} className={classes.documentMasterPlan}>
             <Document
               file={`/assets/pdf/LAYER${router.query.id}.pdf`}
               onLoadSuccess={onDocumentLoadSuccess}

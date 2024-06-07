@@ -278,7 +278,12 @@ const Navbar = ({
                   />
                 </div>
               </MenuItem>
-              <MenuItem onClick={handleRtl}>
+              <MenuItem
+                onClick={() => {
+                  handleRtl();
+                  handleCloseMenu();
+                }}
+              >
                 <div
                   className={classes.menuBar}
                   style={{
@@ -311,12 +316,27 @@ const Navbar = ({
           </div>
           <div
             className={`${classes.navSections} ${
-              addClass ? classes.navContentHam : null
-            }`}
+              addClass
+                ? rtl
+                  ? classes.navContentHam
+                  : classes.navContentHam
+                : null
+            } `}
           >
+            <Image
+              src="/assets/svg/LogoAbout.svg"
+              width={150}
+              height={70}
+              alt="logo-svg"
+              className={classes.imgMenu}
+            />
             <ul
-              className={`${classes.section} `}
-              style={{ fontSize: `${17 + fontSizeGeneral}px` }}
+              className={`${classes.section} ${
+                rtl ? classes.sectionAr : null
+              } `}
+              style={{
+                fontSize: `${17 + fontSizeGeneral}px`,
+              }}
             >
               <li
                 onClick={() => {
@@ -324,7 +344,9 @@ const Navbar = ({
                   router.push("/");
                 }}
                 className={`${path.length ? null : classes.activeHome}`}
-                style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}
+                style={{
+                  fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
+                }}
               >
                 {t("home-route")}
               </li>
@@ -374,7 +396,7 @@ const Navbar = ({
           <div
             className={`${classes.feedBackSection} ${
               addClass ? classes.navAuthHam : null
-            }`}
+            }  `}
           >
             <div className={classes.vision}>
               <Image

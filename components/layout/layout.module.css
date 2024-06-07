@@ -149,8 +149,7 @@
 }
 
 .section > li:hover {
-  color: #fff;
-  text-align: center;
+  color: #fff; 
   font-style: normal;
   text-shadow: 1px 0;
   line-height: normal;
@@ -174,7 +173,9 @@
   left: 0;
 }
 
- 
+.sectionAr > li{
+   text-align: right !important;
+}
 .feedBackSection {
   align-self: center;
   justify-self: flex-end;
@@ -481,7 +482,9 @@
    color: #128c5b;
    text-shadow: 0px 1px;
 }
- 
+ .imgMenu{
+   display: none;
+ }
 /* Responsive style for less than 1200px */
 @media (max-width: 1250px) {
   .sectionOne {
@@ -577,21 +580,27 @@
     gap: 10px;
     
   }
-
+ .imgMenu{ 
+  display: block;
+  margin: auto;
+ }
   .navSections {
     position: fixed; 
     right: -100%;
-    top: 0rem;
+    top:  -10px;
     height: 700px;
     background-color: #fff;
-    width: 80%;
-    border-radius: 10px;
+    overflow-y: hidden;
+    width: 80%; 
     text-align: center;
     transition: 0.3s;
     box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
     z-index: 100;
     padding: 20px 0;
-  }
+  } 
+  .navSectionsAr{ 
+     right: 100% !important;
+    }
   .imgMini {
     display: none;
   }
@@ -599,7 +608,7 @@
     position: fixed;
     z-index: 999;
     right: -100%;
-    top: 22.3rem;
+    top: 27.3rem;
     border-radius: 10px; 
     transition: 0.3s;
   }
@@ -612,10 +621,9 @@
   .section {
     position: relative;
     flex-direction: column;
-    justify-content: flex-end;
-    align-items: flex-end;
-    padding-right: 10px;
-    padding-top: 30px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 10px;
     text-align: right;
     gap: 1.5rem;
     z-index: 99 !important;
@@ -623,13 +631,11 @@
   .section > li {
     color: #63c69a;
     width: 100%;
-    text-align: right;
+    text-align: left;
     padding-bottom: 15px;
     border-bottom: 1px solid #005149;
   }
-  .section > li:hover{
-     text-align: right;
-  }
+ 
  
   .navSection {
     display: block;
@@ -652,10 +658,16 @@
   .navContentHam {
     right: 0% !important;
   }
+  .navContentRTL{
+     right:20% !important
+  }
   .navAuthHam {
     right: 34%;
     transform: translateX(34%);
   }
+  .navAuthHamRight{
+    right: 45% !important
+ }
   .hamburger {
     display: block;
     cursor: pointer;

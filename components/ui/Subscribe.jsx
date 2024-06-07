@@ -7,12 +7,22 @@ import { useFontSize } from "@/store/FontSizeContext";
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import { useTranslation } from "react-i18next";
+import DialogModalSubscribe from "./DialogSubscribe";
 const notify = (msg) => toast(msg);
 const Subscribe = ({ rtl }) => {
   const [sendFeedback, setSendFeedback] = useState(false);
   const { t } = useTranslation();
+  const [open, setOpen] = useState(false);
   const [email, setEmail] = useState("");
   const { fontSizeGeneral } = useFontSize();
+  //handle close dialog of mailing
+  const handleClose = () => {
+    setOpen(false);
+  };
+  //handle open dialog of mailing
+  const handleOpen = () => {
+    setOpen(true);
+  };
   // adding validation for Email Subscribe
   const inputRef = useRef("");
   const formik = useFormik({
@@ -23,6 +33,7 @@ const Subscribe = ({ rtl }) => {
         .required(t("email-required")),
     }),
     onSubmit: async (valuse) => {
+      // handleOpen();
       handleSubscribe(valuse.email);
       formik.handleReset();
     },
@@ -109,6 +120,7 @@ const Subscribe = ({ rtl }) => {
         </button>
       </div>
       <Toaster />
+      <DialogModalSubscribe open={open} handleClose={handleClose} />
     </div>
   );
 };
