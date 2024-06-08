@@ -132,7 +132,9 @@ const Footer = ({ conVersion, rtl }) => {
         </div>
 
         <div className={classes.contact}>
-          <h1>{t("connect-us")}</h1>
+          <h1 style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}>
+            {t("connect-us")}
+          </h1>
           <div className={classes.socialIcons}>
             <div
               onClick={() => {

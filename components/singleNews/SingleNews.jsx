@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import classes from "./SingleNews.module.css";
+import styles from "../news/news.module.css";
 import Image from "next/image";
 import parse from "html-react-parser";
 import { API_ROUTES } from "@/utils/apiConfig";
@@ -12,6 +13,7 @@ import Subscribe from "../ui/Subscribe";
 import { useFontSize } from "@/store/FontSizeContext";
 import classestwo from "../home/Home-main/home-one.module.css";
 import { useTranslation } from "react-i18next";
+import Link from "next/link";
 const SingleNews = ({ id, rtl }) => {
   const { t } = useTranslation();
   const [data, setData] = useState({});
@@ -163,12 +165,24 @@ const SingleNews = ({ id, rtl }) => {
           </div>
         </div>
         <div className={classes.articleRelated}>
-          <p style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}>
-            <span style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}>
-              {rtl ? t("articles") : t("related")}
-            </span>{" "}
-            {rtl ? t("related") : t("articles")}
-          </p>
+          <div
+            className={styles.newsTopHeading}
+            style={{ direction: rtl ? "rtl" : "" }}
+          >
+            <h3 style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}>
+              {rtl ? t("news") : t("related")}{" "}
+              <span style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}>
+                {rtl ? t("related") : t("news")}
+              </span>
+            </h3>
+
+            <Link
+              href={"/news"}
+              style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}
+            >
+              {t("show-all-news")}
+            </Link>
+          </div>
           <div className={classes.newsCardMain2}>
             {relateData.map((nws, index) => (
               <SingleCard

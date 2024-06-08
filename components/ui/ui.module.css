@@ -151,6 +151,9 @@
    min-width: 800px;
    min-height: 600px;
  }
+ .customTitleAlert{
+  font-family:  DINNext-Arabic-meduim , sans-serif !important;
+ }
 @media (max-width: 750px) {
  .emailing{
   flex-direction: column;

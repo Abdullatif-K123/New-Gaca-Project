@@ -107,7 +107,14 @@ const FAQs = ({ data, conVersion, rtl }) => {
               alt="chevorn"
             />
           </p>
-          <h1 style={{ fontSize: `${48 + fontSizeGeneral}px` }}>{t("faq")}</h1>
+          <h1
+            style={{
+              fontSize: `${48 + fontSizeGeneral}px`,
+              fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
+            }}
+          >
+            {t("faq")}
+          </h1>
         </div>
         <div className={classes.faqContent}>
           <p

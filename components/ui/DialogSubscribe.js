@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
@@ -7,24 +7,31 @@ import DialogTitle from "@mui/material/DialogTitle";
 import Slide from "@mui/material/Slide";
 import Image from "next/image";
 import classes from "./ui.module.css";
-import ReCAPTCHA from 'react-google-recaptcha';
 import { useTranslation } from "react-i18next";
+import {
+    loadCaptchaEnginge,
+    LoadCanvasTemplate,
+    LoadCanvasTemplateNoReload,
+    validateCaptcha,
+  } from 'node_modules/react-simple-captcha';
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
+
 const DialogModalSubscribe = ({ open, handleClose, openLink, link }) => {
-  const {t, i18n} = useTranslation();
-  const [captchaValue, setCaptchaValue] = useState('');
-
-  const handleCaptchaChange = (value) => {
-    setCaptchaValue(value);
+  const {t, i18n} = useTranslation(); 
+  
+    const doSubmit = () => {
+    let user_captcha = document.getElementById("user_captcha_input").value;
+    if (validateCaptcha(user_captcha) == true) {
+      alert("Captcha Matched");
+      loadCaptchaEnginge(8);
+      document.getElementById("user_captcha_input").value = "";
+    } else {
+      alert("Captcha Does Not Match");
+      document.getElementById("user_captcha_input").value = "";
+    }
   };
-  const handleSubmit = () => {
-    // Verify captchaValue on the server-side
-    console.log('Captcha value:', captchaValue);
-  };
-
-
   return (
     <Dialog
       TransitionComponent={Transition}
@@ -49,14 +56,30 @@ const DialogModalSubscribe = ({ open, handleClose, openLink, link }) => {
             <DialogContentText id="alert-dialog-slide-description">
                {t("alert-message")}
             </DialogContentText>
-            <form>
-        {/* Your form fields */}
-        <ReCAPTCHA
-          sitekey="YOUR_SITE_KEY_FROM_GOOGLE_RECAPTCHA"
-          onChange={handleCaptchaChange}
-        />
-        <button type="button" onClick={handleSubmit}>Submit</button>
-      </form>
+            <div className="form-group">
+        <div className="col mt-3">
+          <LoadCanvasTemplate />
+        </div>
+
+        <div className="col mt-3">
+          <div>
+            <input
+              placeholder="Enter Captcha Value"
+              id="user_captcha_input"
+              name="user_captcha_input"
+              type="text"
+            ></input>
+          </div>
+        </div>
+
+        <div className="col mt-3">
+          <div>
+            <button class="btn btn-primary" onClick={doSubmit}>
+              Submit
+            </button>
+          </div>
+        </div>
+      </div>
           </DialogContent>
           <DialogActions sx={{display: "flex", gap: "10px"}}>
             <button

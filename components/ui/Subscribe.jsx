@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import classes from "./ui.module.css";
 import { API_ROUTES } from "@/utils/apiConfig";
 import axios from "axios";
@@ -7,7 +7,7 @@ import { useFontSize } from "@/store/FontSizeContext";
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import { useTranslation } from "react-i18next";
-import DialogModalSubscribe from "./DialogSubscribe";
+import Swal from "sweetalert2";
 const notify = (msg) => toast(msg);
 const Subscribe = ({ rtl }) => {
   const [sendFeedback, setSendFeedback] = useState(false);
@@ -15,6 +15,8 @@ const Subscribe = ({ rtl }) => {
   const [open, setOpen] = useState(false);
   const [email, setEmail] = useState("");
   const { fontSizeGeneral } = useFontSize();
+  //effect for generating capatcha code
+
   //handle close dialog of mailing
   const handleClose = () => {
     setOpen(false);
@@ -33,9 +35,7 @@ const Subscribe = ({ rtl }) => {
         .required(t("email-required")),
     }),
     onSubmit: async (valuse) => {
-      // handleOpen();
-      handleSubscribe(valuse.email);
-      formik.handleReset();
+      handleSubscribe(formik.values.email);
     },
   });
 
@@ -46,16 +46,40 @@ const Subscribe = ({ rtl }) => {
       const response = await axios.post(API_ROUTES.subscribe.post, {
         email: emails,
       });
-      console.log("Subscription successful:", response.data);
-      notify(response.data.errorMessage);
+      Swal.fire({
+        title: "Good job!",
+        text: response.data.errorMessage,
+        icon: "success",
+        customClass: {
+          container: classes.customTitleAlert,
+          title: classes.customTitleAlert,
+          content: classes.customTitleAlert,
+          confirmButton: classes.customTitleAlert,
+          cancelButton: classes.customTitleAlert,
+        },
+      });
       setEmail("");
       // You can add further actions like showing a success message to the user
     } catch (error) {
       console.error("Error subscribing:", error?.response.data.errorMessage);
-      notify(error.response.data.errorMessage);
+
+      Swal.fire({
+        title: "NOTE!!",
+        text: error.response.data.errorMessage,
+        icon: "error",
+        customClass: {
+          container: classes.customTitleAlert,
+          title: classes.customTitleAlert,
+          content: classes.customTitleAlert,
+          confirmButton: classes.customTitleAlert,
+          cancelButton: classes.customTitleAlert,
+        },
+      });
       // Handle error, show error message, etc.
     }
     setSendFeedback(false);
+
+    formik.handleReset();
   };
   return (
     <div className={classes.emailing} style={{ direction: rtl ? "rtl" : "" }}>
@@ -119,8 +143,6 @@ const Subscribe = ({ rtl }) => {
           {t("subscribe")}
         </button>
       </div>
-      <Toaster />
-      <DialogModalSubscribe open={open} handleClose={handleClose} />
     </div>
   );
 };
