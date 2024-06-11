@@ -3,6 +3,8 @@ import Navbar from "./Navbar";
 import axios from "axios";
 import { API_ROUTES } from "@/utils/apiConfig";
 import toast, { Toaster } from "react-hot-toast";
+import classes from "../ui/ui.module.css";
+import Swal from "sweetalert2";
 const Layout = (props) => {
   const {
     fontStyles,
@@ -26,9 +28,31 @@ const Layout = (props) => {
         feedbackTitle: obj.feedbackTitle,
         feedbackMessage: obj.feedbackMessage,
       });
-      notify();
+      {
+        Swal.fire({
+          title: response.data.errorMessage,
+          icon: "success",
+          customClass: {
+            container: classes.customTitleAlert,
+            title: classes.customTitleAlert,
+            content: classes.customTitleAlert,
+            confirmButton: classes.customTitleAlert,
+            cancelButton: classes.customTitleAlert,
+          },
+        });
+      }
     } catch (error) {
-      console.log(error);
+      Swal.fire({
+        title: "Oops!! something went wrong!",
+        icon: "error",
+        customClass: {
+          container: classes.customTitleAlert,
+          title: classes.customTitleAlert,
+          content: classes.customTitleAlert,
+          confirmButton: classes.customTitleAlert,
+          cancelButton: classes.customTitleAlert,
+        },
+      });
     }
   };
 

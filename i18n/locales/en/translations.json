@@ -65,5 +65,10 @@
   "video-tutorial": "Video tutorial",
   "alert-header": "ALART",
   "alert-message": "Please note that you will go to an external link from the current site!!",
-  "confirm": "Confirm"
+  "confirm": "Confirm",
+  "code": "Code",
+  "start-date": "Start Date",
+  "finish-date": "Finish Date",
+  "implement-progress": "Implementation Progress",
+  "download-report": "Download Progress Report"
 }

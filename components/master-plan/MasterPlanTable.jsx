@@ -12,10 +12,12 @@ import parse from "html-react-parser";
 import classes from "./masterPlan.module.css";
 import { API_ROUTES } from "@/utils/apiConfig";
 import { CiSquarePlus, CiSquareMinus } from "react-icons/ci";
+import { useTranslation } from "react-i18next";
 import axios from "axios";
 const MasterPlanTable = ({ data, rtl }) => {
   const [clickCode, setClickCode] = useState(false);
   const [codeFetching, setCodeFetchign] = useState([]);
+  const { t } = useTranslation();
   //Handling click code to fetch the api
   const handleCodeClick = () => {
     setClickCode(!clickCode);
@@ -167,7 +169,7 @@ const MasterPlanTable = ({ data, rtl }) => {
               fontSize: "12px",
             }}
           >
-            Show
+            {t("show")}
           </Button>
         </TableCell>
       </TableRow>

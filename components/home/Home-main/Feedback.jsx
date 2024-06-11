@@ -5,7 +5,7 @@ import { useFormik } from "formik";
 import axios from "axios";
 import * as Yup from "yup";
 import { API_ROUTES } from "@/utils/apiConfig";
-import toast, { Toaster } from "react-hot-toast";
+import Swal from "sweetalert2";
 const Feedback = ({ isFeedbackVisible, handleToggleFeedback, rtl }) => {
   const notify = () => toast("Your feedback has been sent.", { icon: "👏" });
   const [focusedInput, setFocusedInput] = useState(null);
@@ -38,7 +38,7 @@ const Feedback = ({ isFeedbackVisible, handleToggleFeedback, rtl }) => {
       feedbackMessage: Yup.string().required("Feedback message is required"),
     }),
     onSubmit: async (values) => {
-      // Handle form submission here 
+      // Handle form submission here
       setSendFeedback(true);
       try {
         const response = await axios.post(API_ROUTES.feedback.post, {
@@ -50,6 +50,7 @@ const Feedback = ({ isFeedbackVisible, handleToggleFeedback, rtl }) => {
           feedbackMessage: values.feedbackMessage,
         });
         handleToggleFeedback();
+
         notify();
       } catch (error) {
         console.log(error);
@@ -65,11 +66,11 @@ const Feedback = ({ isFeedbackVisible, handleToggleFeedback, rtl }) => {
       className={`${classes.feedbackSection} ${
         isFeedbackVisible ? classes.visible : ""
       }`}
-      style={{direction: rtl? "rtl": ""}}
+      style={{ direction: rtl ? "rtl" : "" }}
     >
       <div className={classes.feedbackContent}>
         <h2>
-          {rtl? "اقتراحات وشكاوي": "Feedback"}{" "}
+          {rtl ? "اقتراحات وشكاوي" : "Feedback"}{" "}
           <Image
             src="/assets/svg/exit.svg"
             width={27}

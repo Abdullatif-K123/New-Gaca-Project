@@ -11,7 +11,7 @@
   "news": "الاخبار",
   "faq": "الأسئلة الشائعة",
   "feedback": "الشكاوي",
-  "downloadDoc": "صفحة السجلات",
+  "downloadDoc": "صفحة السجلاتي",
   "masterplan-title": "الخطة الوطنية السعودية للملاحة الجوية",
   "masterplan": "خطتنا",
   "latest": "أخر",
@@ -65,5 +65,10 @@
   "video-tutorial": "فيديو توضيحي",
   "alert-header": " تنبيه !! ",
   "alert-message": "يرجى ملاحظة أنك ستنتقل إلى رابط خارجي عن الموقع الحالي!!",
-  "confirm": "تأكيد"
+  "confirm": "تأكيد",
+  "code": "الكود",
+  "start-date": "تاريخ البدء",
+  "finish-date": "تاريخ الانتهاء",
+  "implement-progress": "تقدم التنفيذ",
+  "download-report": "تحميل تقرير الإنجاز"
 }
