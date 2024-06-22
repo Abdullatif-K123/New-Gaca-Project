@@ -39,6 +39,10 @@
   font-weight: 500;
   padding: 5px;
 }
+.selectedMonitor{
+  border-radius: 10px;
+  background: linear-gradient(to right, #1C7A54, #63C69A) !important;
+}
 @media (max-width: 700px) {
   .treeviewMain {
     gap: 0px;

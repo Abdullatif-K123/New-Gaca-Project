@@ -14,6 +14,7 @@ import { API_ROUTES } from "@/utils/apiConfig";
 import { CiSquarePlus, CiSquareMinus } from "react-icons/ci";
 import { useTranslation } from "react-i18next";
 import axios from "axios";
+import Link from "next/link";
 const MasterPlanTable = ({ data, rtl }) => {
   const [clickCode, setClickCode] = useState(false);
   const [codeFetching, setCodeFetchign] = useState([]);
@@ -68,6 +69,9 @@ const MasterPlanTable = ({ data, rtl }) => {
     };
     fetchData();
   }, [setCodeFetchign, clickCode, codeFetching]);
+
+  //handle show report button
+
   return (
     <>
       <TableRow key={data.id}>
@@ -161,16 +165,18 @@ const MasterPlanTable = ({ data, rtl }) => {
         </TableCell>
         <TableCell>
           {" "}
-          <Button
-            variant="contained"
-            style={{
-              backgroundColor: "#63c69a",
-              width: "50%",
-              fontSize: "12px",
-            }}
-          >
-            {t("show")}
-          </Button>
+          <Link href={`/report/${data.id}`}>
+            <Button
+              variant="contained"
+              style={{
+                backgroundColor: "#63c69a",
+                width: "50%",
+                fontSize: "12px",
+              }}
+            >
+              {t("show")}
+            </Button>
+          </Link>
         </TableCell>
       </TableRow>
       {clickCode &&

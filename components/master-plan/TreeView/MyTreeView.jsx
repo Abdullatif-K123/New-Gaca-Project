@@ -13,12 +13,12 @@ const MyTreeView = ({
 }) => {
   const [selected, setSelected] = useState("");
   const [expanded, setExpanded] = useState([]);
-
+  const [selectMonitor, setSelectMonitor] = useState(false);
   const renderTree = (nodes) => {
     if (!nodes) {
       return null;
     }
-
+    //Checking if the node has a children or not for the treeview
     const hasChildren =
       Array.isArray(nodes.children) && nodes.children.length > 0;
     const hasDataMenus =
@@ -192,25 +192,32 @@ const MyTreeView = ({
       </TreeView>
       {monitor ? (
         <div
-          className={`${classes.parentIcon} `}
+          className={`${classes.parentIcon} ${
+            selectMonitor ? classes.selectedMonitor : null
+          } `}
           style={{
             direction: rtl ? "ltr" : "rtl",
             marginTop: "10px",
             marginLeft: "10px",
           }}
-          onClick={handleSwitching}
+          onClick={() => {
+            handleSwitching();
+            setSelectMonitor(!selectMonitor);
+          }}
         >
           <p
             className={`${classes.childrens} ${classes.childSelected} `}
             style={{
               fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
-              color: "black",
+              color: selectMonitor ? "white" : "black",
             }}
           >
             Implementation Objectives (Monitoring)
           </p>
           <Image
-            src={`/assets/svg/${"pointBlack.svg"}`}
+            src={`/assets/svg/${
+              selectMonitor ? "pointWhite.svg" : "pointBlack.svg"
+            }`}
             width={25}
             height={25}
             alt="shape"

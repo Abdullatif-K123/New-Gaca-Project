@@ -32,7 +32,6 @@ const MasterPlan = ({
   const [pageNumber, setPageNumber] = useState(1);
   const [numPages, setNumPages] = useState(null);
   const pdfWrapperRef = useRef(null);
-  console.log(pptFile);
 
   const handleClose = () => {
     setOpenVid(false);
@@ -42,9 +41,9 @@ const MasterPlan = ({
     setOpenVid(true);
   };
 
+  //Handling scrolling pages from the mouse when scroll up and down
   const handleScroll = (e) => {
     e.preventDefault();
-
     const delta = e.deltaY;
     if (delta > 0 && pageNumber < numPages) {
       setPageNumber((prevPageNumber) => prevPageNumber + 1);
@@ -115,7 +114,7 @@ const MasterPlan = ({
             <Table>
               <TableHead>
                 <TableRow>
-                  <TableCell>
+                  <TableCell className={classes.tableHover}>
                     <div
                       style={{
                         display: "flex",
