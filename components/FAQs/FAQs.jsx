@@ -270,10 +270,11 @@ const FAQs = ({ data, conVersion, rtl }) => {
                           data-aos="fade-left"
                         >
                           <p>Q{index + 1}</p>
-                          {rtl
-                            ? item.title?.slice(0, 80)
-                            : item.titleEN?.slice(0, 80)}
-                          ...
+                          {faqTitle === 0
+                            ? rtl
+                              ? item.title?.slice(0, 80)
+                              : item.titleEN?.slice(0, 80)
+                            : item.name.slice(0, 80)}
                         </Typography>
                       </AccordionSummary>
                       <AccordionDetails
