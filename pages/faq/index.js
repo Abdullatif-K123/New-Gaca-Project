@@ -26,6 +26,7 @@ export async function getStaticProps() {
     console.log('Error fetching data:', error);
     return null;
   }
+ 
 };
 
 export default index;

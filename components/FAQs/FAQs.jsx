@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import classes from "./faq.module.css";
 import Image from "next/image";
 import { useTranslation } from "react-i18next";
+import FAQsBottom from "./FAQsBottom";
 import {
   Accordion,
   AccordionDetails,
@@ -83,140 +84,149 @@ const FAQs = ({ data, conVersion, rtl }) => {
       targetElement.scrollIntoView({ behavior: "smooth" });
     }
   };
+  console.log(conVersion);
   return (
-    <ThemeProvider theme={theme}>
-      <div className={classes.faqMain} style={{ direction: rtl ? "rtl" : "" }}>
+    <div>
+      <ThemeProvider theme={theme}>
         <div
-          className={classes.choosen}
-          style={{ fontSize: `${14 + fontSizeGeneral}px` }}
+          className={classes.faqMain}
+          style={{ direction: rtl ? "rtl" : "" }}
         >
-          <p>
-            <span
-              onClick={() => {
-                router.push("/");
-              }}
-              style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}
-            >
-              {t("home-route")}
-            </span>
-            <Image
-              src="/assets/svg/Chevron.svg"
-              width={16}
-              height={16}
-              style={{ transform: rtl ? "rotate(180deg)" : "" }}
-              alt="chevorn"
-            />
-          </p>
-          <h1
-            style={{
-              fontSize: `${48 + fontSizeGeneral}px`,
-              fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
-            }}
+          <div
+            className={classes.choosen}
+            style={{ fontSize: `${14 + fontSizeGeneral}px` }}
           >
-            {t("faq")}
-          </h1>
-        </div>
-        <div className={classes.faqContent}>
-          <p
-            style={{
-              fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
-              fontSize: `${16 + fontSizeGeneral}px`,
-            }}
-            data-aos="zoom-in-up"
-          >
-            {rtl
-              ? conVersion?.faqPageDescription
-              : conVersion?.faqPageDescriptionEN}
-          </p>
-          <div className={classes.faQestions}>
-            {data.map((item, index) => (
-              <Accordion
-                key={index}
-                style={{ boxShadow: "none", padding: "0" }}
-                expanded={expandedIndices.includes(index)}
-                onChange={() => handleAccordionChange(index)}
+            <p>
+              <span
+                onClick={() => {
+                  router.push("/");
+                }}
+                style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}
               >
-                <AccordionSummary
-                  expandIcon={
-                    expandedIndices.includes(index) ? (
-                      <FiMinus color="gray" />
-                    ) : (
-                      <GoPlus />
-                    )
-                  }
-                  // Set background color dynamically
-                  style={{
-                    background: expandedIndices.includes(index)
-                      ? "#f1f0f2"
-                      : "#fff",
-                    borderLeft: expandedIndices.includes(index)
-                      ? "2px solid #1C7A54"
-                      : "none",
-                  }}
-                >
-                  <Typography
-                    className={classes.freq}
-                    style={{
-                      color: expandedIndices.includes(index)
-                        ? "#1C7A54"
-                        : "#000",
-                      fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
-                      fontSize: `${15 + fontSizeGeneral}px`,
-                    }}
-                    data-aos="fade-left"
-                  >
-                    <Image
-                      src={`/assets/svg/${
-                        expandedIndices.includes(index)
-                          ? "star-green.svg"
-                          : "star.svg"
-                      }`}
-                      width={18}
-                      height={18}
-                      alt="star"
-                    />
-                    {rtl ? item.title.slice(0, 80) : item.titleEN.slice(0, 80)}
-                    ...
-                  </Typography>
-                </AccordionSummary>
-                <AccordionDetails
-                  style={{
-                    borderRadius: "0px",
-                    background: "#f1f0f2",
-                    marginTop: "-20px",
-                    borderLeft: expandedIndices.includes(index)
-                      ? "2px solid #1C7A54"
-                      : "",
-                  }}
-                >
-                  <Typography
-                    sx={{
-                      color: "rgba(51, 48, 60, 0.87)",
-                      fontSize: `${13 + fontSizeGeneral}px`,
-                      fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
-                    }}
-                  >
-                    {rtl ? item.description : item.descriptionEN}
-                  </Typography>
-                </AccordionDetails>
-              </Accordion>
-            ))}
+                {t("home-route")}
+              </span>
+              <Image
+                src="/assets/svg/Chevron.svg"
+                width={16}
+                height={16}
+                style={{ transform: rtl ? "rotate(180deg)" : "" }}
+                alt="chevorn"
+              />
+            </p>
+            <h1
+              style={{
+                fontSize: `${48 + fontSizeGeneral}px`,
+                fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
+              }}
+            >
+              {t("faq")}
+            </h1>
           </div>
+          <div className={classes.faqContent}>
+            <p
+              style={{
+                fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
+                fontSize: `${16 + fontSizeGeneral}px`,
+              }}
+              data-aos="zoom-in-up"
+            >
+              {rtl
+                ? conVersion?.faqPageDescription
+                : conVersion?.faqPageDescriptionEN}
+            </p>
+            <div className={classes.faQestions}>
+              {data.genral.map((item, index) => (
+                <Accordion
+                  key={index}
+                  style={{ boxShadow: "none", padding: "0" }}
+                  expanded={expandedIndices.includes(index)}
+                  onChange={() => handleAccordionChange(index)}
+                >
+                  <AccordionSummary
+                    expandIcon={
+                      expandedIndices.includes(index) ? (
+                        <FiMinus color="gray" />
+                      ) : (
+                        <GoPlus />
+                      )
+                    }
+                    // Set background color dynamically
+                    style={{
+                      background: expandedIndices.includes(index)
+                        ? "#f1f0f2"
+                        : "#fff",
+                      borderLeft: expandedIndices.includes(index)
+                        ? "2px solid #1C7A54"
+                        : "none",
+                    }}
+                  >
+                    <Typography
+                      className={classes.freq}
+                      style={{
+                        color: expandedIndices.includes(index)
+                          ? "#1C7A54"
+                          : "#000",
+                        fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
+                        fontSize: `${15 + fontSizeGeneral}px`,
+                      }}
+                      data-aos="fade-left"
+                    >
+                      <Image
+                        src={`/assets/svg/${
+                          expandedIndices.includes(index)
+                            ? "star-green.svg"
+                            : "star.svg"
+                        }`}
+                        width={18}
+                        height={18}
+                        alt="star"
+                      />
+                      {rtl
+                        ? item.title.slice(0, 80)
+                        : item.titleEN.slice(0, 80)}
+                      ...
+                    </Typography>
+                  </AccordionSummary>
+                  <AccordionDetails
+                    style={{
+                      borderRadius: "0px",
+                      background: "#f1f0f2",
+                      marginTop: "-20px",
+                      borderLeft: expandedIndices.includes(index)
+                        ? "2px solid #1C7A54"
+                        : "",
+                    }}
+                  >
+                    <Typography
+                      sx={{
+                        color: "rgba(51, 48, 60, 0.87)",
+                        fontSize: `${13 + fontSizeGeneral}px`,
+                        fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
+                      }}
+                    >
+                      {rtl ? item.description : item.descriptionEN}
+                    </Typography>
+                  </AccordionDetails>
+                </Accordion>
+              ))}
+            </div>
+            <FAQsBottom phone={conVersion?.phone} email={conVersion?.email} />
+          </div>
+          <Subscribe rtl={rtl} />
         </div>
-        <Subscribe rtl={rtl} />
-      </div>
-      {showBtn && (
-        <div className={classestwo.btnUp} onClick={handleClick}>
-          <Image
-            src="/assets/svg/arrow-up.svg"
-            width={15}
-            height={15}
-            alt="arrow-down"
-            className={classestwo.arrowDown}
-          />
-        </div>
-      )}
-    </ThemeProvider>
+        {showBtn && (
+          <div className={classestwo.btnUp} onClick={handleClick}>
+            <Image
+              src="/assets/svg/arrow-up.svg"
+              width={15}
+              height={15}
+              alt="arrow-down"
+              className={classestwo.arrowDown}
+            />
+          </div>
+        )}
+      </ThemeProvider>
+    </div>
   );
 };
 

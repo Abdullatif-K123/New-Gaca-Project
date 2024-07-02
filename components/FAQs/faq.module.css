@@ -28,7 +28,7 @@
 }
 .choosen > p {
   color: #000;
-  font-family: "DINNext-meduim", sans-serif; 
+  font-family: "DINNext-meduim", sans-serif;
   font-style: normal;
   font-weight: 500;
   line-height: 16px; /* 114.286% */
@@ -55,9 +55,11 @@
   font-size: 16px;
   justify-content: center;
 }
-.faQestions{
- box-shadow: 0px 2px 4px 2px rgba(38, 36, 45, 0.03),2px 3px 4px 3px rgba(51, 48, 60, 0.02),1px 1px 13px 3px rgba(60, 13, 203, 0.01);
-  }
+.faQestions {
+  box-shadow: 0px 2px 4px 2px rgba(38, 36, 45, 0.03),
+    2px 3px 4px 3px rgba(51, 48, 60, 0.02),
+    1px 1px 13px 3px rgba(60, 13, 203, 0.01);
+}
 .faqContent > p {
   font-family: Montserrat;
   font-weight: 400;
@@ -70,19 +72,78 @@
   color: rgba(51, 48, 60, 0.87);
   display: flex;
   gap: 10px;
-  align-items: center ;
+  align-items: center;
+}
+/* Syting for the bottom section of the FQA */
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 30px;
+}
+.section1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+.section1 > p {
+  font-family: "DINNext-meduim", sans-serif;
+  color: #fff;
+  width: fit-content;
+  background-color: #3d9e7b;
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+.section1 > h1 {
+  color: #4b465c;
+  font-family: "DINNext-meduim", sans-serif;
+}
+.section1 > h4{
+   color: #6e6980;
+   font-family: "DINNext-meduim", sans-serif;
+}
+.section2{
+   display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.phoneEmail{
+   background-color: #f8f8f8;
+   padding: 20px;
+   width: 49%;
+   border-radius: 5px;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: 10px;
+}
+.phoneEmail > h1{
+  color: #4b465c;
+  font-size: 22px;
+  font-family: "DINNext-meduim", sans-serif;
+}
+.phoneEmail > p{
+   
+  color: #6e6980;
+  font-family: "DINNext-meduim", sans-serif;
+  font-size: 15px;
 }
 /* Responsive for screen less than 600px */
-@media (max-width: 600px){
+@media (max-width: 600px) {
   .choosen {
     gap: 10px;
     padding: 22px 31px;
     height: 180px;
   }
-  .choosen > h1{
-     font-size: 30px !important;
+  .choosen > h1 {
+    font-size: 30px !important;
   }
-   .faqContent{
-     padding: 50px 10px;
-   }
+  .faqContent {
+    padding: 50px 10px;
+  }
 }

@@ -9,14 +9,9 @@ const WelcomeDialog = ({ onClose, videoUrl }) => {
     onClose();
   };
   useEffect(() => {
-    var regex = /[?&]v=([^&]+)/;
-    var match = videoUrl?.match(regex);
-    if (videoUrl) {
-      const newUrl =
-        "https://www.youtube.com/embed/" + match[1] + "?autoplay=1";
-      setVideoSrc(newUrl);
-    }
+    setVideoSrc(videoUrl);
   }, [videoUrl]);
+
   return (
     <Dialog
       TransitionComponent={Slide}
@@ -34,18 +29,11 @@ const WelcomeDialog = ({ onClose, videoUrl }) => {
       }}
     >
       <DialogContent style={{ overflow: "hidden" }}>
-        <iframe
-          src={videSrc}
-          className={classes.iframeResponsive}
-          title="YouTube video player"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          style={{
-            border: "none",
-            margin: "0",
-            padding: "0",
-            display: "block",
-          }}
-        ></iframe>
+        <video controls className={classes.iframeResponsive}>
+          <source src={videSrc} type="video/mp4" />
+          <source src={videSrc} type="video/webm" />
+          Your browser does not support the video tag.
+        </video>
       </DialogContent>
       <div style={{ textAlign: "center", marginTop: "16px" }}>
         <Button

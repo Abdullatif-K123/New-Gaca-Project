@@ -1,5 +1,4 @@
-import HomePage from "@/components/home/HomePage";
-import { useEffect, useState } from "react";
+import HomePage from "@/components/home/HomePage"; 
 import axios from "axios";
 export default function Home({
   isFeedbackVisible,
@@ -25,6 +24,7 @@ export async function getStaticProps() {
   // Implement cache logic here
   try {
     const response = await axios.get('https://snap.somee.com/api/home'); 
+    console.log(response)
     return {
       props: {
         data: response.data.returnData, 
