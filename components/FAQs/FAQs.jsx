@@ -17,6 +17,8 @@ import { FiMinus } from "react-icons/fi";
 import { GoPlus } from "react-icons/go";
 import classestwo from "../home/Home-main/home-one.module.css";
 const FAQs = ({ data, conVersion, rtl }) => {
+  const [faqData, setFaqData] = useState(data.genral);
+  const [faqTitle, setFaqTitle] = useState(0);
   const { t } = useTranslation();
   const theme = createTheme({
     palette: {
@@ -84,7 +86,20 @@ const FAQs = ({ data, conVersion, rtl }) => {
       targetElement.scrollIntoView({ behavior: "smooth" });
     }
   };
-  console.log(conVersion);
+
+  //Function selecting for the faq type
+  const handleFaqType = (type) => {
+    if (type === 0) {
+      setFaqData(data.genral);
+      setFaqTitle(0);
+    } else if (type === 1) {
+      setFaqData(data.kpi);
+      setFaqTitle(1);
+    } else {
+      setFaqData(data.kpa);
+      setFaqTitle(2);
+    }
+  };
   return (
     <div>
       <ThemeProvider theme={theme}>
@@ -134,82 +149,159 @@ const FAQs = ({ data, conVersion, rtl }) => {
                 ? conVersion?.faqPageDescription
                 : conVersion?.faqPageDescriptionEN}
             </p>
-            <div className={classes.faQestions}>
-              {data.genral.map((item, index) => (
-                <Accordion
-                  key={index}
-                  style={{ boxShadow: "none", padding: "0" }}
-                  expanded={expandedIndices.includes(index)}
-                  onChange={() => handleAccordionChange(index)}
+            <div className={classes.faqTypeMain}>
+              <div className={classes.sideSection}>
+                <div
+                  className={`${classes.faqType} ${
+                    faqTitle === 0 ? classes.faqTypeClicked : ""
+                  }`}
+                  onClick={() => {
+                    handleFaqType(0);
+                  }}
                 >
-                  <AccordionSummary
-                    expandIcon={
-                      expandedIndices.includes(index) ? (
-                        <FiMinus color="gray" />
-                      ) : (
-                        <GoPlus />
-                      )
+                  <Image
+                    src={
+                      faqTitle === 0
+                        ? "/assets/svg/credit-card.svg"
+                        : "/assets/svg/credit-card-black.svg"
                     }
-                    // Set background color dynamically
-                    style={{
-                      background: expandedIndices.includes(index)
-                        ? "#f1f0f2"
-                        : "#fff",
-                      borderLeft: expandedIndices.includes(index)
-                        ? "2px solid #1C7A54"
-                        : "none",
-                    }}
-                  >
-                    <Typography
-                      className={classes.freq}
-                      style={{
-                        color: expandedIndices.includes(index)
-                          ? "#1C7A54"
-                          : "#000",
-                        fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
-                        fontSize: `${15 + fontSizeGeneral}px`,
-                      }}
-                      data-aos="fade-left"
+                    width={20}
+                    height={20}
+                    alt="credit-card"
+                  />
+                  <p>General Questions</p>
+                </div>
+                <div
+                  className={`${classes.faqType} ${
+                    faqTitle === 1 ? classes.faqTypeClicked : ""
+                  }`}
+                  onClick={() => {
+                    handleFaqType(1);
+                  }}
+                >
+                  <Image
+                    src="/assets/imges/faq-box.png"
+                    width={20}
+                    height={20}
+                    alt="box"
+                  />
+                  <p>KPI</p>
+                </div>
+                <div
+                  className={`${classes.faqType} ${
+                    faqTitle === 2 ? classes.faqTypeClicked : ""
+                  }`}
+                  onClick={() => {
+                    handleFaqType(2);
+                  }}
+                >
+                  <Image
+                    src="/assets/imges/faq-box.png"
+                    width={20}
+                    height={20}
+                    alt="box"
+                  />
+                  <p>KPA</p>
+                </div>
+                <Image
+                  src="/assets/imges/faq-background.png"
+                  width={200}
+                  height={200}
+                  alt="air-plane"
+                />
+              </div>
+              <div className={classes.faqheaderQuestion}>
+                <div className={classes.faqtitleHead}>
+                  <div className={classes.faqImgHead}>
+                    <Image
+                      src={
+                        faqTitle === 0
+                          ? "/assets/svg/credit-card.svg"
+                          : "/assets/svg/box.svg"
+                      }
+                      width={30}
+                      height={30}
+                      alt="credit-card"
+                    />
+                  </div>
+                  <p>
+                    {faqTitle === 1
+                      ? "KPI"
+                      : faqTitle === 2
+                      ? "KPA"
+                      : "General Questions"}
+                  </p>
+                </div>
+                <div className={classes.faQestions}>
+                  {faqData.map((item, index) => (
+                    <Accordion
+                      key={index}
+                      style={{ boxShadow: "none", padding: "0" }}
+                      expanded={expandedIndices.includes(index)}
+                      onChange={() => handleAccordionChange(index)}
                     >
-                      <Image
-                        src={`/assets/svg/${
-                          expandedIndices.includes(index)
-                            ? "star-green.svg"
-                            : "star.svg"
-                        }`}
-                        width={18}
-                        height={18}
-                        alt="star"
-                      />
-                      {rtl
-                        ? item.title.slice(0, 80)
-                        : item.titleEN.slice(0, 80)}
-                      ...
-                    </Typography>
-                  </AccordionSummary>
-                  <AccordionDetails
-                    style={{
-                      borderRadius: "0px",
-                      background: "#f1f0f2",
-                      marginTop: "-20px",
-                      borderLeft: expandedIndices.includes(index)
-                        ? "2px solid #1C7A54"
-                        : "",
-                    }}
-                  >
-                    <Typography
-                      sx={{
-                        color: "rgba(51, 48, 60, 0.87)",
-                        fontSize: `${13 + fontSizeGeneral}px`,
-                        fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
-                      }}
-                    >
-                      {rtl ? item.description : item.descriptionEN}
-                    </Typography>
-                  </AccordionDetails>
-                </Accordion>
-              ))}
+                      <AccordionSummary
+                        expandIcon={
+                          expandedIndices.includes(index) ? (
+                            <FiMinus color="gray" />
+                          ) : (
+                            <GoPlus />
+                          )
+                        }
+                        // Set background color dynamically
+                        style={{
+                          background: expandedIndices.includes(index)
+                            ? "#f1f0f2"
+                            : "#fff",
+                          borderLeft: expandedIndices.includes(index)
+                            ? "2px solid #1C7A54"
+                            : "none",
+                        }}
+                      >
+                        <Typography
+                          className={classes.freq}
+                          style={{
+                            color: expandedIndices.includes(index)
+                              ? "#1C7A54"
+                              : "#000",
+                            fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
+                            fontSize: `${15 + fontSizeGeneral}px`,
+                          }}
+                          data-aos="fade-left"
+                        >
+                          <p>Q{index + 1}</p>
+                          {rtl
+                            ? item.title?.slice(0, 80)
+                            : item.titleEN?.slice(0, 80)}
+                          ...
+                        </Typography>
+                      </AccordionSummary>
+                      <AccordionDetails
+                        style={{
+                          borderRadius: "0px",
+                          background: "#f1f0f2",
+                          marginTop: "-20px",
+                          borderLeft: expandedIndices.includes(index)
+                            ? "2px solid #1C7A54"
+                            : "",
+                        }}
+                      >
+                        <Typography
+                          sx={{
+                            color: "rgba(51, 48, 60, 0.87)",
+                            fontSize: `${13 + fontSizeGeneral}px`,
+                            fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
+                          }}
+                        >
+                          {rtl ? item.description : item.descriptionEN}
+                        </Typography>
+                      </AccordionDetails>
+                    </Accordion>
+                  ))}
+                </div>
+              </div>
             </div>
+
             <FAQsBottom phone={conVersion?.phone} email={conVersion?.email} />
           </div>
           <Subscribe rtl={rtl} />

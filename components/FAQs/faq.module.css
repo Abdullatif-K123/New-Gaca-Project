@@ -74,6 +74,61 @@
   gap: 10px;
   align-items: center;
 }
+/* Styling for new structure of FAQ page */
+.faqTypeMain{
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+   gap: 20px;
+}
+.sideSection{
+   display: flex;
+   flex-direction: column;
+   gap: 20px;
+   
+  font-family: "DINNext-meduim", sans-serif;
+}
+.faqType{
+   display: flex;
+   align-items: center;
+   gap: 5px;
+   cursor: pointer;
+   padding-left: 15px;
+}
+.faqType > p{
+   font-size: 13px;
+}
+.faqTypeClicked{
+   background-color: #3d9e7b ;
+   color: #fff;
+   padding: 10px;
+   padding-left: 15px;
+   border-radius: 5px;
+}
+.faqheaderQuestion{
+   display: flex;
+   flex-direction: column;
+   align-items: flex-start;
+   gap: 30px;
+}
+.faqtitleHead{
+   display: flex;
+   align-items: center;
+   gap: 15px;
+   
+}
+ .faqImgHead{
+  background-color: #63c69a ;
+  padding: 7px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ }
+.faqtitleHead > p{
+   font-size: 20px;
+  color: #4b465c;
+  font-family: "DINNext-Bold", sans-serif;
+}
 /* Syting for the bottom section of the FQA */
 .container {
   display: flex;
