@@ -4,14 +4,16 @@ import classes from "./ui.module.css";
 import { useTranslation } from "react-i18next";
 import Swal from "sweetalert2";
 
-const DialogModal = ({ open, handleClose, openLink, link }) => {
+const DialogModal = ({ open, handleClose, openLink, link, name, description, img }) => {
+ 
   const { t, i18n } = useTranslation();
-   const classLang = i18n.language === 'en'? classes.enLang:classes.arLang
+    
   if (open) { 
     Swal.fire({
       icon: "warning",
-      title:  t("alert-header"),
-      text: t("alert-message"),
+      title:  name? name : t("alert-header"),
+      text: description? description: t("alert-message"),
+      imageUrl: img ? img : undefined,
       showCancelButton: true,
       confirmButtonColor: "#4CAF50",
       cancelButtonColor: "#d33",

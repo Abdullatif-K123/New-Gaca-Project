@@ -88,7 +88,7 @@
   align-items: flex-start;
   justify-content: center;
   column-gap: 100px;
-  padding: 32px 70px;
+  padding: 32px 10px;
 
   column-gap: 100px;
   background-size: 65% auto;
@@ -197,14 +197,14 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   font-family: "DINNext-light", sans-serif !important;
-  font-size: 1rem;
-  row-gap: 14px;
+  
   text-decoration: underline;
 }
 .visionFooter {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   gap: 7px;
 }
 .visionImg {

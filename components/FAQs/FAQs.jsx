@@ -4,6 +4,8 @@ import classes from "./faq.module.css";
 import Image from "next/image";
 import { useTranslation } from "react-i18next";
 import FAQsBottom from "./FAQsBottom";
+
+import parse from "html-react-parser";
 import {
   Accordion,
   AccordionDetails,
@@ -17,6 +19,7 @@ import { FiMinus } from "react-icons/fi";
 import { GoPlus } from "react-icons/go";
 import classestwo from "../home/Home-main/home-one.module.css";
 const FAQs = ({ data, conVersion, rtl }) => {
+  console.log(data);
   const [faqData, setFaqData] = useState(data.genral);
   const [faqTitle, setFaqTitle] = useState(0);
   const { t } = useTranslation();
@@ -143,7 +146,6 @@ const FAQs = ({ data, conVersion, rtl }) => {
                 fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
                 fontSize: `${16 + fontSizeGeneral}px`,
               }}
-              data-aos="zoom-in-up"
             >
               {rtl
                 ? conVersion?.faqPageDescription
@@ -169,7 +171,14 @@ const FAQs = ({ data, conVersion, rtl }) => {
                     height={20}
                     alt="credit-card"
                   />
-                  <p>General Questions</p>
+                  <p
+                    style={{
+                      fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
+                      fontSize: `${16 + fontSizeGeneral}px`,
+                    }}
+                  >
+                    {t("faq")}
+                  </p>
                 </div>
                 <div
                   className={`${classes.faqType} ${
@@ -185,7 +194,7 @@ const FAQs = ({ data, conVersion, rtl }) => {
                     height={20}
                     alt="box"
                   />
-                  <p>KPI</p>
+                  <p>KPI Overview</p>
                 </div>
                 <div
                   className={`${classes.faqType} ${
@@ -201,7 +210,7 @@ const FAQs = ({ data, conVersion, rtl }) => {
                     height={20}
                     alt="box"
                   />
-                  <p>KPA</p>
+                  <p>KPA Overview</p>
                 </div>
                 <Image
                   src="/assets/imges/faq-background.png"
@@ -224,12 +233,13 @@ const FAQs = ({ data, conVersion, rtl }) => {
                       alt="credit-card"
                     />
                   </div>
-                  <p>
-                    {faqTitle === 1
-                      ? "KPI"
-                      : faqTitle === 2
-                      ? "KPA"
-                      : "General Questions"}
+                  <p
+                    style={{
+                      fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
+                      fontSize: `${16 + fontSizeGeneral}px`,
+                    }}
+                  >
+                    {faqTitle === 1 ? "KPI" : faqTitle === 2 ? "KPA" : t("faq")}
                   </p>
                 </div>
                 <div className={classes.faQestions}>
@@ -267,14 +277,11 @@ const FAQs = ({ data, conVersion, rtl }) => {
                             fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
                             fontSize: `${15 + fontSizeGeneral}px`,
                           }}
-                          data-aos="fade-left"
                         >
                           <p>Q{index + 1}</p>
-                          {faqTitle === 0
-                            ? rtl
-                              ? item.title?.slice(0, 80)
-                              : item.titleEN?.slice(0, 80)
-                            : item.name.slice(0, 80)}
+                          {rtl
+                            ? item.title?.slice(0, 80)
+                            : item.titleEN?.slice(0, 80)}
                         </Typography>
                       </AccordionSummary>
                       <AccordionDetails
@@ -294,7 +301,9 @@ const FAQs = ({ data, conVersion, rtl }) => {
                             fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
                           }}
                         >
-                          {rtl ? item.description : item.descriptionEN}
+                          {rtl
+                            ? parse(item.description)
+                            : parse(item.descriptionEN)}
                         </Typography>
                       </AccordionDetails>
                     </Accordion>
@@ -303,7 +312,12 @@ const FAQs = ({ data, conVersion, rtl }) => {
               </div>
             </div>
 
-            <FAQsBottom phone={conVersion?.phone} email={conVersion?.email} />
+            <FAQsBottom
+              phone={conVersion?.phone}
+              email={conVersion?.email}
+              fontSizeGeneral={fontSizeGeneral}
+              rtl={rtl}
+            />
           </div>
           <Subscribe rtl={rtl} />
         </div>

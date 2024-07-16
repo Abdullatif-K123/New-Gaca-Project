@@ -27,6 +27,7 @@ const Footer = ({ conVersion, rtl }) => {
   //Getting current year
   var currentDate = new Date();
   var currentYear = currentDate.getFullYear();
+
   useEffect(() => {
     setLinks(conVersion.shortLinks);
   }, [conVersion]);
@@ -68,7 +69,11 @@ const Footer = ({ conVersion, rtl }) => {
             {links?.map((link, index) => {
               return (
                 <div
-                  style={{ cursor: "pointer", fontSize: "12px" }}
+                  style={{
+                    cursor: "pointer",
+                    fontSize: "12px",
+                    justifySelf: "center",
+                  }}
                   onClick={() => {
                     handleOpen();
                     setLinkProvide(link.linkAddress);
@@ -78,12 +83,12 @@ const Footer = ({ conVersion, rtl }) => {
                   <p
                     style={{
                       fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
-                      width: "100%",
+
                       margin: 0,
-                      fontSize: `${12 + fontSizeGeneral}px`,
+                      fontSize: `${11 + fontSizeGeneral}px`,
                     }}
                   >
-                    {link.title}
+                    {rtl ? link.title : link.titleEN}
                   </p>
                 </div>
               );

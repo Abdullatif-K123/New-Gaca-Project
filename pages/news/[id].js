@@ -2,9 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import SingleNews from "@/components/singleNews/SingleNews";
 import Footer from "@/components/footer/footer";
-import LoadingSpinner from "@/components/ui/LoadingSpinner";
-import axios from "axios";
-import { API_ROUTES } from "@/utils/apiConfig";
+import LoadingSpinner from "@/components/ui/LoadingSpinner"; 
 const NewsId = ({ isFeedbackVisible, handleToggleFeedback, conVersion,rtl }) => {
   const router = useRouter();
   const id = router.query.id;

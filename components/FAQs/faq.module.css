@@ -176,6 +176,10 @@
    flex-direction: column;
    align-items: center;
    gap: 10px;
+   transition: box-shadow 0.3s ease; /* Add a smooth transition for the box-shadow effect */
+}
+.phoneEmail:hover{
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3); /* Add the box shadow when hovering */
 }
 .phoneEmail > h1{
   color: #4b465c;

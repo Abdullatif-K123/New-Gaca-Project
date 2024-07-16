@@ -7,9 +7,13 @@ import DialogModal from "../ui/DialogModal";
 import Image from "next/image";
 import Subscribe from "../ui/Subscribe";
 const HomeBottom = ({ imgs, conVersion, desc, news, rtl }) => {
+  console.log(imgs);
   const [sliderWidth, setSliderWidth] = useState("180px");
   const [leftRight, setLeftRight] = useState(false);
   const [linkProvide, setLinkProvide] = useState("");
+  const [name, setName] = useState("");
+  const [description, setDesc] = useState("");
+  const [img, setImage] = useState("");
   //setting up for the dialog modal
   const [open, setOpen] = useState(false);
   const handleClose = () => {
@@ -104,6 +108,11 @@ const HomeBottom = ({ imgs, conVersion, desc, news, rtl }) => {
                   onClick={() => {
                     handleOpen();
                     setLinkProvide(stakholder.url);
+                    setName(stakholder.name);
+                    setDesc(
+                      rtl ? stakholder.description : stakholder.descriptionEN
+                    );
+                    setImage(stakholder.avatar);
                   }}
                 >
                   <div className={classes.partnerItem}>
@@ -136,6 +145,9 @@ const HomeBottom = ({ imgs, conVersion, desc, news, rtl }) => {
           handleClose={handleClose}
           openLink={likeAndOpenLink}
           link={linkProvide}
+          name={name}
+          description={description}
+          img={img}
         />
       </div>
       <Subscribe rtl={rtl} />
