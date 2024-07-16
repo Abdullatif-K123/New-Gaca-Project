@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Dialog, DialogContent, Button, Slide } from "@mui/material";
+import { useTheme, useMediaQuery } from "@mui/material";
 import classes from "./ui.module.css";
 const WelcomeDialog = ({ onClose, videoUrl }) => {
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
   const [videSrc, setVideoSrc] = useState(
     "https://www.youtube.com/embed/qaTB_u1THVs"
   );
@@ -21,8 +24,8 @@ const WelcomeDialog = ({ onClose, videoUrl }) => {
       PaperProps={{
         style: {
           background: "transparent",
-          minWidth: "800px",
-          minHeight: "600px",
+          minWidth: isSmallScreen ? "90%" : "800px",
+          minHeight: isSmallScreen ? "200px" : "600px",
           boxShadow: "none",
           overflow: "hidden",
         },

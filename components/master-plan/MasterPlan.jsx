@@ -100,13 +100,19 @@ const MasterPlan = ({
               onLoadSuccess={onDocumentLoadSuccess}
               loading={
                 <div style={{ position: "fixed", left: "50%", top: "60%" }}>
-                  <span class="loaderPdf"></span>
+                  <span className={classes.loaderPdf}></span>
                   <p style={{ color: "#000", fontSize: "15px" }}>Loading...</p>
                 </div>
               }
-              error={<div>Failed to load PPTX. Please try again later.</div>}
+              error={<div>Failed to load PDF. Please try again later.</div>}
             >
-              <Page pageNumber={pageNumber} loading={""} />
+              {Array.from(new Array(numPages), (el, index) => (
+                <Page
+                  key={`page_${index + 1}`}
+                  pageNumber={index + 1}
+                  loading={""}
+                />
+              ))}
             </Document>
           </div>
         ) : (

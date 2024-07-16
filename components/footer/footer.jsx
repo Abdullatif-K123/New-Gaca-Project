@@ -82,6 +82,7 @@ const Footer = ({ conVersion, rtl }) => {
                   <p
                     style={{
                       fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
+                      fontSize: "14px",
                     }}
                   >
                     {rtl ? link.title : link.titleEN}

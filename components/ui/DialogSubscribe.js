@@ -47,18 +47,19 @@ const DialogModalSubscribe = ({
       onClose={handleClose}
       PaperProps={{
         style: {
-          overflowY: "unset",
-          overflowX: "unset",
+          // overflowY: "unset",
+          // overflowX: "unset",
           direction: i18n.language === "ar" ? "rtl" : "ltr",
-          
-      
         },
+        
       }}
+      fullWidth
+  maxWidth="md"
     >
       <div style={{ position: "relative" }}>
-        <div className={classes.closeBtn} onClick={handleClose}>
+        {/* <div className={classes.closeBtn} onClick={handleClose}>
           <Image src="/assets/svg/x.svg" width={17} height={17} alt="x" />
-        </div>
+        </div> */}
         <div style={{ padding: 8 }}>
           <DialogContent>
             <div
@@ -77,7 +78,7 @@ const DialogModalSubscribe = ({
             </div>
           </DialogContent>
           
-          <DialogActions sx={{ display: "flex", gap: "10px" }}>
+          <DialogActions sx={{ display: "flex", gap: "10px", marginTop: "20px",marginBottom: "10px" }}>
             <button
               variant="contained"
               color="inherit"
