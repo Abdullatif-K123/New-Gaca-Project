@@ -19,7 +19,6 @@ const DialogModal = ({ open, handleClose, openLink, link, name, description, img
       cancelButtonColor: "gray",
       confirmButtonText: img? "Open" : t("confirm"),
       cancelButtonText: t("cancel"),
-     
       customClass: {
         container:  classes.customTitleAlert,
          title: classes.customTitleAlert,

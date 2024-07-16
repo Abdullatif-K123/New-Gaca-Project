@@ -4,6 +4,7 @@ import Footer from "./footer";
 import Slider from "react-infinite-logo-slider";
 import NewsLandingpage from "./NewsLandingpage";
 import DialogModal from "../ui/DialogModal";
+import DialogModalSubscribe from "../ui/DialogSubscribe";
 import Image from "next/image";
 import Subscribe from "../ui/Subscribe";
 const HomeBottom = ({ imgs, conVersion, desc, news, rtl }) => {
@@ -140,7 +141,7 @@ const HomeBottom = ({ imgs, conVersion, desc, news, rtl }) => {
             })}
           </Slider>
         </div>
-        <DialogModal
+        <DialogModalSubscribe
           open={open}
           handleClose={handleClose}
           openLink={likeAndOpenLink}
