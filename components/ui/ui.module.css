@@ -153,7 +153,10 @@
  }
  .customTitleAlert{
   font-family:  DINNext-Arabic-meduim , sans-serif !important;
+  display: flex;  
+  justify-content: center;
  }
+ 
 @media (max-width: 750px) {
  .emailing{
   flex-direction: column;

@@ -10,15 +10,16 @@ const DialogModal = ({ open, handleClose, openLink, link, name, description, img
     
   if (open) { 
     Swal.fire({
-      icon: "warning",
+      icon:img? "": "warning",
       title:  name? name : t("alert-header"),
       text: description? description: t("alert-message"),
       imageUrl: img ? img : undefined,
       showCancelButton: true,
-      confirmButtonColor: "#4CAF50",
-      cancelButtonColor: "#d33",
-      confirmButtonText: t("confirm"),
+      confirmButtonColor: "#63c69a",
+      cancelButtonColor: "gray",
+      confirmButtonText: img? "Open" : t("confirm"),
       cancelButtonText: t("cancel"),
+     
       customClass: {
         container:  classes.customTitleAlert,
          title: classes.customTitleAlert,

@@ -240,7 +240,11 @@ const FAQs = ({ data, conVersion, rtl }) => {
                       fontSize: `${16 + fontSizeGeneral}px`,
                     }}
                   >
-                    {faqTitle === 1 ? "KPI" : faqTitle === 2 ? "KPA" : t("faq")}
+                    {faqTitle === 1
+                      ? "KPI Overview"
+                      : faqTitle === 2
+                      ? "KPA Overview"
+                      : t("faq")}
                   </p>
                 </div>
                 <div className={classes.faQestions}>
@@ -279,7 +283,6 @@ const FAQs = ({ data, conVersion, rtl }) => {
                             fontSize: `${15 + fontSizeGeneral}px`,
                           }}
                         >
-                          <p>Q{index + 1}</p>
                           {rtl
                             ? item.title?.slice(0, 80)
                             : item.titleEN?.slice(0, 80)}
