@@ -189,7 +189,11 @@ const FAQs = ({ data, conVersion, rtl }) => {
                   }}
                 >
                   <Image
-                    src="/assets/imges/faq-box.png"
+                    src={
+                      faqTitle === 1
+                        ? "/assets/svg/box-white.svg"
+                        : "/assets/imges/faq-box.png"
+                    }
                     width={20}
                     height={20}
                     alt="box"
@@ -205,7 +209,11 @@ const FAQs = ({ data, conVersion, rtl }) => {
                   }}
                 >
                   <Image
-                    src="/assets/imges/faq-box.png"
+                    src={
+                      faqTitle === 2
+                        ? "/assets/svg/box-white.svg"
+                        : "/assets/imges/faq-box.png"
+                    }
                     width={20}
                     height={20}
                     alt="box"
@@ -227,7 +235,7 @@ const FAQs = ({ data, conVersion, rtl }) => {
                       src={
                         faqTitle === 0
                           ? "/assets/svg/credit-card.svg"
-                          : "/assets/svg/box.svg"
+                          : "/assets/svg/box-white.svg"
                       }
                       width={30}
                       height={30}

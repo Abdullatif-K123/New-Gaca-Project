@@ -71,7 +71,6 @@ const Footer = ({ conVersion, rtl }) => {
                 <div
                   style={{
                     cursor: "pointer",
-                    fontSize: "12px",
                     justifySelf: "center",
                   }}
                   onClick={() => {
@@ -83,9 +82,6 @@ const Footer = ({ conVersion, rtl }) => {
                   <p
                     style={{
                       fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
-
-                      margin: 0,
-                      fontSize: `${11 + fontSizeGeneral}px`,
                     }}
                   >
                     {rtl ? link.title : link.titleEN}

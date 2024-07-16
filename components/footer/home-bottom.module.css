@@ -1,18 +1,17 @@
 /* Styling the bottom section of the home page */
-.homeBottomSectoin{
+.homeBottomSectoin {
   background-color: #fff;
   background-image: url("../../public/assets/svg/mapWorld.svg");
   background-position: center;
   background-size: cover;
-    
 }
 .homeBottomMain {
   display: flex;
   flex-direction: column;
   align-items: center;
   row-gap: 50px;
-  padding: 80px;  
-   position: relative;
+  padding: 80px;
+  position: relative;
 }
 .stakholderArrows {
   width: 100%;
@@ -32,7 +31,6 @@
   align-items: flex-start;
   width: 100%;
   gap: 80px;
-  
 }
 .bottomLogo > h2 {
   color: #000;
@@ -46,8 +44,6 @@
   font-size: 32px;
 }
 .partners {
-  
- 
   display: flex;
   align-items: center;
   column-gap: 55px;
@@ -88,7 +84,7 @@
   align-items: flex-start;
   justify-content: center;
   column-gap: 100px;
-  padding: 32px 10px;
+  padding: 32px 0px;
 
   column-gap: 100px;
   background-size: 65% auto;
@@ -194,10 +190,13 @@
 }
 /* Slogans */
 .linksSlogans {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+ display: flex;
+ flex-wrap: wrap;
+ justify-content: center;
+ align-items: center;
+ gap: 20px;
   font-family: "DINNext-light", sans-serif !important;
-  
+
   text-decoration: underline;
 }
 .visionFooter {
@@ -232,10 +231,10 @@
   }
 }
 @media (max-width: 850px) {
-  .stakholderNewsArrow{
+  .stakholderNewsArrow {
     width: 25px;
     height: 25px;
- }
+  }
   .homeBottomMain {
     row-gap: 120px;
   }
@@ -281,27 +280,27 @@
     width: 130px;
     height: 50px;
   }
-  .stakholderArrows{
-     justify-content: flex-end;
+  .stakholderArrows {
+    justify-content: flex-end;
     gap: 25px;
-    position: absolute; 
+    position: absolute;
     top: 5px;
-  } 
-  .bottomLogo{
-     position: absolute;
-     left: 10%;
-     top: 0;
   }
-  .bottomLogo > h2  {
-     font-size: 18px !important;
-     text-align: left;
+  .bottomLogo {
+    position: absolute;
+    left: 10%;
+    top: 0;
+  }
+  .bottomLogo > h2 {
+    font-size: 18px !important;
+    text-align: left;
   }
   .bottomLogo > h2 span {
     font-size: 18px !important;
   }
-  .stakholderNewsArrow{
-     width: 15px;
-     height: 15px;
+  .stakholderNewsArrow {
+    width: 15px;
+    height: 15px;
   }
 }
 @media (max-width: 600px) {
@@ -310,7 +309,7 @@
     width: 50px;
     height: 50px;
   }
- 
+
   .homeBottomMain {
     row-gap: 120px;
   }
