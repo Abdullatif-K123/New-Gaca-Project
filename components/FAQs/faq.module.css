@@ -194,6 +194,14 @@
 }
 /* Responsive for screen less than 600px */
 @media (max-width: 600px) {
+  .faqTypeMain{
+    display: flex;
+    flex-direction: column; 
+     gap: 20px;
+  }
+  .planeImg {
+     display: none;
+  }
   .choosen {
     gap: 10px;
     padding: 22px 31px;

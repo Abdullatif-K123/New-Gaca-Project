@@ -217,6 +217,7 @@ const FAQs = ({ data, conVersion, rtl }) => {
                   width={200}
                   height={200}
                   alt="air-plane"
+                  className={classes.planeImg}
                 />
               </div>
               <div className={classes.faqheaderQuestion}>
