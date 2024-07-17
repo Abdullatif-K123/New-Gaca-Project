@@ -29,7 +29,7 @@ const MasterPlan = ({
   const router = useRouter();
   const { t } = useTranslation();
   const [openVid, setOpenVid] = useState(false);
-  const [pageNumber, setPageNumber] = useState(1);
+  const [pageNumber, setPageNumber] = useState(2);
   const [numPages, setNumPages] = useState(null);
   const pdfWrapperRef = useRef(null);
 
@@ -100,19 +100,13 @@ const MasterPlan = ({
               onLoadSuccess={onDocumentLoadSuccess}
               loading={
                 <div style={{ position: "fixed", left: "50%", top: "60%" }}>
-                  <span className={classes.loaderPdf}></span>
+                  <span class="loaderPdf"></span>
                   <p style={{ color: "#000", fontSize: "15px" }}>Loading...</p>
                 </div>
               }
-              error={<div>Failed to load PDF. Please try again later.</div>}
+              error={<div>Failed to load PPTX. Please try again later.</div>}
             >
-              {Array.from(new Array(numPages), (el, index) => (
-                <Page
-                  key={`page_${index + 1}`}
-                  pageNumber={index + 1}
-                  loading={""}
-                />
-              ))}
+              <Page pageNumber={pageNumber} />
             </Document>
           </div>
         ) : (

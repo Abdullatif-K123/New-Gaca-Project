@@ -1,7 +1,46 @@
 import React from "react";
 import styles from "./report.module.css";
 import Image from "next/image";
+import { PolarArea } from "react-chartjs-2";
+import {
+  Chart as ChartJS,
+  RadialLinearScale,
+  ArcElement,
+  Tooltip,
+  Legend,
+} from "chart.js";
+
+import parse from "html-react-parser";
+
+ChartJS.register(RadialLinearScale, ArcElement, Tooltip, Legend);
+
 const ReportPage = ({ data }) => {
+  const dataShart = {
+    labels: ["Ethiopia", "Germany", "Romaina", "Denmark", "Tunisa", "Malta"],
+    datasets: [
+      {
+        label: "My Dataset",
+        data: [11, 16, 7, 3, 14, 9],
+        backgroundColor: [
+          "rgba(255, 99, 132, 0.2)",
+          "rgba(75, 192, 192, 0.2)",
+          "rgba(255, 205, 86, 0.2)",
+          "rgba(201, 203, 207, 0.2)",
+          "rgba(54, 162, 235, 0.2)",
+          "rgba(153, 102, 255, 0.2)",
+        ],
+        borderColor: [
+          "rgb(255, 99, 132)",
+          "rgb(75, 192, 192)",
+          "rgb(255, 205, 86)",
+          "rgb(201, 203, 207)",
+          "rgb(54, 162, 235)",
+          "rgb(153, 102, 255)",
+        ],
+        borderWidth: 1,
+      },
+    ],
+  };
   const {
     expectedBenefitCapacity,
     expectedBenefitOprationalEfficiency,
@@ -12,6 +51,10 @@ const ReportPage = ({ data }) => {
     projectStartDate,
     projectEndDate,
     percentage,
+    title,
+    titleEN,
+    descriptionEN,
+    description,
   } = data.projectInformation;
 
   //Parse the ISO date string into a date object
@@ -32,208 +75,137 @@ const ReportPage = ({ data }) => {
   //calculating the completion of the projects
   const statusText = percentage < 85 ? "Late" : "Done";
   return (
-    <div className={styles.container}>
-      <div className={styles.reportHeader}>
-        <h1>{data.projectInformation.titleEN}</h1>
+    <div className={styles.reportMain}>
+      <Image
+        src="/assets/svg/plane-report.svg"
+        width={80}
+        height={80}
+        alt="plane"
+        className={styles.planeReport}
+      />
+      <div className={styles.container}>
+        <div className={styles.headSection}>
+          <Image
+            src="/assets/svg/gaca-logo-report.svg"
+            width={120}
+            height={80}
+            alt="logo-report"
+          />
+          <div className={styles.projectDate}>
+            <p>Project Start Date: &nbsp;&nbsp;&nbsp; {formattedStart}</p>
+            <p>Project End Date: &nbsp;&nbsp;&nbsp;&nbsp; {formattedEnd}</p>
+            <p>
+              Project Status:
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <span
+                className={`${
+                  statusText === "Late"
+                    ? styles.statusLate
+                    : styles.statusComplete
+                }`}
+              >
+                {statusText}
+              </span>{" "}
+            </p>
+          </div>
+        </div>
+        <div className={styles.titleDesc}>
+          <div className={styles.titleSec}>
+            <p>
+              {" "}
+              <Image
+                src="/assets/svg/news-report.svg"
+                width={30}
+                height={30}
+                alt="news-report"
+              />
+              {titleEN}
+            </p>
+            <p>%{percentage}</p>
+          </div>
+          <p>{parse(descriptionEN)}</p>
+        </div>
+        <div className={styles.boxes}>
+          <div className={styles.aboutBox}>
+            <div className={styles.aboutSec}>
+              <p>ABOUT</p>
+              <p className={styles.stakholderAbout}>
+                {" "}
+                <Image
+                  src="/assets/svg/check-about-report.svg"
+                  width={30}
+                  height={30}
+                  alt="plane"
+                />
+                Project Owner: &nbsp; {data.projectOwner.userName}
+              </p>
+            </div>
+            <div className={styles.aboutSec}>
+              <p>Stakholders</p>
+              {data.projectStakeholders.map((project) => {
+                return (
+                  <p className={styles.stakholderAbout}>
+                    <Image
+                      src="/assets/svg/world-report.svg"
+                      width={27}
+                      height={27}
+                      alt="world"
+                    />{" "}
+                    {project.userName}
+                  </p>
+                );
+              })}
+            </div>
+            <div className={styles.aboutSec}>
+              <p> Operation Enviroment</p>
+              <p className={styles.stakholderAbout}>
+                <Image
+                  src="/assets/svg/plane-about-report.svg"
+                  width={30}
+                  height={30}
+                  alt="plane"
+                />
+                Airport
+              </p>
+              <p className={styles.stakholderAbout}>
+                <Image
+                  src="/assets/svg/plane-arrival-report.svg"
+                  width={30}
+                  height={30}
+                  alt="plane"
+                />
+                Terminal
+              </p>
+              <p className={styles.stakholderAbout}>
+                {" "}
+                <Image
+                  src="/assets/svg/acc-report.svg"
+                  width={30}
+                  height={30}
+                  alt="plane"
+                />
+                ACC
+              </p>
+              <p className={styles.stakholderAbout}>
+                <Image
+                  src="/assets/svg/planet-report.svg"
+                  width={30}
+                  height={30}
+                  alt="plane"
+                />
+                Not Applicable
+              </p>
+            </div>
+          </div>
+          <div className={styles.expectedBen}>
+            <p>Expected Benefits (KPA)</p>
+          </div>
+          <div className={styles.activites}>
+            <p>Activities</p>
+            <PolarArea data={dataShart} />
+          </div>
+        </div>
       </div>
-      <table className={styles.table}>
-        <tbody>
-          <tr>
-            <td>
-              <div className={styles.section1}>
-                <p>Stakholders</p>
-              </div>
-            </td>
-            <td>
-              <div className={styles.stakholderValue}>
-                <p>ANSPs</p>
-                <p>Military</p>
-                <p>Regulators</p>
-              </div>
-            </td>
-            <td>
-              <div className={styles.section1}>
-                <p>Expected Benefits</p>
-              </div>
-            </td>
-            <td style={{ padding: "0px" }}>
-              <div className={styles.benefitImages}>
-                <div className={styles.imges}>
-                  <div className={styles.singleImage}>
-                    <Image
-                      src={`/assets/imges/${
-                        expectedBenefitCapacity
-                          ? "capacity-blue.png"
-                          : "capacity-gray.png"
-                      } `}
-                      width={50}
-                      height={50}
-                      alt="capacity"
-                    />
-                    <p
-                      style={{
-                        color: expectedBenefitCapacity ? "#4752a3" : "gray",
-                      }}
-                    >
-                      Capacity
-                    </p>
-                  </div>
-                  <div className={styles.singleImage}>
-                    <Image
-                      src={`/assets/imges/${
-                        expectedBenefitOprationalEfficiency
-                          ? "operation-blue.png"
-                          : "operation-gray.png"
-                      }`}
-                      width={50}
-                      height={50}
-                      alt="operational"
-                    />
-                    <p
-                      style={{
-                        color: expectedBenefitOprationalEfficiency
-                          ? "#4752a3"
-                          : "gray",
-                      }}
-                    >
-                      Operational efficiency
-                    </p>
-                  </div>
-                  <div className={styles.singleImage}>
-                    <Image
-                      src={`/assets/imges/${
-                        expectedBenefitCostEfficiency
-                          ? "cost-blue.png"
-                          : "cost-gray.png"
-                      }`}
-                      width={50}
-                      height={50}
-                      alt="cosy"
-                    />
-                    <p
-                      style={{
-                        color: expectedBenefitCostEfficiency
-                          ? "#4752a3"
-                          : "gray",
-                      }}
-                    >
-                      Cost efficiency
-                    </p>
-                  </div>
-                </div>
-
-                <div className={styles.imges}>
-                  <div className={styles.singleImage}>
-                    <Image
-                      src={`/assets/imges/${
-                        expectedBenefitSafety
-                          ? "seat-blue.png"
-                          : "seat-gray.png"
-                      }`}
-                      width={50}
-                      height={50}
-                      alt="Saftely"
-                    />
-                    <p
-                      style={{
-                        color: expectedBenefitSafety ? "#4752a3" : "gray",
-                      }}
-                    >
-                      Saftey
-                    </p>
-                  </div>
-                  <div className={styles.singleImage}>
-                    <Image
-                      src={`/assets/imges/${
-                        expectedBenefitEnvironment
-                          ? "evniroment-blue.png"
-                          : "enviroment-gray.png"
-                      }`}
-                      width={50}
-                      height={50}
-                      alt="enviroment"
-                    />
-                    <p
-                      style={{
-                        color: expectedBenefitEnvironment ? "#4752a3" : "gray",
-                      }}
-                    >
-                      Enviroment
-                    </p>
-                  </div>
-                  <div className={styles.singleImage}>
-                    <Image
-                      src={`/assets/imges/${
-                        expectedBenefitSecurity
-                          ? "secure-blue.png"
-                          : "secure-gray.png"
-                      }`}
-                      width={50}
-                      height={50}
-                      alt="security"
-                    />
-                    <p
-                      style={{
-                        color: expectedBenefitSecurity ? "#4752a3" : "gray",
-                      }}
-                    >
-                      Security
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <div className={styles.section1}>
-                <p>Project Start</p>
-              </div>
-            </td>
-            <td>
-              {" "}
-              <div className={styles.section1}>
-                <p>{formattedStart}</p>
-              </div>
-            </td>
-            <td>
-              {" "}
-              <div className={styles.section1}>
-                <p>Project owner</p>
-              </div>
-            </td>
-            <td>Row 2, Column 2</td>
-          </tr>
-          <tr>
-            <td>
-              <div className={styles.section1}>
-                <p>Project End</p>
-              </div>
-            </td>
-            <td>
-              <div className={styles.section1}>
-                <p>{formattedEnd}</p>
-              </div>
-            </td>
-            <td>Row 2, Column 2</td>
-            <td>Row 2, Column 2</td>
-          </tr>
-          <tr>
-            <td>
-              <div className={styles.section1}>
-                <p>Status</p>
-              </div>
-            </td>
-            <td style={{ background: percentage < 85 ? "yellow" : "green" }}>
-              <div className={styles.section1}>
-                <p>{statusText}</p>
-              </div>
-            </td>
-            <td>Row 2, Column 2</td>
-            <td>Row 2, Column 2</td>
-          </tr>
-        </tbody>
-      </table>
     </div>
   );
 };
