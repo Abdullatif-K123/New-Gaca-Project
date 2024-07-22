@@ -5,8 +5,6 @@ import classes from "./masterPlan.module.css";
 import Footer from "../footer/footer";
 import Image from "next/image";
 import { useTranslation } from "react-i18next";
-import findNodeAndParentsByName from "@/utils/findNodeAndParent";
-import { findNodeAndParentsById } from "@/utils/findNodeAndParent";
 import { useRouter } from "next/router";
 import Subscribe from "../ui/Subscribe";
 
@@ -28,7 +26,14 @@ const MasterPlanMain = ({
   const [selected, setSelected] = useState([]);
   const [singleSelectingDesc, setSignelDesc] = useState("");
   const [expanded, setExpanded] = useState([`root${1}`]);
+
+  const [screenWidth, setScreenWidth] = useState(1000);
   const { t } = useTranslation();
+  const [isMenuVisible, setIsMenuVisible] = useState(true);
+
+  const toggleMenuVisibility = () => {
+    setIsMenuVisible(!isMenuVisible);
+  };
   const handleSelectSingleElem = (elem, idSelect) => {
     setSingleElemSelecting(elem);
     setSignelDesc(elem.description);
@@ -75,6 +80,22 @@ const MasterPlanMain = ({
 
   const handleSelect = async (event, nodeIds) => {};
 
+  const updateScreenWidth = () => {
+    setScreenWidth(window.innerWidth);
+  };
+
+  useEffect(() => {
+    // Set initial screen width
+    updateScreenWidth();
+
+    // Add event listener to update width on window resize
+    window.addEventListener("resize", updateScreenWidth);
+
+    // Clean up event listener on component unmount
+    return () => {
+      window.removeEventListener("resize", updateScreenWidth);
+    };
+  }, []);
   return (
     <>
       <div className={classes.masterPlanMain}>
@@ -129,17 +150,21 @@ const MasterPlanMain = ({
           </p>
         </div>
         <div className={classes.masterPlanContent}>
-          <SideMenu
-            singleSelectHandling={handleSelectSingleElem}
-            expanded={expanded}
-            selected={selected}
-            handleToggle={handleToggle}
-            handleSelect={handleSelect}
-            data={data}
-            rtl={rtl}
-            monitor={monitor}
-            handleSwitching={handleSwitching}
-          />
+          {screenWidth > 450 && (
+            <SideMenu
+              singleSelectHandling={handleSelectSingleElem}
+              expanded={expanded}
+              selected={selected}
+              handleToggle={handleToggle}
+              handleSelect={handleSelect}
+              data={data}
+              rtl={rtl}
+              monitor={monitor}
+              handleSwitching={handleSwitching}
+              isMenuVisible={isMenuVisible}
+              toggleMenuVisibility={toggleMenuVisibility}
+            />
+          )}
           <MasterPlan
             singleDesc={singleSelectingDesc}
             singleElem={singleElemSelecting}
@@ -148,6 +173,7 @@ const MasterPlanMain = ({
             rtl={rtl}
             switching={switching}
             monitor={monitor}
+            screenWidth={screenWidth}
           />
         </div>
       </div>

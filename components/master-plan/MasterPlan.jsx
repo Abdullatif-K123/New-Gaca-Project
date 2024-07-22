@@ -24,6 +24,7 @@ const MasterPlan = ({
   videoUrl,
   rtl,
   switching,
+  screenWidth,
   monitor,
 }) => {
   const router = useRouter();
@@ -32,7 +33,6 @@ const MasterPlan = ({
   const [pageNumber, setPageNumber] = useState(2);
   const [numPages, setNumPages] = useState(null);
   const pdfWrapperRef = useRef(null);
-
   const handleClose = () => {
     setOpenVid(false);
   };
@@ -51,7 +51,6 @@ const MasterPlan = ({
       setPageNumber((prevPageNumber) => prevPageNumber - 1);
     }
   };
-
   useEffect(() => {
     const pdfWrapper = pdfWrapperRef.current;
     if (pdfWrapper) {
@@ -106,7 +105,16 @@ const MasterPlan = ({
               }
               error={<div>Failed to load PPTX. Please try again later.</div>}
             >
-              <Page pageNumber={pageNumber} />
+              {screenWidth > 450 ? (
+                <Page pageNumber={pageNumber} />
+              ) : (
+                <Page
+                  pageNumber={pageNumber}
+                  width={410}
+                  height={390}
+                  canvasBackground="#fff"
+                />
+              )}
             </Document>
           </div>
         ) : (

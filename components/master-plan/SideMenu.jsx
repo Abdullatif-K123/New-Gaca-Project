@@ -14,6 +14,8 @@ const SideMenu = ({
   rtl,
   monitor,
   handleSwitching,
+  toggleMenuVisibility,
+  isMenuVisible,
 }) => {
   const { t } = useTranslation();
   const [subjectData, setSubjectData] = useState(data);
@@ -36,34 +38,43 @@ const SideMenu = ({
   };
 
   return (
-    <div className={classes.sideMenuMP}>
-      <div className={classes.searchSideMenu}>
-        <Image
-          src="/assets/svg/search-normal.svg"
-          width={24}
-          height={24}
-          alt="search"
-        />
-        <input
-          type="text"
-          placeholder={t("search")}
-          onKeyUp={onFilterMouseUp}
-        />
-      </div>
-      <div className={classes.sideMenuTreeView} data-aos="fade-right">
-        <p>{t("masterplan")}</p>
-        <div className={classes.treeViewSideMenu}>
-          <MyTreeView
-            singleSelectHandling={singleSelectHandling}
-            data={subjectData}
-            expanded={expanded}
-            handleToggle={handleToggle}
-            handleSelect={handleSelect}
-            selectedTree={selected}
-            rtl={rtl}
-            monitor={monitor}
-            handleSwitching={handleSwitching}
+    <div className={classes.sideMenuMain}>
+      <button onClick={toggleMenuVisibility} className={classes.toggleButton}>
+        {isMenuVisible ? "Hide Menu" : "Show Menu"}
+      </button>
+      <div
+        className={`${classes.sideMenuMP} ${
+          isMenuVisible ? classes.show : classes.hide
+        }`}
+      >
+        <div className={classes.searchSideMenu}>
+          <Image
+            src="/assets/svg/search-normal.svg"
+            width={24}
+            height={24}
+            alt="search"
           />
+          <input
+            type="text"
+            placeholder={t("search")}
+            onKeyUp={onFilterMouseUp}
+          />
+        </div>
+        <div className={classes.sideMenuTreeView} data-aos="fade-right">
+          <p>{t("masterplan")}</p>
+          <div className={classes.treeViewSideMenu}>
+            <MyTreeView
+              singleSelectHandling={singleSelectHandling}
+              data={subjectData}
+              expanded={expanded}
+              handleToggle={handleToggle}
+              handleSelect={handleSelect}
+              selectedTree={selected}
+              rtl={rtl}
+              monitor={monitor}
+              handleSwitching={handleSwitching}
+            />
+          </div>
         </div>
       </div>
     </div>

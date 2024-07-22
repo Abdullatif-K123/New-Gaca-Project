@@ -9,8 +9,11 @@
   display: grid;
   grid-template-columns: 1fr 4fr;
   column-gap: 25px;
-  margin-top: 20px;
+  margin-top: 50px;
+  position: absolute;
+  z-index: 1;
   height: 100%;
+
 }
 
 /* Side Menu Styling*/
@@ -23,7 +26,13 @@
    transform: rotate(90deg);
    right: 0;
   }
+   .sideMenuMain{
+     display: flex;
+     flex-direction: column;
+     gap: 5px;
+   }
 .sideMenuMP {
+  height: 100%;
   display: flex;
   flex-direction: column;
   gap: 25px;
@@ -31,6 +40,7 @@
   overflow-y: scroll;
   border: 1px solid var(--black-10, rgba(0, 0, 0, 0.1));
   border-radius: 5px;
+  transition: all 0.3s ease-in-out ;
 }
 .sideMenuMP::-webkit-scrollbar {
   width: 0em;
@@ -101,7 +111,9 @@
   text-shadow: 1px 0px;
 }
 /* Master plan content */
-.sideContent {
+.sideContent { 
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   row-gap: 29px;
@@ -123,7 +135,7 @@
   border-radius: 10px;
   background: #fff;
   height: 100%;
-  padding: 0px 34px;
+  padding: 0px 0px;
   position: relative;
 
 }
@@ -151,11 +163,36 @@
   float: right;
   z-index: 999;
   position: absolute;
-  right: 60px;
+  right: 50px;
+  top: 0px
 }
 .videoShow:hover{
   box-shadow: 0 3px 2px rgba(0, 0, 0, 0.2);
 }
+.sideMenuMP.hide {
+  transform: translateX(-100%);
+}
+
+.sideMenuMP.show {
+  transform: translateX(0);
+}
+
+.toggleButton {
+  position: absolute;
+  left: 0;
+  top: 0px;
+  z-index: 1000;
+   width: fit-content;
+  background-color: #1C7A54;
+  padding: 5px; 
+  color: white;
+  border: none;
+  font-size: 14px;
+  font-family: "DINNext-meduim", sans-serif;
+  cursor: pointer;
+}
+
+
 /* Table Elements */
  .tableHover{
    cursor: pointer;
@@ -163,34 +200,64 @@
  .tableHover:hover{
    color: #63C69A
  }
- .documentMasterPlan{
-  height: 80%;
-  width: 80%;
-  background-color: #fff;
- }
+ .documentMasterPlan {
+  position: absolute;
+  top: 50px;
+  left: 0;  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background-color: #f8f9fa; /* Adjust if you have a specific background color */
+}
+
+.documentMasterPlan .react-pdf__Document {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.documentMasterPlan .react-pdf__Page {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 /* Responsive design for less than 1000px */
 @media (max-width: 1000px) {
   .masterPlanMain {
     padding-left: 5px;
+  } 
+  .masterPlanContent {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    column-gap: 0px; 
+    height: 100%;
   }
-  .sideMenuMP {
-    padding: 26px 0px;
-  }
+  
+ 
+
 }
 /* Responsive for less than 600px */
 @media (max-width: 600px) {
-   
+    
   .masterPlanContent {
-    grid-template-columns: 1fr 1fr;
-    column-gap: 5px;
+    display: grid;
+    grid-template-columns: 1fr;
+    column-gap: 0px; 
+    height: 100%;
   }
+  
  .videoShow{
   padding: 7px 15px;
   right: 5px;
   top: 0;
  }
  .documentMasterPlan{
-   background-color: #000;
+  position: static;
  }
 }
 /* 430px */
