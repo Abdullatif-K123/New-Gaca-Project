@@ -1,4 +1,5 @@
 import "@/styles/globals.css";
+import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 import "react-pdf/dist/esm/Page/TextLayer.css";
 import Layout from "@/components/layout/Layout";
 import Head from "next/head";

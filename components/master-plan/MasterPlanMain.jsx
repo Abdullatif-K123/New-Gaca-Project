@@ -150,21 +150,20 @@ const MasterPlanMain = ({
           </p>
         </div>
         <div className={classes.masterPlanContent}>
-          {screenWidth > 450 && (
-            <SideMenu
-              singleSelectHandling={handleSelectSingleElem}
-              expanded={expanded}
-              selected={selected}
-              handleToggle={handleToggle}
-              handleSelect={handleSelect}
-              data={data}
-              rtl={rtl}
-              monitor={monitor}
-              handleSwitching={handleSwitching}
-              isMenuVisible={isMenuVisible}
-              toggleMenuVisibility={toggleMenuVisibility}
-            />
-          )}
+          <SideMenu
+            singleSelectHandling={handleSelectSingleElem}
+            expanded={expanded}
+            selected={selected}
+            handleToggle={handleToggle}
+            handleSelect={handleSelect}
+            data={data}
+            rtl={rtl}
+            monitor={monitor}
+            handleSwitching={handleSwitching}
+            isMenuVisible={isMenuVisible}
+            toggleMenuVisibility={toggleMenuVisibility}
+          />
+
           <MasterPlan
             singleDesc={singleSelectingDesc}
             singleElem={singleElemSelecting}

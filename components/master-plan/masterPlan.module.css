@@ -261,6 +261,10 @@
  .documentMasterPlan{
   position: static;
  }
+ .tableHover{
+  font-size: 10px;
+  gap: 2px;
+ }
 }
 /* 430px */
 @media (max-width: 435px) {

@@ -76,7 +76,7 @@ const MasterPlanTable = ({ data, rtl }) => {
     <>
       <TableRow key={data.id}>
         <TableCell onClick={handleCodeClick}>
-          <p style={{ cursor: "pointer" }}>
+          <p style={{ cursor: "pointer" }} className={classes.tableHover}>
             {" "}
             {clickCode ? <CiSquareMinus /> : <CiSquarePlus />} {data.code}
           </p>

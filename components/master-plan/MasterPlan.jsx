@@ -30,9 +30,10 @@ const MasterPlan = ({
   const router = useRouter();
   const { t } = useTranslation();
   const [openVid, setOpenVid] = useState(false);
-  const [pageNumber, setPageNumber] = useState(2);
   const [numPages, setNumPages] = useState(null);
   const pdfWrapperRef = useRef(null);
+  const pageRefs = useRef([]);
+
   const handleClose = () => {
     setOpenVid(false);
   };
@@ -41,36 +42,26 @@ const MasterPlan = ({
     setOpenVid(true);
   };
 
-  //Handling scrolling pages from the mouse when scroll up and down
-  const handleScroll = (e) => {
-    e.preventDefault();
-    const delta = e.deltaY;
-    if (delta > 0 && pageNumber < numPages) {
-      setPageNumber((prevPageNumber) => prevPageNumber + 1);
-    } else if (delta < 0 && pageNumber > 1) {
-      setPageNumber((prevPageNumber) => prevPageNumber - 1);
-    }
-  };
-  useEffect(() => {
-    const pdfWrapper = pdfWrapperRef.current;
-    if (pdfWrapper) {
-      pdfWrapper.addEventListener("wheel", handleScroll, { passive: false });
-    }
-    return () => {
-      if (pdfWrapper) {
-        pdfWrapper.removeEventListener("wheel", handleScroll);
-      }
-    };
-  }, [pageNumber, numPages]);
-
-  useEffect(() => {
-    setPageNumber(singleElem.pageNumber);
-  }, [singleElem.pageNumber]);
-
   const onDocumentLoadSuccess = ({ numPages }) => {
     setNumPages(numPages);
-    setPageNumber(1);
+    // Create refs for each page
+    pageRefs.current = Array(numPages)
+      .fill()
+      .map((_, i) => pageRefs.current[i] || React.createRef());
   };
+
+  useEffect(() => {
+    if (
+      singleElem &&
+      singleElem.pageNumber &&
+      pageRefs.current[singleElem.pageNumber - 1]
+    ) {
+      pageRefs.current[singleElem.pageNumber - 1].current.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  }, [singleElem]);
 
   return (
     <div className={classes.sideContent}>
@@ -99,22 +90,34 @@ const MasterPlan = ({
               onLoadSuccess={onDocumentLoadSuccess}
               loading={
                 <div style={{ position: "fixed", left: "50%", top: "60%" }}>
-                  <span class="loaderPdf"></span>
+                  <span className="loaderPdf"></span>
                   <p style={{ color: "#000", fontSize: "15px" }}>Loading...</p>
                 </div>
               }
               error={<div>Failed to load PPTX. Please try again later.</div>}
             >
-              {screenWidth > 450 ? (
-                <Page pageNumber={pageNumber} />
-              ) : (
-                <Page
-                  pageNumber={pageNumber}
-                  width={410}
-                  height={390}
-                  canvasBackground="#fff"
-                />
-              )}
+              {Array.from(new Array(numPages), (el, index) => (
+                <div key={`page_${index + 1}`} ref={pageRefs.current[index]}>
+                  <Page
+                    pageNumber={index + 1}
+                    width={
+                      screenWidth > 650
+                        ? undefined
+                        : screenWidth < 650 && screenWidth > 550
+                        ? 500
+                        : 400
+                    }
+                    height={
+                      screenWidth > 650
+                        ? undefined
+                        : screenWidth < 650 && screenWidth > 550
+                        ? 500
+                        : 300
+                    }
+                    canvasBackground="#fff"
+                  />
+                </div>
+              ))}
             </Document>
           </div>
         ) : (

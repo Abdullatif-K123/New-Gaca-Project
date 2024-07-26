@@ -39,9 +39,9 @@ const SideMenu = ({
 
   return (
     <div className={classes.sideMenuMain}>
-      <button onClick={toggleMenuVisibility} className={classes.toggleButton}>
+      {/* <button onClick={toggleMenuVisibility} className={classes.toggleButton}>
         {isMenuVisible ? "Hide Menu" : "Show Menu"}
-      </button>
+      </button> */}
       <div
         className={`${classes.sideMenuMP} ${
           isMenuVisible ? classes.show : classes.hide
