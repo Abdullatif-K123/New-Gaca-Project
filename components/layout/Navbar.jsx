@@ -8,6 +8,7 @@ import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import { Hidden, IconButton, Menu, MenuItem } from "@mui/material";
 import { useFontSize } from "@/store/FontSizeContext";
+
 const Navbar = ({
   handleSubmitFeedback,
   isFeedbackVisible,
@@ -221,9 +222,9 @@ const Navbar = ({
             } ${rtl ? classes.navRight : classes.navLeft} `}
           >
             <Image
-              src="/assets/svg/LogoAbout.svg"
-              width={150}
-              height={70}
+              src="/assets/svg/whiteLogo.svg"
+              width={125}
+              height={80}
               alt="logo-svg"
               className={classes.imgMenu}
             />
@@ -245,6 +246,13 @@ const Navbar = ({
                   fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
                 }}
               >
+                <Image
+                  src="/assets/svg/menu-home.svg"
+                  width={20}
+                  height={20}
+                  alt="menu-home"
+                  className={classes.menuImage}
+                />
                 {t("home-route")}
               </li>
               <li
@@ -254,7 +262,15 @@ const Navbar = ({
                 }}
                 className={`${path === "about" ? classes.active : null}`}
                 style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}
+                data-aos="fade-up"
               >
+                <Image
+                  src="/assets/svg/menu-about.svg"
+                  width={20}
+                  height={20}
+                  alt="menu-about"
+                  className={classes.menuImage}
+                />
                 {t("about")}
               </li>
               <li
@@ -265,6 +281,13 @@ const Navbar = ({
                 className={`${path === "documents" ? classes.active : null}`}
                 style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}
               >
+                <Image
+                  src="/assets/imges/menu-doucments.png"
+                  width={20}
+                  height={20}
+                  alt="menu-about"
+                  className={classes.menuImage}
+                />
                 {t("download")}
               </li>
               <li
@@ -275,6 +298,13 @@ const Navbar = ({
                 className={`${path === "news" ? classes.active : null}`}
                 style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}
               >
+                <Image
+                  src="/assets/svg/menu-news.svg"
+                  width={20}
+                  height={20}
+                  alt="menu-news"
+                  className={classes.menuImage}
+                />
                 {t("news")}
               </li>
               <li
@@ -285,6 +315,13 @@ const Navbar = ({
                 className={`${path === "faq" ? classes.active : null}`}
                 style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}
               >
+                <Image
+                  src="/assets/imges/menu-faq.png"
+                  width={25}
+                  height={25}
+                  alt="menu-faqq"
+                  className={classes.menuImage}
+                />
                 {t("faq")}
               </li>
             </ul>
