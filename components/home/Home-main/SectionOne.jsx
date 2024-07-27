@@ -54,7 +54,7 @@ const SectionOne = ({ title, desc, rtl }) => {
           <p
             style={{
               fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
-              fontSize: `${20 + fontSizeGeneral}px`,
+              fontSize: `${18 + fontSizeGeneral}px`,
             }}
           >
             {" "}
@@ -67,7 +67,7 @@ const SectionOne = ({ title, desc, rtl }) => {
         style={{ marginRight: rtl ? "0px" : "" }}
       >
         <Image
-          src="/assets/imges/Brochure-landingpage.webp"
+          src="/assets/svg/man_with_laptop.svg"
           width={700}
           height={520}
           className={classes.streetPlane}
