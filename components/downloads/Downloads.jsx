@@ -426,7 +426,7 @@ const Downloads = ({ data, conversion, rtl }) => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {filterTerm.map((document) => {
+                {/* {filterTerm.map((document) => {
                   const dateCreated = new Date(document.createdAt);
                   const dateUpdated = new Date(document.updatedAt);
                   const options = {
@@ -480,7 +480,7 @@ const Downloads = ({ data, conversion, rtl }) => {
                       </TableCell>
                     </TableRow>
                   );
-                })}
+                })} */}
               </TableBody>
             </Table>
           </TableContainer>
