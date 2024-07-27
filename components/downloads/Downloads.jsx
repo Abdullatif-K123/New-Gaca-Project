@@ -26,6 +26,7 @@ const Downloads = ({ data, conversion, rtl }) => {
   const { fontSizeGeneral } = useFontSize();
   const [filterTerm, setFilterTerm] = useState(data);
   const [currentPage, setCurrentPage] = useState(0);
+  const [mainSectionSelect, setMainSectionSelect] = useState(0);
   //Filter but selecting options
   const [selectedOption, setSelectedOption] = useState(6);
 
@@ -138,209 +139,369 @@ const Downloads = ({ data, conversion, rtl }) => {
       </div>
       <div className={classes.downloadContent}>
         <p
-          style={{
-            fontSize: `${14 + fontSizeGeneral}px`,
-            fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
+          className={`${
+            mainSectionSelect === 0 ? classes.selectSection : null
+          }`}
+          onClick={() => {
+            setMainSectionSelect(0);
           }}
         >
-          {rtl
-            ? conversion.globalSettings?.downloadPageDescription
-            : conversion.globalSettings?.downloadPageDescriptionEN}
+          {t("development")}
+        </p>
+        <p
+          className={`${
+            mainSectionSelect === 1 ? classes.selectSection : null
+          }`}
+          onClick={() => {
+            setMainSectionSelect(1);
+          }}
+        >
+          {t("documents")}
+        </p>
+        <p
+          className={`${
+            mainSectionSelect === 2 ? classes.selectSection : null
+          }`}
+          onClick={() => {
+            setMainSectionSelect(2);
+          }}
+        >
+          {t("data-objectives")}
         </p>
       </div>
-      <div className={classes.downloadTables}>
-        <div className={classes.filteringDocument}>
-          <div className={classes.filterByNumber}>
-            <FormLabel
-              style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}
+      <div className={classes.resourceMain}>
+        {mainSectionSelect === 0 ? (
+          <div className={classes.resourceSection}>
+            <div
+              className={`${classes.resminiSeciton} ${classes.selectSideSection}`}
             >
-              {t("show")}
-            </FormLabel>
-            <Select
-              size="small"
-              value={selectedOption}
-              onChange={handleSelectChange}
-              defaultValue={"6"}
+              <Image
+                src="/assets/svg/credit-card.svg"
+                width={20}
+                height={20}
+                alt="icon"
+              />
+              <p>{t("development")}</p>
+            </div>
+            <div
+              className={`${classes.resminiSeciton} ${classes.notSelectSideSec}`}
             >
-              <MenuItem value={1}>3</MenuItem>
-              <MenuItem value={2}>4</MenuItem>
-              <MenuItem value={6}>6</MenuItem>
-              <MenuItem value={15}>15</MenuItem>
-              <MenuItem value={20}>20</MenuItem>
-            </Select>
-            <FormLabel
-              style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}
-            >
-              {t("entries")}
-            </FormLabel>
+              <Image
+                src="/assets/svg/box.svg"
+                width={20}
+                height={20}
+                alt="icon"
+              />
+              <p>{t("In-progress")}</p>
+            </div>
           </div>
-          <Grid alignItems="center">
-            <Grid
-              item
-              style={{ display: "flex", alignItems: "center", gap: "10px" }}
+        ) : mainSectionSelect === 1 ? (
+          <div className={classes.resourceSection}>
+            <div
+              className={`${classes.resminiSeciton} ${classes.selectSideSection}`}
             >
+              <Image
+                src="/assets/svg/credit-card.svg"
+                width={20}
+                height={20}
+                alt="icon"
+              />
+              <p>{t("documents")}</p>
+            </div>
+            <div
+              className={`${classes.resminiSeciton} ${classes.notSelectSideSec}`}
+            >
+              <Image
+                src="/assets/svg/box.svg"
+                width={20}
+                height={20}
+                alt="icon"
+              />
+              <p>{t("annex")}</p>
+            </div>
+          </div>
+        ) : (
+          <div className={classes.resourceSection}>
+            <div
+              className={`${classes.resminiSeciton} ${classes.selectSideSection}`}
+            >
+              <Image
+                src="/assets/svg/credit-card.svg"
+                width={20}
+                height={20}
+                alt="icon"
+              />
+              <p>{t("services")}</p>
+            </div>
+            <div
+              className={`${classes.resminiSeciton} ${classes.notSelectSideSec}`}
+            >
+              <Image
+                src="/assets/svg/box.svg"
+                width={20}
+                height={20}
+                alt="icon"
+              />
+              <p>{t("operation-evn")}</p>
+            </div>
+            <div
+              className={`${classes.resminiSeciton} ${classes.notSelectSideSec}`}
+            >
+              <Image
+                src="/assets/svg/box.svg"
+                width={20}
+                height={20}
+                alt="icon"
+              />
+              <p>{t("stakholders")}</p>
+            </div>
+            <div
+              className={`${classes.resminiSeciton} ${classes.notSelectSideSec}`}
+            >
+              <Image
+                src="/assets/svg/box.svg"
+                width={20}
+                height={20}
+                alt="icon"
+              />
+              <p>{t("regulatory")}</p>
+            </div>
+            <div
+              className={`${classes.resminiSeciton} ${classes.notSelectSideSec}`}
+            >
+              <Image
+                src="/assets/svg/box.svg"
+                width={20}
+                height={20}
+                alt="icon"
+              />
+              <p>{t("kpi-overview")}</p>
+            </div>
+            <div
+              className={`${classes.resminiSeciton} ${classes.notSelectSideSec}`}
+            >
+              <Image
+                src="/assets/svg/box.svg"
+                width={20}
+                height={20}
+                alt="icon"
+              />
+              <p>{t("kpa-overview")}</p>
+            </div>
+          </div>
+        )}
+        <div className={classes.downloadTables}>
+          <div className={classes.downloadHead}>
+            <div className={classes.downloadImgHead}>
+              <Image
+                src="/assets/svg/credit-card.svg"
+                width={30}
+                height={30}
+                alt="logo-credit"
+              />
+            </div>
+            <p
+              style={{
+                fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
+                fontSize: `${19 + fontSizeGeneral}px`,
+              }}
+            >
+              {t("documents")}
+            </p>
+          </div>
+          <div className={classes.filteringDocument}>
+            <div className={classes.filterByNumber}>
               <FormLabel
-                htmlFor="search"
                 style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}
               >
-                {t("search")}
+                {t("show")}
               </FormLabel>
-              <TextField
+              <Select
                 size="small"
-                variant="outlined"
-                placeholder={t("title")}
-                onChange={(e) => searchByTitle(e.target.value)}
-                id="search"
-              />
+                value={selectedOption}
+                onChange={handleSelectChange}
+                defaultValue={"6"}
+              >
+                <MenuItem value={1}>3</MenuItem>
+                <MenuItem value={2}>4</MenuItem>
+                <MenuItem value={6}>6</MenuItem>
+                <MenuItem value={15}>15</MenuItem>
+                <MenuItem value={20}>20</MenuItem>
+              </Select>
+              <FormLabel
+                style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}
+              >
+                {t("entries")}
+              </FormLabel>
+            </div>
+            <Grid alignItems="center">
+              <Grid
+                item
+                style={{ display: "flex", alignItems: "center", gap: "10px" }}
+              >
+                <FormLabel
+                  htmlFor="search"
+                  style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}
+                >
+                  {t("search")}
+                </FormLabel>
+                <TextField
+                  size="small"
+                  variant="outlined"
+                  placeholder={t("title")}
+                  onChange={(e) => searchByTitle(e.target.value)}
+                  id="search"
+                />
+              </Grid>
             </Grid>
-          </Grid>
-        </div>
-        <TableContainer
-          component={Paper}
-          sx={{ direction: rtl ? "rtl" : "ltr" }}
-        >
-          <Table>
-            <TableHead>
-              <TableRow>
-                <TableCell
-                  style={{
-                    fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
-                    textAlign: rtl ? "right" : "left",
-                  }}
-                >
-                  {t("title")}
-                </TableCell>
-                <TableCell
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "flex-start",
-                    textAlign: "right",
-                    gap: "10px",
-                    fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
-                  }}
-                >
-                  {" "}
-                  <div
+          </div>
+          <TableContainer
+            component={Paper}
+            sx={{ direction: rtl ? "rtl" : "ltr" }}
+          >
+            <Table>
+              <TableHead>
+                <TableRow>
+                  <TableCell
+                    style={{
+                      fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
+                      textAlign: rtl ? "right" : "left",
+                    }}
+                  >
+                    {t("title")}
+                  </TableCell>
+                  <TableCell
                     style={{
                       display: "flex",
-                      flexDirection: "column",
-                      cursor: "pointer",
+                      alignItems: "center",
+                      justifyContent: "flex-start",
+                      textAlign: "right",
+                      gap: "10px",
+                      fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
                     }}
                   >
                     {" "}
-                    <Image
-                      src="/assets/svg/arrowUp.svg"
-                      width={15}
-                      height={15}
-                      alt="arrow-up"
-                      onClick={sortByDateDescending}
-                    />{" "}
-                    <Image
-                      src="/assets/svg/arrowUp.svg"
-                      width={15}
-                      height={15}
-                      alt="arrow-up"
-                      onClick={sortByDateAscending}
-                      style={{ transform: "rotate(180deg)" }}
-                    />{" "}
-                  </div>
-                  {t("date")}
-                </TableCell>
-                <TableCell
-                  style={{
-                    fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
-                    textAlign: rtl ? "right" : "left",
-                  }}
-                >
-                  {t("update")}
-                </TableCell>
-                <TableCell
-                  style={{
-                    fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
-                    textAlign: rtl ? "right" : "left",
-                  }}
-                >
-                  {t("action")}
-                </TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {filterTerm.map((document) => {
-                const dateCreated = new Date(document.createdAt);
-                const dateUpdated = new Date(document.updatedAt);
-                const options = {
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                };
-                const formattedDate = dateCreated.toLocaleDateString(
-                  i18n.language,
-                  options
-                );
-                const formatteUpdate = dateUpdated.toLocaleDateString(
-                  i18n.language,
-                  options
-                );
-                const pdfUrl = `${document.fileUrl}`;
-                return (
-                  <TableRow key={document.id}>
-                    <TableCell
+                    <div
                       style={{
-                        fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
-                        textAlign: rtl ? "right" : "left",
+                        display: "flex",
+                        flexDirection: "column",
+                        cursor: "pointer",
                       }}
                     >
-                      {rtl
-                        ? document.title.slice(0, 30)
-                        : document.titleEN.slice(0, 30)}
-                      ...
-                    </TableCell>
-                    <TableCell sx={{ textAlign: rtl ? "right" : "left" }}>
-                      {formattedDate}
-                    </TableCell>
-                    <TableCell sx={{ textAlign: rtl ? "right" : "left" }}>
-                      {formatteUpdate}
-                    </TableCell>
-                    <TableCell sx={{ textAlign: rtl ? "right" : "left" }}>
-                      <button
-                        className={classes.submitBtn}
-                        onClick={() => {
-                          downloadPdfFile(pdfUrl, document.title);
+                      {" "}
+                      <Image
+                        src="/assets/svg/arrowUp.svg"
+                        width={15}
+                        height={15}
+                        alt="arrow-up"
+                        onClick={sortByDateDescending}
+                      />{" "}
+                      <Image
+                        src="/assets/svg/arrowUp.svg"
+                        width={15}
+                        height={15}
+                        alt="arrow-up"
+                        onClick={sortByDateAscending}
+                        style={{ transform: "rotate(180deg)" }}
+                      />{" "}
+                    </div>
+                    {t("date")}
+                  </TableCell>
+                  <TableCell
+                    style={{
+                      fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
+                      textAlign: rtl ? "right" : "left",
+                    }}
+                  >
+                    {t("update")}
+                  </TableCell>
+                  <TableCell
+                    style={{
+                      fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
+                      textAlign: rtl ? "right" : "left",
+                    }}
+                  >
+                    {t("action")}
+                  </TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {filterTerm.map((document) => {
+                  const dateCreated = new Date(document.createdAt);
+                  const dateUpdated = new Date(document.updatedAt);
+                  const options = {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  };
+                  const formattedDate = dateCreated.toLocaleDateString(
+                    i18n.language,
+                    options
+                  );
+                  const formatteUpdate = dateUpdated.toLocaleDateString(
+                    i18n.language,
+                    options
+                  );
+                  const pdfUrl = `${document.fileUrl}`;
+                  return (
+                    <TableRow key={document.id}>
+                      <TableCell
+                        style={{
+                          fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
+                          textAlign: rtl ? "right" : "left",
                         }}
                       >
-                        <p
-                          style={{
-                            fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
+                        {rtl
+                          ? document.title.slice(0, 30)
+                          : document.titleEN.slice(0, 30)}
+                        ...
+                      </TableCell>
+                      <TableCell sx={{ textAlign: rtl ? "right" : "left" }}>
+                        {formattedDate}
+                      </TableCell>
+                      <TableCell sx={{ textAlign: rtl ? "right" : "left" }}>
+                        {formatteUpdate}
+                      </TableCell>
+                      <TableCell sx={{ textAlign: rtl ? "right" : "left" }}>
+                        <button
+                          className={classes.submitBtn}
+                          onClick={() => {
+                            downloadPdfFile(pdfUrl, document.title);
                           }}
                         >
-                          {t("submit")}
-                        </p>
-                      </button>
-                    </TableCell>
-                  </TableRow>
-                );
-              })}
-            </TableBody>
-          </Table>
-        </TableContainer>
-        <div className={classes.paginationContainer}>
-          {/* Render pagination links with updated styles */}
-          <ReactPaginate
-            containerClassName={classes.pagination}
-            pageClassName={classes.pageItem}
-            activeClassName={classes.active}
-            onPageChange={(event) => setCurrentPage(event.selected)}
-            pageCount={Math.ceil(data.length / selectedOption)}
-            onPageActive={currentPage}
-            breakLabel="..."
-            previousLabel={
-              <div className={classes.paginationTerm}>{t("previous")}</div>
-            }
-            nextLabel={
-              <div className={classes.paginationTerm}>{t("next")}</div>
-            }
-          />
+                          <p
+                            style={{
+                              fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
+                            }}
+                          >
+                            {t("submit")}
+                          </p>
+                        </button>
+                      </TableCell>
+                    </TableRow>
+                  );
+                })}
+              </TableBody>
+            </Table>
+          </TableContainer>
+          <div className={classes.paginationContainer}>
+            {/* Render pagination links with updated styles */}
+            <ReactPaginate
+              containerClassName={classes.pagination}
+              pageClassName={classes.pageItem}
+              activeClassName={classes.active}
+              onPageChange={(event) => setCurrentPage(event.selected)}
+              pageCount={Math.ceil(data.length / selectedOption)}
+              onPageActive={currentPage}
+              breakLabel="..."
+              previousLabel={
+                <div className={classes.paginationTerm}>{t("previous")}</div>
+              }
+              nextLabel={
+                <div className={classes.paginationTerm}>{t("next")}</div>
+              }
+            />
+          </div>
         </div>
       </div>
 

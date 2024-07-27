@@ -21,7 +21,7 @@ function App({ Component, pageProps }) {
   const [accessiblity, setAccessiblity] = useState(false);
   const [captilize, setCaptilize] = useState(false);
   const { i18n } = useTranslation();
-  const router = useRouter(); 
+  const router = useRouter();
   //handling language rtl i18l localization
   const handleRtl = () => {
     if (rtl) {
@@ -31,7 +31,7 @@ function App({ Component, pageProps }) {
     }
     setRtl(!rtl);
   };
-  // Handling the accessiblity button 
+  // Handling the accessiblity button
   const handleAccessibility = () => {
     setAccessiblity(!accessiblity);
   };
@@ -68,18 +68,18 @@ function App({ Component, pageProps }) {
   font-family: "DINNext-Arabic-meduim", sans-serif;
 `
     : "";
-  const urlDetect = router.pathname.includes("report"); 
-  if(urlDetect){
-    return(
+  const urlDetect = router.pathname.includes("report");
+  if (urlDetect) {
+    return (
       <Component
-      {...pageProps}
-      rtl={rtl}
-      handleRtl={handleRtl}
-      isFeedbackVisible={isFeedbackVisible}
-      handleToggleFeedback={handleToggleFeedback}
-      conVersion={data}
-    />
-    )
+        {...pageProps}
+        rtl={rtl}
+        handleRtl={handleRtl}
+        isFeedbackVisible={isFeedbackVisible}
+        handleToggleFeedback={handleToggleFeedback}
+        conVersion={data}
+      />
+    );
   }
   return (
     <>
