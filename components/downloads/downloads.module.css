@@ -206,8 +206,7 @@
   color: #fff !important;
   padding: 5px 15px;
   border-radius: 7px; 
-  width: 250px;
-  box-shadow: 0px 2px 3px #888888;
+  width: 250px; 
  }
  .notSelectSideSec{
    padding: 0px 15px;
@@ -337,6 +336,7 @@
 }
 /* Media for less than 500 */
 @media (max-width: 500px) {
+
   .downloadContent > h1 {
     font-size: 24px;
   }
@@ -363,4 +363,27 @@
   .downloadTables {
     padding: 12px 0px;
   }
+  .resourceMain{
+    flex-direction: column;
+    padding: 0px 10px;
+  }
+  .resourceSection{
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  } 
+  .downloadContent {
+    padding: 5px;
+    gap: 10px;  
+  }
+  
+.downloadContent > p {
+  font-size: 12px;
+}
+.selectSection{
+  padding: 5px 25px;
+  border-radius: 7px; 
+  box-shadow: 0px 2px 3px #888888;
+}
 }

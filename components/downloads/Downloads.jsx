@@ -88,16 +88,16 @@ const Downloads = ({ data, conversion, rtl }) => {
     setSelectedOption(event.target.value);
   };
 
-  // useEffect(() => {
-  //   setFilterTerm((prevData) => {
-  //     return data.filter((item, index) => {
-  //       return (
-  //         index >= currentPage * selectedOption &&
-  //         index < (currentPage + 1) * selectedOption
-  //       );
-  //     });
-  //   });
-  // }, [currentPage, selectedOption]);
+  useEffect(() => {
+    setFilterTerm((prevData) => {
+      return data.development[0].lists.filter((item, index) => {
+        return (
+          index >= currentPage * selectedOption &&
+          index < (currentPage + 1) * selectedOption
+        );
+      });
+    });
+  }, [currentPage, selectedOption]);
 
   // Function to search for a specific title in the array
   function searchByTitle(searchTerm) {
@@ -178,7 +178,6 @@ const Downloads = ({ data, conversion, rtl }) => {
   };
   // Switching between the section in side section
   const handleSwitchSideSection = (id, title) => {
-    console.log(filterTerm);
     setSwitchHead(title);
     setSwitchSideSelect(id);
     if (mainSectionSelect === 0) {
@@ -658,7 +657,7 @@ const Downloads = ({ data, conversion, rtl }) => {
                         textAlign: rtl ? "right" : "left",
                       }}
                     >
-                      {t("update")}
+                      {t("file-size")}
                     </TableCell>
                     <TableCell
                       style={{
@@ -741,7 +740,7 @@ const Downloads = ({ data, conversion, rtl }) => {
               pageClassName={classes.pageItem}
               activeClassName={classes.active}
               onPageChange={(event) => setCurrentPage(event.selected)}
-              pageCount={Math.ceil(data.length / selectedOption)}
+              pageCount={Math.ceil(filterTerm.length / selectedOption)}
               onPageActive={currentPage}
               breakLabel="..."
               previousLabel={
