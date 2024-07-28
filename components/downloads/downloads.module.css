@@ -230,6 +230,89 @@
   font-family: "DINNext-Meduim", sans-serif;
 
  }
+ 
+.faqContent {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  padding: 70px 120px;
+  font-size: 16px;
+  justify-content: center;
+}
+.faQestions {
+  box-shadow: 0px 2px 4px 2px rgba(38, 36, 45, 0.03),
+    2px 3px 4px 3px rgba(51, 48, 60, 0.02),
+    1px 1px 13px 3px rgba(60, 13, 203, 0.01);
+}
+.faqContent > p {
+  font-family: Montserrat;
+  font-weight: 400;
+  color: #000;
+  text-align: center;
+
+  margin: auto;
+}
+.freq {
+  color: rgba(51, 48, 60, 0.87);
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+/* Styling for new structure of FAQ page */
+.faqTypeMain{
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+   gap: 20px;
+}
+.sideSection{
+   display: flex;
+   flex-direction: column;
+   gap: 20px;
+   
+  font-family: "DINNext-meduim", sans-serif;
+}
+.faqType{
+   display: flex;
+   align-items: center;
+   gap: 5px;
+   cursor: pointer;
+   padding-left: 15px;
+}
+.faqType > p{
+   font-size: 13px;
+}
+.faqTypeClicked{
+   background-color: #3d9e7b ;
+   color: #fff;
+   padding: 10px;
+   padding-left: 15px;
+   border-radius: 5px;
+}
+.faqheaderQuestion{
+   display: flex;
+   flex-direction: column;
+   align-items: flex-start;
+   gap: 30px;
+}
+.faqtitleHead{
+   display: flex;
+   align-items: center;
+   gap: 15px;
+   
+}
+ .faqImgHead{
+  background-color: #63c69a ;
+  padding: 7px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ }
+.faqtitleHead > p{
+   font-size: 20px;
+  color: #4b465c;
+  font-family: "DINNext-Bold", sans-serif;
+}
 /* Media for less than 1150 */
 @media (max-width: 1150px) {
   .downloadContent {
