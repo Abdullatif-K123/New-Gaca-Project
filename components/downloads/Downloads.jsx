@@ -24,8 +24,10 @@ import classestwo from "../home/Home-main/home-one.module.css";
 const Downloads = ({ data, conversion, rtl }) => {
   const { t, i18n } = useTranslation();
   const { fontSizeGeneral } = useFontSize();
-  const [filterTerm, setFilterTerm] = useState(data);
+  const [filterTerm, setFilterTerm] = useState(data.development[0].lists);
   const [currentPage, setCurrentPage] = useState(0);
+  const [switchHead, setSwitchHead] = useState("development");
+  const [switchSideSelect, setSwitchSideSelect] = useState(0);
   const [mainSectionSelect, setMainSectionSelect] = useState(0);
   //Filter but selecting options
   const [selectedOption, setSelectedOption] = useState(6);
@@ -37,16 +39,16 @@ const Downloads = ({ data, conversion, rtl }) => {
     setSelectedOption(event.target.value);
   };
 
-  useEffect(() => {
-    setFilterTerm((prevData) => {
-      return data.filter((item, index) => {
-        return (
-          index >= currentPage * selectedOption &&
-          index < (currentPage + 1) * selectedOption
-        );
-      });
-    });
-  }, [currentPage, selectedOption]);
+  // useEffect(() => {
+  //   setFilterTerm((prevData) => {
+  //     return data.filter((item, index) => {
+  //       return (
+  //         index >= currentPage * selectedOption &&
+  //         index < (currentPage + 1) * selectedOption
+  //       );
+  //     });
+  //   });
+  // }, [currentPage, selectedOption]);
 
   // Function to search for a specific title in the array
   function searchByTitle(searchTerm) {
@@ -110,6 +112,35 @@ const Downloads = ({ data, conversion, rtl }) => {
       targetElement.scrollIntoView({ behavior: "smooth" });
     }
   };
+  // Switching between the section in resources page
+  const handleSwitchSection = (id) => {
+    setSwitchSideSelect(0);
+    setMainSectionSelect(id);
+    if (!id) {
+      setSwitchHead("development");
+      setFilterTerm(data.development[0].lists);
+    } else if (id === 1) {
+      setSwitchHead("documents");
+      setFilterTerm(data.documents[1].lists);
+    } else {
+      setSwitchHead("services");
+      setFilterTerm(data.dataObjectives[0].lists);
+    }
+  };
+  // Switching between the section in side section
+  const handleSwitchSideSection = (id, title) => {
+    console.log(filterTerm);
+    setSwitchHead(title);
+    setSwitchSideSelect(id);
+    if (mainSectionSelect === 0) {
+      console.log(data.development[id].lists);
+      setFilterTerm(data.development[id].lists);
+    } else if (mainSectionSelect === 1) {
+      setFilterTerm(data.documents[id ? 0 : 1].lists);
+    } else {
+      setFilterTerm(data.dataObjectives[id].lists);
+    }
+  };
   return (
     <div className={classes.downloadPage}>
       <div
@@ -143,7 +174,7 @@ const Downloads = ({ data, conversion, rtl }) => {
             mainSectionSelect === 0 ? classes.selectSection : null
           }`}
           onClick={() => {
-            setMainSectionSelect(0);
+            handleSwitchSection(0);
           }}
         >
           {t("development")}
@@ -153,7 +184,7 @@ const Downloads = ({ data, conversion, rtl }) => {
             mainSectionSelect === 1 ? classes.selectSection : null
           }`}
           onClick={() => {
-            setMainSectionSelect(1);
+            handleSwitchSection(1);
           }}
         >
           {t("documents")}
@@ -163,7 +194,7 @@ const Downloads = ({ data, conversion, rtl }) => {
             mainSectionSelect === 2 ? classes.selectSection : null
           }`}
           onClick={() => {
-            setMainSectionSelect(2);
+            handleSwitchSection(2);
           }}
         >
           {t("data-objectives")}
@@ -173,10 +204,19 @@ const Downloads = ({ data, conversion, rtl }) => {
         {mainSectionSelect === 0 ? (
           <div className={classes.resourceSection}>
             <div
-              className={`${classes.resminiSeciton} ${classes.selectSideSection}`}
+              className={`${classes.resminiSeciton} ${
+                switchSideSelect === 0
+                  ? classes.selectSideSection
+                  : classes.notSelectSideSec
+              }`}
+              onClick={() => {
+                handleSwitchSideSection(0, "development");
+              }}
             >
               <Image
-                src="/assets/svg/credit-card.svg"
+                src={`/assets/svg/${
+                  switchSideSelect ? "credit-card-black" : "credit-card"
+                }.svg`}
                 width={20}
                 height={20}
                 alt="icon"
@@ -184,24 +224,42 @@ const Downloads = ({ data, conversion, rtl }) => {
               <p>{t("development")}</p>
             </div>
             <div
-              className={`${classes.resminiSeciton} ${classes.notSelectSideSec}`}
+              className={`${classes.resminiSeciton} ${
+                switchSideSelect === 1
+                  ? classes.selectSideSection
+                  : classes.notSelectSideSec
+              }`}
+              onClick={() => {
+                handleSwitchSideSection(1, "in-progress");
+              }}
             >
               <Image
-                src="/assets/svg/box.svg"
+                src={`/assets/svg/${
+                  switchSideSelect === 1 ? "box-white" : "box"
+                }.svg`}
                 width={20}
                 height={20}
                 alt="icon"
               />
-              <p>{t("In-progress")}</p>
+              <p>{t("in-progress")}</p>
             </div>
           </div>
         ) : mainSectionSelect === 1 ? (
           <div className={classes.resourceSection}>
             <div
-              className={`${classes.resminiSeciton} ${classes.selectSideSection}`}
+              className={`${classes.resminiSeciton} ${
+                switchSideSelect === 0
+                  ? classes.selectSideSection
+                  : classes.notSelectSideSec
+              }`}
+              onClick={() => {
+                handleSwitchSideSection(0, "documents");
+              }}
             >
               <Image
-                src="/assets/svg/credit-card.svg"
+                src={`/assets/svg/${
+                  switchSideSelect ? "credit-card-black" : "credit-card"
+                }.svg`}
                 width={20}
                 height={20}
                 alt="icon"
@@ -209,10 +267,19 @@ const Downloads = ({ data, conversion, rtl }) => {
               <p>{t("documents")}</p>
             </div>
             <div
-              className={`${classes.resminiSeciton} ${classes.notSelectSideSec}`}
+              className={`${classes.resminiSeciton} ${
+                switchSideSelect === 1
+                  ? classes.selectSideSection
+                  : classes.notSelectSideSec
+              }`}
+              onClick={() => {
+                handleSwitchSideSection(1, "annex");
+              }}
             >
               <Image
-                src="/assets/svg/box.svg"
+                src={`/assets/svg/${
+                  switchSideSelect === 1 ? "box-white" : "box"
+                }.svg`}
                 width={20}
                 height={20}
                 alt="icon"
@@ -223,10 +290,19 @@ const Downloads = ({ data, conversion, rtl }) => {
         ) : (
           <div className={classes.resourceSection}>
             <div
-              className={`${classes.resminiSeciton} ${classes.selectSideSection}`}
+              className={`${classes.resminiSeciton} ${
+                switchSideSelect === 0
+                  ? classes.selectSideSection
+                  : classes.notSelectSideSec
+              }`}
+              onClick={() => {
+                handleSwitchSideSection(0, "services");
+              }}
             >
               <Image
-                src="/assets/svg/credit-card.svg"
+                src={`/assets/svg/${
+                  switchSideSelect ? "credit-card-black" : "credit-card"
+                }.svg`}
                 width={20}
                 height={20}
                 alt="icon"
@@ -234,10 +310,19 @@ const Downloads = ({ data, conversion, rtl }) => {
               <p>{t("services")}</p>
             </div>
             <div
-              className={`${classes.resminiSeciton} ${classes.notSelectSideSec}`}
+              className={`${classes.resminiSeciton} ${
+                switchSideSelect === 1
+                  ? classes.selectSideSection
+                  : classes.notSelectSideSec
+              }`}
+              onClick={() => {
+                handleSwitchSideSection(1, "operation-evn");
+              }}
             >
               <Image
-                src="/assets/svg/box.svg"
+                src={`/assets/svg/${
+                  switchSideSelect === 1 ? "box-white" : "box"
+                }.svg`}
                 width={20}
                 height={20}
                 alt="icon"
@@ -245,10 +330,19 @@ const Downloads = ({ data, conversion, rtl }) => {
               <p>{t("operation-evn")}</p>
             </div>
             <div
-              className={`${classes.resminiSeciton} ${classes.notSelectSideSec}`}
+              className={`${classes.resminiSeciton} ${
+                switchSideSelect === 2
+                  ? classes.selectSideSection
+                  : classes.notSelectSideSec
+              }`}
+              onClick={() => {
+                handleSwitchSideSection(2, "stakholders");
+              }}
             >
               <Image
-                src="/assets/svg/box.svg"
+                src={`/assets/svg/${
+                  switchSideSelect === 2 ? "box-white" : "box"
+                }.svg`}
                 width={20}
                 height={20}
                 alt="icon"
@@ -256,10 +350,19 @@ const Downloads = ({ data, conversion, rtl }) => {
               <p>{t("stakholders")}</p>
             </div>
             <div
-              className={`${classes.resminiSeciton} ${classes.notSelectSideSec}`}
+              className={`${classes.resminiSeciton} ${
+                switchSideSelect === 3
+                  ? classes.selectSideSection
+                  : classes.notSelectSideSec
+              }`}
+              onClick={() => {
+                handleSwitchSideSection(3, "regulatory");
+              }}
             >
               <Image
-                src="/assets/svg/box.svg"
+                src={`/assets/svg/${
+                  switchSideSelect === 3 ? "box-white" : "box"
+                }.svg`}
                 width={20}
                 height={20}
                 alt="icon"
@@ -267,10 +370,19 @@ const Downloads = ({ data, conversion, rtl }) => {
               <p>{t("regulatory")}</p>
             </div>
             <div
-              className={`${classes.resminiSeciton} ${classes.notSelectSideSec}`}
+              className={`${classes.resminiSeciton} ${
+                switchSideSelect === 4
+                  ? classes.selectSideSection
+                  : classes.notSelectSideSec
+              }`}
+              onClick={() => {
+                handleSwitchSideSection(4, "kpi-overview");
+              }}
             >
               <Image
-                src="/assets/svg/box.svg"
+                src={`/assets/svg/${
+                  switchSideSelect === 4 ? "box-white" : "box"
+                }.svg`}
                 width={20}
                 height={20}
                 alt="icon"
@@ -278,10 +390,19 @@ const Downloads = ({ data, conversion, rtl }) => {
               <p>{t("kpi-overview")}</p>
             </div>
             <div
-              className={`${classes.resminiSeciton} ${classes.notSelectSideSec}`}
+              className={`${classes.resminiSeciton} ${
+                switchSideSelect === 5
+                  ? classes.selectSideSection
+                  : classes.notSelectSideSec
+              }`}
+              onClick={() => {
+                handleSwitchSideSection(5, "kpa-overview");
+              }}
             >
               <Image
-                src="/assets/svg/box.svg"
+                src={`/assets/svg/${
+                  switchSideSelect === 5 ? "box-white" : "box"
+                }.svg`}
                 width={20}
                 height={20}
                 alt="icon"
@@ -294,7 +415,9 @@ const Downloads = ({ data, conversion, rtl }) => {
           <div className={classes.downloadHead}>
             <div className={classes.downloadImgHead}>
               <Image
-                src="/assets/svg/credit-card.svg"
+                src={`/assets/svg/${
+                  switchSideSelect ? "box-white" : "credit-card"
+                }.svg`}
                 width={30}
                 height={30}
                 alt="logo-credit"
@@ -306,7 +429,7 @@ const Downloads = ({ data, conversion, rtl }) => {
                 fontSize: `${19 + fontSizeGeneral}px`,
               }}
             >
-              {t("documents")}
+              {t(switchHead)}
             </p>
           </div>
           <div className={classes.filteringDocument}>
@@ -426,7 +549,8 @@ const Downloads = ({ data, conversion, rtl }) => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {/* {filterTerm.map((document) => {
+                {filterTerm.map((document) => {
+                  console.log(document);
                   const dateCreated = new Date(document.createdAt);
                   const dateUpdated = new Date(document.updatedAt);
                   const options = {
@@ -460,7 +584,7 @@ const Downloads = ({ data, conversion, rtl }) => {
                         {formattedDate}
                       </TableCell>
                       <TableCell sx={{ textAlign: rtl ? "right" : "left" }}>
-                        {formatteUpdate}
+                        {document.fileSize}
                       </TableCell>
                       <TableCell sx={{ textAlign: rtl ? "right" : "left" }}>
                         <button
@@ -480,7 +604,7 @@ const Downloads = ({ data, conversion, rtl }) => {
                       </TableCell>
                     </TableRow>
                   );
-                })} */}
+                })}
               </TableBody>
             </Table>
           </TableContainer>

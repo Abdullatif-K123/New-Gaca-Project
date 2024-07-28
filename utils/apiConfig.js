@@ -10,7 +10,7 @@ export const API_ROUTES = {
     get: "https://snap.somee.com/api/about",
   },
   downloads: {
-    get: "https://snap.somee.com/api/downloads",
+    get: "https://snap.somee.com/api/resources",
   },
   blogs: {
     get: "https://snap.somee.com/api/news",
