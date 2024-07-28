@@ -677,7 +677,7 @@ const Downloads = ({ data, conversion, rtl }) => {
                       const dateUpdated = new Date(document.updatedAt);
                       const options = {
                         year: "numeric",
-                        month: "long",
+                        month: "numeric",
                         day: "numeric",
                       };
                       const formattedDate = dateCreated.toLocaleDateString(
@@ -709,22 +709,20 @@ const Downloads = ({ data, conversion, rtl }) => {
                             {document.fileSize}
                           </TableCell>
                           <TableCell sx={{ textAlign: rtl ? "right" : "left" }}>
-                            <button
-                              className={classes.submitBtn}
+                            <div
+                              className={classes.downloadButton}
                               onClick={() => {
                                 downloadPdfFile(pdfUrl, document.title);
                               }}
                             >
-                              <p
-                                style={{
-                                  fontFamily: rtl
-                                    ? "DINNext-Arabic-meduim "
-                                    : "",
-                                }}
-                              >
-                                {t("submit")}
-                              </p>
-                            </button>
+                              <Image
+                                src="/assets/svg/download-resouces.svg"
+                                width={25}
+                                height={25}
+                                alt="download"
+                              />
+                              <p>{t("download-file")}</p>
+                            </div>
                           </TableCell>
                         </TableRow>
                       );
