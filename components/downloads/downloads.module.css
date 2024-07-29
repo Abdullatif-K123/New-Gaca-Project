@@ -52,13 +52,19 @@
   font-weight: 600;
 }
 .downloadContent {
-  padding: 12px 81px;
-  display: flex; 
-  align-items: center;
-  justify-content: center;
-  gap: 60px; 
+  display: flex;
+   align-items: center;
+   justify-content: center;
 }
-.downloadContent > h1 {
+.downloadSectionContent{
+   
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  background-color: #3d9e7b;
+     
+  border-radius: 20px;
+}
+.downloadSectionContent > h1 {
   color: #005149;
   font-family: Montserrat;
   font-size: 32px;
@@ -66,22 +72,23 @@
   font-weight: 700;
   line-height: normal;
 }
-.downloadContent > p {
+.downloadSectionContent > p {
   cursor: pointer;
   text-align: center;
-  color: #000;
+  color: #fff;
   font-family: Montserrat;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
   line-height: 25px;
+  
+  padding: 7px 41px !important;
 }
 .selectSection{
-  background-color: #3d9e7b;
-  color: #fff !important;
-  padding: 5px 45px;
-  border-radius: 7px; 
-  box-shadow: 0px 2px 3px #888888;
+  background: linear-gradient(to right, #1C7A54, #63C69A) ;
+  color: #fff !important; 
+  border-radius: 20px; 
+  width: 100%;
 }
 .downloadTables { 
   width: 100%;

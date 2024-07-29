@@ -217,36 +217,38 @@ const Downloads = ({ data, conversion, rtl }) => {
         </h1>
       </div>
       <div className={classes.downloadContent}>
-        <p
-          className={`${
-            mainSectionSelect === 0 ? classes.selectSection : null
-          }`}
-          onClick={() => {
-            handleSwitchSection(0);
-          }}
-        >
-          {t("development")}
-        </p>
-        <p
-          className={`${
-            mainSectionSelect === 1 ? classes.selectSection : null
-          }`}
-          onClick={() => {
-            handleSwitchSection(1);
-          }}
-        >
-          {t("documents")}
-        </p>
-        <p
-          className={`${
-            mainSectionSelect === 2 ? classes.selectSection : null
-          }`}
-          onClick={() => {
-            handleSwitchSection(2);
-          }}
-        >
-          {t("data-objectives")}
-        </p>
+        <div className={classes.downloadSectionContent}>
+          <p
+            className={`${
+              mainSectionSelect === 0 ? classes.selectSection : null
+            }`}
+            onClick={() => {
+              handleSwitchSection(0);
+            }}
+          >
+            {t("development")}
+          </p>
+          <p
+            className={`${
+              mainSectionSelect === 1 ? classes.selectSection : null
+            }`}
+            onClick={() => {
+              handleSwitchSection(1);
+            }}
+          >
+            {t("documents")}
+          </p>
+          <p
+            className={`${
+              mainSectionSelect === 2 ? classes.selectSection : null
+            }`}
+            onClick={() => {
+              handleSwitchSection(2);
+            }}
+          >
+            {t("data-objectives")}
+          </p>
+        </div>
       </div>
       <div className={classes.resourceMain}>
         {mainSectionSelect === 0 ? (
@@ -263,7 +265,7 @@ const Downloads = ({ data, conversion, rtl }) => {
             >
               <Image
                 src={`/assets/svg/${
-                  switchSideSelect ? "credit-card-black" : "credit-card"
+                  switchSideSelect ? "books" : "credit-card"
                 }.svg`}
                 width={20}
                 height={20}
@@ -282,12 +284,14 @@ const Downloads = ({ data, conversion, rtl }) => {
               }}
             >
               <Image
-                src={`/assets/svg/${
-                  switchSideSelect === 1 ? "box-white" : "box"
-                }.svg`}
+                src={`/assets/svg/box-1.svg`}
                 width={20}
                 height={20}
                 alt="icon"
+                style={{
+                  filter:
+                    switchSideSelect === 1 ? "invert(0)" : "brightness(0.2)",
+                }}
               />
               <p>{t("in-progress")}</p>
             </div>
@@ -305,12 +309,14 @@ const Downloads = ({ data, conversion, rtl }) => {
               }}
             >
               <Image
-                src={`/assets/svg/${
-                  switchSideSelect ? "credit-card-black" : "credit-card"
-                }.svg`}
+                src={`/assets/svg/books.svg`}
                 width={20}
                 height={20}
                 alt="icon"
+                style={{
+                  filter:
+                    switchSideSelect === 0 ? "brightness(10)" : "invert(0)",
+                }}
               />
               <p>{t("documents")}</p>
             </div>
@@ -325,12 +331,14 @@ const Downloads = ({ data, conversion, rtl }) => {
               }}
             >
               <Image
-                src={`/assets/svg/${
-                  switchSideSelect === 1 ? "box-white" : "box"
-                }.svg`}
+                src={`/assets/svg/box-1.svg`}
                 width={20}
                 height={20}
                 alt="icon"
+                style={{
+                  filter:
+                    switchSideSelect === 1 ? "invert(0)" : "brightness(0.2)",
+                }}
               />
               <p>{t("annex")}</p>
             </div>
@@ -348,12 +356,14 @@ const Downloads = ({ data, conversion, rtl }) => {
               }}
             >
               <Image
-                src={`/assets/svg/${
-                  switchSideSelect ? "credit-card-black" : "credit-card"
-                }.svg`}
+                src={`/assets/svg/books.svg`}
                 width={20}
                 height={20}
                 alt="icon"
+                style={{
+                  filter:
+                    switchSideSelect === 0 ? "brightness(10)" : "invert(0)",
+                }}
               />
               <p>{t("services")}</p>
             </div>
@@ -368,12 +378,14 @@ const Downloads = ({ data, conversion, rtl }) => {
               }}
             >
               <Image
-                src={`/assets/svg/${
-                  switchSideSelect === 1 ? "box-white" : "box"
-                }.svg`}
+                src={`/assets/svg/box-1.svg`}
                 width={20}
                 height={20}
                 alt="icon"
+                style={{
+                  filter:
+                    switchSideSelect === 1 ? "invert(0)" : "brightness(0.2)",
+                }}
               />
               <p>{t("operation-evn")}</p>
             </div>
@@ -388,12 +400,16 @@ const Downloads = ({ data, conversion, rtl }) => {
               }}
             >
               <Image
-                src={`/assets/svg/${
-                  switchSideSelect === 2 ? "box-white" : "box"
-                }.svg`}
+                src={`/assets/svg/box-multiple-2.svg`}
                 width={20}
                 height={20}
                 alt="icon"
+                style={{
+                  filter:
+                    switchSideSelect === 2
+                      ? "brightness(10)"
+                      : "brightness(0.2)",
+                }}
               />
               <p>{t("stakholders")}</p>
             </div>
@@ -408,12 +424,16 @@ const Downloads = ({ data, conversion, rtl }) => {
               }}
             >
               <Image
-                src={`/assets/svg/${
-                  switchSideSelect === 3 ? "box-white" : "box"
-                }.svg`}
+                src={`/assets/svg/box-3.svg`}
                 width={20}
                 height={20}
                 alt="icon"
+                style={{
+                  filter:
+                    switchSideSelect === 3
+                      ? "brightness(10)"
+                      : "brightness(0.2)",
+                }}
               />
               <p>{t("regulatory")}</p>
             </div>
@@ -428,12 +448,16 @@ const Downloads = ({ data, conversion, rtl }) => {
               }}
             >
               <Image
-                src={`/assets/svg/${
-                  switchSideSelect === 4 ? "box-white" : "box"
-                }.svg`}
+                src={`/assets/svg/box-4.svg`}
                 width={20}
                 height={20}
                 alt="icon"
+                style={{
+                  filter:
+                    switchSideSelect === 4
+                      ? "brightness(10)"
+                      : "brightness(0.2)",
+                }}
               />
               <p>{t("kpi-overview")}</p>
             </div>
@@ -448,12 +472,16 @@ const Downloads = ({ data, conversion, rtl }) => {
               }}
             >
               <Image
-                src={`/assets/svg/${
-                  switchSideSelect === 5 ? "box-white" : "box"
-                }.svg`}
+                src={`/assets/svg/box-5.svg`}
                 width={20}
                 height={20}
                 alt="icon"
+                style={{
+                  filter:
+                    switchSideSelect === 5
+                      ? "brightness(10)"
+                      : "brightness(0.2)",
+                }}
               />
               <p>{t("kpa-overview")}</p>
             </div>
@@ -567,8 +595,8 @@ const Downloads = ({ data, conversion, rtl }) => {
                         }}
                       >
                         {rtl
-                          ? item.title?.slice(0, 80)
-                          : item.titleEN?.slice(0, 80)}
+                          ? item?.title?.slice(0, 80)
+                          : item?.titleEN?.slice(0, 80)}
                       </Typography>
                     </AccordionSummary>
                     <AccordionDetails
@@ -588,9 +616,7 @@ const Downloads = ({ data, conversion, rtl }) => {
                           fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
                         }}
                       >
-                        {rtl
-                          ? parse(item.description)
-                          : parse(item.descriptionEN)}
+                        {rtl ? item.description : item?.descriptionEN}
                       </Typography>
                     </AccordionDetails>
                   </Accordion>

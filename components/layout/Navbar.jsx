@@ -202,7 +202,7 @@ const Navbar = ({
           </div>
           <div className={classes.logo}>
             <Image
-              src={"/assets/svg/whiteLogo.svg"}
+              src={"/assets/svg/SNAP_logo.svg"}
               width={140}
               height={47}
               alt="logo"
