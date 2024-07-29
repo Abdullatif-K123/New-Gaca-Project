@@ -264,12 +264,14 @@ const Downloads = ({ data, conversion, rtl }) => {
               }}
             >
               <Image
-                src={`/assets/svg/${
-                  switchSideSelect ? "books" : "credit-card"
-                }.svg`}
+                src={`/assets/svg/books.svg`}
                 width={20}
                 height={20}
                 alt="icon"
+                style={{
+                  filter:
+                    switchSideSelect === 0 ? "brightness(10)" : "invert(0)",
+                }}
               />
               <p>{t("development")}</p>
             </div>
@@ -491,12 +493,13 @@ const Downloads = ({ data, conversion, rtl }) => {
           <div className={classes.downloadHead}>
             <div className={classes.downloadImgHead}>
               <Image
-                src={`/assets/svg/${
-                  switchSideSelect ? "box-white" : "credit-card"
-                }.svg`}
+                src={`/assets/svg/books.svg`}
                 width={30}
                 height={30}
                 alt="logo-credit"
+                style={{
+                  filter: "brightness(10)",
+                }}
               />
             </div>
             <p
