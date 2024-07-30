@@ -202,6 +202,13 @@
   gap: 5px;
 
  }
+ .resminiSecHead{
+   border: 1px solid #4B465C;
+   width: 250px;
+   padding: 10px;
+   border-radius: 10px;
+   cursor:  inherit;
+ }
  .resminiSeciton > p{
   cursor: pointer;
   font-family: Montserrat;
@@ -209,9 +216,10 @@
   font-weight: 500;
  }
  .selectSideSection{
-  background-color: #3d9e7b;
+  background: linear-gradient(to right, #1C7A54, #63C69A) ;
+
   color: #fff !important;
-  padding: 5px 15px;
+  padding: 10px 15px;
   border-radius: 7px; 
   width: 250px; 
  }

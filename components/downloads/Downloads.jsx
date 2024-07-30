@@ -176,7 +176,7 @@ const Downloads = ({ data, conversion, rtl }) => {
       setFilterTerm(data.dataObjectives[0].lists);
     }
   };
-  // Switching between the section in side section
+  // Switching between the section in side sections
   const handleSwitchSideSection = (id, title) => {
     setSwitchHead(title);
     setSwitchSideSelect(id);
@@ -254,6 +254,18 @@ const Downloads = ({ data, conversion, rtl }) => {
         {mainSectionSelect === 0 ? (
           <div className={classes.resourceSection}>
             <div
+              className={`${classes.resminiSeciton} ${classes.resminiSecHead} `}
+            >
+              <Image
+                src={`/assets/svg/books.svg`}
+                width={20}
+                height={20}
+                alt="icon"
+              />
+              <p>{t("develop")}</p>
+            </div>
+
+            <div
               className={`${classes.resminiSeciton} ${
                 switchSideSelect === 0
                   ? classes.selectSideSection
@@ -264,13 +276,13 @@ const Downloads = ({ data, conversion, rtl }) => {
               }}
             >
               <Image
-                src={`/assets/svg/books.svg`}
+                src={`/assets/svg/box-1.svg`}
                 width={20}
                 height={20}
                 alt="icon"
                 style={{
                   filter:
-                    switchSideSelect === 0 ? "brightness(10)" : "invert(0)",
+                    switchSideSelect === 0 ? "invert(0)" : "brightness(0.2)",
                 }}
               />
               <p>{t("development")}</p>
@@ -286,13 +298,15 @@ const Downloads = ({ data, conversion, rtl }) => {
               }}
             >
               <Image
-                src={`/assets/svg/box-1.svg`}
+                src={`/assets/svg/box-2.svg`}
                 width={20}
                 height={20}
                 alt="icon"
                 style={{
                   filter:
-                    switchSideSelect === 1 ? "invert(0)" : "brightness(0.2)",
+                    switchSideSelect === 1
+                      ? "brightness(10)"
+                      : "brightness(0.2)",
                 }}
               />
               <p>{t("in-progress")}</p>
@@ -301,26 +315,37 @@ const Downloads = ({ data, conversion, rtl }) => {
         ) : mainSectionSelect === 1 ? (
           <div className={classes.resourceSection}>
             <div
-              className={`${classes.resminiSeciton} ${
-                switchSideSelect === 0
-                  ? classes.selectSideSection
-                  : classes.notSelectSideSec
-              }`}
-              onClick={() => {
-                handleSwitchSideSection(0, "documents");
-              }}
+              className={`${classes.resminiSeciton} ${classes.resminiSecHead}`}
             >
               <Image
                 src={`/assets/svg/books.svg`}
                 width={20}
                 height={20}
                 alt="icon"
-                style={{
-                  filter:
-                    switchSideSelect === 0 ? "brightness(10)" : "invert(0)",
-                }}
               />
               <p>{t("documents")}</p>
+            </div>
+            <div
+              className={`${classes.resminiSeciton} ${
+                switchSideSelect === 0
+                  ? classes.selectSideSection
+                  : classes.notSelectSideSec
+              }`}
+              onClick={() => {
+                handleSwitchSideSection(0, "data-documents");
+              }}
+            >
+              <Image
+                src={`/assets/svg/box-1.svg`}
+                width={20}
+                height={20}
+                alt="icon"
+                style={{
+                  filter:
+                    switchSideSelect === 0 ? "invert(0)" : "brightness(0.2)",
+                }}
+              />
+              <p>{t("data-documents")}</p>
             </div>
             <div
               className={`${classes.resminiSeciton} ${
@@ -333,13 +358,15 @@ const Downloads = ({ data, conversion, rtl }) => {
               }}
             >
               <Image
-                src={`/assets/svg/box-1.svg`}
+                src={`/assets/svg/box-2.svg`}
                 width={20}
                 height={20}
                 alt="icon"
                 style={{
                   filter:
-                    switchSideSelect === 1 ? "invert(0)" : "brightness(0.2)",
+                    switchSideSelect === 1
+                      ? "brightness(10)"
+                      : "brightness(0.2)",
                 }}
               />
               <p>{t("annex")}</p>
@@ -347,6 +374,17 @@ const Downloads = ({ data, conversion, rtl }) => {
           </div>
         ) : (
           <div className={classes.resourceSection}>
+            <div
+              className={`${classes.resminiSeciton}  ${classes.resminiSecHead}`}
+            >
+              <Image
+                src={`/assets/svg/books.svg`}
+                width={20}
+                height={20}
+                alt="icon"
+              />
+              <p>{t("data-objectives")}</p>
+            </div>
             <div
               className={`${classes.resminiSeciton} ${
                 switchSideSelect === 0
@@ -358,13 +396,13 @@ const Downloads = ({ data, conversion, rtl }) => {
               }}
             >
               <Image
-                src={`/assets/svg/books.svg`}
+                src={`/assets/svg/box-1.svg`}
                 width={20}
                 height={20}
                 alt="icon"
                 style={{
                   filter:
-                    switchSideSelect === 0 ? "brightness(10)" : "invert(0)",
+                    switchSideSelect === 0 ? "invert(0)" : "brightness(0.2)",
                 }}
               />
               <p>{t("services")}</p>
@@ -380,13 +418,15 @@ const Downloads = ({ data, conversion, rtl }) => {
               }}
             >
               <Image
-                src={`/assets/svg/box-1.svg`}
+                src={`/assets/svg/box-2.svg`}
                 width={20}
                 height={20}
                 alt="icon"
                 style={{
                   filter:
-                    switchSideSelect === 1 ? "invert(0)" : "brightness(0.2)",
+                    switchSideSelect === 1
+                      ? "brightness(10)"
+                      : "brightness(0.2)",
                 }}
               />
               <p>{t("operation-evn")}</p>
@@ -402,7 +442,7 @@ const Downloads = ({ data, conversion, rtl }) => {
               }}
             >
               <Image
-                src={`/assets/svg/box-multiple-2.svg`}
+                src={`/assets/svg/box-3.svg`}
                 width={20}
                 height={20}
                 alt="icon"
@@ -426,7 +466,7 @@ const Downloads = ({ data, conversion, rtl }) => {
               }}
             >
               <Image
-                src={`/assets/svg/box-3.svg`}
+                src={`/assets/svg/box-4.svg`}
                 width={20}
                 height={20}
                 alt="icon"
@@ -450,7 +490,7 @@ const Downloads = ({ data, conversion, rtl }) => {
               }}
             >
               <Image
-                src={`/assets/svg/box-4.svg`}
+                src={`/assets/svg/box-5.svg`}
                 width={20}
                 height={20}
                 alt="icon"
@@ -474,7 +514,7 @@ const Downloads = ({ data, conversion, rtl }) => {
               }}
             >
               <Image
-                src={`/assets/svg/box-5.svg`}
+                src={`/assets/svg/box-6.svg`}
                 width={20}
                 height={20}
                 alt="icon"
