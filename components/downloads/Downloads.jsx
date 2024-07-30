@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import classes from "./downloads.module.css";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { ThemeProvider, createTheme } from "@mui/material/styles";
 import parse from "html-react-parser";
 import {
   Table,
@@ -17,18 +16,14 @@ import {
   FormLabel,
   Select,
   MenuItem,
-  Accordion,
-  AccordionSummary,
-  Typography,
-  AccordionDetails,
 } from "@mui/material";
+import ResoucesTable from "./ResoucesTable";
 import ReactPaginate from "react-paginate";
 import Subscribe from "../ui/Subscribe";
 import { useFontSize } from "@/store/FontSizeContext";
 import { useTranslation } from "react-i18next";
 import classestwo from "../home/Home-main/home-one.module.css";
-import { FiMinus } from "react-icons/fi";
-import { GoPlus } from "react-icons/go";
+import ResourcesFAQ from "./ResoucesFAQ";
 const Downloads = ({ data, conversion, rtl }) => {
   const { t, i18n } = useTranslation();
   const { fontSizeGeneral } = useFontSize();
@@ -37,47 +32,8 @@ const Downloads = ({ data, conversion, rtl }) => {
   const [switchHead, setSwitchHead] = useState("development");
   const [switchSideSelect, setSwitchSideSelect] = useState(0);
   const [mainSectionSelect, setMainSectionSelect] = useState(0);
-  const [expandedIndices, setExpandedIndices] = useState([]);
-  const theme = createTheme({
-    palette: {
-      primary: {
-        main: "#1976D2", // Customize primary color
-      },
-    },
-    components: {
-      MuiAccordion: {
-        styleOverrides: {
-          root: {
-            margin: "5px",
-            padding: "0px 10px",
-            borderRadius: "10px",
-            borderTopLeftRadius: "6px",
-            borderTopRightRadius: "6px",
-            background: "#fff",
-            boxShadow:
-              "0px 2px 4px 1px rgba(51, 48, 60, 0.03),0px 3px 4px 0px rgba(51, 48, 60, 0.02),0px 1px 3px 2px rgba(51, 48, 60, 0.01)",
-          },
-        },
-      },
-      MuiAccordionDetails: {
-        styleOverrides: {
-          root: {
-            borderRadius: "10px",
-          },
-        },
-      },
-    },
-  });
-  // Function to handle accordion expansion
-  const handleAccordionChange = (index) => {
-    if (expandedIndices.includes(index)) {
-      // If the accordion is already expanded, collapse it
-      setExpandedIndices([]);
-    } else {
-      // If the accordion is not expanded, expand it
-      setExpandedIndices([index]);
-    }
-  };
+  const [imgHead, setImageHead] = useState("box-1");
+
   //Filter but selecting options
   const [selectedOption, setSelectedOption] = useState(6);
 
@@ -175,6 +131,7 @@ const Downloads = ({ data, conversion, rtl }) => {
       setSwitchHead("services");
       setFilterTerm(data.dataObjectives[0].lists);
     }
+    setImageHead("box-1");
   };
   // Switching between the section in side sections
   const handleSwitchSideSection = (id, title) => {
@@ -188,6 +145,7 @@ const Downloads = ({ data, conversion, rtl }) => {
     } else {
       setFilterTerm(data.dataObjectives[id].lists);
     }
+    setImageHead("box-" + (id + 1));
   };
   return (
     <div className={classes.downloadPage}>
@@ -533,7 +491,7 @@ const Downloads = ({ data, conversion, rtl }) => {
           <div className={classes.downloadHead}>
             <div className={classes.downloadImgHead}>
               <Image
-                src={`/assets/svg/books.svg`}
+                src={`/assets/svg/${imgHead}.svg`}
                 width={30}
                 height={30}
                 alt="logo-credit"
@@ -600,205 +558,19 @@ const Downloads = ({ data, conversion, rtl }) => {
             </div>
           )}
           {mainSectionSelect === 2 && (
-            <ThemeProvider theme={theme}>
-              <div className={classes.faQestions}>
-                {filterTerm.map((item, index) => (
-                  <Accordion
-                    key={index}
-                    style={{ boxShadow: "none", padding: "0" }}
-                    expanded={expandedIndices.includes(index)}
-                    onChange={() => handleAccordionChange(index)}
-                  >
-                    <AccordionSummary
-                      expandIcon={
-                        expandedIndices.includes(index) ? (
-                          <FiMinus color="gray" />
-                        ) : (
-                          <GoPlus />
-                        )
-                      }
-                      // Set background color dynamically
-                      style={{
-                        background: expandedIndices.includes(index)
-                          ? "#f1f0f2"
-                          : "#fff",
-                        borderLeft: expandedIndices.includes(index)
-                          ? "2px solid #1C7A54"
-                          : "none",
-                      }}
-                    >
-                      <Typography
-                        className={classes.freq}
-                        style={{
-                          color: expandedIndices.includes(index)
-                            ? "#1C7A54"
-                            : "#000",
-                          fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
-                          fontSize: `${15 + fontSizeGeneral}px`,
-                        }}
-                      >
-                        {rtl
-                          ? item?.title?.slice(0, 80)
-                          : item?.titleEN?.slice(0, 80)}
-                      </Typography>
-                    </AccordionSummary>
-                    <AccordionDetails
-                      style={{
-                        borderRadius: "0px",
-                        background: "#f1f0f2",
-                        marginTop: "-20px",
-                        borderLeft: expandedIndices.includes(index)
-                          ? "2px solid #1C7A54"
-                          : "",
-                      }}
-                    >
-                      <Typography
-                        sx={{
-                          color: "rgba(51, 48, 60, 0.87)",
-                          fontSize: `${13 + fontSizeGeneral}px`,
-                          fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
-                        }}
-                      >
-                        {rtl ? item.description : item?.descriptionEN}
-                      </Typography>
-                    </AccordionDetails>
-                  </Accordion>
-                ))}
-              </div>
-            </ThemeProvider>
+            <ResourcesFAQ
+              filterTerm={filterTerm}
+              rtl={rtl}
+              fontSizeGeneral={fontSizeGeneral}
+            />
           )}
           {mainSectionSelect !== 2 && (
-            <TableContainer
-              component={Paper}
-              sx={{ direction: rtl ? "rtl" : "ltr" }}
-            >
-              <Table>
-                <TableHead>
-                  <TableRow>
-                    <TableCell
-                      style={{
-                        fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
-                        textAlign: rtl ? "right" : "left",
-                      }}
-                    >
-                      {t("title")}
-                    </TableCell>
-                    <TableCell
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "flex-start",
-                        textAlign: "right",
-                        gap: "10px",
-                        fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
-                      }}
-                    >
-                      {" "}
-                      <div
-                        style={{
-                          display: "flex",
-                          flexDirection: "column",
-                          cursor: "pointer",
-                        }}
-                      >
-                        {" "}
-                        <Image
-                          src="/assets/svg/arrowUp.svg"
-                          width={15}
-                          height={15}
-                          alt="arrow-up"
-                          onClick={sortByDateDescending}
-                        />{" "}
-                        <Image
-                          src="/assets/svg/arrowUp.svg"
-                          width={15}
-                          height={15}
-                          alt="arrow-up"
-                          onClick={sortByDateAscending}
-                          style={{ transform: "rotate(180deg)" }}
-                        />{" "}
-                      </div>
-                      {t("date")}
-                    </TableCell>
-                    <TableCell
-                      style={{
-                        fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
-                        textAlign: rtl ? "right" : "left",
-                      }}
-                    >
-                      {t("file-size")}
-                    </TableCell>
-                    <TableCell
-                      style={{
-                        fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
-                        textAlign: rtl ? "right" : "left",
-                      }}
-                    >
-                      {t("action")}
-                    </TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {mainSectionSelect !== 2 &&
-                    filterTerm.map((document) => {
-                      console.log(document);
-                      const dateCreated = new Date(document.createdAt);
-                      const dateUpdated = new Date(document.updatedAt);
-                      const options = {
-                        year: "numeric",
-                        month: "numeric",
-                        day: "numeric",
-                      };
-                      const formattedDate = dateCreated.toLocaleDateString(
-                        i18n.language,
-                        options
-                      );
-                      const formatteUpdate = dateUpdated.toLocaleDateString(
-                        i18n.language,
-                        options
-                      );
-                      const pdfUrl = `${document.fileUrl}`;
-                      return (
-                        <TableRow key={document.id}>
-                          <TableCell
-                            style={{
-                              fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
-                              textAlign: rtl ? "right" : "left",
-                            }}
-                          >
-                            {rtl
-                              ? document.title.slice(0, 30)
-                              : document.titleEN.slice(0, 30)}
-                            ...
-                          </TableCell>
-                          <TableCell sx={{ textAlign: rtl ? "right" : "left" }}>
-                            {formattedDate}
-                          </TableCell>
-                          <TableCell sx={{ textAlign: rtl ? "right" : "left" }}>
-                            {document.fileSize}
-                          </TableCell>
-                          <TableCell sx={{ textAlign: rtl ? "right" : "left" }}>
-                            <div
-                              className={classes.downloadButton}
-                              onClick={() => {
-                                downloadPdfFile(pdfUrl, document.title);
-                              }}
-                            >
-                              <Image
-                                src="/assets/svg/download-resouces.svg"
-                                width={25}
-                                height={25}
-                                alt="download"
-                              />
-                              <p>{t("download-file")}</p>
-                            </div>
-                          </TableCell>
-                        </TableRow>
-                      );
-                    })}
-                </TableBody>
-              </Table>
-            </TableContainer>
+            <ResoucesTable
+              filterTerm={filterTerm}
+              rtl={rtl}
+              sortByDateDescending={sortByDateDescending}
+              sortByDateAscending={sortByDateAscending}
+            />
           )}
           <div className={classes.paginationContainer}>
             {/* Render pagination links with updated styles */}

@@ -222,7 +222,7 @@ const Navbar = ({
             } ${rtl ? classes.navRight : classes.navLeft} `}
           >
             <Image
-              src="/assets/svg/whiteLogo.svg"
+              src="/assets/svg/SNAP_logo.svg"
               width={125}
               height={80}
               alt="logo-svg"
