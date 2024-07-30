@@ -37,7 +37,7 @@ const Footer = ({ conVersion, rtl }) => {
       <div className={classes.footerContentMain}>
         <div className={classes.logoSec}>
           <Image
-            src="/assets/svg/GacaFooter.svg"
+            src="/assets/svg/SNAP_logo.svg"
             width={135}
             height={50}
             alt="Gaca"
