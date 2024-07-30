@@ -129,6 +129,13 @@
   color: #4b465c;
   font-family: "DINNext-Bold", sans-serif;
 }
+.resminiHead{
+  border: 1px solid #4B465C;
+  width: 250px;
+  padding: 10px;
+  border-radius: 10px;
+  cursor:  inherit;
+}
 /* Syting for the bottom section of the FQA */
 .container {
   display: flex;

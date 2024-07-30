@@ -22,6 +22,7 @@ const FAQs = ({ data, conVersion, rtl }) => {
   console.log(data);
   const [faqData, setFaqData] = useState(data.genral);
   const [faqTitle, setFaqTitle] = useState(0);
+
   const { t } = useTranslation();
   const theme = createTheme({
     palette: {
@@ -153,22 +154,11 @@ const FAQs = ({ data, conVersion, rtl }) => {
             </p>
             <div className={classes.faqTypeMain}>
               <div className={classes.sideSection}>
-                <div
-                  className={`${classes.faqType} ${
-                    faqTitle === 0 ? classes.faqTypeClicked : ""
-                  }`}
-                  onClick={() => {
-                    handleFaqType(0);
-                  }}
-                >
+                <div className={`${classes.faqType}  ${classes.resminiHead}`}>
                   <Image
-                    src={
-                      faqTitle === 0
-                        ? "/assets/svg/credit-card.svg"
-                        : "/assets/svg/credit-card-black.svg"
-                    }
-                    width={20}
-                    height={20}
+                    src={`/assets/svg/books.svg`}
+                    width={25}
+                    height={25}
                     alt="credit-card"
                   />
                   <p
@@ -182,6 +172,25 @@ const FAQs = ({ data, conVersion, rtl }) => {
                 </div>
                 <div
                   className={`${classes.faqType} ${
+                    faqTitle === 0 ? classes.faqTypeClicked : ""
+                  }`}
+                  onClick={() => {
+                    handleFaqType(0);
+                  }}
+                >
+                  <Image
+                    src={"/assets/svg/box-1.svg"}
+                    width={20}
+                    height={20}
+                    alt="box"
+                    style={{
+                      filter: faqTitle === 0 ? "invert(0)" : "brightness(0.2)",
+                    }}
+                  />
+                  <p>{t("faq")}</p>
+                </div>
+                <div
+                  className={`${classes.faqType} ${
                     faqTitle === 1 ? classes.faqTypeClicked : ""
                   }`}
                   onClick={() => {
@@ -189,14 +198,14 @@ const FAQs = ({ data, conVersion, rtl }) => {
                   }}
                 >
                   <Image
-                    src={
-                      faqTitle === 1
-                        ? "/assets/svg/box-white.svg"
-                        : "/assets/imges/faq-box.png"
-                    }
+                    src={"/assets/svg/box-2.svg"}
                     width={20}
                     height={20}
                     alt="box"
+                    style={{
+                      filter:
+                        faqTitle === 1 ? "brightness(10)" : "brightness(0.2)",
+                    }}
                   />
                   <p>KPI Overview</p>
                 </div>
@@ -209,14 +218,14 @@ const FAQs = ({ data, conVersion, rtl }) => {
                   }}
                 >
                   <Image
-                    src={
-                      faqTitle === 2
-                        ? "/assets/svg/box-white.svg"
-                        : "/assets/imges/faq-box.png"
-                    }
+                    src={"/assets/svg/box-3.svg"}
                     width={20}
                     height={20}
                     alt="box"
+                    style={{
+                      filter:
+                        faqTitle === 2 ? "brightness(10)" : "brightness(0.2)",
+                    }}
                   />
                   <p>KPA Overview</p>
                 </div>
@@ -232,14 +241,13 @@ const FAQs = ({ data, conVersion, rtl }) => {
                 <div className={classes.faqtitleHead}>
                   <div className={classes.faqImgHead}>
                     <Image
-                      src={
-                        faqTitle === 0
-                          ? "/assets/svg/credit-card.svg"
-                          : "/assets/svg/box-white.svg"
-                      }
+                      src={`/assets/svg/box-${faqTitle + 1}.svg`}
                       width={30}
                       height={30}
                       alt="credit-card"
+                      style={{
+                        filter: "brightness(10)",
+                      }}
                     />
                   </div>
                   <p
@@ -255,72 +263,90 @@ const FAQs = ({ data, conVersion, rtl }) => {
                       : t("faq")}
                   </p>
                 </div>
-                <div className={classes.faQestions}>
-                  {faqData.map((item, index) => (
-                    <Accordion
-                      key={index}
-                      style={{ boxShadow: "none", padding: "0" }}
-                      expanded={expandedIndices.includes(index)}
-                      onChange={() => handleAccordionChange(index)}
-                    >
-                      <AccordionSummary
-                        expandIcon={
-                          expandedIndices.includes(index) ? (
-                            <FiMinus color="gray" />
-                          ) : (
-                            <GoPlus />
-                          )
-                        }
-                        // Set background color dynamically
-                        style={{
-                          background: expandedIndices.includes(index)
-                            ? "#f1f0f2"
-                            : "#fff",
-                          borderLeft: expandedIndices.includes(index)
-                            ? "2px solid #1C7A54"
-                            : "none",
-                        }}
+                {faqData.length > 0 ? (
+                  <div className={classes.faQestions}>
+                    {faqData.map((item, index) => (
+                      <Accordion
+                        key={index}
+                        style={{ boxShadow: "none", padding: "0" }}
+                        expanded={expandedIndices.includes(index)}
+                        onChange={() => handleAccordionChange(index)}
                       >
-                        <Typography
-                          className={classes.freq}
+                        <AccordionSummary
+                          expandIcon={
+                            expandedIndices.includes(index) ? (
+                              <FiMinus color="gray" />
+                            ) : (
+                              <GoPlus />
+                            )
+                          }
+                          // Set background color dynamically
                           style={{
-                            color: expandedIndices.includes(index)
-                              ? "#1C7A54"
-                              : "#000",
-                            fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
-                            fontSize: `${15 + fontSizeGeneral}px`,
+                            background: expandedIndices.includes(index)
+                              ? "#f1f0f2"
+                              : "#fff",
+                            borderLeft: expandedIndices.includes(index)
+                              ? "2px solid #1C7A54"
+                              : "none",
                           }}
                         >
-                          {rtl
-                            ? item.title?.slice(0, 80)
-                            : item.titleEN?.slice(0, 80)}
-                        </Typography>
-                      </AccordionSummary>
-                      <AccordionDetails
-                        style={{
-                          borderRadius: "0px",
-                          background: "#f1f0f2",
-                          marginTop: "-20px",
-                          borderLeft: expandedIndices.includes(index)
-                            ? "2px solid #1C7A54"
-                            : "",
-                        }}
-                      >
-                        <Typography
-                          sx={{
-                            color: "rgba(51, 48, 60, 0.87)",
-                            fontSize: `${13 + fontSizeGeneral}px`,
-                            fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
+                          <Typography
+                            className={classes.freq}
+                            style={{
+                              color: expandedIndices.includes(index)
+                                ? "#1C7A54"
+                                : "#000",
+                              fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
+                              fontSize: `${15 + fontSizeGeneral}px`,
+                            }}
+                          >
+                            {rtl
+                              ? item.title?.slice(0, 80)
+                              : item.titleEN?.slice(0, 80)}
+                          </Typography>
+                        </AccordionSummary>
+                        <AccordionDetails
+                          style={{
+                            borderRadius: "0px",
+                            background: "#f1f0f2",
+                            marginTop: "-20px",
+                            borderLeft: expandedIndices.includes(index)
+                              ? "2px solid #1C7A54"
+                              : "",
                           }}
                         >
-                          {rtl
-                            ? parse(item.description)
-                            : parse(item.descriptionEN)}
-                        </Typography>
-                      </AccordionDetails>
-                    </Accordion>
-                  ))}
-                </div>
+                          <Typography
+                            sx={{
+                              color: "rgba(51, 48, 60, 0.87)",
+                              fontSize: `${13 + fontSizeGeneral}px`,
+                              fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
+                            }}
+                          >
+                            {rtl
+                              ? parse(item.description)
+                              : parse(item.descriptionEN)}
+                          </Typography>
+                        </AccordionDetails>
+                      </Accordion>
+                    ))}
+                  </div>
+                ) : (
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      width: "100%",
+                    }}
+                  >
+                    <Image
+                      src="/assets/imges/page_empty.png"
+                      width={350}
+                      height={350}
+                      alt="not_found "
+                    />
+                  </div>
+                )}
               </div>
             </div>
 

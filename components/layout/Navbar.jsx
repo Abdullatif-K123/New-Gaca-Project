@@ -202,7 +202,7 @@ const Navbar = ({
           </div>
           <div className={classes.logo}>
             <Image
-              src={"/assets/svg/SNAP_logo.svg"}
+              src={"/assets/svg/SNAP.svg"}
               width={140}
               height={47}
               alt="logo"
@@ -222,7 +222,7 @@ const Navbar = ({
             } ${rtl ? classes.navRight : classes.navLeft} `}
           >
             <Image
-              src="/assets/svg/SNAP_logo.svg"
+              src="/assets/svg/SNAP.svg"
               width={125}
               height={80}
               alt="logo-svg"
