@@ -83,16 +83,7 @@ const Downloads = ({ data, conversion, rtl }) => {
     });
   };
   const router = useRouter();
-  //function to do the download for each document
 
-  function downloadPdfFile(url, fileName) {
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = fileName;
-
-    // Trigger a click event on the link to start the download
-    link.click();
-  }
   const [showBtn, setShowBtn] = useState(false);
   //side effect for showing arrow up Bottom when the window be in the second section or down
   useEffect(() => {
@@ -179,6 +170,7 @@ const Downloads = ({ data, conversion, rtl }) => {
       <div className={classes.downloadContent}>
         <div className={classes.downloadSectionContent}>
           <p
+            style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}
             className={`${
               mainSectionSelect === 0 ? classes.selectSection : null
             }`}
@@ -189,6 +181,7 @@ const Downloads = ({ data, conversion, rtl }) => {
             {t("developments")}
           </p>
           <p
+            style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}
             className={`${
               mainSectionSelect === 1 ? classes.selectSection : null
             }`}
@@ -199,6 +192,7 @@ const Downloads = ({ data, conversion, rtl }) => {
             {t("documents")}
           </p>
           <p
+            style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}
             className={`${
               mainSectionSelect === 2 ? classes.selectSection : null
             }`}
@@ -222,7 +216,9 @@ const Downloads = ({ data, conversion, rtl }) => {
                 height={20}
                 alt="icon"
               />
-              <p>{t("developments")}</p>
+              <p style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}>
+                {t("developments")}
+              </p>
             </div>
 
             <div
@@ -245,7 +241,9 @@ const Downloads = ({ data, conversion, rtl }) => {
                     switchSideSelect === 0 ? "invert(0)" : "brightness(0.2)",
                 }}
               />
-              <p>{t("development")}</p>
+              <p style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}>
+                {t("development")}
+              </p>
             </div>
             <div
               className={`${classes.resminiSeciton} ${
@@ -329,7 +327,9 @@ const Downloads = ({ data, conversion, rtl }) => {
                       : "brightness(0.2)",
                 }}
               />
-              <p>{t("annex")}</p>
+              <p style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}>
+                {t("annex")}
+              </p>
             </div>
           </div>
         ) : (
@@ -343,7 +343,9 @@ const Downloads = ({ data, conversion, rtl }) => {
                 height={20}
                 alt="icon"
               />
-              <p>{t("data-objectives")}</p>
+              <p style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}>
+                {t("data-objectives")}
+              </p>
             </div>
             <div
               className={`${classes.resminiSeciton} ${
@@ -365,7 +367,9 @@ const Downloads = ({ data, conversion, rtl }) => {
                     switchSideSelect === 0 ? "invert(0)" : "brightness(0.2)",
                 }}
               />
-              <p>{t("services")}</p>
+              <p style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}>
+                {t("services")}
+              </p>
             </div>
             <div
               className={`${classes.resminiSeciton} ${
@@ -389,7 +393,9 @@ const Downloads = ({ data, conversion, rtl }) => {
                       : "brightness(0.2)",
                 }}
               />
-              <p>{t("operation-evn")}</p>
+              <p style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}>
+                {t("operation-evn")}
+              </p>
             </div>
             <div
               className={`${classes.resminiSeciton} ${
@@ -413,7 +419,9 @@ const Downloads = ({ data, conversion, rtl }) => {
                       : "brightness(0.2)",
                 }}
               />
-              <p>{t("stakholders")}</p>
+              <p style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}>
+                {t("stakholders")}
+              </p>
             </div>
             <div
               className={`${classes.resminiSeciton} ${
@@ -437,7 +445,9 @@ const Downloads = ({ data, conversion, rtl }) => {
                       : "brightness(0.2)",
                 }}
               />
-              <p>{t("regulatory")}</p>
+              <p style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}>
+                {t("regulatory")}
+              </p>
             </div>
             <div
               className={`${classes.resminiSeciton} ${
@@ -461,7 +471,9 @@ const Downloads = ({ data, conversion, rtl }) => {
                       : "brightness(0.2)",
                 }}
               />
-              <p>{t("kpi-overview")}</p>
+              <p style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}>
+                {t("kpi-overview")}
+              </p>
             </div>
             <div
               className={`${classes.resminiSeciton} ${
@@ -485,7 +497,9 @@ const Downloads = ({ data, conversion, rtl }) => {
                       : "brightness(0.2)",
                 }}
               />
-              <p>{t("kpa-overview")}</p>
+              <p style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}>
+                {t("kpa-overview")}
+              </p>
             </div>
           </div>
         )}

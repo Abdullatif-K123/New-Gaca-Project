@@ -18,6 +18,25 @@ const ResoucesTable = ({
   sortByDateAscending,
 }) => {
   const { t, i18n } = useTranslation();
+  function downloadPdfFile(url, fileName) {
+    // Open a new tab
+    const newTab = window.open(url, "_blank");
+
+    // Check if the new tab was successfully opened
+    if (newTab) {
+      // Set the download attribute for the new tab
+      newTab.document.title = fileName; // Optional: Set the title of the new tab
+      newTab.location.href = url; // Start the download
+
+      // Optionally, you can close the tab after a short delay
+      setTimeout(() => {
+        newTab.close();
+      }, 10000); // Close after 10 seconds (adjust as needed)
+    } else {
+      // Handle the case where the tab couldn't be opened (popup blocker)
+      alert("Please allow popups for this website to download files.");
+    }
+  }
   return (
     <TableContainer component={Paper} sx={{ direction: rtl ? "rtl" : "ltr" }}>
       <Table>
