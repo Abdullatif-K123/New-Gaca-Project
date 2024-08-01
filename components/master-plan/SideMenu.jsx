@@ -63,7 +63,7 @@ const SideMenu = ({
             onKeyUp={onFilterMouseUp}
           />
         </div>
-        <div className={classes.sideMenuTreeView} data-aos="fade-right">
+        <div className={classes.sideMenuTreeView}>
           <p
             style={{
               fontFamily: rtl ? "DINNext-Arabic-meduim " : "",

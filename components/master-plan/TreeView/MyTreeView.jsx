@@ -3,7 +3,7 @@ import { TreeView } from "@mui/x-tree-view/TreeView";
 import { TreeItem } from "@mui/x-tree-view/TreeItem";
 import Image from "next/image";
 import classes from "./treeFilter.module.css";
-
+import { useTranslation } from "react-i18next";
 const MyTreeView = ({
   singleSelectHandling,
   data,
@@ -14,6 +14,7 @@ const MyTreeView = ({
   const [selected, setSelected] = useState("");
   const [expanded, setExpanded] = useState([]);
   const [selectMonitor, setSelectMonitor] = useState(false);
+  const { t } = useTranslation();
   const renderTree = (nodes) => {
     if (!nodes) {
       return null;
@@ -212,7 +213,7 @@ const MyTreeView = ({
               color: selectMonitor ? "white" : "black",
             }}
           >
-            Implementation Objectives (Monitoring)
+            {t("monitor")}
           </p>
           <Image
             src={`/assets/svg/${

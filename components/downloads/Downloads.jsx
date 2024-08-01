@@ -267,7 +267,9 @@ const Downloads = ({ data, conversion, rtl }) => {
                       : "brightness(0.2)",
                 }}
               />
-              <p>{t("in-progress")}</p>
+              <p style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}>
+                {t("in-progress")}
+              </p>
             </div>
           </div>
         ) : mainSectionSelect === 1 ? (
@@ -281,7 +283,9 @@ const Downloads = ({ data, conversion, rtl }) => {
                 height={20}
                 alt="icon"
               />
-              <p>{t("documents")}</p>
+              <p style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}>
+                {t("documents")}
+              </p>
             </div>
             <div
               className={`${classes.resminiSeciton} ${
@@ -303,7 +307,9 @@ const Downloads = ({ data, conversion, rtl }) => {
                     switchSideSelect === 0 ? "invert(0)" : "brightness(0.2)",
                 }}
               />
-              <p>{t("data-documents")}</p>
+              <p style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}>
+                {t("data-documents")}
+              </p>
             </div>
             <div
               className={`${classes.resminiSeciton} ${

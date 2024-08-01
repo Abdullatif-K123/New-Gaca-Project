@@ -54,6 +54,7 @@ const index = ({ rtl, isFeedbackVisible, handleToggleFeedback, conVersion,dataIn
         rtl={rtl}
         pptUrl={dataInfo?.returnData.fileURL}
         videourl={dataInfo?.returnData.videoURL}
+        dataPdf = {dataInfo?.returnData}
         monitor={dataMonitoring}
       />
     </div>

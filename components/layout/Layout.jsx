@@ -30,7 +30,7 @@ const Layout = (props) => {
       });
       {
         Swal.fire({
-          title: rtl ? response.data.errorMessage : "شكرا لكم ",
+          title: !rtl ? response.data.errorMessage : "شكرا لكم ",
           icon: "success",
           customClass: {
             container: classes.customTitleAlert,
@@ -43,7 +43,7 @@ const Layout = (props) => {
       }
     } catch (error) {
       Swal.fire({
-        title: "Oops!! something went wrong!",
+        title: rtl ? "للأسف حدث خطأ ما" : "Oops!! something went wrong!",
         icon: "error",
         customClass: {
           container: classes.customTitleAlert,

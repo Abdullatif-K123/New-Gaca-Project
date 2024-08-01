@@ -61,11 +61,13 @@ const Subscribe = ({ rtl }) => {
       setEmail("");
       // You can add further actions like showing a success message to the user
     } catch (error) {
-      console.error("Error subscribing:", error?.response?.data.errorMessage);
+      console.log(error);
 
       Swal.fire({
-        title: "Error!!",
-        text: error?.response?.data?.errorMessage,
+        title: rtl ? "خطأ" : "Error!!",
+        text: rtl
+          ? "تم الأشتراك في الايميل المدخل بالفعل"
+          : error?.response?.data?.errorMessage,
         icon: "error",
         customClass: {
           container: classes.customTitleAlert,

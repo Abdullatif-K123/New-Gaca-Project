@@ -15,25 +15,24 @@ import {
   TableHead,
   TableRow,
   Paper,
-  TableSortLabel,
 } from "@mui/material";
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 const MasterPlan = ({
   singleElem,
-  pptFile,
   videoUrl,
   rtl,
   switching,
   screenWidth,
   monitor,
+  dataPdf,
 }) => {
+  console.log(dataPdf.fileURL);
   const router = useRouter();
   const { t } = useTranslation();
   const [openVid, setOpenVid] = useState(false);
   const [numPages, setNumPages] = useState(null);
   const pdfWrapperRef = useRef(null);
   const pageRefs = useRef([]);
-
   const handleClose = () => {
     setOpenVid(false);
   };
@@ -62,6 +61,18 @@ const MasterPlan = ({
       });
     }
   }, [singleElem]);
+  // Function to extract file ID from Google Drive URL
+  const getFileIdFromUrl = (url) => {
+    const regex = /\/d\/([^/]+)/; // Regular expression to match the file ID
+    const match = url.match(regex);
+    return match ? match[1] : null; // Return the file ID or null if not found
+  };
+
+  // Get the file ID and construct the direct link
+  const fileId = getFileIdFromUrl(dataPdf.fileURL);
+  const fileURL = fileId
+    ? `https://drive.google.com/uc?export=view&id=${fileId}`
+    : null;
 
   return (
     <div className={classes.sideContent}>
@@ -90,7 +101,7 @@ const MasterPlan = ({
             style={{ float: rtl ? "right" : "left" }}
           >
             <Document
-              file={`/assets/pdf/LAYER${router.query.id}.pdf`}
+              file="https://cors-anywhere.herokuapp.com/https://drive.google.com/uc?export=download&id=15MP399YYXfI85okgQCxaermQmayaZ2gk"
               onLoadSuccess={onDocumentLoadSuccess}
               loading={
                 <div style={{ position: "fixed", left: "50%", top: "60%" }}>

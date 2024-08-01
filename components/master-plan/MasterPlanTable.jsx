@@ -127,8 +127,12 @@ const MasterPlanTable = ({ data, rtl }) => {
             </Popover>
           </div>
         </TableCell>
-        <TableCell>{formattedDateStart}</TableCell>
-        <TableCell>{formattedDateEnd}</TableCell>
+        <TableCell style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}>
+          {formattedDateStart}
+        </TableCell>
+        <TableCell style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}>
+          {formattedDateEnd}
+        </TableCell>
         <TableCell>
           <div
             style={{

@@ -17,9 +17,9 @@ const MasterPlanMain = ({
   pptUrl,
   videourl,
   monitor,
+  dataPdf,
 }) => {
   const router = useRouter();
-  console.log(monitor);
   const [selectingElem, setSelectingElem] = useState([elementSelect]);
   const [switching, setSwitching] = useState(false);
   const [singleElemSelecting, setSingleElemSelecting] = useState(elementSelect);
@@ -191,6 +191,7 @@ const MasterPlanMain = ({
             switching={switching}
             monitor={monitor}
             screenWidth={screenWidth}
+            dataPdf={dataPdf}
           />
         </div>
       </div>
