@@ -3,6 +3,7 @@ import { Dialog, DialogContent, Button, Slide } from "@mui/material";
 import { useTheme, useMediaQuery } from "@mui/material";
 import classes from "./ui.module.css";
 const WelcomeDialog = ({ onClose, videoUrl }) => {
+  console.log(videoUrl);
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
   const [videSrc, setVideoSrc] = useState(
@@ -12,7 +13,11 @@ const WelcomeDialog = ({ onClose, videoUrl }) => {
     onClose();
   };
   useEffect(() => {
-    setVideoSrc(videoUrl);
+    // Convert the videoUrl to the embed format if necessary
+    if (videoUrl) {
+      const videoId = videoUrl.split("v=")[1]?.split("&")[0]; // Extract video ID
+      setVideoSrc(`https://www.youtube.com/embed/${videoId}`);
+    }
   }, [videoUrl]);
 
   return (
@@ -32,11 +37,11 @@ const WelcomeDialog = ({ onClose, videoUrl }) => {
       }}
     >
       <DialogContent style={{ overflow: "hidden" }}>
-        <video controls className={classes.iframeResponsive}>
-          <source src={videSrc} type="video/mp4" />
-          <source src={videSrc} type="video/webm" />
-          Your browser does not support the video tag.
-        </video>
+        <iframe
+          src={videSrc}
+          allowFullScreen
+          className={classes.iframeResponsive}
+        />
       </DialogContent>
       <div style={{ textAlign: "center", marginTop: "16px" }}>
         <Button
