@@ -3,20 +3,7 @@ import classes from "./downloads.module.css";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import parse from "html-react-parser";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Paper,
-  Grid,
-  TextField,
-  FormLabel,
-  Select,
-  MenuItem,
-} from "@mui/material";
+import { Grid, TextField, FormLabel, Select, MenuItem } from "@mui/material";
 import ResoucesTable from "./ResoucesTable";
 import ReactPaginate from "react-paginate";
 import Subscribe from "../ui/Subscribe";
@@ -33,7 +20,16 @@ const Downloads = ({ data, conversion, rtl }) => {
   const [switchSideSelect, setSwitchSideSelect] = useState(0);
   const [mainSectionSelect, setMainSectionSelect] = useState(0);
   const [imgHead, setImageHead] = useState("box-1");
-
+  //types
+  const development_type = ["Development", "InProgress"];
+  const documents_type = ["Annex", "Documents"];
+  const dataObjectives_type = [
+    "operation",
+    "regulatory",
+    "services",
+    "kpi",
+    "stakeholder",
+  ];
   //Filter but selecting options
   const [selectedOption, setSelectedOption] = useState(6);
 
@@ -123,13 +119,20 @@ const Downloads = ({ data, conversion, rtl }) => {
     setMainSectionSelect(id);
     if (!id) {
       setSwitchHead("development");
-      setFilterTerm(data.development[0].lists);
+      if (data?.development[0].type !== "Development")
+        setFilterTerm(data?.development[1].lists);
+      else setFilterTerm(data?.development[0].lists);
     } else if (id === 1) {
       setSwitchHead("documents");
-      setFilterTerm(data.documents[1].lists);
+      if (data?.documents[0].type !== "Documents")
+        setFilterTerm(data?.documents[1].lists);
+      else setFilterTerm(data?.documents[1].lists);
     } else {
       setSwitchHead("services");
-      setFilterTerm(data.dataObjectives[0].lists);
+      const index = data.dataObjectives.findIndex(
+        (obj) => obj.type === "Services"
+      );
+      setFilterTerm(data?.dataObjectives[index].lists);
     }
     setImageHead("box-1");
   };
@@ -138,21 +141,20 @@ const Downloads = ({ data, conversion, rtl }) => {
     setSwitchHead(title);
     setSwitchSideSelect(id);
     if (mainSectionSelect === 0) {
-      console.log(data.development[id].lists);
-      setFilterTerm(data.development[id].lists);
+      setFilterTerm(data?.development[id].lists);
     } else if (mainSectionSelect === 1) {
-      setFilterTerm(data.documents[id ? 0 : 1].lists);
+      setFilterTerm(data?.documents[id ? 0 : 1]?.lists);
     } else {
-      setFilterTerm(data.dataObjectives[id].lists);
+      setFilterTerm(data?.dataObjectives[id]?.lists);
     }
     setImageHead("box-" + (id + 1));
   };
   return (
-    <div className={classes.downloadPage}>
-      <div
-        className={classes.choosen}
-        style={{ direction: rtl ? "rtl" : "ltr" }}
-      >
+    <div
+      className={classes.downloadPage}
+      style={{ direction: rtl ? "rtl" : "ltr" }}
+    >
+      <div className={classes.choosen}>
         <p>
           <span
             onClick={() => {
@@ -184,7 +186,7 @@ const Downloads = ({ data, conversion, rtl }) => {
               handleSwitchSection(0);
             }}
           >
-            {t("development")}
+            {t("developments")}
           </p>
           <p
             className={`${
@@ -220,7 +222,7 @@ const Downloads = ({ data, conversion, rtl }) => {
                 height={20}
                 alt="icon"
               />
-              <p>{t("develop")}</p>
+              <p>{t("developments")}</p>
             </div>
 
             <div
@@ -487,110 +489,134 @@ const Downloads = ({ data, conversion, rtl }) => {
             </div>
           </div>
         )}
-        <div className={classes.downloadTables}>
-          <div className={classes.downloadHead}>
-            <div className={classes.downloadImgHead}>
-              <Image
-                src={`/assets/svg/${imgHead}.svg`}
-                width={30}
-                height={30}
-                alt="logo-credit"
-                style={{
-                  filter: "brightness(10)",
-                }}
-              />
-            </div>
-            <p
-              style={{
-                fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
-                fontSize: `${19 + fontSizeGeneral}px`,
-              }}
-            >
-              {t(switchHead)}
-            </p>
-          </div>
-          {mainSectionSelect !== 2 && (
-            <div className={classes.filteringDocument}>
-              <div className={classes.filterByNumber}>
-                <FormLabel
-                  style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}
-                >
-                  {t("show")}
-                </FormLabel>
-                <Select
-                  size="small"
-                  value={selectedOption}
-                  onChange={handleSelectChange}
-                  defaultValue={"6"}
-                >
-                  <MenuItem value={1}>3</MenuItem>
-                  <MenuItem value={2}>4</MenuItem>
-                  <MenuItem value={6}>6</MenuItem>
-                  <MenuItem value={15}>15</MenuItem>
-                  <MenuItem value={20}>20</MenuItem>
-                </Select>
-                <FormLabel
-                  style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}
-                >
-                  {t("entries")}
-                </FormLabel>
+        {filterTerm?.length > 0 ? (
+          <div className={classes.downloadTables}>
+            <div className={classes.downloadHead}>
+              <div className={classes.downloadImgHead}>
+                <Image
+                  src={`/assets/svg/${imgHead}.svg`}
+                  width={30}
+                  height={30}
+                  alt="logo-credit"
+                  style={{
+                    filter: "brightness(10)",
+                  }}
+                />
               </div>
-              <Grid alignItems="center">
-                <Grid
-                  item
-                  style={{ display: "flex", alignItems: "center", gap: "10px" }}
-                >
+              <p
+                style={{
+                  fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
+                  fontSize: `${19 + fontSizeGeneral}px`,
+                }}
+              >
+                {t(switchHead)}
+              </p>
+            </div>
+            {mainSectionSelect !== 2 && (
+              <div className={classes.filteringDocument}>
+                <div className={classes.filterByNumber}>
                   <FormLabel
-                    htmlFor="search"
                     style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}
                   >
-                    {t("search")}
+                    {t("show")}
                   </FormLabel>
-                  <TextField
+                  <Select
                     size="small"
-                    variant="outlined"
-                    placeholder={t("title")}
-                    onChange={(e) => searchByTitle(e.target.value)}
-                    id="search"
-                  />
+                    value={selectedOption}
+                    onChange={handleSelectChange}
+                    defaultValue={"6"}
+                  >
+                    <MenuItem value={1}>3</MenuItem>
+                    <MenuItem value={2}>4</MenuItem>
+                    <MenuItem value={6}>6</MenuItem>
+                    <MenuItem value={15}>15</MenuItem>
+                    <MenuItem value={20}>20</MenuItem>
+                  </Select>
+                  <FormLabel
+                    style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}
+                  >
+                    {t("entries")}
+                  </FormLabel>
+                </div>
+                <Grid alignItems="center">
+                  <Grid
+                    item
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "10px",
+                    }}
+                  >
+                    <FormLabel
+                      htmlFor="search"
+                      style={{
+                        fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
+                      }}
+                    >
+                      {t("search")}
+                    </FormLabel>
+                    <TextField
+                      size="small"
+                      variant="outlined"
+                      placeholder={t("title")}
+                      onChange={(e) => searchByTitle(e.target.value)}
+                      id="search"
+                    />
+                  </Grid>
                 </Grid>
-              </Grid>
+              </div>
+            )}
+            {mainSectionSelect === 2 && (
+              <ResourcesFAQ
+                filterTerm={filterTerm}
+                rtl={rtl}
+                fontSizeGeneral={fontSizeGeneral}
+              />
+            )}
+            {mainSectionSelect !== 2 && (
+              <ResoucesTable
+                filterTerm={filterTerm}
+                rtl={rtl}
+                sortByDateDescending={sortByDateDescending}
+                sortByDateAscending={sortByDateAscending}
+              />
+            )}
+            <div className={classes.paginationContainer}>
+              {/* Render pagination links with updated styles */}
+              <ReactPaginate
+                containerClassName={classes.pagination}
+                pageClassName={classes.pageItem}
+                activeClassName={classes.active}
+                onPageChange={(event) => setCurrentPage(event.selected)}
+                pageCount={Math.ceil(filterTerm.length / selectedOption)}
+                onPageActive={currentPage}
+                breakLabel="..."
+                previousLabel={
+                  <div className={classes.paginationTerm}>{t("previous")}</div>
+                }
+                nextLabel={
+                  <div className={classes.paginationTerm}>{t("next")}</div>
+                }
+              />
             </div>
-          )}
-          {mainSectionSelect === 2 && (
-            <ResourcesFAQ
-              filterTerm={filterTerm}
-              rtl={rtl}
-              fontSizeGeneral={fontSizeGeneral}
-            />
-          )}
-          {mainSectionSelect !== 2 && (
-            <ResoucesTable
-              filterTerm={filterTerm}
-              rtl={rtl}
-              sortByDateDescending={sortByDateDescending}
-              sortByDateAscending={sortByDateAscending}
-            />
-          )}
-          <div className={classes.paginationContainer}>
-            {/* Render pagination links with updated styles */}
-            <ReactPaginate
-              containerClassName={classes.pagination}
-              pageClassName={classes.pageItem}
-              activeClassName={classes.active}
-              onPageChange={(event) => setCurrentPage(event.selected)}
-              pageCount={Math.ceil(filterTerm.length / selectedOption)}
-              onPageActive={currentPage}
-              breakLabel="..."
-              previousLabel={
-                <div className={classes.paginationTerm}>{t("previous")}</div>
-              }
-              nextLabel={
-                <div className={classes.paginationTerm}>{t("next")}</div>
-              }
+          </div>
+        ) : (
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              width: "100%",
+            }}
+          >
+            <Image
+              src="/assets/imges/page_empty.png"
+              width={350}
+              height={350}
+              alt="not_found "
             />
           </div>
-        </div>
+        )}
       </div>
 
       <Subscribe rtl={rtl} />

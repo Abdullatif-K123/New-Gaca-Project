@@ -56,6 +56,7 @@ const HomePage = ({
         title={title}
         desc={desc}
         rtl={rtl}
+        executive={dataHome?.hero.executiveView}
       />
       <MasterPlan layers={dataHome?.masterPlanLayers?.returnData} rtl={rtl} />
       <HomeBottom

@@ -98,9 +98,18 @@ const MasterPlanMain = ({
   }, []);
   return (
     <>
-      <div className={classes.masterPlanMain}>
+      <div
+        className={classes.masterPlanMain}
+        style={{
+          fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
+        }}
+      >
         <div className={classes.choosen}>
-          <p>
+          <p
+            style={{
+              fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
+            }}
+          >
             <span
               onClick={() => {
                 router.push("/");
@@ -119,6 +128,9 @@ const MasterPlanMain = ({
               onClick={() => {
                 router.push("/#masterplan");
               }}
+              style={{
+                fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
+              }}
             >
               {t("masterplan")}
             </span>
@@ -132,7 +144,13 @@ const MasterPlanMain = ({
                   alt="chevron"
                   style={{ transform: rtl ? "rotate(180deg)" : "" }}
                 />
-                <span>{rtl ? data[0].title : data[0].titleEN}</span>{" "}
+                <span
+                  style={{
+                    fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
+                  }}
+                >
+                  {rtl ? data[0].title : data[0].titleEN}
+                </span>{" "}
                 <Image
                   src="/assets/svg/Chevron.svg"
                   width={16}

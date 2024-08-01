@@ -5,7 +5,8 @@ import { useRouter } from "next/router";
 import parse from "html-react-parser";
 import { useFontSize } from "@/store/FontSizeContext";
 import { useTranslation } from "react-i18next";
-const SectionOne = ({ title, desc, rtl }) => {
+import Link from "next/link";
+const SectionOne = ({ title, desc, rtl, executive }) => {
   const { t } = useTranslation();
   const { fontSizeGeneral } = useFontSize();
   const router = useRouter();
@@ -45,22 +46,19 @@ const SectionOne = ({ title, desc, rtl }) => {
         >
           {parse(desc)}
         </p>
-        <div
-          className={classes.secOneButton}
-          onClick={() => {
-            router.push("/download");
-          }}
-        >
-          <p
-            style={{
-              fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
-              fontSize: `${18 + fontSizeGeneral}px`,
-            }}
-          >
-            {" "}
-            {t("downloadDoc")}
-          </p>
-        </div>
+        <Link href={executive}>
+          <div className={classes.secOneButton}>
+            <p
+              style={{
+                fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
+                fontSize: `${18 + fontSizeGeneral}px`,
+              }}
+            >
+              {" "}
+              {t("downloadDoc")}
+            </p>
+          </div>
+        </Link>
       </div>
       <div
         className={classes.sectionTwo}
@@ -73,6 +71,7 @@ const SectionOne = ({ title, desc, rtl }) => {
           className={classes.streetPlane}
           alt="Banner"
           data-aos="fade-left"
+          style={{ transform: rtl ? "scaleX(-1)" : "" }}
         />
       </div>
       <div className={classes.btnDown} onClick={handleClick}>

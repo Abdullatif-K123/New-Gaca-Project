@@ -55,13 +55,22 @@ const SideMenu = ({
             alt="search"
           />
           <input
+            style={{
+              fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
+            }}
             type="text"
             placeholder={t("search")}
             onKeyUp={onFilterMouseUp}
           />
         </div>
         <div className={classes.sideMenuTreeView} data-aos="fade-right">
-          <p>{t("masterplan")}</p>
+          <p
+            style={{
+              fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
+            }}
+          >
+            {t("masterplan")}
+          </p>
           <div className={classes.treeViewSideMenu}>
             <MyTreeView
               singleSelectHandling={singleSelectHandling}

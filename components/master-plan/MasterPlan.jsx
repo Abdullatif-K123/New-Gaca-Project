@@ -84,7 +84,11 @@ const MasterPlan = ({
           )}
         </div>
         {!switching ? (
-          <div ref={pdfWrapperRef} className={classes.documentMasterPlan}>
+          <div
+            ref={pdfWrapperRef}
+            className={classes.documentMasterPlan}
+            style={{ float: rtl ? "right" : "left" }}
+          >
             <Document
               file={`/assets/pdf/LAYER${router.query.id}.pdf`}
               onLoadSuccess={onDocumentLoadSuccess}
@@ -208,6 +212,8 @@ const MasterPlan = ({
                           display: "flex",
                           flexDirection: "column",
                           cursor: "pointer",
+
+                          fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
                         }}
                       >
                         {" "}

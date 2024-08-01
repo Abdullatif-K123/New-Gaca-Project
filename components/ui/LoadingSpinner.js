@@ -4,7 +4,7 @@ const LoadingSpinner = () => {
   return (
     <div className="loader-container">
       <Image
-        src="/assets/svg/GacaFooter.svg"
+        src="/assets/svg/SNAP.svg"
         width={200}
         height={100}
         style={{ marginRight: "50px" }}

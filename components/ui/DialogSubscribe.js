@@ -10,8 +10,6 @@ import classes from "./ui.module.css";
 import { useTranslation } from "react-i18next";
 import {
   loadCaptchaEnginge,
-  LoadCanvasTemplate,
-  LoadCanvasTemplateNoReload,
   validateCaptcha,
 } from "node_modules/react-simple-captcha";
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -46,9 +44,7 @@ const DialogModalSubscribe = ({
       open={open}
       onClose={handleClose}
       PaperProps={{
-        style: {
-          // overflowY: "unset",
-          // overflowX: "unset",
+        style: { 
           direction: i18n.language === "ar" ? "rtl" : "ltr",
         },
         
@@ -72,8 +68,8 @@ const DialogModalSubscribe = ({
               <Image src={img} width={150} height={150} alt={name}/>
             
             <DialogContentText id="alert-dialog-slide-description">
-              <h1 style={{marginBottom: "20px"}}>{name}</h1>
-             <p>{description}</p> 
+              <h1 style={{marginBottom: "20px", fontFamily: i18n.language === "ar" ? "DINNext-Arabic-meduim " : "",}}>{name}</h1>
+             <p style={{ fontFamily: i18n.language === "ar" ? "DINNext-Arabic-meduim " : "",}}>{description}</p> 
             </DialogContentText>
             </div>
           </DialogContent>
@@ -84,6 +80,7 @@ const DialogModalSubscribe = ({
               color="inherit"
               onClick={handleClose}
               className={classes.btnCancel}
+              style={{ fontFamily: i18n.language === "ar" ? "DINNext-Arabic-meduim " : "",}}
             >
               {t("cancel")}
             </button>
@@ -96,6 +93,7 @@ const DialogModalSubscribe = ({
                 handleClose();
               }}
               className={classes.btnSuccess}
+              style={{ fontFamily: i18n.language === "ar" ? "DINNext-Arabic-meduim " : "",}}
             >
               {t("open")}
             </button>

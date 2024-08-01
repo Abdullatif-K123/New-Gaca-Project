@@ -47,8 +47,8 @@ const Subscribe = ({ rtl }) => {
         email: emails,
       });
       Swal.fire({
-        title: "Good job!",
-        text: response.data.errorMessage,
+        title: !rtl ? "Good job!" : "رائع!",
+        text: !rtl ? response.data.errorMessage : "شكرا لكم على الاشتراك",
         icon: "success",
         customClass: {
           container: classes.customTitleAlert,

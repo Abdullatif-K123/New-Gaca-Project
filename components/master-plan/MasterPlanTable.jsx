@@ -61,7 +61,6 @@ const MasterPlanTable = ({ data, rtl }) => {
             API_ROUTES.monitoring.get + `/${data.id}`
           );
           setCodeFetchign(response.data.returnData);
-          console.log(response.data.returnData);
         }
       } catch (error) {
         console.error(error);
@@ -97,9 +96,10 @@ const MasterPlanTable = ({ data, rtl }) => {
               id="mouse-over-popover"
               sx={{
                 pointerEvents: "none",
-
+                maxWidth: 500,
+                maxHeight: 400,
                 // Ensure the popover has a solid background
-                boxShadow: 3, // Add some shadow for better visibility
+                // Add some shadow for better visibility
                 borderRadius: 1, // Optional: add some rounding to the corners
               }}
               open={open}
@@ -172,6 +172,8 @@ const MasterPlanTable = ({ data, rtl }) => {
                 backgroundColor: "#63c69a",
                 width: "50%",
                 fontSize: "12px",
+
+                fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
               }}
             >
               {t("show")}
@@ -201,7 +203,7 @@ const MasterPlanTable = ({ data, rtl }) => {
             <TableRow key={codeData.projectId}>
               <TableCell style={{ paddingLeft: rtl ? "0px" : "40px" }}>
                 {" "}
-                {data.code}
+                {codeData.code}
               </TableCell>
               <TableCell style={{ paddingLeft: rtl ? "0px" : "40px" }}>
                 {" "}
@@ -209,10 +211,20 @@ const MasterPlanTable = ({ data, rtl }) => {
                   {rtl ? codeData.title : codeData.titleEN}
                 </Typography>
               </TableCell>
-              <TableCell style={{ paddingLeft: rtl ? "0px" : "40px" }}>
+              <TableCell
+                style={{
+                  paddingLeft: rtl ? "0px" : "40px",
+                  fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
+                }}
+              >
                 {formattedDateStart}
               </TableCell>
-              <TableCell style={{ paddingLeft: rtl ? "0px" : "40px" }}>
+              <TableCell
+                style={{
+                  paddingLeft: rtl ? "0px" : "40px",
+                  fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
+                }}
+              >
                 {formattedDateEnd}
               </TableCell>
               <TableCell>

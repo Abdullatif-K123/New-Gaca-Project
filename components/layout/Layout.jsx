@@ -30,7 +30,7 @@ const Layout = (props) => {
       });
       {
         Swal.fire({
-          title: response.data.errorMessage,
+          title: rtl ? response.data.errorMessage : "شكرا لكم ",
           icon: "success",
           customClass: {
             container: classes.customTitleAlert,
