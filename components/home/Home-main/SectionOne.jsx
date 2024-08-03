@@ -16,6 +16,25 @@ const SectionOne = ({ title, desc, rtl, executive }) => {
       targetElement.scrollIntoView({ behavior: "smooth" });
     }
   };
+  function downloadPdfFile(url, fileName) {
+    // Open a new tab
+    const newTab = window.open(url, "_blank");
+
+    // Check if the new tab was successfully opened
+    if (newTab) {
+      // Set the download attribute for the new tab
+      newTab.document.title = fileName; // Optional: Set the title of the new tab
+      newTab.location.href = url; // Start the download
+
+      // Optionally, you can close the tab after a short delay
+      setTimeout(() => {
+        newTab.close();
+      }, 10000); // Close after 10 seconds (adjust as needed)
+    } else {
+      // Handle the case where the tab couldn't be opened (popup blocker)
+      alert("Please allow popups for this website to download files.");
+    }
+  }
   return (
     <div className={classes.sectionOne} style={{ direction: rtl ? "rtl" : "" }}>
       {/* Video background */}
@@ -46,19 +65,23 @@ const SectionOne = ({ title, desc, rtl, executive }) => {
         >
           {parse(desc)}
         </p>
-        <Link href={executive}>
-          <div className={classes.secOneButton}>
-            <p
-              style={{
-                fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
-                fontSize: `${18 + fontSizeGeneral}px`,
-              }}
-            >
-              {" "}
-              {t("downloadDoc")}
-            </p>
-          </div>
-        </Link>
+
+        <div
+          className={classes.secOneButton}
+          onClick={() => {
+            downloadPdfFile(executive, "Snap_executive_view");
+          }}
+        >
+          <p
+            style={{
+              fontFamily: rtl ? "DINNext-Arabic-meduim " : "",
+              fontSize: `${18 + fontSizeGeneral}px`,
+            }}
+          >
+            {" "}
+            {t("downloadDoc")}
+          </p>
+        </div>
       </div>
       <div
         className={classes.sectionTwo}

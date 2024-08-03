@@ -139,6 +139,12 @@ const Downloads = ({ data, conversion, rtl }) => {
       setFilterTerm(data?.dataObjectives[id]?.lists);
     }
     setImageHead("box-" + (id + 1));
+    if (title === "services") setImageHead("box-" + 1);
+    else if (title === "operation-evn") setImageHead("box-" + 2);
+    else if (title === "stakholders") setImageHead("box-" + 3);
+    else if (title === "regulatory") setImageHead("box-" + 4);
+    else if (title === "kpi-overview") setImageHead("box-" + 5);
+    else if (title === "kpa-overview") setImageHead("box-" + 6);
   };
   return (
     <div
@@ -355,12 +361,17 @@ const Downloads = ({ data, conversion, rtl }) => {
             </div>
             <div
               className={`${classes.resminiSeciton} ${
-                switchSideSelect === 0
+                switchHead === "services"
                   ? classes.selectSideSection
                   : classes.notSelectSideSec
               }`}
               onClick={() => {
-                handleSwitchSideSection(0, "services");
+                handleSwitchSideSection(
+                  data.dataObjectives.findIndex(
+                    (obj) => obj.type === "Services"
+                  ),
+                  "services"
+                );
               }}
             >
               <Image
@@ -370,7 +381,7 @@ const Downloads = ({ data, conversion, rtl }) => {
                 alt="icon"
                 style={{
                   filter:
-                    switchSideSelect === 0 ? "invert(0)" : "brightness(0.2)",
+                    switchHead === "services" ? "invert(0)" : "brightness(0.2)",
                 }}
               />
               <p style={{ fontFamily: rtl ? "DINNext-Arabic-meduim " : "" }}>
@@ -379,12 +390,17 @@ const Downloads = ({ data, conversion, rtl }) => {
             </div>
             <div
               className={`${classes.resminiSeciton} ${
-                switchSideSelect === 1
+                switchHead === "operation-evn"
                   ? classes.selectSideSection
                   : classes.notSelectSideSec
               }`}
               onClick={() => {
-                handleSwitchSideSection(1, "operation-evn");
+                handleSwitchSideSection(
+                  data.dataObjectives.findIndex(
+                    (obj) => obj.type === "OperatingEnvironment"
+                  ),
+                  "operation-evn"
+                );
               }}
             >
               <Image
@@ -394,7 +410,7 @@ const Downloads = ({ data, conversion, rtl }) => {
                 alt="icon"
                 style={{
                   filter:
-                    switchSideSelect === 1
+                    switchHead === "operation-evn"
                       ? "brightness(10)"
                       : "brightness(0.2)",
                 }}
@@ -405,12 +421,17 @@ const Downloads = ({ data, conversion, rtl }) => {
             </div>
             <div
               className={`${classes.resminiSeciton} ${
-                switchSideSelect === 2
+                switchHead === "stakholders"
                   ? classes.selectSideSection
                   : classes.notSelectSideSec
               }`}
               onClick={() => {
-                handleSwitchSideSection(2, "stakholders");
+                handleSwitchSideSection(
+                  data.dataObjectives.findIndex(
+                    (obj) => obj.type === "Stakeholders"
+                  ),
+                  "stakholders"
+                );
               }}
             >
               <Image
@@ -420,7 +441,7 @@ const Downloads = ({ data, conversion, rtl }) => {
                 alt="icon"
                 style={{
                   filter:
-                    switchSideSelect === 2
+                    switchHead === "stakholders"
                       ? "brightness(10)"
                       : "brightness(0.2)",
                 }}
@@ -431,12 +452,17 @@ const Downloads = ({ data, conversion, rtl }) => {
             </div>
             <div
               className={`${classes.resminiSeciton} ${
-                switchSideSelect === 3
+                switchHead === "regulatory"
                   ? classes.selectSideSection
                   : classes.notSelectSideSec
               }`}
               onClick={() => {
-                handleSwitchSideSection(3, "regulatory");
+                handleSwitchSideSection(
+                  data.dataObjectives.findIndex(
+                    (obj) => obj.type === "Regulatory"
+                  ),
+                  "regulatory"
+                );
               }}
             >
               <Image
@@ -446,7 +472,7 @@ const Downloads = ({ data, conversion, rtl }) => {
                 alt="icon"
                 style={{
                   filter:
-                    switchSideSelect === 3
+                    switchHead === "regulatory"
                       ? "brightness(10)"
                       : "brightness(0.2)",
                 }}
@@ -457,12 +483,15 @@ const Downloads = ({ data, conversion, rtl }) => {
             </div>
             <div
               className={`${classes.resminiSeciton} ${
-                switchSideSelect === 4
+                switchHead === "kpi-overview"
                   ? classes.selectSideSection
                   : classes.notSelectSideSec
               }`}
               onClick={() => {
-                handleSwitchSideSection(4, "kpi-overview");
+                handleSwitchSideSection(
+                  data.dataObjectives.findIndex((obj) => obj.type === "KPI"),
+                  "kpi-overview"
+                );
               }}
             >
               <Image
@@ -472,7 +501,7 @@ const Downloads = ({ data, conversion, rtl }) => {
                 alt="icon"
                 style={{
                   filter:
-                    switchSideSelect === 4
+                    switchHead === "kpi-overview"
                       ? "brightness(10)"
                       : "brightness(0.2)",
                 }}
@@ -483,12 +512,15 @@ const Downloads = ({ data, conversion, rtl }) => {
             </div>
             <div
               className={`${classes.resminiSeciton} ${
-                switchSideSelect === 5
+                switchHead === "kpa-overview"
                   ? classes.selectSideSection
                   : classes.notSelectSideSec
               }`}
               onClick={() => {
-                handleSwitchSideSection(5, "kpa-overview");
+                handleSwitchSideSection(
+                  data.dataObjectives.findIndex((obj) => obj.type === "KPA"),
+                  "kpa-overview"
+                );
               }}
             >
               <Image
@@ -498,7 +530,7 @@ const Downloads = ({ data, conversion, rtl }) => {
                 alt="icon"
                 style={{
                   filter:
-                    switchSideSelect === 5
+                    switchHead === "kpa-overview"
                       ? "brightness(10)"
                       : "brightness(0.2)",
                 }}

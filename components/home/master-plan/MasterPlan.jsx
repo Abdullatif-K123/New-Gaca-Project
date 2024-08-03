@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useFontSize } from "@/store/FontSizeContext";
 import { useTranslation } from "react-i18next";
+import Link from "next/link";
 const Element = ({
   id,
   handleHover,
@@ -71,27 +72,31 @@ const Element = ({
           )}
         </div>
       )}
-      <Image
-        id={_id}
-        src={imgsrc}
-        onClick={() => {
-          router.push(`/master-plan/${_id}/?id=${id}`);
-        }}
-        loading="lazy"
-        onMouseOver={() => handleHover(id)}
-        onMouseOut={handleMouseOut}
-        width={width}
-        height={height}
+      <Link
+        href={`/master-plan/${_id}/?id=${id}`}
         className={`${classes.singleLevel} ${classPyramid}`}
-        style={{
-          filter: nowHovering
-            ? isHovered
-              ? "brightness(1.5)"
-              : "brightness(0.5)"
-            : null,
-        }}
-        alt="master plan"
-      />
+      >
+        <Image
+          id={_id}
+          src={imgsrc}
+          onClick={() => {
+            router.push(`/master-plan/${_id}/?id=${id}`);
+          }}
+          loading="lazy"
+          onMouseOver={() => handleHover(id)}
+          onMouseOut={handleMouseOut}
+          width={width}
+          height={height}
+          style={{
+            filter: nowHovering
+              ? isHovered
+                ? "brightness(1.5)"
+                : "brightness(0.5)"
+              : null,
+          }}
+          alt="master plan"
+        />
+      </Link>
       {id % 2 ? (
         <div
           className={`${classes.masterPlanInfo} ${classes.masterPlanInfo2}`}
