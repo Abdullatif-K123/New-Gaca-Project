@@ -25,6 +25,22 @@
    align-items: center;
    justify-content: space-between;
 }
+.downloadButton{
+    background: #F8F7FA;
+    color: rgb(96, 95, 95);
+    border: none; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    width: fit-content;
+    padding: 5px 10px;
+    border-radius: 15px;
+}
+.downloadButton > p{
+  font-size: 14px;
+  font-family: "DINNext-meduim", sans-serif;
+}
 .projectDate{
     background-color: #F8F7FA;
     width: 300px;
@@ -107,6 +123,10 @@
   padding:  20px;
   height: fit-content;
   width: 33%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
 }
 .activites > p{
    

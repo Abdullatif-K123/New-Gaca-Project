@@ -224,8 +224,18 @@ const ReportPage = ({ data }) => {
         className={styles.planeReport}
       />
       <div className={styles.container}>
-        <button id="downloadButton" onClick={downloadPdf}>
-          Download this page as PDF
+        <button
+          id="downloadButton"
+          onClick={downloadPdf}
+          className={styles.downloadButton}
+        >
+          <Image
+            src="/assets/svg/download-resouces.svg"
+            width={30}
+            height={30}
+            alt="download"
+          />
+          <p> Download this page as PDF</p>
         </button>
         <div className={styles.headSection}>
           <Image
@@ -459,8 +469,14 @@ const ReportPage = ({ data }) => {
             </div>
           </div>
           <div className={styles.activites}>
-            <p>Activities</p>
-            <PolarArea data={dataShart} options={options} />
+            <p>Airports</p>
+            {/* <PolarArea data={dataShart} options={options} /> */}
+            <Image
+              src="/assets/imges/map_ar.png"
+              width={370}
+              height={400}
+              alt="saudi_arabia_map"
+            />
           </div>
         </div>
         <Line data={dataLine} options={optionsLine} />
